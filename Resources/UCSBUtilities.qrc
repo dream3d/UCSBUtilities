@@ -1,0 +1,7 @@
+ <!DOCTYPE RCC>
+ <RCC version="1.0">
+ <qresource>
+ <file>UCSBUtilities/UCSBUtilitiesLicense.txt</file>
+ <file>UCSBUtilities/UCSBUtilitiesDescription.txt</file>
+ </qresource>
+ </RCC>
