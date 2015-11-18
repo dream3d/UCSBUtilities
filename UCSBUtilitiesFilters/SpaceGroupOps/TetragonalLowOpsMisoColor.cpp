@@ -30,7 +30,7 @@ TetragonalLowOpsMisoColor::~TetragonalLowOpsMisoColor()
 // -----------------------------------------------------------------------------
 DREAM3D::Rgb TetragonalLowOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
 {
-  BOOST_ASSERT(false);
+  Q_ASSERT(false);
 
   return RgbColor::dRgb(0, 0, 0, 0);
 }

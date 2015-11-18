@@ -30,7 +30,7 @@ DREAM3D::Rgb TrigonalOpsMisoColor::generateMisorientationColor(const QuatF& q, c
 {
   DREAM3D::Rgb rgb = RgbColor::dRgb(0, 0, 0, 0);
 
-  BOOST_ASSERT(false);
+  Q_ASSERT(false);
 
   return rgb;
 }
