@@ -133,12 +133,12 @@ DREAM3D::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatF& q, cons
 
   //eq c9.2
   x1 = x;
-  y1 = y;
-  z1 = z;
-  if(x >= SIMPLib::Constants::k_1Over3 && atan2(z, y) >= ((1.0f - 2.0f * x) / x))
-  {
+  if(x >= SIMPLib::Constants::k_1Over3 && atan2(z, y) >= ((1.0f - 2.0f * x) / x)) {
     y1 = (x * (y + z)) / (1.0f - x);
     z1 = (x * z * (y + z)) / (y * (1.0f - x));
+  } else {
+    y1 = y;
+    z1 = z;
   }
 
   //eq c9.3
@@ -148,7 +148,7 @@ DREAM3D::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatF& q, cons
 
   //eq c9.4
   x3 = x2;
-  y3 = y2 * (1 + (y2 / z2) * SIMPLib::Constants::k_Tan_OneEigthPi);
+  y3 = y2 * (1.0f + (y2 / z2) * SIMPLib::Constants::k_Tan_OneEigthPi);
   z3 = z2 + y2 * SIMPLib::Constants::k_Tan_OneEigthPi;
 
   //eq c9.5
@@ -174,13 +174,12 @@ DREAM3D::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatF& q, cons
   z7 = z6 * (SIMPLib::Constants::k_Cos_OneEigthPi / SIMPLib::Constants::k_Tan_OneEigthPi);
 
   //convert to traditional hsv (0-1)
-  h = fmod(atan2f(y7, x7) + M_2PI, M_2PI) / M_2PI;
+  h = atan2(y7, x7);
+  if(h < 0.0f) {h += SIMPLib::Constants::k_2Pi;}
+  h /= SIMPLib::Constants::k_2Pi;
   s = sqrt(x7 * x7 + y7 * y7);
   v = z7;
-  if(v > 0)
-  {
-    s = s / v;
-  }
+  if(v > 0.0f) {s = s / v;}
 
   DREAM3D::Rgb rgb = ColorUtilities::convertHSVtoRgb(h, s, v);
 
