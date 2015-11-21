@@ -17,10 +17,13 @@
 
 #include "CubicLowOpsMisoColor.h"
 
+#include <boost/assert.hpp>
+
 // Include this FIRST because there is a needed define for some compiles
 // to expose some of the constants needed below
 #include "SIMPLib/Math/SIMPLibMath.h"
 #include "SIMPLib/Utilities/ColorTable.h"
+
 
 
 
@@ -45,7 +48,7 @@ CubicLowOpsMisoColor::~CubicLowOpsMisoColor()
 DREAM3D::Rgb CubicLowOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
 {
   BOOST_ASSERT(false);
-
+#if 0
   float n1, n2, n3, w;
   float x, x1, x2, x3, x4;
   float y, y1, y2, y3, y4;
@@ -102,5 +105,7 @@ DREAM3D::Rgb CubicLowOpsMisoColor::generateMisorientationColor(const QuatF& q, c
 
   //convert to rgb and invert
   DREAM3D::Rgb rgb = ColorUtilities::convertHSVtoRgb(h, s, v);
+#endif
+  DREAM3D::Rgb rgb = 0xFFFFFFFF;
   return RgbColor::dRgb(255 - RgbColor::dRed(rgb), 255 - RgbColor::dGreen(rgb), 255 - RgbColor::dBlue(rgb), 0);
 }

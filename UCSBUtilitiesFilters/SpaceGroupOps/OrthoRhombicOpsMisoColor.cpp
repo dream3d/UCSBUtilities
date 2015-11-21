@@ -17,11 +17,14 @@
 
 #include "OrthoRhombicOpsMisoColor.h"
 
+#include <boost/assert.hpp>
+
+
 // Include this FIRST because there is a needed define for some compiles
 // to expose some of the constants needed below
 #include "SIMPLib/Math/SIMPLibMath.h"
 #include "SIMPLib/Utilities/ColorTable.h"
-
+#include "SIMPLib/Utilities/ColorUtilities.h"
 
 // -----------------------------------------------------------------------------
 //
@@ -102,8 +105,8 @@ DREAM3D::Rgb OrthoRhombicOpsMisoColor::generateMisorientationColor(const QuatF& 
   k *= 3.0f / SIMPLib::Constants::k_2Pi;
   size_t type = 0;
   if(0.0f < k && k < 1.0f) {type = 1;}
-  else if(1.0f < k && k < 2.0f) {type = 2;}   
-  else if(2.0f < k && k < 3.0f) {type = 3;}   
+  else if(1.0f < k && k < 2.0f) {type = 2;}
+  else if(2.0f < k && k < 3.0f) {type = 3;}
 
   switch(type) {
     case 1:
@@ -111,7 +114,7 @@ DREAM3D::Rgb OrthoRhombicOpsMisoColor::generateMisorientationColor(const QuatF& 
       y5 = (-x4 * SIMPLib::Constants::k_Sqrt3 + y4) / 2.0f;
       z5 = z4;
       break;
-      
+
     case 2:
       x5 = -x4;
       y5 = -y4;
@@ -157,7 +160,7 @@ DREAM3D::Rgb OrthoRhombicOpsMisoColor::generateMisorientationColor(const QuatF& 
       y9 = (x8 * SIMPLib::Constants::k_Sqrt3 + y8) / 2.0f;
       z9 = z8;
       break;
-      
+
     case 2:
       x9 = -x8;
       y9 = -y8;

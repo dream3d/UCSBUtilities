@@ -55,11 +55,9 @@ IDataArray::Pointer UCSBHelpers::ReorderCopy(StatsDataArray::Pointer array, QVec
 }
 
 
-/**
- * @brief reorderCopy
- * @param newOrderMap
- * @return
- */
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 IDataArray::Pointer UCSBHelpers::ReorderCopy(StringDataArray::Pointer array, QVector<size_t> newOrderMap)
 {
   if(static_cast<size_t>(newOrderMap.size()) != array->getNumberOfTuples())
