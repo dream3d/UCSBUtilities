@@ -49,7 +49,7 @@ OrthoRhombicOpsMisoColor::~OrthoRhombicOpsMisoColor()
 DREAM3D::Rgb OrthoRhombicOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
 {
   BOOST_ASSERT(false);
-
+	#if 0
   float n1, n2, n3, w;
   float x, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11;
   float y, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11;
@@ -204,7 +204,7 @@ DREAM3D::Rgb OrthoRhombicOpsMisoColor::generateMisorientationColor(const QuatF& 
 
   //convert to rgb and invert
   DREAM3D::Rgb rgb = ColorUtilities::convertHSVtoRgb(h, s, v);
+#endif
+  DREAM3D::Rgb rgb = 0xFFFFFFFF;
   return RgbColor::dRgb(255 - RgbColor::dRed(rgb), 255 - RgbColor::dGreen(rgb), 255 - RgbColor::dBlue(rgb), 0);
-
-  return rgb;
 }
