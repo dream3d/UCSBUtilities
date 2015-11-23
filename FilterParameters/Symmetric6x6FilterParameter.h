@@ -18,6 +18,8 @@
 #ifndef _Symmetric6x6FilterParameter_H_
 #define _Symmetric6x6FilterParameter_H_
 
+#include <QtCore/QJsonObject>
+
 #include "SIMPLib/FilterParameters/FilterParameter.h"
 
 typedef struct
