@@ -25,7 +25,7 @@
 /**
  * @brief The CopyDataContainer class. See [Filter documentation](@ref copydatacontainer) for details.
  */
-class SIMPLib_EXPORT CopyDataContainer : public AbstractFilter
+class CopyDataContainer : public AbstractFilter
 {
     Q_OBJECT /* Need this for Qt's signals and slots mechanism to work */
   public:

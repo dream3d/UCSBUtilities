@@ -25,7 +25,7 @@
 /**
  * @brief The CopyAttributeMatrix class. See [Filter documentation](@ref copyattributematrix) for details.
  */
-class SIMPLib_EXPORT CopyAttributeMatrix : public AbstractFilter
+class CopyAttributeMatrix : public AbstractFilter
 {
     Q_OBJECT /* Need this for Qt's signals and slots mechanism to work */
   public:

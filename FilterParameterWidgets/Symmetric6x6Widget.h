@@ -41,7 +41,7 @@
 * @author
 * @version
 */
-class DREAM3DWidgetsLib_EXPORT Symmetric6x6Widget : public FilterParameterWidget, private Ui::Symmetric6x6Widget
+class Symmetric6x6Widget : public FilterParameterWidget, private Ui::Symmetric6x6Widget
 {
     Q_OBJECT
 

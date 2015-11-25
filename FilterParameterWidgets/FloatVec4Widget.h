@@ -43,7 +43,7 @@
 * @author
 * @version
 */
-class DREAM3DWidgetsLib_EXPORT FloatVec4Widget : public FilterParameterWidget, private Ui::FloatVec4Widget
+class FloatVec4Widget : public FilterParameterWidget, private Ui::FloatVec4Widget
 {
     Q_OBJECT
 

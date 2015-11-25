@@ -25,7 +25,7 @@
 /**
  * @brief The CopyAttributeArray class. See [Filter documentation](@ref copyattributearray) for details.
  */
-class SIMPLib_EXPORT CopyAttributeArray : public AbstractFilter
+class CopyAttributeArray : public AbstractFilter
 {
     Q_OBJECT /* Need this for Qt's signals and slots mechanism to work */
   public:

@@ -49,7 +49,7 @@ typedef struct {
 
 Q_DECLARE_METATYPE(FloatVec4_t)
 
-class SIMPLib_EXPORT FloatVec4FilterParameter : public FilterParameter
+class FloatVec4FilterParameter : public FilterParameter
 {
 public:
   SIMPL_SHARED_POINTERS(FloatVec4FilterParameter)

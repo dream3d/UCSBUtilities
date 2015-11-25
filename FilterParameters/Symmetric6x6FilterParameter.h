@@ -109,7 +109,7 @@ typedef struct
 
 Q_DECLARE_METATYPE(FloatVec21_t)
 
-class SIMPLib_EXPORT Symmetric6x6FilterParameter : public FilterParameter
+class Symmetric6x6FilterParameter : public FilterParameter
 {
 public:
   SIMPL_SHARED_POINTERS(Symmetric6x6FilterParameter)
