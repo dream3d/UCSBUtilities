@@ -23,6 +23,9 @@
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
 #include "SIMPLib/FilterParameters/StringFilterParameter.h"
 
+#include "UCSBUtilities/UCSBUtilitiesConstants.h"
+#include "UCSBUtilities/UCSBUtilitiesVersion.h"
+
 // Include the MOC generated file for this class
 #include "moc_CopyAttributeArray.cpp"
 
@@ -163,7 +166,28 @@ AbstractFilter::Pointer CopyAttributeArray::newFilterInstance(bool copyFilterPar
 //
 // -----------------------------------------------------------------------------
 const QString CopyAttributeArray::getCompiledLibraryName()
-{ return Core::CoreBaseName; }
+{
+  return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString CopyAttributeArray::getBrandingString()
+{
+  return "UCSBUtilities";
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString CopyAttributeArray::getFilterVersion()
+{
+  QString version;
+  QTextStream vStream(&version);
+  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  return version;
+}
 
 // -----------------------------------------------------------------------------
 //

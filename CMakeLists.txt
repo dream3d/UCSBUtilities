@@ -26,6 +26,17 @@ if(NOT Qt5Core_FOUND)
     message(FATAL_ERROR "Qt 5 is Needed for plugin ${PLUGIN_NAME}Plugin.")
 endif()
 
+
+set(CMP_TOP_HEADER_FILE "${PLUGIN_NAME}Plugin.h")
+set(VERSION_HEADER_FILE_NAME "${PLUGIN_NAME}Version.h")
+set(VERSION_SOURCE_FILE_NAME "${PLUGIN_NAME}Version.cpp")
+
+cmpRevisionString( GENERATED_HEADER_FILE_PATH "${VERSION_HEADER_FILE_NAME}"
+                    GENERATED_SOURCE_FILE_PATH "${VERSION_SOURCE_FILE_NAME}"
+                    NAMESPACE "${PLUGIN_NAME}"
+                    PROJECT_NAME "${PLUGIN_NAME}"
+                    EXPORT_MACRO "")
+
 # -----
 set(${PLUGIN_NAME}_Project_SRCS "")
 
@@ -157,10 +168,12 @@ cmp_IDE_SOURCE_PROPERTIES( "" "${${PLUGIN_NAME}_MOC_HDRS};${${PLUGIN_NAME}_HDRS}
 # -----------------------------------------------------------------------------
 # Collect all of our Generated header and source files so that they show up in the various projects
 set(${PLUGIN_NAME}_GEN_HDRS
-   ${AllFiltersHeaderFile}
-   ${RegisterKnownFiltersFile}
-   ${AllFilterParameterWidgetsHeaderFile}
-   ${RegisterKnownFilterParameterWidgetsFile}
+  ${AllFiltersHeaderFile}
+  ${RegisterKnownFiltersFile}
+  ${AllFilterParameterWidgetsHeaderFile}
+  ${RegisterKnownFilterParameterWidgetsFile}
+ "${${PLUGIN_NAME}_BINARY_DIR}/${PLUGIN_NAME}Version.h"
+ "${${PLUGIN_NAME}_BINARY_DIR}/${PLUGIN_NAME}Version.cpp"
 )
 
 # --------------------------------------------------------------------

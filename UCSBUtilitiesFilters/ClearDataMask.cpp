@@ -23,6 +23,8 @@
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
+#include "UCSBUtilities/UCSBUtilitiesVersion.h"
+
 
 // Include the MOC generated file for this class
 #include "moc_ClearDataMask.cpp"
@@ -165,7 +167,28 @@ AbstractFilter::Pointer ClearDataMask::newFilterInstance(bool copyFilterParamete
 //
 // -----------------------------------------------------------------------------
 const QString ClearDataMask::getCompiledLibraryName()
-{ return UCSBUtilitiesConstants::UCSBUtilitiesBaseName; }
+{
+  return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString ClearDataMask::getBrandingString()
+{
+  return "UCSBUtilities";
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString ClearDataMask::getFilterVersion()
+{
+  QString version;
+  QTextStream vStream(&version);
+  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  return version;
+}
 
 // -----------------------------------------------------------------------------
 //

@@ -20,12 +20,12 @@
 #include "SIMPLib/Common/Constants.h"
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/AbstractFilterParametersWriter.h"
-
 #include "SIMPLib/FilterParameters/DataArrayCreationFilterParameter.h"
 #include "SIMPLib/FilterParameters/SeparatorFilterParameter.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
 #include "UCSBUtilities/FilterParameters/Symmetric6x6FilterParameter.h"
+#include "UCSBUtilities/UCSBUtilitiesVersion.h"
 
 // Include the MOC generated file for this class
 #include "moc_InputCrystalCompliances.cpp"
@@ -297,8 +297,28 @@ AbstractFilter::Pointer InputCrystalCompliances::newFilterInstance(bool copyFilt
 //
 // -----------------------------------------------------------------------------
 const QString InputCrystalCompliances::getCompiledLibraryName()
-{ return UCSBUtilitiesConstants::UCSBUtilitiesBaseName; }
+{
+  return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
+}
 
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString InputCrystalCompliances::getBrandingString()
+{
+  return "UCSBUtilities";
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString InputCrystalCompliances::getFilterVersion()
+{
+  QString version;
+  QTextStream vStream(&version);
+  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  return version;
+}
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------

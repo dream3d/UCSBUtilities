@@ -23,6 +23,9 @@
 #include "SIMPLib/FilterParameters/AttributeMatrixSelectionFilterParameter.h"
 #include "SIMPLib/FilterParameters/StringFilterParameter.h"
 
+#include "UCSBUtilities/UCSBUtilitiesConstants.h"
+#include "UCSBUtilities/UCSBUtilitiesVersion.h"
+
 // Include the MOC generated file for this class
 #include "moc_CopyAttributeMatrix.cpp"
 
@@ -152,7 +155,28 @@ AbstractFilter::Pointer CopyAttributeMatrix::newFilterInstance(bool copyFilterPa
 //
 // -----------------------------------------------------------------------------
 const QString CopyAttributeMatrix::getCompiledLibraryName()
-{ return Core::CoreBaseName; }
+{
+  return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString CopyAttributeMatrix::getBrandingString()
+{
+  return "UCSBUtilities";
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString CopyAttributeMatrix::getFilterVersion()
+{
+  QString version;
+  QTextStream vStream(&version);
+  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  return version;
+}
 
 // -----------------------------------------------------------------------------
 //

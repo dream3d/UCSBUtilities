@@ -20,13 +20,12 @@
 #include "SIMPLib/Common/Constants.h"
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/AbstractFilterParametersWriter.h"
-
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
 #include "SIMPLib/FilterParameters/DataArrayCreationFilterParameter.h"
 #include "SIMPLib/FilterParameters/SeparatorFilterParameter.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
-
+#include "UCSBUtilities/UCSBUtilitiesVersion.h"
 
 // Include the MOC generated file for this class
 #include "moc_FindBoundaryAreas.cpp"
@@ -184,8 +183,28 @@ AbstractFilter::Pointer FindBoundaryAreas::newFilterInstance(bool copyFilterPara
 //
 // -----------------------------------------------------------------------------
 const QString FindBoundaryAreas::getCompiledLibraryName()
-{ return UCSBUtilitiesConstants::UCSBUtilitiesBaseName; }
+{
+  return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
+}
 
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString FindBoundaryAreas::getBrandingString()
+{
+  return "UCSBUtilities";
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString FindBoundaryAreas::getFilterVersion()
+{
+  QString version;
+  QTextStream vStream(&version);
+  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  return version;
+}
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------

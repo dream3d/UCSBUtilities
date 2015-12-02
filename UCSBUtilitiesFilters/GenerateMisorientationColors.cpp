@@ -50,7 +50,7 @@
 #include "UCSBUtilitiesFilters/SpaceGroupOps/TriclinicOpsMisoColor.h"
 #include "UCSBUtilitiesFilters/SpaceGroupOps/MonoclinicOpsMisoColor.h"
 
-
+#include "UCSBUtilities/UCSBUtilitiesVersion.h"
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
 
 /**
@@ -410,8 +410,28 @@ AbstractFilter::Pointer GenerateMisorientationColors::newFilterInstance(bool cop
 //
 // -----------------------------------------------------------------------------
 const QString GenerateMisorientationColors::getCompiledLibraryName()
-{ return UCSBUtilitiesConstants::UCSBUtilitiesBaseName; }
+{
+  return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
+}
 
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString GenerateMisorientationColors::getBrandingString()
+{
+  return "UCSBUtilities";
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString GenerateMisorientationColors::getFilterVersion()
+{
+  QString version;
+  QTextStream vStream(&version);
+  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  return version;
+}
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------

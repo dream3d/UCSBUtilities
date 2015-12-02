@@ -23,6 +23,9 @@
 #include "SIMPLib/FilterParameters/DataContainerSelectionFilterParameter.h"
 #include "SIMPLib/FilterParameters/StringFilterParameter.h"
 
+#include "UCSBUtilities/UCSBUtilitiesConstants.h"
+#include "UCSBUtilities/UCSBUtilitiesVersion.h"
+
 // Include the MOC generated file for this class
 #include "moc_CopyDataContainer.cpp"
 
@@ -133,6 +136,7 @@ void CopyDataContainer::execute()
 
   notifyStatusMessage(getHumanLabel(), "Complete");
 }
+
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -150,7 +154,29 @@ AbstractFilter::Pointer CopyDataContainer::newFilterInstance(bool copyFilterPara
 //
 // -----------------------------------------------------------------------------
 const QString CopyDataContainer::getCompiledLibraryName()
-{ return Core::CoreBaseName; }
+{
+  return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString CopyDataContainer::getBrandingString()
+{
+  return "UCSBUtilities";
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString CopyDataContainer::getFilterVersion()
+{
+  QString version;
+  QTextStream vStream(&version);
+  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  return version;
+}
+
 
 // -----------------------------------------------------------------------------
 //

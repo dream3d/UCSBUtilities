@@ -29,6 +29,7 @@
 #include "SIMPLib/Math/MatrixMath.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
+#include "UCSBUtilities/UCSBUtilitiesVersion.h"
 
 #include <Eigen/Dense>
 #include <Eigen/StdVector>
@@ -461,8 +462,28 @@ AbstractFilter::Pointer FindDirectionalModuli::newFilterInstance(bool copyFilter
 //
 // -----------------------------------------------------------------------------
 const QString FindDirectionalModuli::getCompiledLibraryName()
-{ return UCSBUtilitiesConstants::UCSBUtilitiesBaseName; }
+{
+  return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
+}
 
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString FindDirectionalModuli::getBrandingString()
+{
+  return "UCSBUtilities";
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+const QString FindDirectionalModuli::getFilterVersion()
+{
+  QString version;
+  QTextStream vStream(&version);
+  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  return version;
+}
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
