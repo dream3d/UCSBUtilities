@@ -19,7 +19,10 @@ set(PLUGIN_NAME "UCSBUtilities")
 set(${PLUGIN_NAME}Test_SOURCE_DIR ${${PLUGIN_NAME}_SOURCE_DIR}/Test/Test)
 set(${PLUGIN_NAME}Test_BINARY_DIR ${${PLUGIN_NAME}_BINARY_DIR}/Test)
 
-include(${DREAM3DProj_SOURCE_DIR}/Test/DREAM3DTestFunctions.cmake)
+
+#------------------------------------------------------------------------------
+# Include this file from the SIMPL Project
+include(${SIMPLProj_SOURCE_DIR}/Test/SIMPLTestFunctions.cmake)
 
 include_directories(${${PLUGIN_NAME}_SOURCE_DIR}/Test)
 include_directories(${${PLUGIN_NAME}_BINARY_DIR})
@@ -34,7 +37,7 @@ configure_file(${${PLUGIN_NAME}_SOURCE_DIR}/Test/TestFileLocations.h.in
 
 set(${PLUGIN_NAME}_Link_Libs Qt5::Core H5Support SIMPLib)
 
-AddDREAM3DUnitTest(TESTNAME UCSBUtilitiesFilterTest
+AddSIMPLUnitTest(TESTNAME UCSBUtilitiesFilterTest
                    SOURCES ${${PLUGIN_NAME}_SOURCE_DIR}/Test/UCSBUtilitiesFilterTest.cpp
                    FOLDER "${PLUGIN_NAME}Plugin/Test"
                    LINK_LIBRARIES ${${PLUGIN_NAME}_Link_Libs})

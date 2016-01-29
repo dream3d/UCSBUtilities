@@ -37,9 +37,9 @@
 // -----------------------------------------------------------------------------
 FindBoundaryAreas::FindBoundaryAreas() :
   AbstractFilter(),
-  m_SurfaceMeshTriangleAreasArrayPath(DREAM3D::Defaults::TriangleDataContainerName, DREAM3D::Defaults::FaceAttributeMatrixName, DREAM3D::FaceData::SurfaceMeshFaceAreas),
-  m_SurfaceMeshFeatureFaceIdsArrayPath(DREAM3D::Defaults::TriangleDataContainerName, DREAM3D::Defaults::FaceAttributeMatrixName, DREAM3D::CellData::FeatureIds),
-  m_SurfaceMeshBoundaryAreasArrayPath(DREAM3D::Defaults::TriangleDataContainerName, DREAM3D::Defaults::FaceFeatureAttributeMatrixName, "BoundaryAreas"),
+  m_SurfaceMeshTriangleAreasArrayPath(SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceAttributeMatrixName, SIMPL::FaceData::SurfaceMeshFaceAreas),
+  m_SurfaceMeshFeatureFaceIdsArrayPath(SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceAttributeMatrixName, SIMPL::CellData::FeatureIds),
+  m_SurfaceMeshBoundaryAreasArrayPath(SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceFeatureAttributeMatrixName, "BoundaryAreas"),
   m_SurfaceMeshTriangleAreas(NULL),
   m_SurfaceMeshFeatureFaceIds(NULL),
   m_SurfaceMeshBoundaryAreas(NULL)
@@ -209,13 +209,13 @@ const QString FindBoundaryAreas::getFilterVersion()
 //
 // -----------------------------------------------------------------------------
 const QString FindBoundaryAreas::getGroupName()
-{ return DREAM3D::FilterGroups::SurfaceMeshingFilters; }
+{ return SIMPL::FilterGroups::SurfaceMeshingFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 const QString FindBoundaryAreas::getSubGroupName()
-{ return DREAM3D::FilterSubGroups::MiscFilters; }
+{ return SIMPL::FilterSubGroups::MiscFilters; }
 
 // -----------------------------------------------------------------------------
 //

@@ -33,7 +33,7 @@
 #include <Eigen/Dense>
 #include <Eigen/StdVector>
 
-
+#include "EbsdLib/EbsdConstants.h"
 
 // Include the MOC generated file for this class
 #include "moc_FindDirectionalModuli.cpp"
@@ -487,14 +487,14 @@ const QString FindDirectionalModuli::getFilterVersion()
 //
 // -----------------------------------------------------------------------------
 const QString FindDirectionalModuli::getGroupName()
-{ return DREAM3D::FilterGroups::StatisticsFilters; }
+{ return SIMPL::FilterGroups::StatisticsFilters; }
 
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 const QString FindDirectionalModuli::getSubGroupName()
-{ return DREAM3D::FilterSubGroups::CrystallographicFilters; }
+{ return SIMPL::FilterSubGroups::CrystallographicFilters; }
 
 
 // -----------------------------------------------------------------------------

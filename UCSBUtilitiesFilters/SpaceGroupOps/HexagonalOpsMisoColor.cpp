@@ -42,7 +42,7 @@ HexagonalOpsMisoColor::~HexagonalOpsMisoColor()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-DREAM3D::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
+SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
 {
   float n1, n2, n3, w;
   float xo, xo1, xo2, xo3, x, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11;
@@ -226,6 +226,6 @@ DREAM3D::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatF& q, 
   }
 
   //convert to rgb and invert
-  DREAM3D::Rgb rgb = ColorUtilities::convertHSVtoRgb(h, s, v);
+  SIMPL::Rgb rgb = ColorUtilities::convertHSVtoRgb(h, s, v);
   return RgbColor::dRgb(255 - RgbColor::dRed(rgb), 255 - RgbColor::dGreen(rgb), 255 - RgbColor::dBlue(rgb), 0);
 }

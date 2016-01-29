@@ -42,9 +42,9 @@ TrigonalLowOpsMisoColor::~TrigonalLowOpsMisoColor()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-DREAM3D::Rgb TrigonalLowOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
+SIMPL::Rgb TrigonalLowOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
 {
-  DREAM3D::Rgb rgb = RgbColor::dRgb(0, 0, 0, 0);
+  SIMPL::Rgb rgb = RgbColor::dRgb(0, 0, 0, 0);
 
   Q_ASSERT(false);
 

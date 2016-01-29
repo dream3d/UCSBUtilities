@@ -42,9 +42,9 @@ class HexagonalOpsMisoColor : public HexagonalOps
      * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
      * @param q Quaternion representing the direction
      * @param refDir The sample reference direction
-     * @return Returns the ARGB Quadruplet DREAM3D::Rgb
+     * @return Returns the ARGB Quadruplet SIMPL::Rgb
      */
-    virtual DREAM3D::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
+    virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
   protected:
 
