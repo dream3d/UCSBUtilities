@@ -28,8 +28,8 @@
 
 #include "SIMPLib/Common/AbstractFilter.h"
 
-#include "DREAM3DWidgetsLib/DREAM3DWidgetsLib.h"
-#include "DREAM3DWidgetsLib/FilterParameterWidgets/FilterParameterWidget.h"
+#include "SIMPLViewWidgetsLib/SIMPLViewWidgetsLib.h"
+#include "SIMPLViewWidgetsLib/FilterParameterWidgets/FilterParameterWidget.h"
 
 #include "UCSBUtilities/FilterParameters/FloatVec4FilterParameter.h"
 

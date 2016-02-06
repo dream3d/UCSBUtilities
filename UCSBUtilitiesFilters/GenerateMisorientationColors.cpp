@@ -35,6 +35,8 @@
 #include "SIMPLib/FilterParameters/SeparatorFilterParameter.h"
 #include "SIMPLib/Utilities/ColorTable.h"
 
+#include "EbsdLib/EbsdConstants.h"
+
 #include "OrientationLib/SpaceGroupOps/SpaceGroupOps.h"
 
 #include "UCSBUtilitiesFilters/SpaceGroupOps/CubicOpsMisoColor.h"
@@ -97,7 +99,7 @@ class GenerateMisorientationColorsImpl
 
       QuatF refQuat = {m_ReferenceAxis.x * sinf(m_ReferenceAngle), m_ReferenceAxis.y * sinf(m_ReferenceAngle), m_ReferenceAxis.z * sinf(m_ReferenceAngle), cosf(m_ReferenceAngle)};
       QuatF cellQuat = {0.0f, 0.0f, 0.0f, 1.0f};
-      DREAM3D::Rgb argb = 0x00000000;
+      SIMPL::Rgb argb = 0x00000000;
 
       bool missingGoodVoxels = false;
       if (NULL == m_GoodVoxels)
@@ -173,7 +175,7 @@ GenerateMisorientationColors::GenerateMisorientationColors() :
   m_QuatsArrayPath("", "", ""),
   m_CrystalStructuresArrayPath("", "", ""),
   m_GoodVoxelsArrayPath("", "", ""),
-  m_MisorientationColorArrayName(DREAM3D::CellData::MisorientationColor),
+  m_MisorientationColorArrayName(SIMPL::CellData::MisorientationColor),
   m_UseGoodVoxels(false),
   m_CellPhases(NULL),
   m_Quats(NULL),
@@ -208,20 +210,20 @@ void GenerateMisorientationColors::setupFilterParameters()
   parameters.push_back(LinkedBooleanFilterParameter::New("Apply to Good Elements Only (Bad Elements Will Be Black)", "UseGoodVoxels", getUseGoodVoxels(), linkedProps, FilterParameter::Parameter));
   parameters.push_back(SeparatorFilterParameter::New("Element Data", FilterParameter::RequiredArray));
   {
-    DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(DREAM3D::TypeNames::Float, 4, DREAM3D::AttributeMatrixObjectType::Element);
+    DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(SIMPL::TypeNames::Float, 4, SIMPL::AttributeMatrixObjectType::Element);
     parameters.push_back(DataArraySelectionFilterParameter::New("Quaternions", "QuatsArrayPath", getQuatsArrayPath(), FilterParameter::RequiredArray, req));
   }
   {
-    DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(DREAM3D::TypeNames::Int32, 1, DREAM3D::AttributeMatrixObjectType::Element);
+    DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(SIMPL::TypeNames::Int32, 1, SIMPL::AttributeMatrixObjectType::Element);
     parameters.push_back(DataArraySelectionFilterParameter::New("Phases", "CellPhasesArrayPath", getCellPhasesArrayPath(), FilterParameter::RequiredArray, req));
   }
   {
-    DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(DREAM3D::TypeNames::Bool, 1, DREAM3D::AttributeMatrixObjectType::Element);
+    DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(SIMPL::TypeNames::Bool, 1, SIMPL::AttributeMatrixObjectType::Element);
     parameters.push_back(DataArraySelectionFilterParameter::New("Mask", "GoodVoxelsArrayPath", getGoodVoxelsArrayPath(), FilterParameter::RequiredArray, req));
   }
   parameters.push_back(SeparatorFilterParameter::New("Ensemble Data", FilterParameter::RequiredArray));
   {
-    DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(DREAM3D::TypeNames::UInt32, 1, DREAM3D::AttributeMatrixObjectType::Ensemble);
+    DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(SIMPL::TypeNames::UInt32, 1, SIMPL::AttributeMatrixObjectType::Ensemble);
     parameters.push_back(DataArraySelectionFilterParameter::New("Crystal Structures", "CrystalStructuresArrayPath", getCrystalStructuresArrayPath(), FilterParameter::RequiredArray, req));
   }
   parameters.push_back(SeparatorFilterParameter::New("Element Data", FilterParameter::CreatedArray));
@@ -435,13 +437,13 @@ const QString GenerateMisorientationColors::getFilterVersion()
 //
 // -----------------------------------------------------------------------------
 const QString GenerateMisorientationColors::getGroupName()
-{ return DREAM3D::FilterGroups::ProcessingFilters; }
+{ return SIMPL::FilterGroups::ProcessingFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 const QString GenerateMisorientationColors::getSubGroupName()
-{ return DREAM3D::FilterSubGroups::CrystallographyFilters; }
+{ return SIMPL::FilterSubGroups::CrystallographyFilters; }
 
 // -----------------------------------------------------------------------------
 //

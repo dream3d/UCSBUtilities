@@ -56,7 +56,7 @@ void ClearDataMask::setupFilterParameters()
 {
   FilterParameterVector parameters;
   {
-    DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(DREAM3D::TypeNames::Bool, 1, DREAM3D::AttributeMatrixObjectType::Element);
+    DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(SIMPL::TypeNames::Bool, 1, SIMPL::AttributeMatrixObjectType::Element);
     parameters.push_back(DataArraySelectionFilterParameter::New("Mask", "MaskArrayPath", getMaskArrayPath(), FilterParameter::RequiredArray, req));
   }
   setFilterParameters(parameters);
@@ -194,13 +194,13 @@ const QString ClearDataMask::getFilterVersion()
 //
 // -----------------------------------------------------------------------------
 const QString ClearDataMask::getGroupName()
-{ return DREAM3D::FilterGroups::ProcessingFilters; }
+{ return SIMPL::FilterGroups::ProcessingFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 const QString ClearDataMask::getSubGroupName()
-{ return DREAM3D::FilterSubGroups::CleanupFilters; }
+{ return SIMPL::FilterSubGroups::CleanupFilters; }
 
 // -----------------------------------------------------------------------------
 //

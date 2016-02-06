@@ -105,7 +105,7 @@ void _TripletSort(T a, T b, T c, T& x, T& y, T& z)
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-DREAM3D::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
+SIMPL::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
 {
   float n1, n2, n3, w;
   float x, x1, x2, x3, x4, x5, x6, x7;
@@ -181,7 +181,7 @@ DREAM3D::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatF& q, cons
   v = z7;
   if(v > 0.0f) {s = s / v;}
 
-  DREAM3D::Rgb rgb = ColorUtilities::convertHSVtoRgb(h, s, v);
+  SIMPL::Rgb rgb = ColorUtilities::convertHSVtoRgb(h, s, v);
 
   //now standard 0-255 rgb, needs rotation
   return RgbColor::dRgb(255 - RgbColor::dGreen(rgb), RgbColor::dBlue(rgb), RgbColor::dRed(rgb), 0);
@@ -510,7 +510,7 @@ UInt8ArrayType::Pointer CubicOpsMisoColor::generateMisorientationTriangleLegend(
     quat.y = d2[i] * cosAng * tanAng;
     quat.z = d3[i] * cosAng * tanAng;
     quat.w = cosAng;
-    DREAM3D::Rgb pix = generateMisorientationColor(quat, refQuat);
+    SIMPL::Rgb pix = generateMisorientationColor(quat, refQuat);
     //image.setPixel(qpointba[i].x(), qpointba[i].y(), pix);
   }
 

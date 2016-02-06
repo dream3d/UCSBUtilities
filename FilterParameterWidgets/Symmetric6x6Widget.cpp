@@ -22,9 +22,9 @@
 
 
 
-#include "DREAM3DWidgetsLib/DREAM3DWidgetsLibConstants.h"
+#include "SIMPLViewWidgetsLib/SIMPLViewWidgetsLibConstants.h"
 
-#include "DREAM3DWidgetsLib/FilterParameterWidgets/FilterParameterWidgetsDialogs.h"
+#include "SIMPLViewWidgetsLib/FilterParameterWidgets/FilterParameterWidgetsDialogs.h"
 
 #include "UCSBUtilities/FilterParameters/Symmetric6x6FilterParameter.h"
 

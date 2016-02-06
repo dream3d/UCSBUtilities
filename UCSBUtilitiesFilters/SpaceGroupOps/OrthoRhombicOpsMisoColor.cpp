@@ -46,7 +46,7 @@ OrthoRhombicOpsMisoColor::~OrthoRhombicOpsMisoColor()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-DREAM3D::Rgb OrthoRhombicOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
+SIMPL::Rgb OrthoRhombicOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
 {
   BOOST_ASSERT(false);
 	#if 0
@@ -203,8 +203,8 @@ DREAM3D::Rgb OrthoRhombicOpsMisoColor::generateMisorientationColor(const QuatF& 
   }
 
   //convert to rgb and invert
-  DREAM3D::Rgb rgb = ColorUtilities::convertHSVtoRgb(h, s, v);
+  SIMPL::Rgb rgb = ColorUtilities::convertHSVtoRgb(h, s, v);
 #endif
-  DREAM3D::Rgb rgb = 0xFFFFFFFF;
+  SIMPL::Rgb rgb = 0xFFFFFFFF;
   return RgbColor::dRgb(255 - RgbColor::dRed(rgb), 255 - RgbColor::dGreen(rgb), 255 - RgbColor::dBlue(rgb), 0);
 }

@@ -42,7 +42,7 @@ cmpRevisionString( GENERATED_HEADER_FILE_PATH "${VERSION_HEADER_FILE_NAME}"
 # -----
 set(${PLUGIN_NAME}_Project_SRCS "")
 
-include(${DREAM3DProj_SOURCE_DIR}/Source/SIMPLib/SIMPLibMacros.cmake)
+include(${SIMPLProj_SOURCE_DIR}/Source/SIMPLib/SIMPLibMacros.cmake)
 #-------
 # Start writing this header file
 set(AllFiltersHeaderFile ${${PLUGIN_NAME}_BINARY_DIR}/${PLUGIN_NAME}Filters/${PLUGIN_NAME}Filters.h_tmp)
@@ -103,6 +103,8 @@ set(AllFiltersHeaderFile ${${PLUGIN_NAME}_BINARY_DIR}/${PLUGIN_NAME}Filters/${PL
 set(RegisterKnownFiltersFile ${${PLUGIN_NAME}_BINARY_DIR}/${PLUGIN_NAME}Filters/RegisterKnownFilters.cpp)
 
 #--------------------------
+include_directories( ${SIMPLProj_SOURCE_DIR}/Source
+                     ${SIMPLProj_BINARY_DIR})
 include_directories( ${HDF5_INCLUDE_DIR} )
 include_directories( ${PROJECT_CODE_DIR} )
 include_directories( ${QtSupportLib_BINARY_DIR} )
@@ -121,18 +123,14 @@ include_directories( ${PLUGINS_BINARY_DIR}/${PLUGIN_NAME})
 include_directories( ${PLUGINS_BINARY_DIR}/${PLUGIN_NAME}/${PLUGIN_NAME}Filters)
 include_directories( ${PLUGINS_BINARY_DIR}/${PLUGIN_NAME}/FilterParameterWidgets)
 include_directories( ${PLUGINS_BINARY_DIR}/${PLUGIN_NAME}/Test)
-
-# ******************************************************************************
-# Create our custom executable that will generate most of our QFilterWidget
-# classes from information stored in the Filters themselves.
-# Read the file back into a string so we can configure our file
-file(READ ${FilterWidget_GEN_HDRS_File} ${PLUGIN_NAME}Widget_GEN_HDRS)
-file(READ ${FilterWidget_GEN_SRCS_File} ${PLUGIN_NAME}Widget_GEN_SRCS)
+include_directories( ${SIMPLProj_SOURCE_DIR}/Source)
+include_directories( ${SIMPLViewProj_SOURCE_DIR}/Source)
+include_directories( ${SIMPLProj_BINARY_DIR})
+include_directories( ${SIMPLViewProj_BINARY_DIR})
 
 # Remove the temp files that we no longer need
 file(REMOVE ${FilterWidget_GEN_HDRS_File})
 file(REMOVE ${FilterWidget_GEN_SRCS_File})
-
 
 set(FILTER_HEADERS "#include \"${AllFiltersHeaderFile}\"")
 set(FILTER_WIDGETS_TEMP_DIR ${${PLUGIN_NAME}_BINARY_DIR}/Temp)
@@ -246,7 +244,7 @@ target_link_libraries(${PLUGIN_NAME}
                     Qt5::Gui
                     Qt5::Widgets
                     QtSupportLib
-                    DREAM3DWidgetsLib
+                    SIMPLViewWidgetsLib
                     OrientationLib
                     )
 SET_TARGET_PROPERTIES(${PLUGIN_NAME} PROPERTIES FOLDER ${PLUGIN_NAME}Plugin)
@@ -264,7 +262,7 @@ if(NOT MSVC)
   set(CMAKE_LIBRARY_OUTPUT_DIRECTORY  ${DREAM3DProj_BINARY_DIR}/Bin  )
 endif()
 
-if(DREAM3D_BUILD_TESTING)
+if(SIMPL_BUILD_TESTING)
   include(${${PLUGIN_NAME}_SOURCE_DIR}/Test/CMakeLists.txt)
 endif()
 
