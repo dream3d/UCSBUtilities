@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _GenerateMisorientationColors_H_
-#define _GenerateMisorientationColors_H_
+#ifndef _generatemisorientationcolors_h_
+#define _generatemisorientationcolors_h_
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/AbstractFilter.h"

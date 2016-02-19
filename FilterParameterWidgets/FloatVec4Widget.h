@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _FloatVec4Widget_H_
-#define _FloatVec4Widget_H_
+#ifndef _floatvec4widget_h_
+#define _floatvec4widget_h_
 
 
 #include <QtCore/QObject>

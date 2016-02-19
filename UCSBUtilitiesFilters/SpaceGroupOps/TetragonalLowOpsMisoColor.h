@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _TetragonalLowOpsMisoColor_H_
-#define _TetragonalLowOpsMisoColor_H_
+#ifndef _tetragonallowopsmisocolor_h_
+#define _tetragonallowopsmisocolor_h_
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"

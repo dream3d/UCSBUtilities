@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _Symmetric6x6FilterParameter_H_
-#define _Symmetric6x6FilterParameter_H_
+#ifndef _symmetric6x6filterparameter_h_
+#define _symmetric6x6filterparameter_h_
 
 #include <QtCore/QJsonObject>
 

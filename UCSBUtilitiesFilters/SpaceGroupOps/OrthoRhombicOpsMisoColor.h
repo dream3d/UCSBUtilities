@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _ORTHORHOMBICOpsMisoColor_H_
-#define _ORTHORHOMBICOpsMisoColor_H_
+#ifndef _orthorhombicopsmisocolor_h_
+#define _orthorhombicopsmisocolor_h_
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"

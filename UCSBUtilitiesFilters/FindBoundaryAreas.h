@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _FindBoundaryAreas_H_
-#define _FindBoundaryAreas_H_
+#ifndef _findboundaryareas_h_
+#define _findboundaryareas_h_
 
 #include <QtCore/QString>
 

@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _FindModulusMismatch_H_
-#define _FindModulusMismatch_H_
+#ifndef _findmodulusmismatch_h_
+#define _findmodulusmismatch_h_
 
 #include <vector>
 #include <QtCore/QString>

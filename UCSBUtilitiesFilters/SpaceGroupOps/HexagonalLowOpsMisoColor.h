@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _HexagonalLowOpsMisoColor_H_
-#define _HexagonalLowOpsMisoColor_H_
+#ifndef _hexagonallowopsmisocolor_h_
+#define _hexagonallowopsmisocolor_h_
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"

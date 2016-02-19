@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _UCSBHelpers_H_
-#define _UCSBHelpers_H_
+#ifndef _ucsbhelpers_h_
+#define _ucsbhelpers_h_
 
 #include <vector>
 

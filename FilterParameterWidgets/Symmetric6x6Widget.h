@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _Symmetric6x6Widget_H_
-#define _Symmetric6x6Widget_H_
+#ifndef _symmetric6x6widget_h_
+#define _symmetric6x6widget_h_
 
 
 #include <QtCore/QObject>

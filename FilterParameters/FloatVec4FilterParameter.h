@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _FloatVec4FilterParameter_H_
-#define _FloatVec4FilterParameter_H_
+#ifndef _floatvec4filterparameter_h_
+#define _floatvec4filterparameter_h_
 
 #include <QtCore/QJsonObject>
 

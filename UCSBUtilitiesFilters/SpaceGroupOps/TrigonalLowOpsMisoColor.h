@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _TrigonalLowOpsMisoColor_H_
-#define _TrigonalLowOpsMisoColor_H_
+#ifndef _trigonallowopsmisocolor_h_
+#define _trigonallowopsmisocolor_h_
 
 
 #include "SIMPLib/SIMPLib.h"

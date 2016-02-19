@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _FindDirectionalModuli_H_
-#define _FindDirectionalModuli_H_
+#ifndef _finddirectionalmoduli_h_
+#define _finddirectionalmoduli_h_
 
 #include <vector>
 #include <QtCore/QString>

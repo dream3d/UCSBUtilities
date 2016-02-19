@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _CubicLowOpsMisoColor_H_
-#define _CubicLowOpsMisoColor_H_
+#ifndef _cubiclowopsmisocolor_h_
+#define _cubiclowopsmisocolor_h_
 
 
 #include "SIMPLib/SIMPLib.h"

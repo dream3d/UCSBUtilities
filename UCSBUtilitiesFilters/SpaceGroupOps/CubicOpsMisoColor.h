@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _CUBICOpsMisoColor_H_
-#define _CUBICOpsMisoColor_H_
+#ifndef _cubicopsmisocolor_h_
+#define _cubicopsmisocolor_h_
 
 
 #include "SIMPLib/SIMPLib.h"

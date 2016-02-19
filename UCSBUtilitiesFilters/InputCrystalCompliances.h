@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _InputCrystalCompliances_H_
-#define _InputCrystalCompliances_H_
+#ifndef _inputcrystalcompliances_h_
+#define _inputcrystalcompliances_h_
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/AbstractFilter.h"

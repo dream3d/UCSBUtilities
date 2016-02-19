@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _UCSBUtilitiesConstants_H_
-#define _UCSBUtilitiesConstants_H_
+#ifndef _ucsbutilitiesconstants_h_
+#define _ucsbutilitiesconstants_h_
 
 #include <QtCore/QString>
 

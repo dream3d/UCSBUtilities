@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
  
-#ifndef _UCSBUtilities_H_
-#define _UCSBUtilities_H_
+#ifndef _ucsbutilitiesplugin_h_
+#define _ucsbutilitiesplugin_h_
 
 #include <QtCore/QObject>
 #include <QtCore/QSettings>

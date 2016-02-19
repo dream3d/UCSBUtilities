@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _CopyAttributeMatrix_H_
-#define _CopyAttributeMatrix_H_
+#ifndef _copyattributematrix_h_
+#define _copyattributematrix_h_
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/AbstractFilter.h"

@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _TriclinicOpsMisoColor_H_
-#define _TriclinicOpsMisoColor_H_
+#ifndef _triclinicopsmisocolor_h_
+#define _triclinicopsmisocolor_h_
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"

@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _MonoclinicOpsMisoColor_H_
-#define _MonoclinicOpsMisoColor_H_
+#ifndef _monoclinicopsmisocolor_h_
+#define _monoclinicopsmisocolor_h_
 
 
 #include "SIMPLib/SIMPLib.h"
