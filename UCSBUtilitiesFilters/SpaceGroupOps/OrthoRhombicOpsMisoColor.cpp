@@ -32,7 +32,7 @@
 OrthoRhombicOpsMisoColor::OrthoRhombicOpsMisoColor() :
   OrthoRhombicOps()
 {
-  // TODO Auto-generated constructor stub
+  
 }
 
 // -----------------------------------------------------------------------------
@@ -40,7 +40,7 @@ OrthoRhombicOpsMisoColor::OrthoRhombicOpsMisoColor() :
 // -----------------------------------------------------------------------------
 OrthoRhombicOpsMisoColor::~OrthoRhombicOpsMisoColor()
 {
-  // TODO Auto-generated destructor stub
+  
 }
 
 // -----------------------------------------------------------------------------

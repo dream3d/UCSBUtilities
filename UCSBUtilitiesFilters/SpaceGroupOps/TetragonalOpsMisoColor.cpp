@@ -37,7 +37,7 @@ TetragonalOpsMisoColor::TetragonalOpsMisoColor() :
 // -----------------------------------------------------------------------------
 TetragonalOpsMisoColor::~TetragonalOpsMisoColor()
 {
-  // TODO Auto-generated destructor stub
+  
 }
 
 // -----------------------------------------------------------------------------
