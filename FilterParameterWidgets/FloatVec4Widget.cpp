@@ -20,9 +20,9 @@
 #include <QtCore/QMetaProperty>
 
 
-#include "SIMPLViewWidgetsLib/SIMPLViewWidgetsLibConstants.h"
+#include "SVWidgetsLib/Core/SVWidgetsLibConstants.h"
 
-#include "SIMPLViewWidgetsLib/FilterParameterWidgets/FilterParameterWidgetsDialogs.h"
+#include "SVWidgetsLib/FilterParameterWidgets/FilterParameterWidgetsDialogs.h"
 
 #include "UCSBUtilities/FilterParameters/FloatVec4FilterParameter.h"
 

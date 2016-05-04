@@ -23,13 +23,13 @@
 #include <QtCore/QPointer>
 #include <QtWidgets/QWidget>
 
-#include "QtSupportLib/FaderWidget.h"
+#include "SVWidgetsLib/QtSupport/QtSFaderWidget.h"
 
 
 #include "SIMPLib/Common/AbstractFilter.h"
 
-#include "SIMPLViewWidgetsLib/SIMPLViewWidgetsLib.h"
-#include "SIMPLViewWidgetsLib/FilterParameterWidgets/FilterParameterWidget.h"
+#include "SVWidgetsLib/SVWidgetsLib.h"
+#include "SVWidgetsLib/FilterParameterWidgets/FilterParameterWidget.h"
 
 
 #include "ui_Symmetric6x6Widget.h"
