@@ -137,6 +137,14 @@ int FindDirectionalModuli::writeFilterParameters(AbstractFilterParametersWriter*
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
+void FindDirectionalModuli::initialize()
+{
+
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 void FindDirectionalModuli::dataCheck()
 {
   DataArrayPath tempPath;

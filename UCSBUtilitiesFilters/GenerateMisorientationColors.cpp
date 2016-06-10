@@ -270,6 +270,14 @@ int GenerateMisorientationColors::writeFilterParameters(AbstractFilterParameters
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
+void GenerateMisorientationColors::initialize()
+{
+
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 void GenerateMisorientationColors::dataCheck()
 {
   setErrorCondition(0);

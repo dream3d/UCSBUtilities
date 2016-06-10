@@ -157,11 +157,16 @@ class FindDirectionalModuli : public AbstractFilter
 
   protected:
     FindDirectionalModuli();
-
     /**
      * @brief dataCheck Checks for the appropriate parameter values and availability of arrays
      */
     void dataCheck();
+
+    /**
+     * @brief Initializes all the private instance variables.
+     */
+    void initialize();
+
 
   private:
     std::vector<SpaceGroupOps::Pointer> m_OrientationOps;

@@ -165,6 +165,14 @@ int InputCrystalCompliances::writeFilterParameters(AbstractFilterParametersWrite
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
+void InputCrystalCompliances::initialize()
+{
+
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 void InputCrystalCompliances::dataCheck()
 {
   setErrorCondition(0);

@@ -142,11 +142,16 @@ class FindBoundaryAreas : public AbstractFilter
 
   protected:
     FindBoundaryAreas();
-
     /**
      * @brief dataCheck Checks for the appropriate parameter values and availability of arrays
      */
     void dataCheck();
+
+    /**
+     * @brief Initializes all the private instance variables.
+     */
+    void initialize();
+
 
   private:
     DEFINE_DATAARRAY_VARIABLE(double, SurfaceMeshTriangleAreas)

@@ -93,6 +93,14 @@ int CopyAttributeMatrix::writeFilterParameters(AbstractFilterParametersWriter* w
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
+void CopyAttributeMatrix::initialize()
+{
+
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 void CopyAttributeMatrix::dataCheck()
 {
   setErrorCondition(0);
