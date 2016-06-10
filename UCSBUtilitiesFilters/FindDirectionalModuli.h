@@ -157,6 +157,7 @@ class FindDirectionalModuli : public AbstractFilter
 
   protected:
     FindDirectionalModuli();
+
     /**
      * @brief dataCheck Checks for the appropriate parameter values and availability of arrays
      */

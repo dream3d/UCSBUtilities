@@ -149,6 +149,7 @@ class GenerateMisorientationColors : public AbstractFilter
 
   protected:
     GenerateMisorientationColors();
+
     /**
      * @brief dataCheck Checks for the appropriate parameter values and availability of arrays
      */

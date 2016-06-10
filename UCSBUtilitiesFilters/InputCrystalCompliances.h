@@ -131,6 +131,7 @@ class InputCrystalCompliances : public AbstractFilter
 
   protected:
     InputCrystalCompliances();
+
     /**
      * @brief dataCheck Checks for the appropriate parameter values and availability of arrays
      */

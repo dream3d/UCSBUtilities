@@ -127,6 +127,7 @@ class ClearDataMask : public AbstractFilter
 
   protected:
     ClearDataMask();
+
     /**
      * @brief dataCheck Checks for the appropriate parameter values and availability of arrays
      */

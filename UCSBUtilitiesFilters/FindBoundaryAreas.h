@@ -142,6 +142,7 @@ class FindBoundaryAreas : public AbstractFilter
 
   protected:
     FindBoundaryAreas();
+
     /**
      * @brief dataCheck Checks for the appropriate parameter values and availability of arrays
      */

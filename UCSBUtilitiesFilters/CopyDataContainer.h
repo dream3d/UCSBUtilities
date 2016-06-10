@@ -130,6 +130,7 @@ class CopyDataContainer : public AbstractFilter
 
   protected:
     CopyDataContainer();
+
     /**
      * @brief dataCheck Checks for the appropriate parameter values and availability of arrays
      */

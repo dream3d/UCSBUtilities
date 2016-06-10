@@ -130,6 +130,7 @@ class CopyAttributeMatrix : public AbstractFilter
 
   protected:
     CopyAttributeMatrix();
+
     /**
      * @brief dataCheck Checks for the appropriate parameter values and availability of arrays
      */

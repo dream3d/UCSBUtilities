@@ -130,6 +130,7 @@ class CopyAttributeArray : public AbstractFilter
 
   protected:
     CopyAttributeArray();
+
     /**
      * @brief dataCheck Checks for the appropriate parameter values and availability of arrays
      */
