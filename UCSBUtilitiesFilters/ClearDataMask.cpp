@@ -150,7 +150,8 @@ void ClearDataMask::execute()
     {
       for (int32_t j = 0; j < numArrays; j++)
       {
-        arrayList[j]->initializeTuple(i, 0);
+        int var = 0;
+        arrayList[j]->initializeTuple(i, &var);
       }
     }
   }
