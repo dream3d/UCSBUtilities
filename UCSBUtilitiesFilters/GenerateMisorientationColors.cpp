@@ -206,9 +206,9 @@ void GenerateMisorientationColors::setupFilterParameters()
   FilterParameterVector parameters;
   parameters.push_back(FloatVec3FilterParameter::New("Reference Orientation Axis", "ReferenceAxis", getReferenceAxis(), FilterParameter::Parameter, SIMPL_BIND_SETTER(GenerateMisorientationColors, this, ReferenceAxis), SIMPL_BIND_GETTER(GenerateMisorientationColors, this, ReferenceAxis)));
 
-  parameters.push_back(DoubleFilterParameter::New("Reference Orientation Angle (Degrees)", "ReferenceAngle", getReferenceAngle(), FilterParameter::Parameter));
+  parameters.push_back(DoubleFilterParameter::New("Reference Orientation Angle (Degrees)", "ReferenceAngle", getReferenceAngle(), FilterParameter::Parameter, SIMPL_BIND_SETTER(GenerateMisorientationColors, this, ReferenceAngle), SIMPL_BIND_GETTER(GenerateMisorientationColors, this, ReferenceAngle)));
   QStringList linkedProps("GoodVoxelsArrayPath");
-  parameters.push_back(LinkedBooleanFilterParameter::New("Apply to Good Elements Only (Bad Elements Will Be Black)", "UseGoodVoxels", getUseGoodVoxels(), linkedProps, FilterParameter::Parameter));
+  parameters.push_back(LinkedBooleanFilterParameter::New("Apply to Good Elements Only (Bad Elements Will Be Black)", "UseGoodVoxels", getUseGoodVoxels(), linkedProps, FilterParameter::Parameter, SIMPL_BIND_SETTER(GenerateMisorientationColors, this, UseGoodVoxels), SIMPL_BIND_GETTER(GenerateMisorientationColors, this, UseGoodVoxels)));
   parameters.push_back(SeparatorFilterParameter::New("Element Data", FilterParameter::RequiredArray));
   {
     DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(SIMPL::TypeNames::Float, 4, SIMPL::AttributeMatrixObjectType::Element);
