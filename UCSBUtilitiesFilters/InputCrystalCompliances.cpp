@@ -129,42 +129,6 @@ void InputCrystalCompliances::readFilterParameters(AbstractFilterParametersReade
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-int InputCrystalCompliances::writeFilterParameters(AbstractFilterParametersWriter* writer, int index)
-{
-  writer->openFilterGroup(this, index);
-  SIMPL_FILTER_WRITE_PARAMETER(FilterVersion)
-    QVector<float> tmp(21);
-  tmp[0] = m_Compliances.v11;
-  tmp[1] = m_Compliances.v12;
-  tmp[2] = m_Compliances.v13;
-  tmp[3] = m_Compliances.v14;
-  tmp[4] = m_Compliances.v15;
-  tmp[5] = m_Compliances.v16;
-  tmp[6] = m_Compliances.v22;
-  tmp[7] = m_Compliances.v23;
-  tmp[8] = m_Compliances.v24;
-  tmp[9] = m_Compliances.v25;
-  tmp[10] = m_Compliances.v26;
-  tmp[11] = m_Compliances.v33;
-  tmp[12] = m_Compliances.v34;
-  tmp[13] = m_Compliances.v35;
-  tmp[14] = m_Compliances.v36;
-  tmp[15] = m_Compliances.v44;
-  tmp[16] = m_Compliances.v45;
-  tmp[17] = m_Compliances.v46;
-  tmp[18] = m_Compliances.v55;
-  tmp[19] = m_Compliances.v56;
-  tmp[20] = m_Compliances.v66;
-  writer->writeValue("Compliances", tmp);
-
-  SIMPL_FILTER_WRITE_PARAMETER(CrystalCompliancesArrayPath)
-  writer->closeFilterGroup();
-  return ++index; // we want to return the next index that was just written to
-}
-
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
 void InputCrystalCompliances::initialize()
 {
 
