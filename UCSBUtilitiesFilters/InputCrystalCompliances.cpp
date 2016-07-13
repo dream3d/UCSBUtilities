@@ -83,7 +83,7 @@ InputCrystalCompliances::~InputCrystalCompliances()
 void InputCrystalCompliances::setupFilterParameters()
 {
   FilterParameterVector parameters;
-  parameters.push_back(Symmetric6x6FilterParameter::New("Compliance Values (10^-11 Pa^-1)", "Compliances", getCompliances(), FilterParameter::Parameter));
+  parameters.push_back(Symmetric6x6FilterParameter::New("Compliance Values (10^-11 Pa^-1)", "Compliances", getCompliances(), FilterParameter::Parameter, SIMPL_BIND_SETTER(InputCrystalCompliances, this, Compliances), SIMPL_BIND_GETTER(InputCrystalCompliances, this, Compliances)));
   parameters.push_back(SeparatorFilterParameter::New("Ensemble Data", FilterParameter::CreatedArray));
   {
     DataArrayCreationFilterParameter::RequirementType req = DataArrayCreationFilterParameter::CreateRequirement(SIMPL::AttributeMatrixObjectType::Ensemble);

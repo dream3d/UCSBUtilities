@@ -19,6 +19,7 @@
 #define _symmetric6x6filterparameter_h_
 
 #include <QtCore/QJsonObject>
+#include <QtCore/QJsonArray>
 
 #include "SIMPLib/FilterParameters/FilterParameter.h"
 
@@ -46,61 +47,56 @@ typedef struct
   float v56;
   float v66;
 
-  void writeJson(QJsonObject &json)
-  {
-    json["v11"] = v11;
-    json["v12"] = v12;
-    json["v13"] = v13;
-    json["v14"] = v14;
-    json["v15"] = v15;
-    json["v16"] = v16;
-    json["v22"] = v22;
-    json["v23"] = v23;
-    json["v24"] = v24;
-    json["v25"] = v25;
-    json["v26"] = v26;
-    json["v33"] = v33;
-    json["v34"] = v34;
-    json["v35"] = v35;
-    json["v36"] = v36;
-    json["v44"] = v44;
-    json["v45"] = v45;
-    json["v46"] = v46;
-    json["v55"] = v55;
-    json["v56"] = v56;
-    json["v66"] = v66;
+  void writeJson(QJsonArray &json)
+  { 
+    json.push_back(v11);
+    json.push_back(v12);
+    json.push_back(v13);
+    json.push_back(v14);
+    json.push_back(v15);
+    json.push_back(v16);
+    json.push_back(v22);
+    json.push_back(v23);
+    json.push_back(v24);
+    json.push_back(v25);
+    json.push_back(v26);
+    json.push_back(v33);
+    json.push_back(v34);
+    json.push_back(v35);
+    json.push_back(v36);
+    json.push_back(v44);
+    json.push_back(v45);
+    json.push_back(v46);
+    json.push_back(v55);
+    json.push_back(v56);
+    json.push_back(v66);
   }
 
-  bool readJson(QJsonObject &json)
+  bool readJson(QJsonArray &json)
   {
-    if (json["v11"].isDouble() && json["v12"].isDouble() && json["v13"].isDouble() && json["v14"].isDouble()
-      && json["v15"].isDouble() && json["v16"].isDouble() && json["v22"].isDouble() && json["v23"].isDouble()
-      && json["v24"].isDouble() && json["v25"].isDouble() && json["v26"].isDouble() && json["v33"].isDouble()
-      && json["v34"].isDouble() && json["v35"].isDouble() && json["v36"].isDouble() && json["v44"].isDouble()
-      && json["v45"].isDouble() && json["v46"].isDouble() && json["v55"].isDouble() && json["v56"].isDouble()
-      && json["v66"].isDouble())
+    if (json.size() == 21)
     {
-      v11 = static_cast<float>(json["v11"].toDouble());
-      v12 = static_cast<float>(json["v12"].toDouble());
-      v13 = static_cast<float>(json["v13"].toDouble());
-      v14 = static_cast<float>(json["v14"].toDouble());
-      v15 = static_cast<float>(json["v15"].toDouble());
-      v16 = static_cast<float>(json["v16"].toDouble());
-      v22 = static_cast<float>(json["v22"].toDouble());
-      v23 = static_cast<float>(json["v23"].toDouble());
-      v24 = static_cast<float>(json["v24"].toDouble());
-      v25 = static_cast<float>(json["v25"].toDouble());
-      v26 = static_cast<float>(json["v26"].toDouble());
-      v33 = static_cast<float>(json["v33"].toDouble());
-      v34 = static_cast<float>(json["v34"].toDouble());
-      v35 = static_cast<float>(json["v35"].toDouble());
-      v36 = static_cast<float>(json["v36"].toDouble());
-      v44 = static_cast<float>(json["v44"].toDouble());
-      v45 = static_cast<float>(json["v45"].toDouble());
-      v46 = static_cast<float>(json["v46"].toDouble());
-      v55 = static_cast<float>(json["v55"].toDouble());
-      v56 = static_cast<float>(json["v56"].toDouble());
-      v66 = static_cast<float>(json["v66"].toDouble());
+      v11 = static_cast<float>(json[0].toDouble());
+      v12 = static_cast<float>(json[1].toDouble());
+      v13 = static_cast<float>(json[2].toDouble());
+      v14 = static_cast<float>(json[3].toDouble());
+      v15 = static_cast<float>(json[4].toDouble());
+      v16 = static_cast<float>(json[5].toDouble());
+      v22 = static_cast<float>(json[6].toDouble());
+      v23 = static_cast<float>(json[7].toDouble());
+      v24 = static_cast<float>(json[8].toDouble());
+      v25 = static_cast<float>(json[9].toDouble());
+      v26 = static_cast<float>(json[10].toDouble());
+      v33 = static_cast<float>(json[11].toDouble());
+      v34 = static_cast<float>(json[12].toDouble());
+      v35 = static_cast<float>(json[13].toDouble());
+      v36 = static_cast<float>(json[14].toDouble());
+      v44 = static_cast<float>(json[15].toDouble());
+      v45 = static_cast<float>(json[16].toDouble());
+      v46 = static_cast<float>(json[17].toDouble());
+      v55 = static_cast<float>(json[18].toDouble());
+      v56 = static_cast<float>(json[19].toDouble());
+      v66 = static_cast<float>(json[20].toDouble());
       return true;
     }
     return false;
@@ -116,9 +112,12 @@ public:
     SIMPL_STATIC_NEW_MACRO(Symmetric6x6FilterParameter)
     SIMPL_TYPE_MACRO(Symmetric6x6FilterParameter)
 
+  typedef std::function<void(FloatVec21_t)> SetterCallbackType;
+  typedef std::function<FloatVec21_t(void)> GetterCallbackType;
+
     static Pointer New(const QString& humanLabel, const QString& propertyName,
-    const FloatVec21_t& defaultValue, Category category,
-     int groupIndex = -1);
+    const FloatVec21_t& defaultValue, Category category, SetterCallbackType setterCallback,
+    GetterCallbackType getterCallback, int groupIndex = -1);
 
     virtual ~Symmetric6x6FilterParameter();
 
@@ -129,6 +128,20 @@ public:
    */
   QString getWidgetType();
 
+  /**
+   * @brief readJson
+   * @return
+   */
+  void readJson(const QJsonObject &json);
+
+  /**
+   * @brief writeJson
+   * @return
+   */
+  void writeJson(QJsonObject &json);
+
+  SIMPL_INSTANCE_PROPERTY(SetterCallbackType, SetterCallback)
+  SIMPL_INSTANCE_PROPERTY(GetterCallbackType, GetterCallback)
 
 protected:
   Symmetric6x6FilterParameter();
