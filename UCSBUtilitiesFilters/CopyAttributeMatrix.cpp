@@ -58,10 +58,10 @@ void CopyAttributeMatrix::setupFilterParameters()
 
   {
     AttributeMatrixSelectionFilterParameter::RequirementType req;
-    parameters.push_back(AttributeMatrixSelectionFilterParameter::New("Attribute Matrix to Copy", "SelectedAttributeMatrixPath", getSelectedAttributeMatrixPath(), FilterParameter::RequiredArray, req));
+    parameters.push_back(AttributeMatrixSelectionFilterParameter::New("Attribute Matrix to Copy", "SelectedAttributeMatrixPath", getSelectedAttributeMatrixPath(), FilterParameter::RequiredArray, req, SIMPL_BIND_SETTER(CopyAttributeMatrix, this, SelectedAttributeMatrixPath), SIMPL_BIND_GETTER(CopyAttributeMatrix, this, SelectedAttributeMatrixPath)));
   }
 
-  parameters.push_back(StringFilterParameter::New("Copied Attribute Matrix", "NewAttributeMatrix", getNewAttributeMatrix(), FilterParameter::CreatedArray));
+  parameters.push_back(StringFilterParameter::New("Copied Attribute Matrix", "NewAttributeMatrix", getNewAttributeMatrix(), FilterParameter::CreatedArray, SIMPL_BIND_SETTER(CopyAttributeMatrix, this, NewAttributeMatrix), SIMPL_BIND_GETTER(CopyAttributeMatrix, this, NewAttributeMatrix)));
 
   setFilterParameters(parameters);
 }
@@ -75,19 +75,6 @@ void CopyAttributeMatrix::readFilterParameters(AbstractFilterParametersReader* r
   setSelectedAttributeMatrixPath( reader->readDataArrayPath("SelectedAttributeMatrixPath", getSelectedAttributeMatrixPath()) );
   setNewAttributeMatrix( reader->readString( "NewAttributeMatrix", getNewAttributeMatrix() ) );
   reader->closeFilterGroup();
-}
-
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
-int CopyAttributeMatrix::writeFilterParameters(AbstractFilterParametersWriter* writer, int index)
-{
-  writer->openFilterGroup(this, index);
-  SIMPL_FILTER_WRITE_PARAMETER(FilterVersion)
-  SIMPL_FILTER_WRITE_PARAMETER(SelectedAttributeMatrixPath)
-  SIMPL_FILTER_WRITE_PARAMETER(NewAttributeMatrix)
-  writer->closeFilterGroup();
-  return ++index; // we want to return the next index that was just written to
 }
 
 // -----------------------------------------------------------------------------

@@ -34,7 +34,7 @@ Symmetric6x6FilterParameter::~Symmetric6x6FilterParameter()
 //
 // -----------------------------------------------------------------------------
 Symmetric6x6FilterParameter::Pointer Symmetric6x6FilterParameter::New(const QString& humanLabel, const QString& propertyName,
-  const FloatVec21_t& defaultValue, Category category, int groupIndex)
+  const FloatVec21_t& defaultValue, Category category, SetterCallbackType setterCallback, GetterCallbackType getterCallback, int groupIndex)
 {
 
   Symmetric6x6FilterParameter::Pointer ptr = Symmetric6x6FilterParameter::New();
@@ -45,6 +45,8 @@ Symmetric6x6FilterParameter::Pointer Symmetric6x6FilterParameter::New(const QStr
   ptr->setDefaultValue(v);
   ptr->setCategory(category);
   ptr->setGroupIndex(groupIndex);
+  ptr->setSetterCallback(setterCallback);
+  ptr->setGetterCallback(getterCallback);
 
   return ptr;
 }
@@ -56,5 +58,27 @@ Symmetric6x6FilterParameter::Pointer Symmetric6x6FilterParameter::New(const QStr
 QString Symmetric6x6FilterParameter::getWidgetType()
 {
   return QString("Symmetric6x6Widget");
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void Symmetric6x6FilterParameter::readJson(const QJsonObject &json)
+{
+  FloatVec21_t compliances;
+  QJsonArray compliancesArray = json["Compliances"].toArray();
+  compliances.readJson(compliancesArray);
+  m_SetterCallback(compliances);
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void Symmetric6x6FilterParameter::writeJson(QJsonObject &json)
+{
+  FloatVec21_t compliances = m_GetterCallback();
+  QJsonArray compliancesArray;
+  compliances.writeJson(compliancesArray);
+  json["Compliances"] = compliancesArray;
 }
 

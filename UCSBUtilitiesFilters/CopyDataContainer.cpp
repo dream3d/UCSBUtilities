@@ -58,10 +58,10 @@ void CopyDataContainer::setupFilterParameters()
 
   {
     DataContainerSelectionFilterParameter::RequirementType req;
-    parameters.push_back(DataContainerSelectionFilterParameter::New("Data Container to Copy", "SelectedDataContainerName", getSelectedDataContainerName(), FilterParameter::RequiredArray, req));
+    parameters.push_back(DataContainerSelectionFilterParameter::New("Data Container to Copy", "SelectedDataContainerName", getSelectedDataContainerName(), FilterParameter::RequiredArray, req, SIMPL_BIND_SETTER(CopyDataContainer, this, SelectedDataContainerName), SIMPL_BIND_GETTER(CopyDataContainer, this, SelectedDataContainerName)));
   }
 
-  parameters.push_back(StringFilterParameter::New("Copied Data Container", "NewDataContainerName", getNewDataContainerName(), FilterParameter::CreatedArray));
+  parameters.push_back(StringFilterParameter::New("Copied Data Container", "NewDataContainerName", getNewDataContainerName(), FilterParameter::CreatedArray, SIMPL_BIND_SETTER(CopyDataContainer, this, NewDataContainerName), SIMPL_BIND_GETTER(CopyDataContainer, this, NewDataContainerName)));
 
   setFilterParameters(parameters);
 }
@@ -75,19 +75,6 @@ void CopyDataContainer::readFilterParameters(AbstractFilterParametersReader* rea
   setSelectedDataContainerName( reader->readString("SelectedDataContainerName", getSelectedDataContainerName()) );
   setNewDataContainerName( reader->readString( "NewDataContainerName", getNewDataContainerName() ) );
   reader->closeFilterGroup();
-}
-
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
-int CopyDataContainer::writeFilterParameters(AbstractFilterParametersWriter* writer, int index)
-{
-  writer->openFilterGroup(this, index);
-  SIMPL_FILTER_WRITE_PARAMETER(FilterVersion)
-  SIMPL_FILTER_WRITE_PARAMETER(SelectedDataContainerName)
-  SIMPL_FILTER_WRITE_PARAMETER(NewDataContainerName)
-  writer->closeFilterGroup();
-  return ++index; // we want to return the next index that was just written to
 }
 
 // -----------------------------------------------------------------------------

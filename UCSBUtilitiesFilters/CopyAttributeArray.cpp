@@ -58,10 +58,10 @@ void CopyAttributeArray::setupFilterParameters()
 
   {
     DataArraySelectionFilterParameter::RequirementType req;
-    parameters.push_back(DataArraySelectionFilterParameter::New("Attribute Array to Copy", "SelectedArrayPath", getSelectedArrayPath(), FilterParameter::RequiredArray, req));
+    parameters.push_back(DataArraySelectionFilterParameter::New("Attribute Array to Copy", "SelectedArrayPath", getSelectedArrayPath(), FilterParameter::RequiredArray, req, SIMPL_BIND_SETTER(CopyAttributeArray, this, SelectedArrayPath), SIMPL_BIND_GETTER(CopyAttributeArray, this, SelectedArrayPath)));
   }
 
-  parameters.push_back(StringFilterParameter::New("Copied Attribute Array", "NewArrayName", getNewArrayName(), FilterParameter::CreatedArray));
+  parameters.push_back(StringFilterParameter::New("Copied Attribute Array", "NewArrayName", getNewArrayName(), FilterParameter::CreatedArray, SIMPL_BIND_SETTER(CopyAttributeArray, this, NewArrayName), SIMPL_BIND_GETTER(CopyAttributeArray, this, NewArrayName)));
 
   setFilterParameters(parameters);
 }
@@ -75,19 +75,6 @@ void CopyAttributeArray::readFilterParameters(AbstractFilterParametersReader* re
   setSelectedArrayPath( reader->readDataArrayPath("SelectedArrayPath", getSelectedArrayPath()) );
   setNewArrayName( reader->readString( "NewArrayName", getNewArrayName() ) );
   reader->closeFilterGroup();
-}
-
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
-int CopyAttributeArray::writeFilterParameters(AbstractFilterParametersWriter* writer, int index)
-{
-  writer->openFilterGroup(this, index);
-  SIMPL_FILTER_WRITE_PARAMETER(FilterVersion)
-  SIMPL_FILTER_WRITE_PARAMETER(SelectedArrayPath)
-  SIMPL_FILTER_WRITE_PARAMETER(NewArrayName)
-  writer->closeFilterGroup();
-  return ++index; // we want to return the next index that was just written to
 }
 
 // -----------------------------------------------------------------------------
