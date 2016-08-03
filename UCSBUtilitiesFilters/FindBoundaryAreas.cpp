@@ -71,7 +71,7 @@ void FindBoundaryAreas::setupFilterParameters()
 
   {
     DataArrayCreationFilterParameter::RequirementType req;
-    parameters.push_back(DataArrayCreationFilterParameter::New("Boundary Areas Array", "SurfaceMeshBoundaryAreasArrayPath", getSurfaceMeshBoundaryAreasArrayPath(), FilterParameter::CreatedArray, req, SIMPL_BIND_SETTER(FindBoundaryAreas, this, SurfaceMeshBoundaryAreasArrayPath), SIMPL_BIND_GETTER(FindBoundaryAreas, this, SurfaceMeshBoundaryAreasArrayPath)));
+    parameters.push_back(DataArrayCreationFilterParameter::New("Boundary Areas Array", "SurfaceMeshBoundaryAreasArrayPath", getSurfaceMeshBoundaryAreasArrayPath(), FilterParameter::CreatedArray, SIMPL_BIND_SETTER(FindBoundaryAreas, this, SurfaceMeshBoundaryAreasArrayPath), SIMPL_BIND_GETTER(FindBoundaryAreas, this, SurfaceMeshBoundaryAreasArrayPath), req));
   }
 
   setFilterParameters(parameters);
