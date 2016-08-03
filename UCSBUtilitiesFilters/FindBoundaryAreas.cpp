@@ -62,11 +62,11 @@ void FindBoundaryAreas::setupFilterParameters()
 
   {
     DataArraySelectionFilterParameter::RequirementType req;
-    parameters.push_back(DataArraySelectionFilterParameter::New("Triangle Areas", "SurfaceMeshTriangleAreasArrayPath", getSurfaceMeshTriangleAreasArrayPath(), FilterParameter::RequiredArray, req, SIMPL_BIND_SETTER(FindBoundaryAreas, this, SurfaceMeshTriangleAreasArrayPath), SIMPL_BIND_GETTER(FindBoundaryAreas, this, SurfaceMeshTriangleAreasArrayPath)));
+    parameters.push_back(DataArraySelectionFilterParameter::New("Triangle Areas", "SurfaceMeshTriangleAreasArrayPath", getSurfaceMeshTriangleAreasArrayPath(), FilterParameter::RequiredArray, SIMPL_BIND_SETTER(FindBoundaryAreas, this, SurfaceMeshTriangleAreasArrayPath), SIMPL_BIND_GETTER(FindBoundaryAreas, this, SurfaceMeshTriangleAreasArrayPath), req));
   }
   {
     DataArraySelectionFilterParameter::RequirementType req;
-    parameters.push_back(DataArraySelectionFilterParameter::New("Face Feature Ids", "SurfaceMeshFeatureFaceIdsArrayPath", getSurfaceMeshFeatureFaceIdsArrayPath(), FilterParameter::RequiredArray, req, SIMPL_BIND_SETTER(FindBoundaryAreas, this, SurfaceMeshFeatureFaceIdsArrayPath), SIMPL_BIND_GETTER(FindBoundaryAreas, this, SurfaceMeshFeatureFaceIdsArrayPath)));
+    parameters.push_back(DataArraySelectionFilterParameter::New("Face Feature Ids", "SurfaceMeshFeatureFaceIdsArrayPath", getSurfaceMeshFeatureFaceIdsArrayPath(), FilterParameter::RequiredArray, SIMPL_BIND_SETTER(FindBoundaryAreas, this, SurfaceMeshFeatureFaceIdsArrayPath), SIMPL_BIND_GETTER(FindBoundaryAreas, this, SurfaceMeshFeatureFaceIdsArrayPath), req));
   }
 
   {

@@ -56,7 +56,7 @@ void ClearDataMask::setupFilterParameters()
   FilterParameterVector parameters;
   {
     DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(SIMPL::TypeNames::Bool, 1, SIMPL::AttributeMatrixObjectType::Element);
-    parameters.push_back(DataArraySelectionFilterParameter::New("Mask", "MaskArrayPath", getMaskArrayPath(), FilterParameter::RequiredArray, req, SIMPL_BIND_SETTER(ClearDataMask, this, MaskArrayPath), SIMPL_BIND_GETTER(ClearDataMask, this, MaskArrayPath)));
+    parameters.push_back(DataArraySelectionFilterParameter::New("Mask", "MaskArrayPath", getMaskArrayPath(), FilterParameter::RequiredArray, SIMPL_BIND_SETTER(ClearDataMask, this, MaskArrayPath), SIMPL_BIND_GETTER(ClearDataMask, this, MaskArrayPath), req));
   }
   setFilterParameters(parameters);
 }

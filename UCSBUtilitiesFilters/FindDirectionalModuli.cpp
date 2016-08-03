@@ -82,19 +82,19 @@ void FindDirectionalModuli::setupFilterParameters()
 
   {
     DataArraySelectionFilterParameter::RequirementType req;
-    parameters.push_back(DataArraySelectionFilterParameter::New("FeaturePhases", "FeaturePhasesArrayPath", getFeaturePhasesArrayPath(), FilterParameter::RequiredArray, req, SIMPL_BIND_SETTER(FindDirectionalModuli, this, FeaturePhasesArrayPath), SIMPL_BIND_GETTER(FindDirectionalModuli, this, FeaturePhasesArrayPath)));
+    parameters.push_back(DataArraySelectionFilterParameter::New("FeaturePhases", "FeaturePhasesArrayPath", getFeaturePhasesArrayPath(), FilterParameter::RequiredArray, SIMPL_BIND_SETTER(FindDirectionalModuli, this, FeaturePhasesArrayPath), SIMPL_BIND_GETTER(FindDirectionalModuli, this, FeaturePhasesArrayPath), req));
   }
   {
     DataArraySelectionFilterParameter::RequirementType req;
-    parameters.push_back(DataArraySelectionFilterParameter::New("AvgQuats", "AvgQuatsArrayPath", getAvgQuatsArrayPath(), FilterParameter::RequiredArray, req, SIMPL_BIND_SETTER(FindDirectionalModuli, this, AvgQuatsArrayPath), SIMPL_BIND_GETTER(FindDirectionalModuli, this, AvgQuatsArrayPath)));
+    parameters.push_back(DataArraySelectionFilterParameter::New("AvgQuats", "AvgQuatsArrayPath", getAvgQuatsArrayPath(), FilterParameter::RequiredArray, SIMPL_BIND_SETTER(FindDirectionalModuli, this, AvgQuatsArrayPath), SIMPL_BIND_GETTER(FindDirectionalModuli, this, AvgQuatsArrayPath), req));
   }
   {
     DataArraySelectionFilterParameter::RequirementType req;
-    parameters.push_back(DataArraySelectionFilterParameter::New("Crystal Structures", "CrystalStructuresArrayPath", getCrystalStructuresArrayPath(), FilterParameter::RequiredArray, req, SIMPL_BIND_SETTER(FindDirectionalModuli, this, CrystalStructuresArrayPath), SIMPL_BIND_GETTER(FindDirectionalModuli, this, CrystalStructuresArrayPath)));
+    parameters.push_back(DataArraySelectionFilterParameter::New("Crystal Structures", "CrystalStructuresArrayPath", getCrystalStructuresArrayPath(), FilterParameter::RequiredArray, SIMPL_BIND_SETTER(FindDirectionalModuli, this, CrystalStructuresArrayPath), SIMPL_BIND_GETTER(FindDirectionalModuli, this, CrystalStructuresArrayPath), req));
   }
   {
     DataArraySelectionFilterParameter::RequirementType req;
-    parameters.push_back(DataArraySelectionFilterParameter::New("Single Crystal Compliances", "CrystalCompliancesArrayPath", getCrystalCompliancesArrayPath(), FilterParameter::RequiredArray, req, SIMPL_BIND_SETTER(FindDirectionalModuli, this, CrystalCompliancesArrayPath), SIMPL_BIND_GETTER(FindDirectionalModuli, this, CrystalCompliancesArrayPath)));
+    parameters.push_back(DataArraySelectionFilterParameter::New("Single Crystal Compliances", "CrystalCompliancesArrayPath", getCrystalCompliancesArrayPath(), FilterParameter::RequiredArray, SIMPL_BIND_SETTER(FindDirectionalModuli, this, CrystalCompliancesArrayPath), SIMPL_BIND_GETTER(FindDirectionalModuli, this, CrystalCompliancesArrayPath), req));
   }
 
   parameters.push_back(StringFilterParameter::New("DirectionalModuli", "DirectionalModuliArrayName", getDirectionalModuliArrayName(), FilterParameter::CreatedArray, SIMPL_BIND_SETTER(FindDirectionalModuli, this, DirectionalModuliArrayName), SIMPL_BIND_GETTER(FindDirectionalModuli, this, DirectionalModuliArrayName)));
