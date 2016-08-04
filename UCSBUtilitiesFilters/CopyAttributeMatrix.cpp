@@ -57,7 +57,7 @@ void CopyAttributeMatrix::setupFilterParameters()
 
   {
     AttributeMatrixSelectionFilterParameter::RequirementType req;
-    parameters.push_back(AttributeMatrixSelectionFilterParameter::New("Attribute Matrix to Copy", "SelectedAttributeMatrixPath", getSelectedAttributeMatrixPath(), FilterParameter::RequiredArray, SIMPL_BIND_SETTER(CopyAttributeMatrix, this, SelectedAttributeMatrixPath), SIMPL_BIND_GETTER(CopyAttributeMatrix, this, SelectedAttributeMatrixPath), req));
+    parameters.push_back(SIMPL_NEW_AM_SELECTION_FP("Attribute Matrix to Copy", SelectedAttributeMatrixPath, FilterParameter::RequiredArray, CopyAttributeMatrix, req));
   }
 
   parameters.push_back(StringFilterParameter::New("Copied Attribute Matrix", "NewAttributeMatrix", getNewAttributeMatrix(), FilterParameter::CreatedArray, SIMPL_BIND_SETTER(CopyAttributeMatrix, this, NewAttributeMatrix), SIMPL_BIND_GETTER(CopyAttributeMatrix, this, NewAttributeMatrix)));
