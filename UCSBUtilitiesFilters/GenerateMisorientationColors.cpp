@@ -203,7 +203,7 @@ GenerateMisorientationColors::~GenerateMisorientationColors()
 void GenerateMisorientationColors::setupFilterParameters()
 {
   FilterParameterVector parameters;
-  parameters.push_back(FloatVec3FilterParameter::New("Reference Orientation Axis", "ReferenceAxis", getReferenceAxis(), FilterParameter::Parameter, SIMPL_BIND_SETTER(GenerateMisorientationColors, this, ReferenceAxis), SIMPL_BIND_GETTER(GenerateMisorientationColors, this, ReferenceAxis)));
+  parameters.push_back(SIMPL_NEW_FLOAT_VEC3_FP("Reference Orientation Axis", ReferenceAxis, FilterParameter::Parameter, GenerateMisorientationColors));
 
   parameters.push_back(SIMPL_NEW_DOUBLE_FP("Reference Orientation Angle (Degrees)", ReferenceAngle, FilterParameter::Parameter, GenerateMisorientationColors));
   QStringList linkedProps("GoodVoxelsArrayPath");

@@ -78,7 +78,7 @@ void FindDirectionalModuli::setupFilterParameters()
 {
   FilterParameterVector parameters;
 
-  parameters.push_back(FloatVec3FilterParameter::New("Loading Direction", "LoadingDirection", getLoadingDirection(), FilterParameter::Parameter, SIMPL_BIND_SETTER(FindDirectionalModuli, this, LoadingDirection), SIMPL_BIND_GETTER(FindDirectionalModuli, this, LoadingDirection)));
+  parameters.push_back(SIMPL_NEW_FLOAT_VEC3_FP("Loading Direction", LoadingDirection, FilterParameter::Parameter, FindDirectionalModuli));
 
   {
     DataArraySelectionFilterParameter::RequirementType req;
