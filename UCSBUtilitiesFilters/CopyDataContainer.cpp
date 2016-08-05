@@ -57,7 +57,7 @@ void CopyDataContainer::setupFilterParameters()
 
   {
     DataContainerSelectionFilterParameter::RequirementType req;
-    parameters.push_back(DataContainerSelectionFilterParameter::New("Data Container to Copy", "SelectedDataContainerName", getSelectedDataContainerName(), FilterParameter::RequiredArray, SIMPL_BIND_SETTER(CopyDataContainer, this, SelectedDataContainerName), SIMPL_BIND_GETTER(CopyDataContainer, this, SelectedDataContainerName), req));
+    parameters.push_back(SIMPL_NEW_DC_SELECTION_FP("Data Container to Copy", SelectedDataContainerName, FilterParameter::RequiredArray, CopyDataContainer, req));
   }
 
   parameters.push_back(StringFilterParameter::New("Copied Data Container", "NewDataContainerName", getNewDataContainerName(), FilterParameter::CreatedArray, SIMPL_BIND_SETTER(CopyDataContainer, this, NewDataContainerName), SIMPL_BIND_GETTER(CopyDataContainer, this, NewDataContainerName)));
