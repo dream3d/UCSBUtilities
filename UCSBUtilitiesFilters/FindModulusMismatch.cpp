@@ -116,7 +116,7 @@ void FindModulusMismatch::setupFilterParameters()
     parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("SurfaceMeshFaceLabels", SurfaceMeshFaceLabelsArrayPath, FilterParameter::RequiredArray, FindModulusMismatch, req));
   }
 
-  parameters.push_back(StringFilterParameter::New("SurfaceMeshDeltaModulus", "SurfaceMeshDeltaModulusArrayName", getSurfaceMeshDeltaModulusArrayName(), FilterParameter::CreatedArray, SIMPL_BIND_SETTER(FindModulusMismatch, this, SurfaceMeshDeltaModulusArrayName), SIMPL_BIND_GETTER(FindModulusMismatch, this, SurfaceMeshDeltaModulusArrayName)));
+  parameters.push_back(SIMPL_NEW_STRING_FP("SurfaceMeshDeltaModulus", SurfaceMeshDeltaModulusArrayName, FilterParameter::CreatedArray, FindModulusMismatch));
 
   setFilterParameters(parameters);
 }

@@ -97,7 +97,7 @@ void FindDirectionalModuli::setupFilterParameters()
     parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Single Crystal Compliances", CrystalCompliancesArrayPath, FilterParameter::RequiredArray, FindDirectionalModuli, req));
   }
 
-  parameters.push_back(StringFilterParameter::New("DirectionalModuli", "DirectionalModuliArrayName", getDirectionalModuliArrayName(), FilterParameter::CreatedArray, SIMPL_BIND_SETTER(FindDirectionalModuli, this, DirectionalModuliArrayName), SIMPL_BIND_GETTER(FindDirectionalModuli, this, DirectionalModuliArrayName)));
+  parameters.push_back(SIMPL_NEW_STRING_FP("DirectionalModuli", DirectionalModuliArrayName, FilterParameter::CreatedArray, FindDirectionalModuli));
 
   setFilterParameters(parameters);
 }

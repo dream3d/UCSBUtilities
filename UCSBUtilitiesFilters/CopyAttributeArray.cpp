@@ -60,7 +60,7 @@ void CopyAttributeArray::setupFilterParameters()
     parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Attribute Array to Copy", SelectedArrayPath, FilterParameter::RequiredArray, CopyAttributeArray, req));
   }
 
-  parameters.push_back(StringFilterParameter::New("Copied Attribute Array", "NewArrayName", getNewArrayName(), FilterParameter::CreatedArray, SIMPL_BIND_SETTER(CopyAttributeArray, this, NewArrayName), SIMPL_BIND_GETTER(CopyAttributeArray, this, NewArrayName)));
+  parameters.push_back(SIMPL_NEW_STRING_FP("Copied Attribute Array", NewArrayName, FilterParameter::CreatedArray, CopyAttributeArray));
 
   setFilterParameters(parameters);
 }

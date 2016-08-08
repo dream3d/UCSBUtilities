@@ -227,7 +227,7 @@ void GenerateMisorientationColors::setupFilterParameters()
     parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Crystal Structures", CrystalStructuresArrayPath, FilterParameter::RequiredArray, GenerateMisorientationColors, req));
   }
   parameters.push_back(SeparatorFilterParameter::New("Element Data", FilterParameter::CreatedArray));
-  parameters.push_back(StringFilterParameter::New("Misorientation Colors", "MisorientationColorArrayName", getMisorientationColorArrayName(), FilterParameter::CreatedArray, SIMPL_BIND_SETTER(GenerateMisorientationColors, this, MisorientationColorArrayName), SIMPL_BIND_GETTER(GenerateMisorientationColors, this, MisorientationColorArrayName)));
+  parameters.push_back(SIMPL_NEW_STRING_FP("Misorientation Colors", MisorientationColorArrayName, FilterParameter::CreatedArray, GenerateMisorientationColors));
   setFilterParameters(parameters);
 }
 
