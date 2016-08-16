@@ -203,31 +203,31 @@ GenerateMisorientationColors::~GenerateMisorientationColors()
 void GenerateMisorientationColors::setupFilterParameters()
 {
   FilterParameterVector parameters;
-  parameters.push_back(FloatVec3FilterParameter::New("Reference Orientation Axis", "ReferenceAxis", getReferenceAxis(), FilterParameter::Parameter, SIMPL_BIND_SETTER(GenerateMisorientationColors, this, ReferenceAxis), SIMPL_BIND_GETTER(GenerateMisorientationColors, this, ReferenceAxis)));
+  parameters.push_back(SIMPL_NEW_FLOAT_VEC3_FP("Reference Orientation Axis", ReferenceAxis, FilterParameter::Parameter, GenerateMisorientationColors));
 
-  parameters.push_back(DoubleFilterParameter::New("Reference Orientation Angle (Degrees)", "ReferenceAngle", getReferenceAngle(), FilterParameter::Parameter, SIMPL_BIND_SETTER(GenerateMisorientationColors, this, ReferenceAngle), SIMPL_BIND_GETTER(GenerateMisorientationColors, this, ReferenceAngle)));
+  parameters.push_back(SIMPL_NEW_DOUBLE_FP("Reference Orientation Angle (Degrees)", ReferenceAngle, FilterParameter::Parameter, GenerateMisorientationColors));
   QStringList linkedProps("GoodVoxelsArrayPath");
-  parameters.push_back(LinkedBooleanFilterParameter::New("Apply to Good Elements Only (Bad Elements Will Be Black)", "UseGoodVoxels", getUseGoodVoxels(), linkedProps, FilterParameter::Parameter, SIMPL_BIND_SETTER(GenerateMisorientationColors, this, UseGoodVoxels), SIMPL_BIND_GETTER(GenerateMisorientationColors, this, UseGoodVoxels)));
+  parameters.push_back(SIMPL_NEW_LINKED_BOOL_FP("Apply to Good Elements Only (Bad Elements Will Be Black)", UseGoodVoxels, FilterParameter::Parameter, GenerateMisorientationColors, linkedProps));
   parameters.push_back(SeparatorFilterParameter::New("Element Data", FilterParameter::RequiredArray));
   {
     DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(SIMPL::TypeNames::Float, 4, SIMPL::AttributeMatrixObjectType::Element);
-    parameters.push_back(DataArraySelectionFilterParameter::New("Quaternions", "QuatsArrayPath", getQuatsArrayPath(), FilterParameter::RequiredArray, req, SIMPL_BIND_SETTER(GenerateMisorientationColors, this, QuatsArrayPath), SIMPL_BIND_GETTER(GenerateMisorientationColors, this, QuatsArrayPath)));
+    parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Quaternions", QuatsArrayPath, FilterParameter::RequiredArray, GenerateMisorientationColors, req));
   }
   {
     DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(SIMPL::TypeNames::Int32, 1, SIMPL::AttributeMatrixObjectType::Element);
-    parameters.push_back(DataArraySelectionFilterParameter::New("Phases", "CellPhasesArrayPath", getCellPhasesArrayPath(), FilterParameter::RequiredArray, req, SIMPL_BIND_SETTER(GenerateMisorientationColors, this, CellPhasesArrayPath), SIMPL_BIND_GETTER(GenerateMisorientationColors, this, CellPhasesArrayPath)));
+    parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Phases", CellPhasesArrayPath, FilterParameter::RequiredArray, GenerateMisorientationColors, req));
   }
   {
     DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(SIMPL::TypeNames::Bool, 1, SIMPL::AttributeMatrixObjectType::Element);
-    parameters.push_back(DataArraySelectionFilterParameter::New("Mask", "GoodVoxelsArrayPath", getGoodVoxelsArrayPath(), FilterParameter::RequiredArray, req, SIMPL_BIND_SETTER(GenerateMisorientationColors, this, GoodVoxelsArrayPath), SIMPL_BIND_GETTER(GenerateMisorientationColors, this, GoodVoxelsArrayPath)));
+    parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Mask", GoodVoxelsArrayPath, FilterParameter::RequiredArray, GenerateMisorientationColors, req));
   }
   parameters.push_back(SeparatorFilterParameter::New("Ensemble Data", FilterParameter::RequiredArray));
   {
     DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(SIMPL::TypeNames::UInt32, 1, SIMPL::AttributeMatrixObjectType::Ensemble);
-    parameters.push_back(DataArraySelectionFilterParameter::New("Crystal Structures", "CrystalStructuresArrayPath", getCrystalStructuresArrayPath(), FilterParameter::RequiredArray, req, SIMPL_BIND_SETTER(GenerateMisorientationColors, this, CrystalStructuresArrayPath), SIMPL_BIND_GETTER(GenerateMisorientationColors, this, CrystalStructuresArrayPath)));
+    parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Crystal Structures", CrystalStructuresArrayPath, FilterParameter::RequiredArray, GenerateMisorientationColors, req));
   }
   parameters.push_back(SeparatorFilterParameter::New("Element Data", FilterParameter::CreatedArray));
-  parameters.push_back(StringFilterParameter::New("Misorientation Colors", "MisorientationColorArrayName", getMisorientationColorArrayName(), FilterParameter::CreatedArray, SIMPL_BIND_SETTER(GenerateMisorientationColors, this, MisorientationColorArrayName), SIMPL_BIND_GETTER(GenerateMisorientationColors, this, MisorientationColorArrayName)));
+  parameters.push_back(SIMPL_NEW_STRING_FP("Misorientation Colors", MisorientationColorArrayName, FilterParameter::CreatedArray, GenerateMisorientationColors));
   setFilterParameters(parameters);
 }
 
