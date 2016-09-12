@@ -54,7 +54,7 @@ class FloatVec4Widget : public FilterParameterWidget, private Ui::FloatVec4Widge
     * @param filter The instance of the filter that this parameter is a part of
     * @param parent The parent QWidget for this Widget
     */
-    FloatVec4Widget(FilterParameter* parameter, AbstractFilter* filter = NULL, QWidget* parent = NULL);
+    FloatVec4Widget(FilterParameter* parameter, AbstractFilter* filter = nullptr, QWidget* parent = nullptr);
 
     virtual ~FloatVec4Widget();
 

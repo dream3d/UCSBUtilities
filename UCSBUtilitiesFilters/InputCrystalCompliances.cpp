@@ -37,7 +37,7 @@
 InputCrystalCompliances::InputCrystalCompliances() :
   AbstractFilter(),
   m_CrystalCompliancesArrayPath("", "", ""),
-  m_CrystalCompliances(NULL)
+  m_CrystalCompliances(nullptr)
 {
   m_Compliances.v11 = 1;
   m_Compliances.v12 = 1;
@@ -143,7 +143,7 @@ void InputCrystalCompliances::dataCheck()
   // create compliances
   QVector<size_t> cDims(2, 6); // 6 by 6 array
   m_CrystalCompliancesPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>, AbstractFilter, float>(this, getCrystalCompliancesArrayPath(), 0, cDims);
-  if( NULL != m_CrystalCompliancesPtr.lock().get() )
+  if( nullptr != m_CrystalCompliancesPtr.lock().get() )
   { m_CrystalCompliances = m_CrystalCompliancesPtr.lock()->getPointer(0); }
 }
 

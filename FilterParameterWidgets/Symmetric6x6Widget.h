@@ -52,7 +52,7 @@ class Symmetric6x6Widget : public FilterParameterWidget, private Ui::Symmetric6x
     * @param filter The instance of the filter that this parameter is a part of
     * @param parent The parent QWidget for this Widget
     */
-    Symmetric6x6Widget(FilterParameter* parameter, AbstractFilter* filter = NULL, QWidget* parent = NULL);
+    Symmetric6x6Widget(FilterParameter* parameter, AbstractFilter* filter = nullptr, QWidget* parent = nullptr);
 
     virtual ~Symmetric6x6Widget();
 
