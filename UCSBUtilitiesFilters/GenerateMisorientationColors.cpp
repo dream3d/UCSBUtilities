@@ -27,7 +27,7 @@
 #include "SIMPLib/Common/Constants.h"
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/FloatVec3FilterParameter.h"
-#include "SIMPLib/FilterParameters/DoubleFilterParameter.h"
+#include "SIMPLib/FilterParameters/FloatFilterParameter.h"
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
 #include "SIMPLib/FilterParameters/StringFilterParameter.h"
 #include "SIMPLib/FilterParameters/LinkedBooleanFilterParameter.h"
@@ -205,7 +205,7 @@ void GenerateMisorientationColors::setupFilterParameters()
   FilterParameterVector parameters;
   parameters.push_back(SIMPL_NEW_FLOAT_VEC3_FP("Reference Orientation Axis", ReferenceAxis, FilterParameter::Parameter, GenerateMisorientationColors));
 
-  parameters.push_back(SIMPL_NEW_DOUBLE_FP("Reference Orientation Angle (Degrees)", ReferenceAngle, FilterParameter::Parameter, GenerateMisorientationColors));
+  parameters.push_back(SIMPL_NEW_FLOAT_FP("Reference Orientation Angle (Degrees)", ReferenceAngle, FilterParameter::Parameter, GenerateMisorientationColors));
   QStringList linkedProps("GoodVoxelsArrayPath");
   parameters.push_back(SIMPL_NEW_LINKED_BOOL_FP("Apply to Good Elements Only (Bad Elements Will Be Black)", UseGoodVoxels, FilterParameter::Parameter, GenerateMisorientationColors, linkedProps));
   parameters.push_back(SeparatorFilterParameter::New("Element Data", FilterParameter::RequiredArray));
