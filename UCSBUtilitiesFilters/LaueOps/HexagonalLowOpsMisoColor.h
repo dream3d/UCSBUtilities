@@ -15,9 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _cubicopsmisocolor_h_
-#define _cubicopsmisocolor_h_
-
+#ifndef _hexagonallowopsmisocolor_h_
+#define _hexagonallowopsmisocolor_h_
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
@@ -25,18 +24,20 @@
 #include "SIMPLib/Math/QuaternionMath.hpp"
 
 #include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/SpaceGroupOps/CubicOps.h"
+#include "OrientationLib/LaueOps/HexagonalLowOps.h"
 
 
-class CubicOpsMisoColor : public CubicOps
+
+class HexagonalLowOpsMisoColor : public HexagonalLowOps
 {
   public:
-    SIMPL_SHARED_POINTERS(CubicOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(CubicOpsMisoColor, CubicOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(CubicOpsMisoColor)
+    SIMPL_SHARED_POINTERS(HexagonalLowOpsMisoColor)
+    SIMPL_TYPE_MACRO_SUPER(HexagonalLowOpsMisoColor, HexagonalLowOpsMisoColor)
+    SIMPL_STATIC_NEW_MACRO(HexagonalLowOpsMisoColor)
 
-    CubicOpsMisoColor();
-    virtual ~CubicOpsMisoColor();
+    HexagonalLowOpsMisoColor();
+    virtual ~HexagonalLowOpsMisoColor();
+
 
     /**
      * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
@@ -47,11 +48,14 @@ class CubicOpsMisoColor : public CubicOps
     virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
 
-  private:
-    CubicOpsMisoColor(const CubicOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const CubicOpsMisoColor&); // Operator '=' Not Implemented
 
+  protected:
+
+
+  private:
+    HexagonalLowOpsMisoColor(const HexagonalLowOpsMisoColor&); // Copy Constructor Not Implemented
+    void operator=(const HexagonalLowOpsMisoColor&); // Operator '=' Not Implemented
 };
 
-#endif /* CUBICOpsMisoColor_H_ */
+#endif /* HexagonalLowOpsMisoColor_H_ */
 

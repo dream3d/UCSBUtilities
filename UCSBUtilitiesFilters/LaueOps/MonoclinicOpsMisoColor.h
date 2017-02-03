@@ -15,8 +15,9 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _hexagonallowopsmisocolor_h_
-#define _hexagonallowopsmisocolor_h_
+#ifndef _monoclinicopsmisocolor_h_
+#define _monoclinicopsmisocolor_h_
+
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
@@ -24,20 +25,18 @@
 #include "SIMPLib/Math/QuaternionMath.hpp"
 
 #include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/SpaceGroupOps/HexagonalLowOps.h"
+#include "OrientationLib/LaueOps/MonoclinicOps.h"
 
 
-
-class HexagonalLowOpsMisoColor : public HexagonalLowOps
+class MonoclinicOpsMisoColor : public MonoclinicOps
 {
   public:
-    SIMPL_SHARED_POINTERS(HexagonalLowOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(HexagonalLowOpsMisoColor, HexagonalLowOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(HexagonalLowOpsMisoColor)
+    SIMPL_SHARED_POINTERS(MonoclinicOpsMisoColor)
+    SIMPL_TYPE_MACRO_SUPER(MonoclinicOpsMisoColor, MonoclinicOpsMisoColor)
+    SIMPL_STATIC_NEW_MACRO(MonoclinicOpsMisoColor)
 
-    HexagonalLowOpsMisoColor();
-    virtual ~HexagonalLowOpsMisoColor();
-
+    MonoclinicOpsMisoColor();
+    virtual ~MonoclinicOpsMisoColor();
 
     /**
      * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
@@ -48,14 +47,14 @@ class HexagonalLowOpsMisoColor : public HexagonalLowOps
     virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
 
-
   protected:
 
 
+
   private:
-    HexagonalLowOpsMisoColor(const HexagonalLowOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const HexagonalLowOpsMisoColor&); // Operator '=' Not Implemented
+    MonoclinicOpsMisoColor(const MonoclinicOpsMisoColor&); // Copy Constructor Not Implemented
+    void operator=(const MonoclinicOpsMisoColor&); // Operator '=' Not Implemented
 };
 
-#endif /* HexagonalLowOpsMisoColor_H_ */
+#endif /* MonoclinicOpsMisoColor_H_ */
 

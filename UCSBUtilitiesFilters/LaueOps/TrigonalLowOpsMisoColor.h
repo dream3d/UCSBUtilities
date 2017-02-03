@@ -15,8 +15,9 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _tetragonallowopsmisocolor_h_
-#define _tetragonallowopsmisocolor_h_
+#ifndef _trigonallowopsmisocolor_h_
+#define _trigonallowopsmisocolor_h_
+
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
@@ -24,18 +25,19 @@
 #include "SIMPLib/Math/QuaternionMath.hpp"
 
 #include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/SpaceGroupOps/TetragonalLowOps.h"
+#include "OrientationLib/LaueOps/TrigonalLowOps.h"
+#include "OrientationLib/OrientationMath/OrientationArray.hpp"
 
 
-class TetragonalLowOpsMisoColor : public TetragonalLowOps
+class TrigonalLowOpsMisoColor : public TrigonalLowOps
 {
   public:
-    SIMPL_SHARED_POINTERS(TetragonalLowOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(TetragonalLowOpsMisoColor, TetragonalLowOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(TetragonalLowOpsMisoColor)
+    SIMPL_SHARED_POINTERS(TrigonalLowOpsMisoColor)
+    SIMPL_TYPE_MACRO_SUPER(TrigonalLowOpsMisoColor, TrigonalLowOpsMisoColor)
+    SIMPL_STATIC_NEW_MACRO(TrigonalLowOpsMisoColor)
 
-    TetragonalLowOpsMisoColor();
-    virtual ~TetragonalLowOpsMisoColor();
+    TrigonalLowOpsMisoColor();
+    virtual ~TrigonalLowOpsMisoColor();
 
 
     /**
@@ -52,9 +54,9 @@ class TetragonalLowOpsMisoColor : public TetragonalLowOps
 
 
   private:
-    TetragonalLowOpsMisoColor(const TetragonalLowOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const TetragonalLowOpsMisoColor&); // Operator '=' Not Implemented
+    TrigonalLowOpsMisoColor(const TrigonalLowOpsMisoColor&); // Copy Constructor Not Implemented
+    void operator=(const TrigonalLowOpsMisoColor&); // Operator '=' Not Implemented
 };
 
-#endif /* TetragonalLowOpsMisoColor_H_ */
+#endif /* TrigonalLowOpsMisoColor_H_ */
 

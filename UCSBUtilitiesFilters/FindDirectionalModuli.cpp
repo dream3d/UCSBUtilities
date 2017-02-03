@@ -59,7 +59,7 @@ FindDirectionalModuli::FindDirectionalModuli() :
   m_LoadingDirection.y = 0.0f;
   m_LoadingDirection.z = 1.0f;
 
-  m_OrientationOps = SpaceGroupOps::getOrientationOpsVector();
+  m_OrientationOps = LaueOps::getOrientationOpsVector();
 
   setupFilterParameters();
 }

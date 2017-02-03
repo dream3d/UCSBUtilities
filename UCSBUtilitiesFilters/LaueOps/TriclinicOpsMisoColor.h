@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _trigonalopsmisocolor_h_
-#define _trigonalopsmisocolor_h_
+#ifndef _triclinicopsmisocolor_h_
+#define _triclinicopsmisocolor_h_
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
@@ -24,19 +24,19 @@
 #include "SIMPLib/Math/QuaternionMath.hpp"
 
 #include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/SpaceGroupOps/TrigonalOps.h"
+#include "OrientationLib/LaueOps/TriclinicOps.h"
 
 
 
-class TrigonalOpsMisoColor : public TrigonalOps
+class TriclinicOpsMisoColor : public TriclinicOps
 {
   public:
-    SIMPL_SHARED_POINTERS(TrigonalOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(TrigonalOpsMisoColor, TrigonalOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(TrigonalOpsMisoColor)
+    SIMPL_SHARED_POINTERS(TriclinicOpsMisoColor)
+    SIMPL_TYPE_MACRO_SUPER(TriclinicOpsMisoColor, TriclinicOpsMisoColor)
+    SIMPL_STATIC_NEW_MACRO(TriclinicOpsMisoColor)
 
-    TrigonalOpsMisoColor();
-    virtual ~TrigonalOpsMisoColor();
+    TriclinicOpsMisoColor();
+    virtual ~TriclinicOpsMisoColor();
 
     /**
      * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
@@ -47,13 +47,13 @@ class TrigonalOpsMisoColor : public TrigonalOps
     virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
 
+
   protected:
 
-
   private:
-    TrigonalOpsMisoColor(const TrigonalOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const TrigonalOpsMisoColor&); // Operator '=' Not Implemented
+    TriclinicOpsMisoColor(const TriclinicOpsMisoColor&); // Copy Constructor Not Implemented
+    void operator=(const TriclinicOpsMisoColor&); // Operator '=' Not Implemented
 };
 
-#endif /* TrigonalOpsMisoColor_H_ */
+#endif /* TriclinicOpsMisoColor_H_ */
 

@@ -15,9 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _trigonallowopsmisocolor_h_
-#define _trigonallowopsmisocolor_h_
-
+#ifndef _trigonalopsmisocolor_h_
+#define _trigonalopsmisocolor_h_
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
@@ -25,20 +24,19 @@
 #include "SIMPLib/Math/QuaternionMath.hpp"
 
 #include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/SpaceGroupOps/TrigonalLowOps.h"
-#include "OrientationLib/OrientationMath/OrientationArray.hpp"
+#include "OrientationLib/LaueOps/TrigonalOps.h"
 
 
-class TrigonalLowOpsMisoColor : public TrigonalLowOps
+
+class TrigonalOpsMisoColor : public TrigonalOps
 {
   public:
-    SIMPL_SHARED_POINTERS(TrigonalLowOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(TrigonalLowOpsMisoColor, TrigonalLowOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(TrigonalLowOpsMisoColor)
+    SIMPL_SHARED_POINTERS(TrigonalOpsMisoColor)
+    SIMPL_TYPE_MACRO_SUPER(TrigonalOpsMisoColor, TrigonalOpsMisoColor)
+    SIMPL_STATIC_NEW_MACRO(TrigonalOpsMisoColor)
 
-    TrigonalLowOpsMisoColor();
-    virtual ~TrigonalLowOpsMisoColor();
-
+    TrigonalOpsMisoColor();
+    virtual ~TrigonalOpsMisoColor();
 
     /**
      * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
@@ -49,14 +47,13 @@ class TrigonalLowOpsMisoColor : public TrigonalLowOps
     virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
 
-
   protected:
 
 
   private:
-    TrigonalLowOpsMisoColor(const TrigonalLowOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const TrigonalLowOpsMisoColor&); // Operator '=' Not Implemented
+    TrigonalOpsMisoColor(const TrigonalOpsMisoColor&); // Copy Constructor Not Implemented
+    void operator=(const TrigonalOpsMisoColor&); // Operator '=' Not Implemented
 };
 
-#endif /* TrigonalLowOpsMisoColor_H_ */
+#endif /* TrigonalOpsMisoColor_H_ */
 

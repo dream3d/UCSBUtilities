@@ -15,8 +15,9 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _hexagonalopsmisocolor_h_
-#define _hexagonalopsmisocolor_h_
+#ifndef _cubiclowopsmisocolor_h_
+#define _cubiclowopsmisocolor_h_
+
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
@@ -24,18 +25,19 @@
 #include "SIMPLib/Math/QuaternionMath.hpp"
 
 #include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/SpaceGroupOps/HexagonalOps.h"
+#include "OrientationLib/LaueOps/CubicLowOps.h"
 
 
-class HexagonalOpsMisoColor : public HexagonalOps
+
+class CubicLowOpsMisoColor : public CubicLowOps
 {
   public:
-    SIMPL_SHARED_POINTERS(HexagonalOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(HexagonalOpsMisoColor, HexagonalOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(HexagonalOpsMisoColor)
+    SIMPL_SHARED_POINTERS(CubicLowOpsMisoColor)
+    SIMPL_TYPE_MACRO_SUPER(CubicLowOpsMisoColor, CubicLowOpsMisoColor)
+    SIMPL_STATIC_NEW_MACRO(CubicLowOpsMisoColor)
 
-    HexagonalOpsMisoColor();
-    virtual ~HexagonalOpsMisoColor();
+    CubicLowOpsMisoColor();
+    virtual ~CubicLowOpsMisoColor();
 
 
     /**
@@ -46,12 +48,15 @@ class HexagonalOpsMisoColor : public HexagonalOps
      */
     virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
-  protected:
 
+  protected:
+    float _calcMisoQuat(const QuatF quatsym[24], int numsym,
+                        QuatF& q1, QuatF& q2,
+                        float& n1, float& n2, float& n3);
   private:
-    HexagonalOpsMisoColor(const HexagonalOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const HexagonalOpsMisoColor&); // Operator '=' Not Implemented
+    CubicLowOpsMisoColor(const CubicLowOpsMisoColor&); // Copy Constructor Not Implemented
+    void operator=(const CubicLowOpsMisoColor&); // Operator '=' Not Implemented
 };
 
-#endif /* HEXAGONALOpsMisoColor_H_ */
+#endif /* CubicLowOpsMisoColor_H_ */
 

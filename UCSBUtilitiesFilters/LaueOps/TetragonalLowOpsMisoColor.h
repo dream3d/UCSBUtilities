@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _tetragonalopsmisocolor_h_
-#define _tetragonalopsmisocolor_h_
+#ifndef _tetragonallowopsmisocolor_h_
+#define _tetragonallowopsmisocolor_h_
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
@@ -24,19 +24,18 @@
 #include "SIMPLib/Math/QuaternionMath.hpp"
 
 #include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/SpaceGroupOps/TetragonalOps.h"
+#include "OrientationLib/LaueOps/TetragonalLowOps.h"
 
 
-
-class TetragonalOpsMisoColor : public TetragonalOps
+class TetragonalLowOpsMisoColor : public TetragonalLowOps
 {
   public:
-    SIMPL_SHARED_POINTERS(TetragonalOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(TetragonalOpsMisoColor, TetragonalOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(TetragonalOpsMisoColor)
+    SIMPL_SHARED_POINTERS(TetragonalLowOpsMisoColor)
+    SIMPL_TYPE_MACRO_SUPER(TetragonalLowOpsMisoColor, TetragonalLowOpsMisoColor)
+    SIMPL_STATIC_NEW_MACRO(TetragonalLowOpsMisoColor)
 
-    TetragonalOpsMisoColor();
-    virtual ~TetragonalOpsMisoColor();
+    TetragonalLowOpsMisoColor();
+    virtual ~TetragonalLowOpsMisoColor();
 
 
     /**
@@ -47,13 +46,15 @@ class TetragonalOpsMisoColor : public TetragonalOps
      */
     virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
+
+
   protected:
 
 
   private:
-    TetragonalOpsMisoColor(const TetragonalOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const TetragonalOpsMisoColor&); // Operator '=' Not Implemented
+    TetragonalLowOpsMisoColor(const TetragonalLowOpsMisoColor&); // Copy Constructor Not Implemented
+    void operator=(const TetragonalLowOpsMisoColor&); // Operator '=' Not Implemented
 };
 
-#endif /* TetragonalOpsMisoColor_H_ */
+#endif /* TetragonalLowOpsMisoColor_H_ */
 

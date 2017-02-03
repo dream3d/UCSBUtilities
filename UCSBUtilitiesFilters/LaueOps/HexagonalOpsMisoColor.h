@@ -15,9 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _monoclinicopsmisocolor_h_
-#define _monoclinicopsmisocolor_h_
-
+#ifndef _hexagonalopsmisocolor_h_
+#define _hexagonalopsmisocolor_h_
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
@@ -25,18 +24,19 @@
 #include "SIMPLib/Math/QuaternionMath.hpp"
 
 #include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/SpaceGroupOps/MonoclinicOps.h"
+#include "OrientationLib/LaueOps/HexagonalOps.h"
 
 
-class MonoclinicOpsMisoColor : public MonoclinicOps
+class HexagonalOpsMisoColor : public HexagonalOps
 {
   public:
-    SIMPL_SHARED_POINTERS(MonoclinicOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(MonoclinicOpsMisoColor, MonoclinicOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(MonoclinicOpsMisoColor)
+    SIMPL_SHARED_POINTERS(HexagonalOpsMisoColor)
+    SIMPL_TYPE_MACRO_SUPER(HexagonalOpsMisoColor, HexagonalOpsMisoColor)
+    SIMPL_STATIC_NEW_MACRO(HexagonalOpsMisoColor)
 
-    MonoclinicOpsMisoColor();
-    virtual ~MonoclinicOpsMisoColor();
+    HexagonalOpsMisoColor();
+    virtual ~HexagonalOpsMisoColor();
+
 
     /**
      * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
@@ -46,15 +46,12 @@ class MonoclinicOpsMisoColor : public MonoclinicOps
      */
     virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
-
   protected:
 
-
-
   private:
-    MonoclinicOpsMisoColor(const MonoclinicOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const MonoclinicOpsMisoColor&); // Operator '=' Not Implemented
+    HexagonalOpsMisoColor(const HexagonalOpsMisoColor&); // Copy Constructor Not Implemented
+    void operator=(const HexagonalOpsMisoColor&); // Operator '=' Not Implemented
 };
 
-#endif /* MonoclinicOpsMisoColor_H_ */
+#endif /* HEXAGONALOpsMisoColor_H_ */
 

@@ -36,19 +36,19 @@
 
 #include "EbsdLib/EbsdConstants.h"
 
-#include "OrientationLib/SpaceGroupOps/SpaceGroupOps.h"
+#include "OrientationLib/LaueOps/LaueOps.h"
 
-#include "UCSBUtilitiesFilters/SpaceGroupOps/CubicOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/SpaceGroupOps/CubicLowOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/SpaceGroupOps/HexagonalOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/SpaceGroupOps/HexagonalLowOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/SpaceGroupOps/OrthoRhombicOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/SpaceGroupOps/TrigonalOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/SpaceGroupOps/TetragonalOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/SpaceGroupOps/TrigonalLowOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/SpaceGroupOps/TetragonalLowOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/SpaceGroupOps/TriclinicOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/SpaceGroupOps/MonoclinicOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/CubicOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/CubicLowOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/HexagonalOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/HexagonalLowOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/OrthoRhombicOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/TrigonalOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/TetragonalOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/TrigonalLowOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/TetragonalLowOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/TriclinicOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/MonoclinicOpsMisoColor.h"
 
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
@@ -75,7 +75,7 @@ class GenerateMisorientationColorsImpl
 
     void convert(size_t start, size_t end) const
     {
-      QVector<SpaceGroupOps::Pointer> ops;
+      QVector<LaueOps::Pointer> ops;
       ops.push_back(HexagonalOpsMisoColor::New());
 
       ops.push_back(CubicOpsMisoColor::New());
@@ -359,7 +359,7 @@ void GenerateMisorientationColors::execute()
     serial.convert(0, totalPoints);
   }
 
-  QVector<SpaceGroupOps::Pointer> ops = SpaceGroupOps::getOrientationOpsQVector();
+  QVector<LaueOps::Pointer> ops = LaueOps::getOrientationOpsQVector();
 
   // Check and warn about unsupported crystal symmetries in the computation which will show as black
   for (size_t i = 0; i < notSupported->getNumberOfTuples() - 1; i++)

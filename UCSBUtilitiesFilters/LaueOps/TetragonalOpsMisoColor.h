@@ -15,8 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _orthorhombicopsmisocolor_h_
-#define _orthorhombicopsmisocolor_h_
+#ifndef _tetragonalopsmisocolor_h_
+#define _tetragonalopsmisocolor_h_
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
@@ -24,19 +24,19 @@
 #include "SIMPLib/Math/QuaternionMath.hpp"
 
 #include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/SpaceGroupOps/OrthoRhombicOps.h"
+#include "OrientationLib/LaueOps/TetragonalOps.h"
 
 
 
-class OrthoRhombicOpsMisoColor : public OrthoRhombicOps
+class TetragonalOpsMisoColor : public TetragonalOps
 {
   public:
-    SIMPL_SHARED_POINTERS(OrthoRhombicOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(OrthoRhombicOpsMisoColor, OrthoRhombicOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(OrthoRhombicOpsMisoColor)
+    SIMPL_SHARED_POINTERS(TetragonalOpsMisoColor)
+    SIMPL_TYPE_MACRO_SUPER(TetragonalOpsMisoColor, TetragonalOpsMisoColor)
+    SIMPL_STATIC_NEW_MACRO(TetragonalOpsMisoColor)
 
-    OrthoRhombicOpsMisoColor();
-    virtual ~OrthoRhombicOpsMisoColor();
+    TetragonalOpsMisoColor();
+    virtual ~TetragonalOpsMisoColor();
 
 
     /**
@@ -47,14 +47,13 @@ class OrthoRhombicOpsMisoColor : public OrthoRhombicOps
      */
     virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
-
   protected:
 
 
   private:
-    OrthoRhombicOpsMisoColor(const OrthoRhombicOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const OrthoRhombicOpsMisoColor&); // Operator '=' Not Implemented
+    TetragonalOpsMisoColor(const TetragonalOpsMisoColor&); // Copy Constructor Not Implemented
+    void operator=(const TetragonalOpsMisoColor&); // Operator '=' Not Implemented
 };
 
-#endif /* ORTHORHOMBICOpsMisoColor_H_ */
+#endif /* TetragonalOpsMisoColor_H_ */
 
