@@ -58,8 +58,9 @@ With other coloring methods, such as IPF, "bad" **Elements** which result from n
 Not Applicable
 
 ## Required Objects ##
+
 | Kind | Default Name | Type | Component Dimensions | Description |
-|------|--------------|-------------|---------|-----|
+|------|--------------|------|----------------------|-------------|
 | **Element Attribute Array** | Quats | float | (3)  | Specifies the orientation of each **Element** in quaternion representation |
 | **Element Attribute Array** | Phases | int32_t | (1) | Phase Id specifying the phase of the **Element** |
 | **Element Attribute Array** | Mask | bool | (1) | Used to define **Elements** as *good* or *bad*. Only required if _Apply to Good Elements Only (Bad Elements Will Be Black)_ is checked |

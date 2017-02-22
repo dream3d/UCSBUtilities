@@ -14,13 +14,15 @@ None
 Not Applicable
 
 ## Required Objects ##
+
 | Kind | Default Name | Type | Component Dimensions | Description |
-|------|--------------|-------------|---------|-----|
+|------|--------------|------|----------------------|-------------|
 | Any **Attribute Matrix** | None | N/A | N/A | **Attribute Matrix** to copy |
 
 ## Created Objects ##
+
 | Kind | Default Name | Type | Component Dimensions | Description |
-|------|--------------|-------------|---------|-----|
+|------|--------------|------|----------------------|-------------|
 | Any **Attribute Matrix** | None | N/A | N/A | Copied **Attribute Matrix** |
 
 ## License & Copyright ##
