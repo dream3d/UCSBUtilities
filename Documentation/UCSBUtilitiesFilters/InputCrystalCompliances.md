@@ -1,4 +1,4 @@
-Input Crystal Compliance Values {#inputcrystalcompliances}
+Input Crystal Compliances {#inputcrystalcompliances}
 =============
 
 ## Group (Subgroup) ##
