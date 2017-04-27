@@ -17,7 +17,7 @@
 
 #include "CubicLowOpsMisoColor.h"
 
-#include <boost/assert.hpp>
+#include <assert.h>
 
 // Include this FIRST because there is a needed define for some compiles
 // to expose some of the constants needed below
@@ -47,7 +47,7 @@ CubicLowOpsMisoColor::~CubicLowOpsMisoColor()
 // -----------------------------------------------------------------------------
 SIMPL::Rgb CubicLowOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
 {
-  BOOST_ASSERT(false);
+  assert(false);
 #if 0
   float n1, n2, n3, w;
   float x, x1, x2, x3, x4;

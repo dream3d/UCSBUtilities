@@ -17,12 +17,13 @@
 
 #include "TetragonalOpsMisoColor.h"
 
+#include <assert.h>
+
 // Include this FIRST because there is a needed define for some compiles
 // to expose some of the constants needed below
 #include "SIMPLib/Math/SIMPLibMath.h"
 #include "SIMPLib/Utilities/ColorTable.h"
 
-#include <boost/assert.hpp>
 
 // -----------------------------------------------------------------------------
 //
@@ -45,7 +46,7 @@ TetragonalOpsMisoColor::~TetragonalOpsMisoColor()
 // -----------------------------------------------------------------------------
 SIMPL::Rgb TetragonalOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
 {
-  BOOST_ASSERT(false);
+  assert(false);
 #if 0
   float n1, n2, n3, w;
   float xo, xo1, xo2, xo3, x, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11;
