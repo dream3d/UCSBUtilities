@@ -294,7 +294,7 @@ const QString InputCrystalCompliances::getFilterVersion()
 //
 // -----------------------------------------------------------------------------
 const QString InputCrystalCompliances::getGroupName()
-{ return SIMPL::FilterGroups::GenericFilters; }
+{ return SIMPL::FilterGroups::Generic; }
 
 // -----------------------------------------------------------------------------
 //
