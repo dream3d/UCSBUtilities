@@ -101,7 +101,7 @@ void CopyDataContainer::dataCheck()
   DataContainer::Pointer dc = getDataContainerArray()->getPrereqDataContainer<AbstractFilter>(this, getSelectedDataContainerName());
   if(getErrorCondition() < 0) { return; }
 
-  DataContainer::Pointer dcNew = dc->deepCopy();
+  DataContainer::Pointer dcNew = dc->deepCopy(getInPreflight());
   dcNew->setName(getNewDataContainerName());
   getDataContainerArray()->addDataContainer(dcNew);
 }
