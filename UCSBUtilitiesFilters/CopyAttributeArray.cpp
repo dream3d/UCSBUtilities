@@ -90,6 +90,7 @@ void CopyAttributeArray::initialize()
 void CopyAttributeArray::dataCheck()
 {
   setErrorCondition(0);
+  setWarningCondition(0);
 
   if(m_NewArrayName.isEmpty() == true)
   {
@@ -138,6 +139,7 @@ void CopyAttributeArray::preflight()
 void CopyAttributeArray::execute()
 {
   setErrorCondition(0);
+  setWarningCondition(0);
   dataCheck(); // calling the dataCheck will copy the array, so nothing is required here
   if(getErrorCondition() < 0) { return; }
 
