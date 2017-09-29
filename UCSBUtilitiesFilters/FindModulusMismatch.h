@@ -21,16 +21,15 @@
 #include <vector>
 #include <QtCore/QString>
 
-#include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/Common/AbstractFilter.h"
-#include "SIMPLib/Common/SIMPLibSetGetMacros.h"
-#include "SIMPLib/DataArrays/IDataArray.h"
-#include "SIMPLib/DataContainers/DataContainer.h"
 #include "OrientationLib/LaueOps/CubicOps.h"
 #include "OrientationLib/LaueOps/HexagonalOps.h"
 #include "OrientationLib/LaueOps/LaueOps.h"
 #include "OrientationLib/LaueOps/OrthoRhombicOps.h"
-
+#include "SIMPLib/Common/SIMPLibSetGetMacros.h"
+#include "SIMPLib/DataArrays/IDataArray.h"
+#include "SIMPLib/DataContainers/DataContainer.h"
+#include "SIMPLib/Filtering/AbstractFilter.h"
+#include "SIMPLib/SIMPLib.h"
 
 class FindModulusMismatch : public AbstractFilter
 {

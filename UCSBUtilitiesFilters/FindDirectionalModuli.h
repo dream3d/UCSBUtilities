@@ -21,12 +21,12 @@
 #include <vector>
 #include <QtCore/QString>
 
-#include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/Common/AbstractFilter.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/DataArrays/IDataArray.h"
 #include "SIMPLib/DataContainers/DataContainer.h"
 #include "SIMPLib/FilterParameters/FloatVec3FilterParameter.h"
+#include "SIMPLib/Filtering/AbstractFilter.h"
+#include "SIMPLib/SIMPLib.h"
 
 #include "OrientationLib/LaueOps/CubicOps.h"
 #include "OrientationLib/LaueOps/HexagonalOps.h"
