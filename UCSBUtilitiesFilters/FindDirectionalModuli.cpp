@@ -487,7 +487,7 @@ const QString FindDirectionalModuli::getGroupName()
 //
 // -----------------------------------------------------------------------------
 const QString FindDirectionalModuli::getSubGroupName()
-{ return SIMPL::FilterSubGroups::CrystallographicFilters; }
+{ return SIMPL::FilterSubGroups::CrystallographyFilters; }
 
 
 // -----------------------------------------------------------------------------

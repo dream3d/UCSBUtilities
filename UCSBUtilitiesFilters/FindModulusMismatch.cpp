@@ -268,7 +268,7 @@ const QString FindModulusMismatch::getGroupName()
 //
 // -----------------------------------------------------------------------------
 const QString FindModulusMismatch::getSubGroupName()
-{ return SIMPL::FilterSubGroups::CrystallographicFilters; }
+{ return SIMPL::FilterSubGroups::CrystallographyFilters; }
 
 
 // -----------------------------------------------------------------------------
