@@ -85,6 +85,7 @@ void ClearDataMask::initialize()
 void ClearDataMask::dataCheck()
 {
   setErrorCondition(0);
+  setWarningCondition(0);
 
   QVector<size_t> cDims(1, 1);
   m_MaskPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<bool>, AbstractFilter>(this, getMaskArrayPath(), cDims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
@@ -111,6 +112,7 @@ void ClearDataMask::preflight()
 void ClearDataMask::execute()
 {
   setErrorCondition(0);
+  setWarningCondition(0);
   dataCheck();
   if(getErrorCondition() < 0) { return; }
 
