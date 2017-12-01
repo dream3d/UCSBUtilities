@@ -51,8 +51,8 @@ class TriclinicOpsMisoColor : public TriclinicOps
   protected:
 
   private:
-    TriclinicOpsMisoColor(const TriclinicOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const TriclinicOpsMisoColor&); // Operator '=' Not Implemented
+    TriclinicOpsMisoColor(const TriclinicOpsMisoColor&) = delete; // Copy Constructor Not Implemented
+    void operator=(const TriclinicOpsMisoColor&) = delete;        // Operator '=' Not Implemented
 };
 
 #endif /* TriclinicOpsMisoColor_H_ */

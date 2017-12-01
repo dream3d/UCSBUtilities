@@ -52,8 +52,8 @@ class TetragonalLowOpsMisoColor : public TetragonalLowOps
 
 
   private:
-    TetragonalLowOpsMisoColor(const TetragonalLowOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const TetragonalLowOpsMisoColor&); // Operator '=' Not Implemented
+    TetragonalLowOpsMisoColor(const TetragonalLowOpsMisoColor&) = delete; // Copy Constructor Not Implemented
+    void operator=(const TetragonalLowOpsMisoColor&) = delete;            // Operator '=' Not Implemented
 };
 
 #endif /* TetragonalLowOpsMisoColor_H_ */

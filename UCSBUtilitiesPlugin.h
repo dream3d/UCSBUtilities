@@ -151,8 +151,8 @@ class UCSBUtilitiesPlugin : public QObject, public ISIMPLibPlugin
     QList<QString>      m_Filters;
     bool                m_DidLoad;
 
-    UCSBUtilitiesPlugin(const UCSBUtilitiesPlugin&); // Copy Constructor Not Implemented
-    void operator=(const UCSBUtilitiesPlugin&); // Operator '=' Not Implemented
+    UCSBUtilitiesPlugin(const UCSBUtilitiesPlugin&) = delete; // Copy Constructor Not Implemented
+    void operator=(const UCSBUtilitiesPlugin&) = delete;      // Operator '=' Not Implemented
 };
 
 #endif /* _UCSBUtilities_H_ */

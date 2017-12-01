@@ -138,9 +138,8 @@ class CopyAttributeMatrix : public AbstractFilter
 
 
   private:
-
-    CopyAttributeMatrix(const CopyAttributeMatrix&); // Copy Constructor Not Implemented
-    void operator=(const CopyAttributeMatrix&); // Operator '=' Not Implemented
+    CopyAttributeMatrix(const CopyAttributeMatrix&) = delete; // Copy Constructor Not Implemented
+    void operator=(const CopyAttributeMatrix&) = delete;      // Operator '=' Not Implemented
 };
 
 #endif /* _CopyAttributeMatrix_H_ */

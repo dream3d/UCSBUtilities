@@ -140,8 +140,8 @@ class InputCrystalCompliances : public AbstractFilter
   private:
     DEFINE_DATAARRAY_VARIABLE(float, CrystalCompliances)
 
-    InputCrystalCompliances(const InputCrystalCompliances&); // Copy Constructor Not Implemented
-    void operator=(const InputCrystalCompliances&); // Operator '=' Not Implemented
+    InputCrystalCompliances(const InputCrystalCompliances&) = delete; // Copy Constructor Not Implemented
+    void operator=(const InputCrystalCompliances&) = delete;          // Operator '=' Not Implemented
 };
 
 #endif /* InputCrystalCompliances_H_ */

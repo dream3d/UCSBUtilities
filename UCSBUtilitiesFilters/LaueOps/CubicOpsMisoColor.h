@@ -48,9 +48,8 @@ class CubicOpsMisoColor : public CubicOps
 
 
   private:
-    CubicOpsMisoColor(const CubicOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const CubicOpsMisoColor&); // Operator '=' Not Implemented
-
+    CubicOpsMisoColor(const CubicOpsMisoColor&) = delete; // Copy Constructor Not Implemented
+    void operator=(const CubicOpsMisoColor&) = delete;    // Operator '=' Not Implemented
 };
 
 #endif /* CUBICOpsMisoColor_H_ */

@@ -138,9 +138,8 @@ class CopyDataContainer : public AbstractFilter
 
 
   private:
-
-    CopyDataContainer(const CopyDataContainer&); // Copy Constructor Not Implemented
-    void operator=(const CopyDataContainer&); // Operator '=' Not Implemented
+    CopyDataContainer(const CopyDataContainer&) = delete; // Copy Constructor Not Implemented
+    void operator=(const CopyDataContainer&) = delete;    // Operator '=' Not Implemented
 };
 
 #endif /* _CopyDataContainer_H_ */

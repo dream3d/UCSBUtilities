@@ -26,10 +26,6 @@
 
 #include "UCSBUtilities/FilterParameters/FloatVec4FilterParameter.h"
 
-
-// Include the MOC generated file for this class
-#include "moc_FloatVec4Widget.cpp"
-
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -46,9 +42,7 @@ FloatVec4Widget::FloatVec4Widget(FilterParameter* parameter, AbstractFilter* fil
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-FloatVec4Widget::~FloatVec4Widget()
-{
-}
+FloatVec4Widget::~FloatVec4Widget() = default;
 
 // -----------------------------------------------------------------------------
 //

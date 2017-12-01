@@ -53,8 +53,8 @@ class HexagonalLowOpsMisoColor : public HexagonalLowOps
 
 
   private:
-    HexagonalLowOpsMisoColor(const HexagonalLowOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const HexagonalLowOpsMisoColor&); // Operator '=' Not Implemented
+    HexagonalLowOpsMisoColor(const HexagonalLowOpsMisoColor&) = delete; // Copy Constructor Not Implemented
+    void operator=(const HexagonalLowOpsMisoColor&) = delete;           // Operator '=' Not Implemented
 };
 
 #endif /* HexagonalLowOpsMisoColor_H_ */

@@ -54,8 +54,8 @@ class CubicLowOpsMisoColor : public CubicLowOps
                         QuatF& q1, QuatF& q2,
                         float& n1, float& n2, float& n3);
   private:
-    CubicLowOpsMisoColor(const CubicLowOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const CubicLowOpsMisoColor&); // Operator '=' Not Implemented
+    CubicLowOpsMisoColor(const CubicLowOpsMisoColor&) = delete; // Copy Constructor Not Implemented
+    void operator=(const CubicLowOpsMisoColor&) = delete;       // Operator '=' Not Implemented
 };
 
 #endif /* CubicLowOpsMisoColor_H_ */

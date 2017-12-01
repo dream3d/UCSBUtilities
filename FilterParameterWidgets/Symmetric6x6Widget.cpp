@@ -28,9 +28,6 @@
 
 #include "UCSBUtilities/FilterParameters/Symmetric6x6FilterParameter.h"
 
-// Include the MOC generated file for this class
-#include "moc_Symmetric6x6Widget.cpp"
-
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -47,9 +44,7 @@ Symmetric6x6Widget::Symmetric6x6Widget(FilterParameter* parameter, AbstractFilte
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-Symmetric6x6Widget::~Symmetric6x6Widget()
-{
-}
+Symmetric6x6Widget::~Symmetric6x6Widget() = default;
 
 void Symmetric6x6Widget::setCubicSym()
 {

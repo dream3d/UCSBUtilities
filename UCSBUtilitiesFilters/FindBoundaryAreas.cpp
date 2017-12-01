@@ -26,11 +26,6 @@
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
 
-// Include the MOC generated file for this class
-#include "moc_FindBoundaryAreas.cpp"
-
-
-
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -49,9 +44,7 @@ FindBoundaryAreas::FindBoundaryAreas() :
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-FindBoundaryAreas::~FindBoundaryAreas()
-{
-}
+FindBoundaryAreas::~FindBoundaryAreas() = default;
 
 // -----------------------------------------------------------------------------
 //

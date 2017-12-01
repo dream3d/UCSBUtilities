@@ -154,8 +154,8 @@ class FindModulusMismatch : public AbstractFilter
      */
     void dataCheckSurfaceMesh();
 
-    FindModulusMismatch(const FindModulusMismatch&); // Copy Constructor Not Implemented
-    void operator=(const FindModulusMismatch&); // Operator '=' Not Implemented
+    FindModulusMismatch(const FindModulusMismatch&) = delete; // Copy Constructor Not Implemented
+    void operator=(const FindModulusMismatch&) = delete;      // Operator '=' Not Implemented
 };
 
 #endif /* FindModulusMismatch_H_ */

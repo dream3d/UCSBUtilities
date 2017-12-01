@@ -34,9 +34,7 @@ MonoclinicOpsMisoColor::MonoclinicOpsMisoColor() :
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-MonoclinicOpsMisoColor::~MonoclinicOpsMisoColor()
-{
-}
+MonoclinicOpsMisoColor::~MonoclinicOpsMisoColor() = default;
 
 // -----------------------------------------------------------------------------
 //

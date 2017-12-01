@@ -34,9 +34,7 @@ TrigonalOpsMisoColor::TrigonalOpsMisoColor() :
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-TrigonalOpsMisoColor::~TrigonalOpsMisoColor()
-{
-}
+TrigonalOpsMisoColor::~TrigonalOpsMisoColor() = default;
 
 // -----------------------------------------------------------------------------
 //

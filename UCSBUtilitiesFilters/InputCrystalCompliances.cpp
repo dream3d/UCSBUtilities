@@ -26,11 +26,6 @@
 #include "UCSBUtilities/FilterParameters/Symmetric6x6FilterParameter.h"
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
 
-// Include the MOC generated file for this class
-#include "moc_InputCrystalCompliances.cpp"
-
-
-
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -72,9 +67,7 @@ InputCrystalCompliances::InputCrystalCompliances() :
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-InputCrystalCompliances::~InputCrystalCompliances()
-{
-}
+InputCrystalCompliances::~InputCrystalCompliances() = default;
 
 // -----------------------------------------------------------------------------
 //

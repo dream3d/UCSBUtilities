@@ -86,9 +86,6 @@ class Symmetric6x6Widget : public FilterParameterWidget, private Ui::Symmetric6x
     void parametersChanged();
 
   private:
-
-    bool m_DidCausePreflight;
-
     Symmetric6x6FilterParameter* m_FilterParameter;
 
     //functions for changing symmetry type
@@ -106,9 +103,8 @@ class Symmetric6x6Widget : public FilterParameterWidget, private Ui::Symmetric6x
     //helper functions for complex inter dependancies
     // void vbar(QLineEdit* obj);
 
-    Symmetric6x6Widget(const Symmetric6x6Widget&); // Copy Constructor Not Implemented
-    void operator=(const Symmetric6x6Widget&); // Operator '=' Not Implemented
-
+    Symmetric6x6Widget(const Symmetric6x6Widget&) = delete; // Copy Constructor Not Implemented
+    void operator=(const Symmetric6x6Widget&) = delete;     // Operator '=' Not Implemented
 };
 
 #endif /* _Symmetric6x6Widget_H_ */

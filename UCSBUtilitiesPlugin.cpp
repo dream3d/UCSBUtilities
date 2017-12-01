@@ -25,9 +25,6 @@
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
 
-// Include the MOC generated file for this class
-#include "moc_UCSBUtilitiesPlugin.cpp"
-
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -48,9 +45,7 @@ m_DidLoad(false)
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-UCSBUtilitiesPlugin::~UCSBUtilitiesPlugin()
-{
-}
+UCSBUtilitiesPlugin::~UCSBUtilitiesPlugin() = default;
 
 // -----------------------------------------------------------------------------
 //

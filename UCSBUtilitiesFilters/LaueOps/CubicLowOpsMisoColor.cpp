@@ -38,9 +38,7 @@ CubicLowOpsMisoColor::CubicLowOpsMisoColor() :
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-CubicLowOpsMisoColor::~CubicLowOpsMisoColor()
-{
-}
+CubicLowOpsMisoColor::~CubicLowOpsMisoColor() = default;
 
 // -----------------------------------------------------------------------------
 //

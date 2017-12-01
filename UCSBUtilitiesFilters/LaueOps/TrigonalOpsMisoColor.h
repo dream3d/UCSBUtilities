@@ -51,8 +51,8 @@ class TrigonalOpsMisoColor : public TrigonalOps
 
 
   private:
-    TrigonalOpsMisoColor(const TrigonalOpsMisoColor&); // Copy Constructor Not Implemented
-    void operator=(const TrigonalOpsMisoColor&); // Operator '=' Not Implemented
+    TrigonalOpsMisoColor(const TrigonalOpsMisoColor&) = delete; // Copy Constructor Not Implemented
+    void operator=(const TrigonalOpsMisoColor&) = delete;       // Operator '=' Not Implemented
 };
 
 #endif /* TrigonalOpsMisoColor_H_ */

@@ -35,9 +35,7 @@ TriclinicOpsMisoColor::TriclinicOpsMisoColor() :
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-TriclinicOpsMisoColor::~TriclinicOpsMisoColor()
-{
-}
+TriclinicOpsMisoColor::~TriclinicOpsMisoColor() = default;
 
 // -----------------------------------------------------------------------------
 //

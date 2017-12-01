@@ -35,9 +35,7 @@ HexagonalOpsMisoColor::HexagonalOpsMisoColor() :
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-HexagonalOpsMisoColor::~HexagonalOpsMisoColor()
-{
-}
+HexagonalOpsMisoColor::~HexagonalOpsMisoColor() = default;
 
 // -----------------------------------------------------------------------------
 //

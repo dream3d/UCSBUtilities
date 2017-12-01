@@ -25,11 +25,6 @@
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
 
-// Include the MOC generated file for this class
-#include "moc_CopyDataContainer.cpp"
-
-
-
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -44,9 +39,7 @@ CopyDataContainer::CopyDataContainer() :
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-CopyDataContainer::~CopyDataContainer()
-{
-}
+CopyDataContainer::~CopyDataContainer() = default;
 
 // -----------------------------------------------------------------------------
 //

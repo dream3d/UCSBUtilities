@@ -74,15 +74,10 @@ class FloatVec4Widget : public FilterParameterWidget, private Ui::FloatVec4Widge
     void parametersChanged();
 
   private:
-
-    bool m_DidCausePreflight;
-
     FloatVec4FilterParameter* m_FilterParameter;
 
-
-    FloatVec4Widget(const FloatVec4Widget&); // Copy Constructor Not Implemented
-    void operator=(const FloatVec4Widget&); // Operator '=' Not Implemented
-
+    FloatVec4Widget(const FloatVec4Widget&) = delete; // Copy Constructor Not Implemented
+    void operator=(const FloatVec4Widget&) = delete;  // Operator '=' Not Implemented
 };
 
 #endif /* _FloatVec4Widget_H_ */

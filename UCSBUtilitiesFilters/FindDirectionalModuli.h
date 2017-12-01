@@ -177,8 +177,8 @@ class FindDirectionalModuli : public AbstractFilter
     DEFINE_DATAARRAY_VARIABLE(unsigned int, CrystalStructures)
     DEFINE_DATAARRAY_VARIABLE(float, CrystalCompliances)
 
-    FindDirectionalModuli(const FindDirectionalModuli&); // Copy Constructor Not Implemented
-    void operator=(const FindDirectionalModuli&); // Operator '=' Not Implemented
+    FindDirectionalModuli(const FindDirectionalModuli&) = delete; // Copy Constructor Not Implemented
+    void operator=(const FindDirectionalModuli&) = delete;        // Operator '=' Not Implemented
 };
 
 #endif /* FindDirectionalModuli_H_ */

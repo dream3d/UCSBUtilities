@@ -164,8 +164,8 @@ class GenerateMisorientationColors : public AbstractFilter
 
     DEFINE_DATAARRAY_VARIABLE(uint8_t, MisorientationColor)
 
-    GenerateMisorientationColors(const GenerateMisorientationColors&); // Copy Constructor Not Implemented
-    void operator=(const GenerateMisorientationColors&); // Operator '=' Not Implemented
+    GenerateMisorientationColors(const GenerateMisorientationColors&) = delete; // Copy Constructor Not Implemented
+    void operator=(const GenerateMisorientationColors&) = delete;               // Operator '=' Not Implemented
 };
 
 #endif /* _GenerateMisorientationColors_H_ */

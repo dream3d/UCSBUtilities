@@ -36,10 +36,7 @@ CubicOpsMisoColor::CubicOpsMisoColor() :
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-CubicOpsMisoColor::~CubicOpsMisoColor()
-{
-}
-
+CubicOpsMisoColor::~CubicOpsMisoColor() = default;
 
 /**
  * @brief Sorts the 3 values from low to high

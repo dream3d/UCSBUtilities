@@ -138,9 +138,8 @@ class CopyAttributeArray : public AbstractFilter
 
 
   private:
-
-    CopyAttributeArray(const CopyAttributeArray&); // Copy Constructor Not Implemented
-    void operator=(const CopyAttributeArray&); // Operator '=' Not Implemented
+    CopyAttributeArray(const CopyAttributeArray&) = delete; // Copy Constructor Not Implemented
+    void operator=(const CopyAttributeArray&) = delete;     // Operator '=' Not Implemented
 };
 
 #endif /* _CopyAttributeArray_H_ */

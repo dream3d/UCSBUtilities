@@ -137,8 +137,8 @@ class ClearDataMask : public AbstractFilter
   private:
     DEFINE_DATAARRAY_VARIABLE(bool, Mask)
 
-    ClearDataMask(const ClearDataMask&); // Copy Constructor Not Implemented
-    void operator=(const ClearDataMask&); // Operator '=' Not Implemented
+    ClearDataMask(const ClearDataMask&) = delete;  // Copy Constructor Not Implemented
+    void operator=(const ClearDataMask&) = delete; // Operator '=' Not Implemented
 };
 
 #endif /* ClearDataMask_H_ */

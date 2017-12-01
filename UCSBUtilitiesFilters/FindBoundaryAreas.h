@@ -154,8 +154,8 @@ class FindBoundaryAreas : public AbstractFilter
     DEFINE_DATAARRAY_VARIABLE(int32_t, SurfaceMeshFeatureFaceIds)
     DEFINE_DATAARRAY_VARIABLE(double, SurfaceMeshBoundaryAreas)
 
-    FindBoundaryAreas(const FindBoundaryAreas&); // Copy Constructor Not Implemented
-    void operator=(const FindBoundaryAreas&); // Operator '=' Not Implemented
+    FindBoundaryAreas(const FindBoundaryAreas&) = delete; // Copy Constructor Not Implemented
+    void operator=(const FindBoundaryAreas&) = delete;    // Operator '=' Not Implemented
 };
 
 #endif /* FindBoundaryAreas_H_ */
