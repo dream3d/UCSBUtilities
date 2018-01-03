@@ -26,7 +26,7 @@
 namespace UCSBUtilitiesConstants
 {
   const QString UCSBUtilitiesPluginFile("UCSBUtilitiesPlugin");
-  const QString UCSBUtilitiesPluginDisplayName("UCSBUtilitiesPlugin");
+  const QString UCSBUtilitiesPluginDisplayName("UCSB Utilities Plugin");
   const QString UCSBUtilitiesBaseName("UCSBUtilities");
 
   namespace FilterGroups
