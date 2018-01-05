@@ -33,16 +33,23 @@
 
 #include "UCSBUtilitiesTestFileLocations.h"
 
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
-void RemoveTestFiles()
+class UCSBUtilitiesFilterTest
 {
-#if REMOVE_TEST_FILES
-  QFile::remove(UnitTest::UCSBUtilitiesFilterTest::TestFile1);
-  QFile::remove(UnitTest::UCSBUtilitiesFilterTest::TestFile2);
-#endif
-}
+
+  public:
+    UCSBUtilitiesFilterTest() {}
+    virtual ~UCSBUtilitiesFilterTest() = default;
+
+  // -----------------------------------------------------------------------------
+  //
+  // -----------------------------------------------------------------------------
+  void RemoveTestFiles()
+  {
+  #if REMOVE_TEST_FILES
+    QFile::remove(UnitTest::UCSBUtilitiesFilterTest::TestFile1);
+    QFile::remove(UnitTest::UCSBUtilitiesFilterTest::TestFile2);
+  #endif
+  }
 
 
 // -----------------------------------------------------------------------------
@@ -125,35 +132,21 @@ void TestReorderCopy()
 }
 
 
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
-void loadFilterPlugins()
-{
-  // Register all the filters including trying to load those from Plugins
-  FilterManager* fm = FilterManager::Instance();
-  SIMPLibPluginLoader::LoadPluginFilters(fm);
-
-  // Send progress messages from PipelineBuilder to this object for display
-  QMetaObjectUtilities::RegisterMetaTypes();
-}
+  // -----------------------------------------------------------------------------
+  //
+  // -----------------------------------------------------------------------------
+  void operator()()
+  {
+    int err = EXIT_SUCCESS;
+    DREAM3D_REGISTER_TEST( TestReorderCopy() )
+    DREAM3D_REGISTER_TEST( RemoveTestFiles() )
+  }
 
 
-// -----------------------------------------------------------------------------
-//  Use test framework
-// -----------------------------------------------------------------------------
-int main(int argc, char** argv)
-{
-  // Instantiate the QCoreApplication that we need to get the current path and load plugins.
-  QCoreApplication app(argc, argv);
-  QCoreApplication::setOrganizationName("");
-  QCoreApplication::setOrganizationDomain("");
-  QCoreApplication::setApplicationName("UCSBUtilitiesFilterTest");
+  private:
+    UCSBUtilitiesFilterTest(const UCSBUtilitiesFilterTest&); // Copy Constructor Not Implemented
+    void operator=(const UCSBUtilitiesFilterTest&); // Operator '=' Not Implemented
 
-  int err = EXIT_SUCCESS;
-  DREAM3D_REGISTER_TEST( loadFilterPlugins() );
-  DREAM3D_REGISTER_TEST( TestReorderCopy() )
-  DREAM3D_REGISTER_TEST( RemoveTestFiles() )
-  PRINT_TEST_SUMMARY();
-  return err;
-}
+
+};
+

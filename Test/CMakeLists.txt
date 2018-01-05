@@ -19,37 +19,34 @@ set(PLUGIN_NAME "UCSBUtilities")
 set(${PLUGIN_NAME}Test_SOURCE_DIR ${${PLUGIN_NAME}_SOURCE_DIR}/Test)
 set(${PLUGIN_NAME}Test_BINARY_DIR ${${PLUGIN_NAME}_BINARY_DIR}/Test)
 
+#------------------------------------------------------------------------------
+# List all the source files here. They will NOT be compiled but instead
+# be directly included in the main test source file. We list them here so that
+# they will show up in IDEs
+set(TEST_NAMES
+  UCSBUtilitiesFilterTest
+)
 
 #------------------------------------------------------------------------------
 # Include this file from the CMP Project
 include(${CMP_SOURCE_DIR}/cmpCMakeMacros.cmake)
+include(${SIMPLProj_SOURCE_DIR}/Source/SIMPLib/SIMPLibMacros.cmake)
 
 
-set(TEST_TEMP_DIR ${${PLUGIN_NAME}Test_BINARY_DIR}/Test/Temp)
-# Make sure the directory is created during CMake time
-file(MAKE_DIRECTORY ${TEST_TEMP_DIR})
+get_filename_component(${PLUGIN_NAME}_PARENT_SOURCE_DIR "${${PLUGIN_NAME}_SOURCE_DIR}" DIRECTORY)
+get_filename_component(${PLUGIN_NAME}_PARENT_BINARY_DIR "${${PLUGIN_NAME}_BINARY_DIR}" DIRECTORY)
+get_filename_component(OrientationLib_PARENT_SOURCE_DIR "${OrientationLib_SOURCE_DIR}" DIRECTORY)
+get_filename_component(OrientationLib_PARENT_BINARY_DIR "${OrientationLib_BINARY_DIR}" DIRECTORY)
 
-
-configure_file(${${PLUGIN_NAME}Test_SOURCE_DIR}/TestFileLocations.h.in
-               ${${PLUGIN_NAME}Test_BINARY_DIR}/${PLUGIN_NAME}TestFileLocations.h @ONLY IMMEDIATE)
-
-configure_file(${SIMPLProj_SOURCE_DIR}/Resources/UnitTestSupport.hpp
-               ${${PLUGIN_NAME}Test_BINARY_DIR}/UnitTestSupport.hpp COPYONLY IMMEDIATE)
-
-
-set(${PLUGIN_NAME}_Link_Libs Qt5::Core H5Support SIMPLib OrientationLib)
-
-AddSIMPLUnitTest(TESTNAME ${PLUGIN_NAME}UnitTest
-                  SOURCES ${${PLUGIN_NAME}_SOURCE_DIR}/Test/UCSBUtilitiesFilterTest.cpp
-                  FOLDER "${PLUGIN_NAME}Plugin/Test"
-                  LINK_LIBRARIES ${${PLUGIN_NAME}_Link_Libs}
-                  INCLUDE_DIRS 
-                    ${${PLUGIN_NAME}Test_SOURCE_DIR}
-                    ${${PLUGIN_NAME}Test_BINARY_DIR}
-                    ${DREAM3DProj_SOURCE_DIR}/Source   # Needed for the OrienationLib
+SIMPL_GenerateUnitTestFile(PLUGIN_NAME ${PLUGIN_NAME}
+                           TEST_DATA_DIR ${${PLUGIN_NAME}_SOURCE_DIR}/Test/Data
+                           SOURCES ${TEST_NAMES}
+                           LINK_LIBRARIES Qt5::Core Qt5::Gui H5Support SIMPLib
+                           INCLUDE_DIRS ${${PLUGIN_NAME}_PARENT_SOURCE_DIR}
+                                        ${${PLUGIN_NAME}Test_SOURCE_DIR}
+                                        ${${PLUGIN_NAME}Test_BINARY_DIR}
+                                        ${${PLUGIN_NAME}_PARENT_BINARY_DIR}
+                                        ${OrientationLib_PARENT_SOURCE_DIR}
+                                        ${OrientationLib_PARENT_BINARY_DIR}
 )
 
-
-if(MSVC)
-#  set_source_files_properties(${${PLUGIN_NAME}Test_BINARY_DIR}/${PLUGIN_NAME}UnitTest.cpp PROPERTIES COMPILE_FLAGS /bigobj)
-endif()
