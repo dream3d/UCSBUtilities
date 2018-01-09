@@ -2,15 +2,19 @@ Copy Attribute Matrix {#copyattributematrix}
 =============
 
 ## Group (Subgroup) ##
+
 Core (Memory/Management)
 
 ## Description ##
+
 This **Filter** copies a user chosen **Attribute Matrx** to a new **Attribute Matrix** with a user defined name in the same **Data Container**. The **Attribute Matrix** will copy all of its **Attribute Arrays** as well.
 
 ## Parameters ##
+
 None
 
 ## Required Geometry ##
+
 Not Applicable
 
 ## Required Objects ##

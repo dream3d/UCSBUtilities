@@ -2,22 +2,27 @@ Input Crystal Compliances {#inputcrystalcompliances}
 =============
 
 ## Group (Subgroup) ##
+
 Generic (Crystallography)
 
 ## Description ##
+
 This **Filter** stores the _Crystal Compliance Matrix_ for each **Ensemble**, given the single crystal properties for the **Ensemble**. Currently the specified values will be used for every **Ensemble** present.
 
 The symmetry drop down menu is for convenience only (the full 6x6 matrix will be saved for each phase regardless of crystal structure).
 
 ## Parameters ##
+
 | Name             | Type | Description |
 |------------------|------|---------|
 | Compliance Values | float | 21 single crystal compliance values (s<sub>11</sub>, s<sub>12</sub>, s<sub>13</sub>, ... , s<sub>55</sub>, s<sub>56</sub>, s<sub>66</sub>) in units of 10<sup>-11</sup> Pa<sup>-1</sup> |
 
 ## Required Geometry ##
+
 Not Applicable
 
 ## Required Objects ##
+
 None
 
 ## Created Objects ##

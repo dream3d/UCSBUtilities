@@ -2,15 +2,19 @@ Find Elastic Modulus Mismatch {#findmodulusmismatch}
 ==========
 
 ## Group (Subgroup) ##
+
 Statistics Filters (Crystallographic)
 
 ## Description ##
+
 This filter computes the modulus difference between the two grains bounding each surface mesh triangle.
 
 ## Parameters ##
+
 None
 
 ## Required DataContainers ##
+
 + Volume
 + SurfaceMesh
 

@@ -2,15 +2,19 @@ Generate Misorientation Colors {#generatemisorientationcolors}
 =============
 
 ## Group (Subgroup) ##
+
 Processing (Crystallography)
 
 ## Description ##
+
 This **Filter** will generate colors based on the method developed by C. Schuh and S. Patala for cubic, hexagonal, tetragonal, or orthorhombic crystal structures (currently only the cubic high symmetry is working)<sup>[1]</sup>. Orientations are colored by _disorientation_ relative to a _reference orientation_. The user can enter a _Reference Orientation Axis_ and a _Reference Orientation Angle_ relative to the sample reference frame. The default reference orientation is the sample frame (misorientation from sample frame: 0<sup>o</sup> about [001]). The **Filter** also has the option to apply a black color to all "bad" **Elements**, as defined by a boolean _mask_ array, which can be generated using the [Threshold Objects](@ref multithresholdobjects) **Filter**.
 
 ### Important Implementation Notes ###
+
 The user should be aware of the crystal symmetry (Laue Group and Point Group) of their data. The **Filter** is only valid for certain point groups within a Laue group (See table below).
 
 ### Color Output Notes ###
+
 With other coloring methods, such as IPF, "bad" **Elements** which result from non-indexed EBSD scans can be colored with a black color. Since the misorientation coloring scheme uses all possible colors, marking voxels in an image in such a way that the voxels stand out is not possible.
 
 ### Crystal Symmetry Implementations ###
@@ -48,6 +52,7 @@ With other coloring methods, such as IPF, "bad" **Elements** which result from n
 -----
 
 ## Parameters ##
+
 | Name | Type | Description |
 |------|------| ----------- |
 | Reference Orientation Axis | float (3x) | The reference axis with respect to compute the disorientation |
@@ -55,6 +60,7 @@ With other coloring methods, such as IPF, "bad" **Elements** which result from n
 | Apply to Good Elements Only (Bad Elements Will Be Black) | bool | Whether to assign a black color to "bad" **Elements** |
 
 ## Required Geometry ##
+
 Not Applicable
 
 ## Required Objects ##
@@ -67,6 +73,7 @@ Not Applicable
 | **Ensemble Attribute Array** | CrystalStructures | uint32_t | (1) | Enumeration representing the crystal structure for each **Ensemble** |
 
 ## Created Objects ##
+
 | Type | Default Name | Type | Component Dimensions | Description |
 |------|--------------|-------------|---------|-----|
 | **Element Attribute Array** | MisorientationColors | uint8_t | (3) | The RGB colors encoded as unsigned chars |

@@ -2,9 +2,11 @@ Find Directional Moduli {#finddirectionalmoduli}
 ======
 
 ## Group (Subgroup) ##
+
 Statistics Filters (Crystallographic)
 
 ## Description ##
+
 This filter calculates the directional elastic modulus for each **Feature** given its average orientation, a user defined loading axis, and single crystal compliance values. To compute the directional modulus the compliance matrix is rotated to align it's x axis with the loading direction (assuming that the sample & quaternion reference frames are aligned). The directional modulus is 1/s11 (in the rotated compliance matrix).
 
 ## Parameters ##
@@ -16,9 +18,11 @@ This filter calculates the directional elastic modulus for each **Feature** give
 | Loading Z: | Double | Z component of the loading axis in the sample reference frame |
 
 ## Required DataContainers ##
+
 Voxel
 
 ## Required Objects ##
+
 | Type | Default Name | Description | Comment |
 |------|--------------|-------------|---------|
 | Feature | FeaturePhases | Phase Id (int) specifying the phase of the **Feature** | | 
