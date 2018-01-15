@@ -50,10 +50,27 @@ UCSBUtilitiesPlugin::~UCSBUtilitiesPlugin() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-QString UCSBUtilitiesPlugin::getPluginName()
+QString UCSBUtilitiesPlugin::getPluginFileName()
 {
-  return (UCSBUtilitiesConstants::UCSBUtilitiesPluginDisplayName);
+  return UCSBUtilitiesConstants::UCSBUtilitiesPluginFile;
 }
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+QString UCSBUtilitiesPlugin::getPluginDisplayName()
+{
+  return UCSBUtilitiesConstants::UCSBUtilitiesPluginDisplayName;
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+QString UCSBUtilitiesPlugin::getPluginBaseName()
+{
+  return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
+}
+
 
 // -----------------------------------------------------------------------------
 //
