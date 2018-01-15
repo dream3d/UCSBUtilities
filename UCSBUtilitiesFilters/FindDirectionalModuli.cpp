@@ -479,6 +479,14 @@ const QString FindDirectionalModuli::getGroupName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
+const QUuid FindDirectionalModuli::getUuid()
+{
+  return QUuid("{ce4e8767-d74e-52a1-b34c-7fe0d1efa3b9}");
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 const QString FindDirectionalModuli::getSubGroupName()
 { return SIMPL::FilterSubGroups::CrystallographyFilters; }
 

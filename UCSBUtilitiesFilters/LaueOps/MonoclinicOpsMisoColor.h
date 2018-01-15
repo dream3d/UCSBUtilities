@@ -32,7 +32,7 @@ class MonoclinicOpsMisoColor : public MonoclinicOps
 {
   public:
     SIMPL_SHARED_POINTERS(MonoclinicOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(MonoclinicOpsMisoColor, MonoclinicOpsMisoColor)
+     SIMPL_TYPE_MACRO_SUPER_OVERRIDE(MonoclinicOpsMisoColor, MonoclinicOpsMisoColor)
     SIMPL_STATIC_NEW_MACRO(MonoclinicOpsMisoColor)
 
     MonoclinicOpsMisoColor();

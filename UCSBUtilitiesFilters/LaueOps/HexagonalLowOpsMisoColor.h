@@ -32,7 +32,7 @@ class HexagonalLowOpsMisoColor : public HexagonalLowOps
 {
   public:
     SIMPL_SHARED_POINTERS(HexagonalLowOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(HexagonalLowOpsMisoColor, HexagonalLowOpsMisoColor)
+     SIMPL_TYPE_MACRO_SUPER_OVERRIDE(HexagonalLowOpsMisoColor, HexagonalLowOpsMisoColor)
     SIMPL_STATIC_NEW_MACRO(HexagonalLowOpsMisoColor)
 
     HexagonalLowOpsMisoColor();

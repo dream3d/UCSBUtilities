@@ -32,7 +32,7 @@ class OrthoRhombicOpsMisoColor : public OrthoRhombicOps
 {
   public:
     SIMPL_SHARED_POINTERS(OrthoRhombicOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(OrthoRhombicOpsMisoColor, OrthoRhombicOpsMisoColor)
+     SIMPL_TYPE_MACRO_SUPER_OVERRIDE(OrthoRhombicOpsMisoColor, OrthoRhombicOpsMisoColor)
     SIMPL_STATIC_NEW_MACRO(OrthoRhombicOpsMisoColor)
 
     OrthoRhombicOpsMisoColor();

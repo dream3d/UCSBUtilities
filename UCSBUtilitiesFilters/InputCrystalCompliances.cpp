@@ -294,6 +294,14 @@ const QString InputCrystalCompliances::getGroupName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
+const QUuid InputCrystalCompliances::getUuid()
+{
+  return QUuid("{436eab43-0531-5e56-9309-5931109a85ca}");
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 const QString InputCrystalCompliances::getSubGroupName()
 { return SIMPL::FilterSubGroups::CrystallographyFilters; }
 

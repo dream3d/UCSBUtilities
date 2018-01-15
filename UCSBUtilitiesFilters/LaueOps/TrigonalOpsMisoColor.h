@@ -32,7 +32,7 @@ class TrigonalOpsMisoColor : public TrigonalOps
 {
   public:
     SIMPL_SHARED_POINTERS(TrigonalOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(TrigonalOpsMisoColor, TrigonalOpsMisoColor)
+     SIMPL_TYPE_MACRO_SUPER_OVERRIDE(TrigonalOpsMisoColor, TrigonalOpsMisoColor)
     SIMPL_STATIC_NEW_MACRO(TrigonalOpsMisoColor)
 
     TrigonalOpsMisoColor();

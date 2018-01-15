@@ -260,6 +260,14 @@ const QString FindModulusMismatch::getGroupName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
+const QUuid FindModulusMismatch::getUuid()
+{
+  return QUuid("{a0b4c16f-bfb1-57cf-aba1-eb08b5486abb}");
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 const QString FindModulusMismatch::getSubGroupName()
 { return SIMPL::FilterSubGroups::CrystallographyFilters; }
 

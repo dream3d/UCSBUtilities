@@ -176,6 +176,14 @@ const QString CopyAttributeMatrix::getGroupName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
+const QUuid CopyAttributeMatrix::getUuid()
+{
+  return QUuid("{9bc962eb-f363-5caf-9f82-23a26be8ae2f}");
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 const QString CopyAttributeMatrix::getSubGroupName()
 { return SIMPL::FilterSubGroups::MemoryManagementFilters; }
 

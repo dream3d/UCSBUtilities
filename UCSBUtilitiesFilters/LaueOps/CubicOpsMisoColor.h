@@ -32,7 +32,7 @@ class CubicOpsMisoColor : public CubicOps
 {
   public:
     SIMPL_SHARED_POINTERS(CubicOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(CubicOpsMisoColor, CubicOpsMisoColor)
+     SIMPL_TYPE_MACRO_SUPER_OVERRIDE(CubicOpsMisoColor, CubicOpsMisoColor)
     SIMPL_STATIC_NEW_MACRO(CubicOpsMisoColor)
 
     CubicOpsMisoColor();

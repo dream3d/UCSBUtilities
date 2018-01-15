@@ -428,6 +428,14 @@ const QString GenerateMisorientationColors::getGroupName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
+const QUuid GenerateMisorientationColors::getUuid()
+{
+  return QUuid("{7152790d-26a4-571a-8fef-493120eced6d}");
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 const QString GenerateMisorientationColors::getSubGroupName()
 { return SIMPL::FilterSubGroups::CrystallographyFilters; }
 

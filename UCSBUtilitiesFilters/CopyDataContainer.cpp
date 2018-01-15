@@ -176,6 +176,14 @@ const QString CopyDataContainer::getGroupName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
+const QUuid CopyDataContainer::getUuid()
+{
+  return QUuid("{ac8d51d8-9167-5628-a060-95a8863a76b1}");
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 const QString CopyDataContainer::getSubGroupName()
 { return SIMPL::FilterSubGroups::MemoryManagementFilters; }
 

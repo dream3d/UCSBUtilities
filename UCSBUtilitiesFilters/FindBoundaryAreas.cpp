@@ -202,6 +202,14 @@ const QString FindBoundaryAreas::getGroupName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
+const QUuid FindBoundaryAreas::getUuid()
+{
+  return QUuid("{0cdb2c7f-55cb-5fc7-9108-b0c6826bd803}");
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
 const QString FindBoundaryAreas::getSubGroupName()
 { return SIMPL::FilterSubGroups::MiscFilters; }
 

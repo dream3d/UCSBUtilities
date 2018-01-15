@@ -31,7 +31,7 @@ class TetragonalLowOpsMisoColor : public TetragonalLowOps
 {
   public:
     SIMPL_SHARED_POINTERS(TetragonalLowOpsMisoColor)
-    SIMPL_TYPE_MACRO_SUPER(TetragonalLowOpsMisoColor, TetragonalLowOpsMisoColor)
+     SIMPL_TYPE_MACRO_SUPER_OVERRIDE(TetragonalLowOpsMisoColor, TetragonalLowOpsMisoColor)
     SIMPL_STATIC_NEW_MACRO(TetragonalLowOpsMisoColor)
 
     TetragonalLowOpsMisoColor();
