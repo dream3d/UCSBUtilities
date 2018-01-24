@@ -130,7 +130,7 @@ void CopyAttributeMatrix::execute()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-AbstractFilter::Pointer CopyAttributeMatrix::newFilterInstance(bool copyFilterParameters)
+AbstractFilter::Pointer CopyAttributeMatrix::newFilterInstance(bool copyFilterParameters) const
 {
   CopyAttributeMatrix::Pointer filter = CopyAttributeMatrix::New();
   if(true == copyFilterParameters)
@@ -143,7 +143,7 @@ AbstractFilter::Pointer CopyAttributeMatrix::newFilterInstance(bool copyFilterPa
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeMatrix::getCompiledLibraryName()
+const QString CopyAttributeMatrix::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -151,7 +151,7 @@ const QString CopyAttributeMatrix::getCompiledLibraryName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeMatrix::getBrandingString()
+const QString CopyAttributeMatrix::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -159,7 +159,7 @@ const QString CopyAttributeMatrix::getBrandingString()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeMatrix::getFilterVersion()
+const QString CopyAttributeMatrix::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -170,7 +170,7 @@ const QString CopyAttributeMatrix::getFilterVersion()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeMatrix::getGroupName()
+const QString CopyAttributeMatrix::getGroupName() const
 { return SIMPL::FilterGroups::CoreFilters; }
 
 // -----------------------------------------------------------------------------
@@ -184,11 +184,11 @@ const QUuid CopyAttributeMatrix::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeMatrix::getSubGroupName()
+const QString CopyAttributeMatrix::getSubGroupName() const
 { return SIMPL::FilterSubGroups::MemoryManagementFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeMatrix::getHumanLabel()
+const QString CopyAttributeMatrix::getHumanLabel() const
 { return "Copy Attribute Matrix"; }

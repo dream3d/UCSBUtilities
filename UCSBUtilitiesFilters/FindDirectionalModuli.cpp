@@ -433,7 +433,7 @@ void FindDirectionalModuli::execute()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-AbstractFilter::Pointer FindDirectionalModuli::newFilterInstance(bool copyFilterParameters)
+AbstractFilter::Pointer FindDirectionalModuli::newFilterInstance(bool copyFilterParameters) const
 {
   FindDirectionalModuli::Pointer filter = FindDirectionalModuli::New();
   if(true == copyFilterParameters)
@@ -446,7 +446,7 @@ AbstractFilter::Pointer FindDirectionalModuli::newFilterInstance(bool copyFilter
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindDirectionalModuli::getCompiledLibraryName()
+const QString FindDirectionalModuli::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -454,7 +454,7 @@ const QString FindDirectionalModuli::getCompiledLibraryName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindDirectionalModuli::getBrandingString()
+const QString FindDirectionalModuli::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -462,7 +462,7 @@ const QString FindDirectionalModuli::getBrandingString()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindDirectionalModuli::getFilterVersion()
+const QString FindDirectionalModuli::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -472,7 +472,7 @@ const QString FindDirectionalModuli::getFilterVersion()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindDirectionalModuli::getGroupName()
+const QString FindDirectionalModuli::getGroupName() const
 { return SIMPL::FilterGroups::StatisticsFilters; }
 
 
@@ -487,13 +487,13 @@ const QUuid FindDirectionalModuli::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindDirectionalModuli::getSubGroupName()
+const QString FindDirectionalModuli::getSubGroupName() const
 { return SIMPL::FilterSubGroups::CrystallographyFilters; }
 
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindDirectionalModuli::getHumanLabel()
+const QString FindDirectionalModuli::getHumanLabel() const
 { return "Find Directional Moduli"; }
 

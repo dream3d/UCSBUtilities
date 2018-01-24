@@ -143,7 +143,7 @@ void ClearDataMask::execute()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-AbstractFilter::Pointer ClearDataMask::newFilterInstance(bool copyFilterParameters)
+AbstractFilter::Pointer ClearDataMask::newFilterInstance(bool copyFilterParameters) const
 {
   ClearDataMask::Pointer filter = ClearDataMask::New();
   if(true == copyFilterParameters)
@@ -156,7 +156,7 @@ AbstractFilter::Pointer ClearDataMask::newFilterInstance(bool copyFilterParamete
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString ClearDataMask::getCompiledLibraryName()
+const QString ClearDataMask::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -164,7 +164,7 @@ const QString ClearDataMask::getCompiledLibraryName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString ClearDataMask::getBrandingString()
+const QString ClearDataMask::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -172,7 +172,7 @@ const QString ClearDataMask::getBrandingString()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString ClearDataMask::getFilterVersion()
+const QString ClearDataMask::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -183,7 +183,7 @@ const QString ClearDataMask::getFilterVersion()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString ClearDataMask::getGroupName()
+const QString ClearDataMask::getGroupName() const
 { return SIMPL::FilterGroups::ProcessingFilters; }
 
 // -----------------------------------------------------------------------------
@@ -197,11 +197,11 @@ const QUuid ClearDataMask::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString ClearDataMask::getSubGroupName()
+const QString ClearDataMask::getSubGroupName() const
 { return SIMPL::FilterSubGroups::CleanupFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString ClearDataMask::getHumanLabel()
+const QString ClearDataMask::getHumanLabel() const
 { return "Clear Data (Mask)"; }

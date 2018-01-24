@@ -383,7 +383,7 @@ void GenerateMisorientationColors::execute()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-AbstractFilter::Pointer GenerateMisorientationColors::newFilterInstance(bool copyFilterParameters)
+AbstractFilter::Pointer GenerateMisorientationColors::newFilterInstance(bool copyFilterParameters) const
 {
   GenerateMisorientationColors::Pointer filter = GenerateMisorientationColors::New();
   if(true == copyFilterParameters)
@@ -396,7 +396,7 @@ AbstractFilter::Pointer GenerateMisorientationColors::newFilterInstance(bool cop
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString GenerateMisorientationColors::getCompiledLibraryName()
+const QString GenerateMisorientationColors::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -404,7 +404,7 @@ const QString GenerateMisorientationColors::getCompiledLibraryName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString GenerateMisorientationColors::getBrandingString()
+const QString GenerateMisorientationColors::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -412,7 +412,7 @@ const QString GenerateMisorientationColors::getBrandingString()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString GenerateMisorientationColors::getFilterVersion()
+const QString GenerateMisorientationColors::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -422,7 +422,7 @@ const QString GenerateMisorientationColors::getFilterVersion()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString GenerateMisorientationColors::getGroupName()
+const QString GenerateMisorientationColors::getGroupName() const
 { return SIMPL::FilterGroups::ProcessingFilters; }
 
 // -----------------------------------------------------------------------------
@@ -436,11 +436,11 @@ const QUuid GenerateMisorientationColors::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString GenerateMisorientationColors::getSubGroupName()
+const QString GenerateMisorientationColors::getSubGroupName() const
 { return SIMPL::FilterSubGroups::CrystallographyFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString GenerateMisorientationColors::getHumanLabel()
+const QString GenerateMisorientationColors::getHumanLabel() const
 { return "Generate Misorientation Colors"; }

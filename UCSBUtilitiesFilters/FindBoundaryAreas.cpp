@@ -157,7 +157,7 @@ void FindBoundaryAreas::execute()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-AbstractFilter::Pointer FindBoundaryAreas::newFilterInstance(bool copyFilterParameters)
+AbstractFilter::Pointer FindBoundaryAreas::newFilterInstance(bool copyFilterParameters) const
 {
   FindBoundaryAreas::Pointer filter = FindBoundaryAreas::New();
   if(true == copyFilterParameters)
@@ -170,7 +170,7 @@ AbstractFilter::Pointer FindBoundaryAreas::newFilterInstance(bool copyFilterPara
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindBoundaryAreas::getCompiledLibraryName()
+const QString FindBoundaryAreas::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -178,7 +178,7 @@ const QString FindBoundaryAreas::getCompiledLibraryName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindBoundaryAreas::getBrandingString()
+const QString FindBoundaryAreas::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -186,7 +186,7 @@ const QString FindBoundaryAreas::getBrandingString()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindBoundaryAreas::getFilterVersion()
+const QString FindBoundaryAreas::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -196,7 +196,7 @@ const QString FindBoundaryAreas::getFilterVersion()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindBoundaryAreas::getGroupName()
+const QString FindBoundaryAreas::getGroupName() const
 { return SIMPL::FilterGroups::SurfaceMeshingFilters; }
 
 // -----------------------------------------------------------------------------
@@ -210,12 +210,12 @@ const QUuid FindBoundaryAreas::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindBoundaryAreas::getSubGroupName()
+const QString FindBoundaryAreas::getSubGroupName() const
 { return SIMPL::FilterSubGroups::MiscFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindBoundaryAreas::getHumanLabel()
+const QString FindBoundaryAreas::getHumanLabel() const
 { return "Find Face Feature Boundary Areas"; }
 

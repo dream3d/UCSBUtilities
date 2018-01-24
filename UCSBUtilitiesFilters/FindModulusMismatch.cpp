@@ -213,7 +213,7 @@ void FindModulusMismatch::execute()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-AbstractFilter::Pointer FindModulusMismatch::newFilterInstance(bool copyFilterParameters)
+AbstractFilter::Pointer FindModulusMismatch::newFilterInstance(bool copyFilterParameters) const
 {
   FindModulusMismatch::Pointer filter = FindModulusMismatch::New();
   if(true == copyFilterParameters)
@@ -226,7 +226,7 @@ AbstractFilter::Pointer FindModulusMismatch::newFilterInstance(bool copyFilterPa
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindModulusMismatch::getCompiledLibraryName()
+const QString FindModulusMismatch::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -234,7 +234,7 @@ const QString FindModulusMismatch::getCompiledLibraryName()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindModulusMismatch::getBrandingString()
+const QString FindModulusMismatch::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -242,7 +242,7 @@ const QString FindModulusMismatch::getBrandingString()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindModulusMismatch::getFilterVersion()
+const QString FindModulusMismatch::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -253,7 +253,7 @@ const QString FindModulusMismatch::getFilterVersion()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindModulusMismatch::getGroupName()
+const QString FindModulusMismatch::getGroupName() const
 { return SIMPL::FilterGroups::StatisticsFilters; }
 
 
@@ -268,13 +268,13 @@ const QUuid FindModulusMismatch::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindModulusMismatch::getSubGroupName()
+const QString FindModulusMismatch::getSubGroupName() const
 { return SIMPL::FilterSubGroups::CrystallographyFilters; }
 
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindModulusMismatch::getHumanLabel()
+const QString FindModulusMismatch::getHumanLabel() const
 { return "Find Elastic Modulus Mismatch"; }
 
