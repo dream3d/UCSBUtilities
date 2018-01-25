@@ -67,15 +67,14 @@ public:
    * this FilterParameter subclass
    * @return
    */
-  QString getWidgetType();
+    QString getWidgetType() const override;
 
+  protected:
+    FloatVec4FilterParameter();
 
-protected:
-  FloatVec4FilterParameter();
-
-private:
-  FloatVec4FilterParameter(const FloatVec4FilterParameter&) = delete; // Copy Constructor Not Implemented
-  void operator=(const FloatVec4FilterParameter&) = delete;           // Operator '=' Not Implemented
+  private:
+    FloatVec4FilterParameter(const FloatVec4FilterParameter&) = delete; // Copy Constructor Not Implemented
+    void operator=(const FloatVec4FilterParameter&) = delete;           // Operator '=' Not Implemented
 };
 
 #endif /* _FloatVec4FilterParameter_H_ */

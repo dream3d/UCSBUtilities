@@ -126,29 +126,29 @@ public:
    * this FilterParameter subclass
    * @return
    */
-  QString getWidgetType();
+    QString getWidgetType() const override;
 
-  /**
-   * @brief readJson
-   * @return
-   */
-  void readJson(const QJsonObject &json);
+    /**
+     * @brief readJson
+     * @return
+     */
+    void readJson(const QJsonObject& json);
 
-  /**
-   * @brief writeJson
-   * @return
-   */
-  void writeJson(QJsonObject &json);
+    /**
+     * @brief writeJson
+     * @return
+     */
+    void writeJson(QJsonObject& json) override;
 
-  SIMPL_INSTANCE_PROPERTY(SetterCallbackType, SetterCallback)
-  SIMPL_INSTANCE_PROPERTY(GetterCallbackType, GetterCallback)
+    SIMPL_INSTANCE_PROPERTY(SetterCallbackType, SetterCallback)
+    SIMPL_INSTANCE_PROPERTY(GetterCallbackType, GetterCallback)
 
-protected:
-  Symmetric6x6FilterParameter();
+  protected:
+    Symmetric6x6FilterParameter();
 
-private:
-  Symmetric6x6FilterParameter(const Symmetric6x6FilterParameter&) = delete; // Copy Constructor Not Implemented
-  void operator=(const Symmetric6x6FilterParameter&) = delete;              // Operator '=' Not Implemented
+  private:
+    Symmetric6x6FilterParameter(const Symmetric6x6FilterParameter&) = delete; // Copy Constructor Not Implemented
+    void operator=(const Symmetric6x6FilterParameter&) = delete;              // Operator '=' Not Implemented
 };
 
 #endif /* _Symmetric6x6FilterParameter_H_ */

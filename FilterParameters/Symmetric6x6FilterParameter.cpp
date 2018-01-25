@@ -55,7 +55,7 @@ Symmetric6x6FilterParameter::Pointer Symmetric6x6FilterParameter::New(const QStr
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-QString Symmetric6x6FilterParameter::getWidgetType()
+QString Symmetric6x6FilterParameter::getWidgetType() const
 {
   return QString("Symmetric6x6Widget");
 }
