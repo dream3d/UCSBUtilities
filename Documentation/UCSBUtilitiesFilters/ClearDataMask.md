@@ -1,4 +1,4 @@
-Clear Data (Mask) {#cleardatamask}
+Clear Data (Mask) 
 =============
 
 ## Group (Subgroup) ##

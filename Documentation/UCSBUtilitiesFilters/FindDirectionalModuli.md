@@ -1,4 +1,4 @@
-Find Directional Moduli {#finddirectionalmoduli}
+Find Directional Moduli 
 ======
 
 ## Group (Subgroup) ##

@@ -1,4 +1,4 @@
-Generate Misorientation Colors {#generatemisorientationcolors}
+Generate Misorientation Colors 
 =============
 
 ## Group (Subgroup) ##
@@ -19,7 +19,7 @@ With other coloring methods, such as IPF, "bad" **Elements** which result from n
 
 ### Crystal Symmetry Implementations ###
 
-|Crystal Symmetry (Laue) | Hermann–Mauguin  Symbol | Schoenflies Symbol | Laue Class | Implemented  (Legend) |
+|Crystal Symmetry (Laue) | Hermann   Mauguin  Symbol | Schoenflies Symbol | Laue Class | Implemented  (Legend) |
 |------------------------|-------------------------|-------------------| -----------|-----------------------|
 | Triclinic | 1, -1  |  C1, C1 | -1 | Not Implemented|
 | Monoclinic | 2, m, 2/m | C2, Cs, C2h | 2/m | Not Implemented |
@@ -42,12 +42,10 @@ With other coloring methods, such as IPF, "bad" **Elements** which result from n
 -----
 
 ![Small IN100 courtesy of [2] showing a generally random texture](Images/Small_IN100_Miso_90.png)
-@image latex Images/Small_IN100_Miso_90.png "Small IN100 courtesy of [2] showing a generally random texture" width=6in
 
 -----
 
 ![Interstitial Free (IF) Steel courtesy of [3]](Images/Miso_fw-ar-IF1-avtr12-corr.png)
-@image latex Images/Miso_fw-ar-IF1-avtr12-corr.png "Interstitial Free (IF) Steel courtesy of [3]" width=6in
 
 -----
 
@@ -82,7 +80,7 @@ Not Applicable
 
 [1]: S. Patala, J. Mason, C. Schuh, 2012. Improved representations of misorientation information for grain boundary science and engineering. Prog Mater Sci. 57, 1383-1425.
 
-[2]: M. Groeber, B.K. Haley, M.D. Uchic, D.M. Dimiduk, S. Ghosh, 3D reconstruction and characterization of polycrystalline microstructures using a FIB–SEM system Data Sets. Materials Characterization 2006, 57:259—-273.
+[2]: M. Groeber, B.K. Haley, M.D. Uchic, D.M. Dimiduk, S. Ghosh, 3D reconstruction and characterization of polycrystalline microstructures using a FIB   SEM system Data Sets. Materials Characterization 2006, 57:259   -273.
 
 [3]: N. Allain-Bonasso, F. Wagner, S. Berbenni, D.P. Field, A study of the heterogeneity of plastic deformation in IF steel by EBSD, Materials Science and Engineering: A, Volume 548, 30 June 2012, Pages 56-63, ISSN 0921-5093, http://dx.doi.org/10.1016/j.msea.2012.03.068.
 (http://www.sciencedirect.com/science/article/pii/S0921509312004388)

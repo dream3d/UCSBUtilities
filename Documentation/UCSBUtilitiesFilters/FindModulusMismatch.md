@@ -1,4 +1,4 @@
-Find Elastic Modulus Mismatch {#findmodulusmismatch}
+Find Elastic Modulus Mismatch 
 ==========
 
 ## Group (Subgroup) ##

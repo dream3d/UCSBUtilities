@@ -1,4 +1,4 @@
-Generate Triangle Areas {#findboundaryareas}
+Generate Triangle Areas 
 ======
 
 ## Group (Subgroup) ##

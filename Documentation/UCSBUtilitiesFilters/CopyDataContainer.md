@@ -1,4 +1,4 @@
-Copy Data Container{#copydatacontainer}
+Copy Data Container
 =============
 
 ## Group (Subgroup) ##

@@ -1,4 +1,4 @@
-Copy Attribute Matrix {#copyattributematrix}
+Copy Attribute Matrix 
 =============
 
 ## Group (Subgroup) ##

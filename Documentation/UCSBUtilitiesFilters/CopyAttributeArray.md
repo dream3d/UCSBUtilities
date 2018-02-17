@@ -1,4 +1,4 @@
-Copy Attribute Array {#copyattributearray}
+Copy Attribute Array 
 =============
 
 ## Group (Subgroup) ##
