@@ -146,7 +146,7 @@ void FindModulusMismatch::dataCheckSurfaceMesh()
   setErrorCondition(0);
   setWarningCondition(0);
 
-  DataContainer::Pointer sm = getDataContainerArray()->getPrereqDataContainer<AbstractFilter>(this, getSurfaceMeshFaceLabelsArrayPath().getDataContainerName());
+  DataContainer::Pointer sm = getDataContainerArray()->getPrereqDataContainer(this, getSurfaceMeshFaceLabelsArrayPath().getDataContainerName());
   if(getErrorCondition() < 0 || nullptr == sm.get()) { return; }
 
   QVector<size_t> dims(1, 2);

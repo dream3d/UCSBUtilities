@@ -92,7 +92,7 @@ void CopyDataContainer::dataCheck()
     notifyErrorMessage(getHumanLabel(), ss, getErrorCondition());
   }
 
-  DataContainer::Pointer dc = getDataContainerArray()->getPrereqDataContainer<AbstractFilter>(this, getSelectedDataContainerName());
+  DataContainer::Pointer dc = getDataContainerArray()->getPrereqDataContainer(this, getSelectedDataContainerName());
   if(getErrorCondition() < 0) { return; }
 
   DataContainer::Pointer dcNew = dc->deepCopy(getInPreflight());
