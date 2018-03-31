@@ -28,12 +28,10 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-CopyDataContainer::CopyDataContainer() :
-  AbstractFilter(),
-  m_SelectedDataContainerName(""),
-  m_NewDataContainerName("")
+CopyDataContainer::CopyDataContainer()
+: m_SelectedDataContainerName("")
+, m_NewDataContainerName("")
 {
-  setupFilterParameters();
 }
 
 // -----------------------------------------------------------------------------

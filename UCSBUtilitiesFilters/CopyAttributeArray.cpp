@@ -28,12 +28,10 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-CopyAttributeArray::CopyAttributeArray() :
-  AbstractFilter(),
-  m_SelectedArrayPath("", "", ""),
-  m_NewArrayName("")
+CopyAttributeArray::CopyAttributeArray()
+: m_SelectedArrayPath("", "", "")
+, m_NewArrayName("")
 {
-  setupFilterParameters();
 }
 
 // -----------------------------------------------------------------------------

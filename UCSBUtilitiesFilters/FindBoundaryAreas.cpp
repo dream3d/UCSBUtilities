@@ -29,16 +29,14 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-FindBoundaryAreas::FindBoundaryAreas() :
-  AbstractFilter(),
-  m_SurfaceMeshTriangleAreasArrayPath(SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceAttributeMatrixName, SIMPL::FaceData::SurfaceMeshFaceAreas),
-  m_SurfaceMeshFeatureFaceIdsArrayPath(SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceAttributeMatrixName, SIMPL::CellData::FeatureIds),
-  m_SurfaceMeshBoundaryAreasArrayPath(SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceFeatureAttributeMatrixName, "BoundaryAreas"),
-  m_SurfaceMeshTriangleAreas(nullptr),
-  m_SurfaceMeshFeatureFaceIds(nullptr),
-  m_SurfaceMeshBoundaryAreas(nullptr)
+FindBoundaryAreas::FindBoundaryAreas()
+: m_SurfaceMeshTriangleAreasArrayPath(SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceAttributeMatrixName, SIMPL::FaceData::SurfaceMeshFaceAreas)
+, m_SurfaceMeshFeatureFaceIdsArrayPath(SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceAttributeMatrixName, SIMPL::CellData::FeatureIds)
+, m_SurfaceMeshBoundaryAreasArrayPath(SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceFeatureAttributeMatrixName, "BoundaryAreas")
+, m_SurfaceMeshTriangleAreas(nullptr)
+, m_SurfaceMeshFeatureFaceIds(nullptr)
+, m_SurfaceMeshBoundaryAreas(nullptr)
 {
-  setupFilterParameters();
 }
 
 // -----------------------------------------------------------------------------

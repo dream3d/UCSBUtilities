@@ -37,18 +37,17 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-FindDirectionalModuli::FindDirectionalModuli() :
-  AbstractFilter(),
-  m_FeaturePhasesArrayPath("", "", ""),
-  m_CrystalStructuresArrayPath("", "", ""),
-  m_CrystalCompliancesArrayPath("", "", ""),
-  m_AvgQuatsArrayPath("", "", ""),
-  m_DirectionalModuliArrayName("DirectionalModuli"),
-  m_DirectionalModuli(nullptr),
-  m_FeaturePhases(nullptr),
-  m_AvgQuats(nullptr),
-  m_CrystalStructures(nullptr),
-  m_CrystalCompliances(nullptr)
+FindDirectionalModuli::FindDirectionalModuli()
+: m_FeaturePhasesArrayPath("", "", "")
+, m_CrystalStructuresArrayPath("", "", "")
+, m_CrystalCompliancesArrayPath("", "", "")
+, m_AvgQuatsArrayPath("", "", "")
+, m_DirectionalModuliArrayName("DirectionalModuli")
+, m_DirectionalModuli(nullptr)
+, m_FeaturePhases(nullptr)
+, m_AvgQuats(nullptr)
+, m_CrystalStructures(nullptr)
+, m_CrystalCompliances(nullptr)
 {
   m_LoadingDirection.x = 0.0f;
   m_LoadingDirection.y = 0.0f;
@@ -56,7 +55,6 @@ FindDirectionalModuli::FindDirectionalModuli() :
 
   m_OrientationOps = LaueOps::getOrientationOpsVector();
 
-  setupFilterParameters();
 }
 
 // -----------------------------------------------------------------------------

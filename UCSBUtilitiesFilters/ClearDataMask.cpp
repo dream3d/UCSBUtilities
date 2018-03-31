@@ -27,12 +27,10 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-ClearDataMask::ClearDataMask() :
-  AbstractFilter(),
-  m_MaskArrayPath("", "", ""),
-  m_Mask(nullptr)
+ClearDataMask::ClearDataMask()
+: m_MaskArrayPath("", "", "")
+, m_Mask(nullptr)
 {
-  setupFilterParameters();
 }
 
 // -----------------------------------------------------------------------------

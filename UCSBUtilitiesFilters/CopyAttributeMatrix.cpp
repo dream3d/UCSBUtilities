@@ -28,12 +28,10 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-CopyAttributeMatrix::CopyAttributeMatrix() :
-  AbstractFilter(),
-  m_SelectedAttributeMatrixPath("", "", ""),
-  m_NewAttributeMatrix("")
+CopyAttributeMatrix::CopyAttributeMatrix()
+: m_SelectedAttributeMatrixPath("", "", "")
+, m_NewAttributeMatrix("")
 {
-  setupFilterParameters();
 }
 
 // -----------------------------------------------------------------------------

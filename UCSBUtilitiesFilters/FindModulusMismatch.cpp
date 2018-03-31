@@ -78,15 +78,13 @@ class FindModulusMismatchImpl
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-FindModulusMismatch::FindModulusMismatch() :
-  AbstractFilter(),
-  m_ModuliArrayPath(SIMPL::Defaults::ImageDataContainerName, SIMPL::Defaults::CellFeatureAttributeMatrixName, "ElasticModuli"),
-  m_SurfaceMeshFaceLabelsArrayPath(SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceAttributeMatrixName, SIMPL::FaceData::SurfaceMeshFaceLabels),
-  m_SurfaceMeshDeltaModulusArrayName("SurfaceMeshDeltaModulus"),
-  m_Moduli(nullptr),
-  m_SurfaceMeshFaceLabels(nullptr)
+FindModulusMismatch::FindModulusMismatch()
+: m_ModuliArrayPath(SIMPL::Defaults::ImageDataContainerName, SIMPL::Defaults::CellFeatureAttributeMatrixName, "ElasticModuli")
+, m_SurfaceMeshFaceLabelsArrayPath(SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceAttributeMatrixName, SIMPL::FaceData::SurfaceMeshFaceLabels)
+, m_SurfaceMeshDeltaModulusArrayName("SurfaceMeshDeltaModulus")
+, m_Moduli(nullptr)
+, m_SurfaceMeshFaceLabels(nullptr)
 {
-  setupFilterParameters();
 }
 
 // -----------------------------------------------------------------------------

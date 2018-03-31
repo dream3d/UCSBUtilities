@@ -162,27 +162,25 @@ class GenerateMisorientationColorsImpl
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-GenerateMisorientationColors::GenerateMisorientationColors() :
-  AbstractFilter(),
-  m_ReferenceAngle(0.0f),
-  m_CellPhasesArrayPath("", "", ""),
-  m_QuatsArrayPath("", "", ""),
-  m_CrystalStructuresArrayPath("", "", ""),
-  m_GoodVoxelsArrayPath("", "", ""),
-  m_MisorientationColorArrayName(SIMPL::CellData::MisorientationColor),
-  m_UseGoodVoxels(false),
-  m_CellPhases(nullptr),
-  m_Quats(nullptr),
-  m_CrystalStructures(nullptr),
-  m_GoodVoxels(nullptr),
-  m_MisorientationColor(nullptr)
+GenerateMisorientationColors::GenerateMisorientationColors()
+: m_ReferenceAngle(0.0f)
+, m_CellPhasesArrayPath("", "", "")
+, m_QuatsArrayPath("", "", "")
+, m_CrystalStructuresArrayPath("", "", "")
+, m_GoodVoxelsArrayPath("", "", "")
+, m_MisorientationColorArrayName(SIMPL::CellData::MisorientationColor)
+, m_UseGoodVoxels(false)
+, m_CellPhases(nullptr)
+, m_Quats(nullptr)
+, m_CrystalStructures(nullptr)
+, m_GoodVoxels(nullptr)
+, m_MisorientationColor(nullptr)
 {
   m_ReferenceAxis.x = 0.0f;
   m_ReferenceAxis.y = 0.0f;
   m_ReferenceAxis.z = 1.0f;
   m_ReferenceAngle = 0.0f;
 
-  setupFilterParameters();
 }
 
 // -----------------------------------------------------------------------------
