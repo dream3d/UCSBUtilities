@@ -163,7 +163,7 @@ class FindModulusMismatch : public AbstractFilter
   public:
     FindModulusMismatch(const FindModulusMismatch&) = delete; // Copy Constructor Not Implemented
     FindModulusMismatch(FindModulusMismatch&&) = delete;      // Move Constructor
-    FindModulusMismatch& operator=(const FindModulusMismatch&) = delete; // Copy Assignment
+    FindModulusMismatch& operator=(const FindModulusMismatch&) = delete; // Copy Assignment Not Implemented
     FindModulusMismatch& operator=(FindModulusMismatch&&) = delete;      // Move Assignment
 };
 

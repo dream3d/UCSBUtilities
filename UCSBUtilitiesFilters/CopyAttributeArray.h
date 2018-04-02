@@ -147,7 +147,7 @@ class CopyAttributeArray : public AbstractFilter
   public:
     CopyAttributeArray(const CopyAttributeArray&) = delete; // Copy Constructor Not Implemented
     CopyAttributeArray(CopyAttributeArray&&) = delete;      // Move Constructor
-    CopyAttributeArray& operator=(const CopyAttributeArray&) = delete; // Copy Assignment
+    CopyAttributeArray& operator=(const CopyAttributeArray&) = delete; // Copy Assignment Not Implemented
     CopyAttributeArray& operator=(CopyAttributeArray&&) = delete;      // Move Assignment
 };
 

@@ -147,7 +147,7 @@ class CopyAttributeMatrix : public AbstractFilter
   public:
     CopyAttributeMatrix(const CopyAttributeMatrix&) = delete; // Copy Constructor Not Implemented
     CopyAttributeMatrix(CopyAttributeMatrix&&) = delete;      // Move Constructor
-    CopyAttributeMatrix& operator=(const CopyAttributeMatrix&) = delete; // Copy Assignment
+    CopyAttributeMatrix& operator=(const CopyAttributeMatrix&) = delete; // Copy Assignment Not Implemented
     CopyAttributeMatrix& operator=(CopyAttributeMatrix&&) = delete;      // Move Assignment
 };
 

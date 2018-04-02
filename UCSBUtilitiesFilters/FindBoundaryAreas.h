@@ -163,7 +163,7 @@ class FindBoundaryAreas : public AbstractFilter
   public:
     FindBoundaryAreas(const FindBoundaryAreas&) = delete; // Copy Constructor Not Implemented
     FindBoundaryAreas(FindBoundaryAreas&&) = delete;      // Move Constructor
-    FindBoundaryAreas& operator=(const FindBoundaryAreas&) = delete; // Copy Assignment
+    FindBoundaryAreas& operator=(const FindBoundaryAreas&) = delete; // Copy Assignment Not Implemented
     FindBoundaryAreas& operator=(FindBoundaryAreas&&) = delete;      // Move Assignment
 };
 

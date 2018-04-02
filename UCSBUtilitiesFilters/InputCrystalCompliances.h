@@ -149,7 +149,7 @@ class InputCrystalCompliances : public AbstractFilter
   public:
     InputCrystalCompliances(const InputCrystalCompliances&) = delete; // Copy Constructor Not Implemented
     InputCrystalCompliances(InputCrystalCompliances&&) = delete;      // Move Constructor
-    InputCrystalCompliances& operator=(const InputCrystalCompliances&) = delete; // Copy Assignment
+    InputCrystalCompliances& operator=(const InputCrystalCompliances&) = delete; // Copy Assignment Not Implemented
     InputCrystalCompliances& operator=(InputCrystalCompliances&&) = delete;      // Move Assignment
 };
 

@@ -173,7 +173,7 @@ class GenerateMisorientationColors : public AbstractFilter
   public:
     GenerateMisorientationColors(const GenerateMisorientationColors&) = delete; // Copy Constructor Not Implemented
     GenerateMisorientationColors(GenerateMisorientationColors&&) = delete;      // Move Constructor
-    GenerateMisorientationColors& operator=(const GenerateMisorientationColors&) = delete; // Copy Assignment
+    GenerateMisorientationColors& operator=(const GenerateMisorientationColors&) = delete; // Copy Assignment Not Implemented
     GenerateMisorientationColors& operator=(GenerateMisorientationColors&&) = delete;      // Move Assignment
 };
 

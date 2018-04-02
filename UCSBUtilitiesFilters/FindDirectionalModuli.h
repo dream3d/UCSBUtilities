@@ -186,7 +186,7 @@ class FindDirectionalModuli : public AbstractFilter
   public:
     FindDirectionalModuli(const FindDirectionalModuli&) = delete; // Copy Constructor Not Implemented
     FindDirectionalModuli(FindDirectionalModuli&&) = delete;      // Move Constructor
-    FindDirectionalModuli& operator=(const FindDirectionalModuli&) = delete; // Copy Assignment
+    FindDirectionalModuli& operator=(const FindDirectionalModuli&) = delete; // Copy Assignment Not Implemented
     FindDirectionalModuli& operator=(FindDirectionalModuli&&) = delete;      // Move Assignment
 };
 

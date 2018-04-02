@@ -145,8 +145,6 @@ void TestReorderCopy()
 
   private:
     UCSBUtilitiesFilterTest(const UCSBUtilitiesFilterTest&); // Copy Constructor Not Implemented
-    void operator=(const UCSBUtilitiesFilterTest&); // Operator '=' Not Implemented
-
-
+    void operator=(const UCSBUtilitiesFilterTest&);          // Move assignment Not Implemented
 };
 

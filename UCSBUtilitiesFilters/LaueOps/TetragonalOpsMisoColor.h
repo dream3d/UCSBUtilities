@@ -52,7 +52,7 @@ class TetragonalOpsMisoColor : public TetragonalOps
 
   private:
     TetragonalOpsMisoColor(const TetragonalOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    void operator=(const TetragonalOpsMisoColor&) = delete;         // Operator '=' Not Implemented
+    void operator=(const TetragonalOpsMisoColor&) = delete;         // Move assignment Not Implemented
 };
 
 #endif /* TetragonalOpsMisoColor_H_ */

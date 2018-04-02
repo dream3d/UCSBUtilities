@@ -146,7 +146,7 @@ class ClearDataMask : public AbstractFilter
   public:
     ClearDataMask(const ClearDataMask&) = delete;  // Copy Constructor Not Implemented
     ClearDataMask(ClearDataMask&&) = delete;       // Move Constructor
-    ClearDataMask& operator=(const ClearDataMask&) = delete; // Copy Assignment
+    ClearDataMask& operator=(const ClearDataMask&) = delete; // Copy Assignment Not Implemented
     ClearDataMask& operator=(ClearDataMask&&) = delete;      // Move Assignment
 };
 
