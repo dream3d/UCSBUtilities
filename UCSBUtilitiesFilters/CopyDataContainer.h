@@ -143,7 +143,6 @@ class CopyDataContainer : public AbstractFilter
     void initialize();
 
 
-  private:
   public:
     CopyDataContainer(const CopyDataContainer&) = delete; // Copy Constructor Not Implemented
     CopyDataContainer(CopyDataContainer&&) = delete;      // Move Constructor
