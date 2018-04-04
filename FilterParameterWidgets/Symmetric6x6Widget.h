@@ -104,7 +104,7 @@ class Symmetric6x6Widget : public FilterParameterWidget, private Ui::Symmetric6x
     // void vbar(QLineEdit* obj);
 
     Symmetric6x6Widget(const Symmetric6x6Widget&) = delete; // Copy Constructor Not Implemented
-    void operator=(const Symmetric6x6Widget&) = delete;     // Operator '=' Not Implemented
+    void operator=(const Symmetric6x6Widget&) = delete;     // Move assignment Not Implemented
 };
 
 #endif /* _Symmetric6x6Widget_H_ */

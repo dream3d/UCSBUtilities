@@ -53,7 +53,7 @@ class OrthoRhombicOpsMisoColor : public OrthoRhombicOps
 
   private:
     OrthoRhombicOpsMisoColor(const OrthoRhombicOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    void operator=(const OrthoRhombicOpsMisoColor&) = delete;           // Operator '=' Not Implemented
+    void operator=(const OrthoRhombicOpsMisoColor&) = delete;           // Move assignment Not Implemented
 };
 
 #endif /* ORTHORHOMBICOpsMisoColor_H_ */

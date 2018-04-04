@@ -77,7 +77,7 @@ class FloatVec4Widget : public FilterParameterWidget, private Ui::FloatVec4Widge
     FloatVec4FilterParameter* m_FilterParameter;
 
     FloatVec4Widget(const FloatVec4Widget&) = delete; // Copy Constructor Not Implemented
-    void operator=(const FloatVec4Widget&) = delete;  // Operator '=' Not Implemented
+    void operator=(const FloatVec4Widget&) = delete;  // Move assignment Not Implemented
 };
 
 #endif /* _FloatVec4Widget_H_ */

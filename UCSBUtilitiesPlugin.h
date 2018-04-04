@@ -170,7 +170,7 @@ class UCSBUtilitiesPlugin : public QObject, public ISIMPLibPlugin
     bool                m_DidLoad;
 
     UCSBUtilitiesPlugin(const UCSBUtilitiesPlugin&) = delete; // Copy Constructor Not Implemented
-    void operator=(const UCSBUtilitiesPlugin&) = delete;      // Operator '=' Not Implemented
+    void operator=(const UCSBUtilitiesPlugin&) = delete;      // Move assignment Not Implemented
 };
 
 #endif /* _UCSBUtilities_H_ */

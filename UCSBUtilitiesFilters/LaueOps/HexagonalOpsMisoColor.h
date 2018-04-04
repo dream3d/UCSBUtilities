@@ -50,7 +50,7 @@ class HexagonalOpsMisoColor : public HexagonalOps
 
   private:
     HexagonalOpsMisoColor(const HexagonalOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    void operator=(const HexagonalOpsMisoColor&) = delete;        // Operator '=' Not Implemented
+    void operator=(const HexagonalOpsMisoColor&) = delete;        // Move assignment Not Implemented
 };
 
 #endif /* HEXAGONALOpsMisoColor_H_ */

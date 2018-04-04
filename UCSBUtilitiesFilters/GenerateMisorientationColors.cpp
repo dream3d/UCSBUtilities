@@ -162,27 +162,25 @@ class GenerateMisorientationColorsImpl
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-GenerateMisorientationColors::GenerateMisorientationColors() :
-  AbstractFilter(),
-  m_ReferenceAngle(0.0f),
-  m_CellPhasesArrayPath("", "", ""),
-  m_QuatsArrayPath("", "", ""),
-  m_CrystalStructuresArrayPath("", "", ""),
-  m_GoodVoxelsArrayPath("", "", ""),
-  m_MisorientationColorArrayName(SIMPL::CellData::MisorientationColor),
-  m_UseGoodVoxels(false),
-  m_CellPhases(nullptr),
-  m_Quats(nullptr),
-  m_CrystalStructures(nullptr),
-  m_GoodVoxels(nullptr),
-  m_MisorientationColor(nullptr)
+GenerateMisorientationColors::GenerateMisorientationColors()
+: m_ReferenceAngle(0.0f)
+, m_CellPhasesArrayPath("", "", "")
+, m_QuatsArrayPath("", "", "")
+, m_CrystalStructuresArrayPath("", "", "")
+, m_GoodVoxelsArrayPath("", "", "")
+, m_MisorientationColorArrayName(SIMPL::CellData::MisorientationColor)
+, m_UseGoodVoxels(false)
+, m_CellPhases(nullptr)
+, m_Quats(nullptr)
+, m_CrystalStructures(nullptr)
+, m_GoodVoxels(nullptr)
+, m_MisorientationColor(nullptr)
 {
   m_ReferenceAxis.x = 0.0f;
   m_ReferenceAxis.y = 0.0f;
   m_ReferenceAxis.z = 1.0f;
   m_ReferenceAngle = 0.0f;
 
-  setupFilterParameters();
 }
 
 // -----------------------------------------------------------------------------
@@ -262,25 +260,25 @@ void GenerateMisorientationColors::dataCheck()
 
   QVector<size_t> cDims(1, 1);
   m_CellPhasesPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<int32_t>, AbstractFilter>(this, getCellPhasesArrayPath(), cDims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
-  if( nullptr != m_CellPhasesPtr.lock().get() ) /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  if(nullptr != m_CellPhasesPtr.lock())                     /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
   { m_CellPhases = m_CellPhasesPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
   if(getErrorCondition() >= 0) { dataArrayPaths.push_back(getCellPhasesArrayPath()); }
 
   cDims[0] = 4;
   m_QuatsPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<float>, AbstractFilter>(this, getQuatsArrayPath(), cDims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
-  if( nullptr != m_QuatsPtr.lock().get() ) /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  if(nullptr != m_QuatsPtr.lock())                /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
   { m_Quats = m_QuatsPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
   if(getErrorCondition() >= 0) { dataArrayPaths.push_back(getQuatsArrayPath()); }
 
   cDims[0] = 1;
   m_CrystalStructuresPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<uint32_t>, AbstractFilter>(this, getCrystalStructuresArrayPath(), cDims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
-  if( nullptr != m_CrystalStructuresPtr.lock().get() ) /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  if(nullptr != m_CrystalStructuresPtr.lock())                            /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
   { m_CrystalStructures = m_CrystalStructuresPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
 
   cDims[0] = 3;
   tempPath.update(getCellPhasesArrayPath().getDataContainerName(), getCellPhasesArrayPath().getAttributeMatrixName(), getMisorientationColorArrayName() );
   m_MisorientationColorPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<uint8_t>, AbstractFilter, uint8_t>(this, tempPath, 0, cDims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
-  if( nullptr != m_MisorientationColorPtr.lock().get() ) /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  if(nullptr != m_MisorientationColorPtr.lock())                              /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
   { m_MisorientationColor = m_MisorientationColorPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
 
   // The good voxels array is optional, If it is available we are going to use it, otherwise we are going to create it
@@ -290,7 +288,7 @@ void GenerateMisorientationColors::dataCheck()
     // The good voxels array is optional, If it is available we are going to use it, otherwise we are going to create it
     cDims[0] = 1;
     m_GoodVoxelsPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<bool>, AbstractFilter>(this, getGoodVoxelsArrayPath(), cDims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
-    if( nullptr != m_GoodVoxelsPtr.lock().get() ) /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+    if(nullptr != m_GoodVoxelsPtr.lock())                     /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
     { m_GoodVoxels = m_GoodVoxelsPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
     if(getErrorCondition() >= 0) { dataArrayPaths.push_back(getGoodVoxelsArrayPath()); }
   }

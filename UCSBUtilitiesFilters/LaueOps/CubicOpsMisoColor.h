@@ -49,7 +49,7 @@ class CubicOpsMisoColor : public CubicOps
 
   private:
     CubicOpsMisoColor(const CubicOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    void operator=(const CubicOpsMisoColor&) = delete;    // Operator '=' Not Implemented
+    void operator=(const CubicOpsMisoColor&) = delete;    // Move assignment Not Implemented
 };
 
 #endif /* CUBICOpsMisoColor_H_ */

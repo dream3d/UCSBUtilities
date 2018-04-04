@@ -74,7 +74,7 @@ public:
 
   private:
     FloatVec4FilterParameter(const FloatVec4FilterParameter&) = delete; // Copy Constructor Not Implemented
-    void operator=(const FloatVec4FilterParameter&) = delete;           // Operator '=' Not Implemented
+    void operator=(const FloatVec4FilterParameter&) = delete;           // Move assignment Not Implemented
 };
 
 #endif /* _FloatVec4FilterParameter_H_ */

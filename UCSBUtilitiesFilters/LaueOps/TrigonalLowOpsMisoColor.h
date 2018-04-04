@@ -55,7 +55,7 @@ class TrigonalLowOpsMisoColor : public TrigonalLowOps
 
   private:
     TrigonalLowOpsMisoColor(const TrigonalLowOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    void operator=(const TrigonalLowOpsMisoColor&) = delete;          // Operator '=' Not Implemented
+    void operator=(const TrigonalLowOpsMisoColor&) = delete;          // Move assignment Not Implemented
 };
 
 #endif /* TrigonalLowOpsMisoColor_H_ */

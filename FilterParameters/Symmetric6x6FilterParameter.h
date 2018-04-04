@@ -148,7 +148,7 @@ public:
 
   private:
     Symmetric6x6FilterParameter(const Symmetric6x6FilterParameter&) = delete; // Copy Constructor Not Implemented
-    void operator=(const Symmetric6x6FilterParameter&) = delete;              // Operator '=' Not Implemented
+    void operator=(const Symmetric6x6FilterParameter&) = delete;              // Move assignment Not Implemented
 };
 
 #endif /* _Symmetric6x6FilterParameter_H_ */

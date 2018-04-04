@@ -37,18 +37,17 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-FindDirectionalModuli::FindDirectionalModuli() :
-  AbstractFilter(),
-  m_FeaturePhasesArrayPath("", "", ""),
-  m_CrystalStructuresArrayPath("", "", ""),
-  m_CrystalCompliancesArrayPath("", "", ""),
-  m_AvgQuatsArrayPath("", "", ""),
-  m_DirectionalModuliArrayName("DirectionalModuli"),
-  m_DirectionalModuli(nullptr),
-  m_FeaturePhases(nullptr),
-  m_AvgQuats(nullptr),
-  m_CrystalStructures(nullptr),
-  m_CrystalCompliances(nullptr)
+FindDirectionalModuli::FindDirectionalModuli()
+: m_FeaturePhasesArrayPath("", "", "")
+, m_CrystalStructuresArrayPath("", "", "")
+, m_CrystalCompliancesArrayPath("", "", "")
+, m_AvgQuatsArrayPath("", "", "")
+, m_DirectionalModuliArrayName("DirectionalModuli")
+, m_DirectionalModuli(nullptr)
+, m_FeaturePhases(nullptr)
+, m_AvgQuats(nullptr)
+, m_CrystalStructures(nullptr)
+, m_CrystalCompliances(nullptr)
 {
   m_LoadingDirection.x = 0.0f;
   m_LoadingDirection.y = 0.0f;
@@ -56,7 +55,6 @@ FindDirectionalModuli::FindDirectionalModuli() :
 
   m_OrientationOps = LaueOps::getOrientationOpsVector();
 
-  setupFilterParameters();
 }
 
 // -----------------------------------------------------------------------------
@@ -131,30 +129,30 @@ void FindDirectionalModuli::dataCheck()
   QVector<size_t> dims(1, 1);
   tempPath.update(getFeaturePhasesArrayPath().getDataContainerName(), getFeaturePhasesArrayPath().getAttributeMatrixName(), getDirectionalModuliArrayName() );
   m_DirectionalModuliPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>, AbstractFilter, float>(this, tempPath, 0, dims);
-  if( nullptr != m_DirectionalModuliPtr.lock().get() )
+  if(nullptr != m_DirectionalModuliPtr.lock())
   { m_DirectionalModuli = m_DirectionalModuliPtr.lock()->getPointer(0); }
 
   //check feature phases
   m_FeaturePhasesPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<int32_t>, AbstractFilter>(this, getFeaturePhasesArrayPath(), dims);
-  if( nullptr != m_FeaturePhasesPtr.lock().get() )
+  if(nullptr != m_FeaturePhasesPtr.lock())
   { m_FeaturePhases = m_FeaturePhasesPtr.lock()->getPointer(0); }
 
   //check crystal structures
   m_CrystalStructuresPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<unsigned int>, AbstractFilter>(this, getCrystalStructuresArrayPath(), dims);
-  if( nullptr != m_CrystalStructuresPtr.lock().get() )
+  if(nullptr != m_CrystalStructuresPtr.lock())
   { m_CrystalStructures = m_CrystalStructuresPtr.lock()->getPointer(0); }
   dims[0] = 3;
 
   //check quats
   dims[0] = 4;
   m_AvgQuatsPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<float>, AbstractFilter>(this, getAvgQuatsArrayPath(), dims);
-  if( nullptr != m_AvgQuatsPtr.lock().get() )
+  if(nullptr != m_AvgQuatsPtr.lock())
   { m_AvgQuats = m_AvgQuatsPtr.lock()->getPointer(0); }
 
   //check compliances
   QVector<size_t> complianceDims(2, 6);
   m_CrystalCompliancesPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<float>, AbstractFilter>(this, getCrystalCompliancesArrayPath(), complianceDims);
-  if( nullptr != m_CrystalCompliancesPtr.lock().get() )
+  if(nullptr != m_CrystalCompliancesPtr.lock())
   { m_CrystalCompliances = m_CrystalCompliancesPtr.lock()->getPointer(0); }
 
   //make sure the direction isn't undefined
