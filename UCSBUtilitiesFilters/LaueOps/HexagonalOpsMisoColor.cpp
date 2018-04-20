@@ -224,6 +224,6 @@ SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatF& q, co
   }
 
   //convert to rgb and invert
-  SIMPL::Rgb rgb = ColorUtilities::convertHSVtoRgb(h, s, v);
+  SIMPL::Rgb rgb = ColorUtilities::ConvertHSVtoRgb(h, s, v);
   return RgbColor::dRgb(255 - RgbColor::dRed(rgb), 255 - RgbColor::dGreen(rgb), 255 - RgbColor::dBlue(rgb), 0);
 }

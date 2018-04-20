@@ -18,7 +18,6 @@
 #ifndef _floatvec4widget_h_
 #define _floatvec4widget_h_
 
-
 #include <QtCore/QObject>
 #include <QtCore/QPointer>
 #include <QtWidgets/QWidget>
@@ -27,59 +26,55 @@
 
 #include "SIMPLib/Filtering/AbstractFilter.h"
 
-#include "SVWidgetsLib/SVWidgetsLib.h"
 #include "SVWidgetsLib/FilterParameterWidgets/FilterParameterWidget.h"
+#include "SVWidgetsLib/SVWidgetsLib.h"
 
 #include "UCSBUtilities/FilterParameters/FloatVec4FilterParameter.h"
-
 
 #include "ui_FloatVec4Widget.h"
 
 #include "UCSBUtilities/FilterParameters/FloatVec4FilterParameter.h"
 
 /**
-* @brief
-* @author
-* @version
-*/
+ * @brief
+ * @author
+ * @version
+ */
 class FloatVec4Widget : public FilterParameterWidget, private Ui::FloatVec4Widget
 {
-    Q_OBJECT
+  Q_OBJECT
 
-  public:
-    /**
-    * @brief Constructor
-    * @param parameter The FilterParameter object that this widget represents
-    * @param filter The instance of the filter that this parameter is a part of
-    * @param parent The parent QWidget for this Widget
-    */
-    FloatVec4Widget(FilterParameter* parameter, AbstractFilter* filter = nullptr, QWidget* parent = nullptr);
+public:
+  /**
+   * @brief Constructor
+   * @param parameter The FilterParameter object that this widget represents
+   * @param filter The instance of the filter that this parameter is a part of
+   * @param parent The parent QWidget for this Widget
+   */
+  FloatVec4Widget(FilterParameter* parameter, AbstractFilter* filter = nullptr, QWidget* parent = nullptr);
 
-    virtual ~FloatVec4Widget();
+  virtual ~FloatVec4Widget();
 
-    /**
-    * @brief This method does additional GUI widget connections
-    */
-    void setupGui();
+  /**
+   * @brief This method does additional GUI widget connections
+   */
+  void setupGui();
 
-  public slots:
-    void widgetChanged(const QString& msg);
-    void filterNeedsInputParameters(AbstractFilter* filter); // When the filter is ready for us to update its input parameter(s) that we are responsible for
-    void beforePreflight(); // Called just before the "dataCheck()" is called
-    void afterPreflight(); // Called just after the dataCheck() is called.
+public slots:
+  void widgetChanged(const QString& msg);
+  void filterNeedsInputParameters(AbstractFilter* filter); // When the filter is ready for us to update its input parameter(s) that we are responsible for
+  void beforePreflight();                                  // Called just before the "dataCheck()" is called
+  void afterPreflight();                                   // Called just after the dataCheck() is called.
 
+signals:
+  void errorSettingFilterParameter(const QString& msg);
+  void parametersChanged();
 
-  signals:
-    void errorSettingFilterParameter(const QString& msg);
-    void parametersChanged();
+private:
+  FloatVec4FilterParameter* m_FilterParameter;
 
-  private:
-    FloatVec4FilterParameter* m_FilterParameter;
-
-    FloatVec4Widget(const FloatVec4Widget&) = delete; // Copy Constructor Not Implemented
-    void operator=(const FloatVec4Widget&) = delete;  // Move assignment Not Implemented
+  FloatVec4Widget(const FloatVec4Widget&) = delete; // Copy Constructor Not Implemented
+  void operator=(const FloatVec4Widget&) = delete;  // Move assignment Not Implemented
 };
 
 #endif /* _FloatVec4Widget_H_ */
-
-

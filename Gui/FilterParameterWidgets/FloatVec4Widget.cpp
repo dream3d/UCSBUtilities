@@ -19,7 +19,6 @@
 
 #include <QtCore/QMetaProperty>
 
-
 #include "SVWidgetsLib/Core/SVWidgetsLibConstants.h"
 
 #include "SVWidgetsLib/FilterParameterWidgets/FilterParameterWidgetsDialogs.h"
@@ -29,8 +28,8 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-FloatVec4Widget::FloatVec4Widget(FilterParameter* parameter, AbstractFilter* filter, QWidget* parent) :
-  FilterParameterWidget(parameter, filter, parent)
+FloatVec4Widget::FloatVec4Widget(FilterParameter* parameter, AbstractFilter* filter, QWidget* parent)
+: FilterParameterWidget(parameter, filter, parent)
 {
   m_FilterParameter = dynamic_cast<FloatVec4FilterParameter*>(parameter);
   Q_ASSERT_X(m_FilterParameter != nullptr, "NULL Pointer", "FloatVec4Widget can ONLY be used with a FloatVec4FilterParameter object");
@@ -50,26 +49,18 @@ FloatVec4Widget::~FloatVec4Widget() = default;
 void FloatVec4Widget::setupGui()
 {
   // Catch when the filter is about to execute the preflight
-  connect(getFilter(), SIGNAL(preflightAboutToExecute()),
-          this, SLOT(beforePreflight()));
+  connect(getFilter(), SIGNAL(preflightAboutToExecute()), this, SLOT(beforePreflight()));
 
   // Catch when the filter is finished running the preflight
-  connect(getFilter(), SIGNAL(preflightExecuted()),
-          this, SLOT(afterPreflight()));
+  connect(getFilter(), SIGNAL(preflightExecuted()), this, SLOT(afterPreflight()));
 
   // Catch when the filter wants its values updated
-  connect(getFilter(), SIGNAL(updateFilterParameters(AbstractFilter*)),
-          this, SLOT(filterNeedsInputParameters(AbstractFilter*)));
+  connect(getFilter(), SIGNAL(updateFilterParameters(AbstractFilter*)), this, SLOT(filterNeedsInputParameters(AbstractFilter*)));
 
-
-  connect(aData, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(bData, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(cData, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(dData, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
+  connect(aData, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(bData, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(cData, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(dData, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
 
   QDoubleValidator* aVal = new QDoubleValidator(aData);
   aData->setValidator(aVal);
@@ -79,17 +70,16 @@ void FloatVec4Widget::setupGui()
   cData->setValidator(cVal);
   QDoubleValidator* dVal = new QDoubleValidator(dData);
   dData->setValidator(dVal);
-  if (getFilterParameter() != nullptr)
+  if(getFilterParameter() != nullptr)
   {
-    label->setText(getFilterParameter()->getHumanLabel() );
+    label->setText(getFilterParameter()->getHumanLabel());
 
     FloatVec4_t data = getFilter()->property(PROPERTY_NAME_AS_CHAR).value<FloatVec4_t>();
-    aData->setText(QString::number(data.a) );
-    bData->setText(QString::number(data.b) );
-    cData->setText(QString::number(data.c) );
-    dData->setText(QString::number(data.d) );
+    aData->setText(QString::number(data.a));
+    bData->setText(QString::number(data.b));
+    cData->setText(QString::number(data.c));
+    dData->setText(QString::number(data.d));
   }
-
 }
 
 // -----------------------------------------------------------------------------
@@ -119,7 +109,6 @@ void FloatVec4Widget::filterNeedsInputParameters(AbstractFilter* filter)
   {
     getFilter()->notifyMissingProperty(getFilterParameter());
   }
-
 }
 
 // -----------------------------------------------------------------------------
@@ -127,7 +116,6 @@ void FloatVec4Widget::filterNeedsInputParameters(AbstractFilter* filter)
 // -----------------------------------------------------------------------------
 void FloatVec4Widget::beforePreflight()
 {
-
 }
 
 // -----------------------------------------------------------------------------
@@ -135,5 +123,4 @@ void FloatVec4Widget::beforePreflight()
 // -----------------------------------------------------------------------------
 void FloatVec4Widget::afterPreflight()
 {
-
 }

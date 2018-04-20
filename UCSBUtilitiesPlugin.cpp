@@ -234,7 +234,11 @@ void UCSBUtilitiesPlugin::readSettings(QSettings& prefs)
 {
 }
 
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void UCSBUtilitiesPlugin::registerFilterWidgets(FilterWidgetManager* fwm)
+{
+}
+
 #include "UCSBUtilitiesFilters/RegisterKnownFilters.cpp"
-
-#include "FilterParameterWidgets/RegisterKnownFilterParameterWidgets.cpp"
-

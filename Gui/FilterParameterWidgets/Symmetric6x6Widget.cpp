@@ -20,8 +20,6 @@
 #include <QtCore/QMetaProperty>
 #include <QtCore/QSignalMapper>
 
-
-
 #include "SVWidgetsLib/Core/SVWidgetsLibConstants.h"
 
 #include "SVWidgetsLib/FilterParameterWidgets/FilterParameterWidgetsDialogs.h"
@@ -31,8 +29,8 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-Symmetric6x6Widget::Symmetric6x6Widget(FilterParameter* parameter, AbstractFilter* filter, QWidget* parent) :
-  FilterParameterWidget(parameter, filter, parent)
+Symmetric6x6Widget::Symmetric6x6Widget(FilterParameter* parameter, AbstractFilter* filter, QWidget* parent)
+: FilterParameterWidget(parameter, filter, parent)
 {
   m_FilterParameter = dynamic_cast<Symmetric6x6FilterParameter*>(parameter);
   Q_ASSERT_X(m_FilterParameter != nullptr, "NULL Pointer", "Symmetric6x6Widget can ONLY be used with a Symmetric6x6FilterParameter object");
@@ -48,28 +46,28 @@ Symmetric6x6Widget::~Symmetric6x6Widget() = default;
 
 void Symmetric6x6Widget::setCubicSym()
 {
-  //11 == 22 == 33
-  connect(v11, SIGNAL(textChanged(const QString&)), v22, SLOT( setText( const QString& ) ) );
-  connect(v22, SIGNAL(textChanged(const QString&)), v33, SLOT( setText( const QString& ) ) );
-  connect(v33, SIGNAL(textChanged(const QString&)), v11, SLOT( setText( const QString& ) ) );
+  // 11 == 22 == 33
+  connect(v11, SIGNAL(textChanged(const QString&)), v22, SLOT(setText(const QString&)));
+  connect(v22, SIGNAL(textChanged(const QString&)), v33, SLOT(setText(const QString&)));
+  connect(v33, SIGNAL(textChanged(const QString&)), v11, SLOT(setText(const QString&)));
   v22->setText(v11->text());
   v33->setText(v11->text());
 
-  //12 == 13 == 23
-  connect(v12, SIGNAL(textChanged(const QString&)), v13, SLOT( setText( const QString& ) ) );
-  connect(v13, SIGNAL(textChanged(const QString&)), v23, SLOT( setText( const QString& ) ) );
-  connect(v23, SIGNAL(textChanged(const QString&)), v12, SLOT( setText( const QString& ) ) );
+  // 12 == 13 == 23
+  connect(v12, SIGNAL(textChanged(const QString&)), v13, SLOT(setText(const QString&)));
+  connect(v13, SIGNAL(textChanged(const QString&)), v23, SLOT(setText(const QString&)));
+  connect(v23, SIGNAL(textChanged(const QString&)), v12, SLOT(setText(const QString&)));
   v13->setText(v12->text());
   v23->setText(v12->text());
 
-  //44 == 55 == 66
-  connect(v44, SIGNAL(textChanged(const QString&)), v55, SLOT( setText( const QString& ) ) );
-  connect(v55, SIGNAL(textChanged(const QString&)), v66, SLOT( setText( const QString& ) ) );
-  connect(v66, SIGNAL(textChanged(const QString&)), v44, SLOT( setText( const QString& ) ) );
+  // 44 == 55 == 66
+  connect(v44, SIGNAL(textChanged(const QString&)), v55, SLOT(setText(const QString&)));
+  connect(v55, SIGNAL(textChanged(const QString&)), v66, SLOT(setText(const QString&)));
+  connect(v66, SIGNAL(textChanged(const QString&)), v44, SLOT(setText(const QString&)));
   v55->setText(v44->text());
   v66->setText(v44->text());
 
-  //all others = 0
+  // all others = 0
   v14->setText("0");
   v14->setEnabled(false);
   v15->setText("0");
@@ -102,30 +100,30 @@ void Symmetric6x6Widget::setCubicSym()
 
 void Symmetric6x6Widget::setHexagonalSym()
 {
-  //s11 == s22
-  connect(v11, SIGNAL(textChanged(const QString&)), v22, SLOT( setText( const QString& ) ) );
-  connect(v22, SIGNAL(textChanged(const QString&)), v11, SLOT( setText( const QString& ) ) );
+  // s11 == s22
+  connect(v11, SIGNAL(textChanged(const QString&)), v22, SLOT(setText(const QString&)));
+  connect(v22, SIGNAL(textChanged(const QString&)), v11, SLOT(setText(const QString&)));
   v22->setText(v11->text());
 
-  //s13 == s23
-  connect(v13, SIGNAL(textChanged(const QString&)), v23, SLOT( setText( const QString& ) ) );
-  connect(v23, SIGNAL(textChanged(const QString&)), v13, SLOT( setText( const QString& ) ) );
+  // s13 == s23
+  connect(v13, SIGNAL(textChanged(const QString&)), v23, SLOT(setText(const QString&)));
+  connect(v23, SIGNAL(textChanged(const QString&)), v13, SLOT(setText(const QString&)));
   v23->setText(v13->text());
 
-  //s44 == s55
-  connect(v44, SIGNAL(textChanged(const QString&)), v55, SLOT( setText( const QString& ) ) );
-  connect(v55, SIGNAL(textChanged(const QString&)), v44, SLOT( setText( const QString& ) ) );
+  // s44 == s55
+  connect(v44, SIGNAL(textChanged(const QString&)), v55, SLOT(setText(const QString&)));
+  connect(v55, SIGNAL(textChanged(const QString&)), v44, SLOT(setText(const QString&)));
   v55->setText(v44->text());
 
-  //s66 == 2(s11-s12)
-  connect(v11, SIGNAL( textChanged(const QString&) ), this, SLOT( vbar66(const QString&) ) );
-  connect(v12, SIGNAL( textChanged(const QString&) ), this, SLOT( vbar66(const QString&) ) );
+  // s66 == 2(s11-s12)
+  connect(v11, SIGNAL(textChanged(const QString&)), this, SLOT(vbar66(const QString&)));
+  connect(v12, SIGNAL(textChanged(const QString&)), this, SLOT(vbar66(const QString&)));
   v66->setEnabled(false);
   vbar66("");
 
-  //s12, s33 independant
+  // s12, s33 independant
 
-  //all others = 0
+  // all others = 0
   v14->setText("0");
   v14->setEnabled(false);
   v15->setText("0");
@@ -155,28 +153,27 @@ void Symmetric6x6Widget::setHexagonalSym()
   v56->setText("0");
   v56->setEnabled(false);
 }
-
 
 void Symmetric6x6Widget::setTetHighSym()
 {
-  //s11 == s22
-  connect(v11, SIGNAL(textChanged(const QString&)), v22, SLOT( setText( const QString& ) ) );
-  connect(v22, SIGNAL(textChanged(const QString&)), v11, SLOT( setText( const QString& ) ) );
+  // s11 == s22
+  connect(v11, SIGNAL(textChanged(const QString&)), v22, SLOT(setText(const QString&)));
+  connect(v22, SIGNAL(textChanged(const QString&)), v11, SLOT(setText(const QString&)));
   v22->setText(v11->text());
 
-  //s13 == s23
-  connect(v13, SIGNAL(textChanged(const QString&)), v23, SLOT( setText( const QString& ) ) );
-  connect(v23, SIGNAL(textChanged(const QString&)), v13, SLOT( setText( const QString& ) ) );
+  // s13 == s23
+  connect(v13, SIGNAL(textChanged(const QString&)), v23, SLOT(setText(const QString&)));
+  connect(v23, SIGNAL(textChanged(const QString&)), v13, SLOT(setText(const QString&)));
   v23->setText(v13->text());
 
-  //s44 == s55
-  connect(v44, SIGNAL(textChanged(const QString&)), v55, SLOT( setText( const QString& ) ) );
-  connect(v55, SIGNAL(textChanged(const QString&)), v44, SLOT( setText( const QString& ) ) );
+  // s44 == s55
+  connect(v44, SIGNAL(textChanged(const QString&)), v55, SLOT(setText(const QString&)));
+  connect(v55, SIGNAL(textChanged(const QString&)), v44, SLOT(setText(const QString&)));
   v55->setText(v44->text());
 
-  //s12, s33, s66 independant
+  // s12, s33, s66 independant
 
-  //all others = 0
+  // all others = 0
   v14->setText("0");
   v14->setEnabled(false);
   v15->setText("0");
@@ -206,33 +203,32 @@ void Symmetric6x6Widget::setTetHighSym()
   v56->setText("0");
   v56->setEnabled(false);
 }
-
 
 void Symmetric6x6Widget::setTetLowSym()
 {
-  //s11 == s22
-  connect(v11, SIGNAL(textChanged(const QString&)), v22, SLOT( setText( const QString& ) ) );
-  connect(v22, SIGNAL(textChanged(const QString&)), v11, SLOT( setText( const QString& ) ) );
+  // s11 == s22
+  connect(v11, SIGNAL(textChanged(const QString&)), v22, SLOT(setText(const QString&)));
+  connect(v22, SIGNAL(textChanged(const QString&)), v11, SLOT(setText(const QString&)));
   v22->setText(v11->text());
 
-  //s13 == s23
-  connect(v13, SIGNAL(textChanged(const QString&)), v23, SLOT( setText( const QString& ) ) );
-  connect(v23, SIGNAL(textChanged(const QString&)), v13, SLOT( setText( const QString& ) ) );
+  // s13 == s23
+  connect(v13, SIGNAL(textChanged(const QString&)), v23, SLOT(setText(const QString&)));
+  connect(v23, SIGNAL(textChanged(const QString&)), v13, SLOT(setText(const QString&)));
   v23->setText(v13->text());
 
-  //s44 == s55
-  connect(v44, SIGNAL(textChanged(const QString&)), v55, SLOT( setText( const QString& ) ) );
-  connect(v55, SIGNAL(textChanged(const QString&)), v44, SLOT( setText( const QString& ) ) );
+  // s44 == s55
+  connect(v44, SIGNAL(textChanged(const QString&)), v55, SLOT(setText(const QString&)));
+  connect(v55, SIGNAL(textChanged(const QString&)), v44, SLOT(setText(const QString&)));
   v55->setText(v44->text());
 
   // s26 == -s16
-  connect(v16, SIGNAL(textChanged(const QString&)), this, SLOT( tetragonalv16Changed( const QString& ) ) );
-  connect(v26, SIGNAL(textChanged(const QString&)), this, SLOT( tetragonalv26Changed( const QString& ) ) );
+  connect(v16, SIGNAL(textChanged(const QString&)), this, SLOT(tetragonalv16Changed(const QString&)));
+  connect(v26, SIGNAL(textChanged(const QString&)), this, SLOT(tetragonalv26Changed(const QString&)));
   tetragonalv16Changed("");
 
-  //s16, s12, s33, s66 independant
+  // s16, s12, s33, s66 independant
 
-  //all others = 0
+  // all others = 0
   v14->setText("0");
   v14->setEnabled(false);
   v15->setText("0");
@@ -259,39 +255,38 @@ void Symmetric6x6Widget::setTetLowSym()
   v56->setEnabled(false);
 }
 
-
 void Symmetric6x6Widget::setTrigHighSym()
 {
-  //s11 == s22
-  connect(v11, SIGNAL(textChanged(const QString&)), v22, SLOT( setText( const QString& ) ) );
-  connect(v22, SIGNAL(textChanged(const QString&)), v11, SLOT( setText( const QString& ) ) );
+  // s11 == s22
+  connect(v11, SIGNAL(textChanged(const QString&)), v22, SLOT(setText(const QString&)));
+  connect(v22, SIGNAL(textChanged(const QString&)), v11, SLOT(setText(const QString&)));
   v22->setText(v11->text());
 
-  //s13 == s23
-  connect(v13, SIGNAL(textChanged(const QString&)), v23, SLOT( setText( const QString& ) ) );
-  connect(v23, SIGNAL(textChanged(const QString&)), v13, SLOT( setText( const QString& ) ) );
+  // s13 == s23
+  connect(v13, SIGNAL(textChanged(const QString&)), v23, SLOT(setText(const QString&)));
+  connect(v23, SIGNAL(textChanged(const QString&)), v13, SLOT(setText(const QString&)));
   v23->setText(v13->text());
 
-  //s55 == s66
-  connect(v44, SIGNAL(textChanged(const QString&)), v55, SLOT( setText( const QString& ) ) );
-  connect(v55, SIGNAL(textChanged(const QString&)), v44, SLOT( setText( const QString& ) ) );
+  // s55 == s66
+  connect(v44, SIGNAL(textChanged(const QString&)), v55, SLOT(setText(const QString&)));
+  connect(v55, SIGNAL(textChanged(const QString&)), v44, SLOT(setText(const QString&)));
   v55->setText(v44->text());
 
-  //s14 == -s24 && s56 == 2*s14
-  connect(v14, SIGNAL( textChanged(const QString&) ), this, SLOT( trigonalv14Changed(const QString&) ) );
-  connect(v24, SIGNAL( textChanged(const QString&) ), this, SLOT( trigonalv24Changed(const QString&) ) );
-  connect(v56, SIGNAL( textChanged(const QString&) ), this, SLOT( trigonalv56Changed(const QString&) ) );
+  // s14 == -s24 && s56 == 2*s14
+  connect(v14, SIGNAL(textChanged(const QString&)), this, SLOT(trigonalv14Changed(const QString&)));
+  connect(v24, SIGNAL(textChanged(const QString&)), this, SLOT(trigonalv24Changed(const QString&)));
+  connect(v56, SIGNAL(textChanged(const QString&)), this, SLOT(trigonalv56Changed(const QString&)));
   trigonalv14Changed("");
 
-  //s66 == 2(s11 + s12)
-  connect(v11, SIGNAL( textChanged(const QString&) ), this, SLOT( vbar66(const QString&) ) );
-  connect(v12, SIGNAL( textChanged(const QString&) ), this, SLOT( vbar66(const QString&) ) );
+  // s66 == 2(s11 + s12)
+  connect(v11, SIGNAL(textChanged(const QString&)), this, SLOT(vbar66(const QString&)));
+  connect(v12, SIGNAL(textChanged(const QString&)), this, SLOT(vbar66(const QString&)));
   v66->setEnabled(false);
   vbar66("");
 
-  //s12, s33 independant
+  // s12, s33 independant
 
-  //all other = 0
+  // all other = 0
   v15->setText("0");
   v15->setEnabled(false);
   v16->setText("0");
@@ -315,45 +310,44 @@ void Symmetric6x6Widget::setTrigHighSym()
   v46->setEnabled(false);
 }
 
-
 void Symmetric6x6Widget::setTrigLowSym()
 {
-  //s11 == s22
-  connect(v11, SIGNAL(textChanged(const QString&)), v22, SLOT( setText( const QString& ) ) );
-  connect(v22, SIGNAL(textChanged(const QString&)), v11, SLOT( setText( const QString& ) ) );
+  // s11 == s22
+  connect(v11, SIGNAL(textChanged(const QString&)), v22, SLOT(setText(const QString&)));
+  connect(v22, SIGNAL(textChanged(const QString&)), v11, SLOT(setText(const QString&)));
   v22->setText(v11->text());
 
-  //s13 == s23
-  connect(v13, SIGNAL(textChanged(const QString&)), v23, SLOT( setText( const QString& ) ) );
-  connect(v23, SIGNAL(textChanged(const QString&)), v13, SLOT( setText( const QString& ) ) );
+  // s13 == s23
+  connect(v13, SIGNAL(textChanged(const QString&)), v23, SLOT(setText(const QString&)));
+  connect(v23, SIGNAL(textChanged(const QString&)), v13, SLOT(setText(const QString&)));
   v23->setText(v13->text());
 
-  //s55 == s66
-  connect(v44, SIGNAL(textChanged(const QString&)), v55, SLOT( setText( const QString& ) ) );
-  connect(v55, SIGNAL(textChanged(const QString&)), v44, SLOT( setText( const QString& ) ) );
+  // s55 == s66
+  connect(v44, SIGNAL(textChanged(const QString&)), v55, SLOT(setText(const QString&)));
+  connect(v55, SIGNAL(textChanged(const QString&)), v44, SLOT(setText(const QString&)));
   v55->setText(v44->text());
 
-  //s14 == -s24 && s56 == 2*s14
-  connect(v14, SIGNAL( textChanged(const QString&) ), this, SLOT( trigonalv14Changed(const QString&) ) );
-  connect(v24, SIGNAL( textChanged(const QString&) ), this, SLOT( trigonalv24Changed(const QString&) ) );
-  connect(v56, SIGNAL( textChanged(const QString&) ), this, SLOT( trigonalv56Changed(const QString&) ) );
+  // s14 == -s24 && s56 == 2*s14
+  connect(v14, SIGNAL(textChanged(const QString&)), this, SLOT(trigonalv14Changed(const QString&)));
+  connect(v24, SIGNAL(textChanged(const QString&)), this, SLOT(trigonalv24Changed(const QString&)));
+  connect(v56, SIGNAL(textChanged(const QString&)), this, SLOT(trigonalv56Changed(const QString&)));
   trigonalv14Changed("");
 
-  //s25 == -s15 && s46 == 2*s25
-  connect(v15, SIGNAL( textChanged(const QString&) ), this, SLOT( trigonalv15Changed(const QString&) ) );
-  connect(v25, SIGNAL( textChanged(const QString&) ), this, SLOT( trigonalv25Changed(const QString&) ) );
-  connect(v46, SIGNAL( textChanged(const QString&) ), this, SLOT( trigonalv46Changed(const QString&) ) );
+  // s25 == -s15 && s46 == 2*s25
+  connect(v15, SIGNAL(textChanged(const QString&)), this, SLOT(trigonalv15Changed(const QString&)));
+  connect(v25, SIGNAL(textChanged(const QString&)), this, SLOT(trigonalv25Changed(const QString&)));
+  connect(v46, SIGNAL(textChanged(const QString&)), this, SLOT(trigonalv46Changed(const QString&)));
   trigonalv25Changed("");
 
-  //s66 == 2(s11 + s12)
-  connect(v11, SIGNAL( textChanged(const QString&) ), this, SLOT( vbar66(const QString&) ) );
-  connect(v12, SIGNAL( textChanged(const QString&) ), this, SLOT( vbar66(const QString&) ) );
+  // s66 == 2(s11 + s12)
+  connect(v11, SIGNAL(textChanged(const QString&)), this, SLOT(vbar66(const QString&)));
+  connect(v12, SIGNAL(textChanged(const QString&)), this, SLOT(vbar66(const QString&)));
   v66->setEnabled(false);
   vbar66("");
 
-  //s12, s33 independant
+  // s12, s33 independant
 
-  //all other = 0
+  // all other = 0
   v16->setText("0");
   v16->setEnabled(false);
 
@@ -371,14 +365,13 @@ void Symmetric6x6Widget::setTrigLowSym()
   v45->setEnabled(false);
 }
 
-
 void Symmetric6x6Widget::setOrthorhomicSym()
 {
-  //s11, s22, s33 independant
-  //s44, s55, s66 independant
-  //s12, s13, s23 independant
+  // s11, s22, s33 independant
+  // s44, s55, s66 independant
+  // s12, s13, s23 independant
 
-  //all others = 0
+  // all others = 0
   v14->setText("0");
   v14->setEnabled(false);
   v15->setText("0");
@@ -411,13 +404,13 @@ void Symmetric6x6Widget::setOrthorhomicSym()
 
 void Symmetric6x6Widget::setMonoclinicSym()
 {
-  //s11, s22, s33 independant
-  //s44, s55, s66 independant
-  //s12, s13, s23 indpenedant
-  //s15, s25, s35 indpenedant
-  //s46 independant
+  // s11, s22, s33 independant
+  // s44, s55, s66 independant
+  // s12, s13, s23 indpenedant
+  // s15, s25, s35 indpenedant
+  // s46 independant
 
-  //all others = 0
+  // all others = 0
   v14->setText("0");
   v14->setEnabled(false);
   v16->setText("0");
@@ -442,7 +435,7 @@ void Symmetric6x6Widget::setMonoclinicSym()
 
 void Symmetric6x6Widget::setTriclinicSym()
 {
-  //all independant
+  // all independant
 }
 
 void Symmetric6x6Widget::clearSym()
@@ -508,45 +501,45 @@ void Symmetric6x6Widget::changeSym(int newState)
 
   switch(newState)
   {
-    case 0:
-      setCubicSym();
-      break;
+  case 0:
+    setCubicSym();
+    break;
 
-    case 1:
-      setHexagonalSym();
-      break;
+  case 1:
+    setHexagonalSym();
+    break;
 
-    case 2:
-      setTetHighSym();
-      break;
+  case 2:
+    setTetHighSym();
+    break;
 
-    case 3:
-      setTetLowSym();
-      break;
+  case 3:
+    setTetLowSym();
+    break;
 
-    case 4:
-      setTrigHighSym();
-      break;
+  case 4:
+    setTrigHighSym();
+    break;
 
-    case 5:
-      setTrigLowSym();
-      break;
+  case 5:
+    setTrigLowSym();
+    break;
 
-    case 6:
-      setOrthorhomicSym();
-      break;
+  case 6:
+    setOrthorhomicSym();
+    break;
 
-    case 7:
-      setMonoclinicSym();
-      break;
+  case 7:
+    setMonoclinicSym();
+    break;
 
-    case 8:
-      setTriclinicSym();
-      break;
+  case 8:
+    setTriclinicSym();
+    break;
   }
 }
 
-//some hexagonal and trigonal low/high have s66 == 2 * (s11 - s12)
+// some hexagonal and trigonal low/high have s66 == 2 * (s11 - s12)
 void Symmetric6x6Widget::vbar66(const QString& dummy)
 {
   double s11 = v11->text().toDouble();
@@ -554,7 +547,7 @@ void Symmetric6x6Widget::vbar66(const QString& dummy)
   v66->setText(QString::number(2.0 * (s11 - s12)));
 }
 
-//tetragonal low has s26 == -s16
+// tetragonal low has s26 == -s16
 void Symmetric6x6Widget::tetragonalv16Changed(const QString& dummy)
 {
   double v = v16->text().toDouble();
@@ -566,7 +559,7 @@ void Symmetric6x6Widget::tetragonalv26Changed(const QString& dummy)
   v16->setText(QString::number(-v));
 }
 
-//trigonal low/high have s14 == -s24 && s56 == 2*s14
+// trigonal low/high have s14 == -s24 && s56 == 2*s14
 void Symmetric6x6Widget::trigonalv14Changed(const QString& dummy)
 {
   double v = v14->text().toDouble();
@@ -586,7 +579,7 @@ void Symmetric6x6Widget::trigonalv56Changed(const QString& dummy)
   v24->setText(QString::number(-v / 2.0));
 }
 
-//trigonal low has s15 == -s25 && s46 == 2*s25
+// trigonal low has s15 == -s25 && s46 == 2*s25
 void Symmetric6x6Widget::trigonalv15Changed(const QString& dummy)
 {
   double v = v15->text().toDouble();
@@ -606,68 +599,41 @@ void Symmetric6x6Widget::trigonalv46Changed(const QString& dummy)
   v25->setText(QString::number(v / 2.0));
 }
 
-
-
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 void Symmetric6x6Widget::setupGui()
 {
   // Catch when the filter is about to execute the preflight
-  connect(getFilter(), SIGNAL(preflightAboutToExecute()),
-          this, SLOT(beforePreflight()));
+  connect(getFilter(), SIGNAL(preflightAboutToExecute()), this, SLOT(beforePreflight()));
 
   // Catch when the filter is finished running the preflight
-  connect(getFilter(), SIGNAL(preflightExecuted()),
-          this, SLOT(afterPreflight()));
+  connect(getFilter(), SIGNAL(preflightExecuted()), this, SLOT(afterPreflight()));
 
   // Catch when the filter wants its values updated
-  connect(getFilter(), SIGNAL(updateFilterParameters(AbstractFilter*)),
-          this, SLOT(filterNeedsInputParameters(AbstractFilter*)));
+  connect(getFilter(), SIGNAL(updateFilterParameters(AbstractFilter*)), this, SLOT(filterNeedsInputParameters(AbstractFilter*)));
 
-
-  connect(v11, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v12, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v13, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v14, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v15, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v16, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v22, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v23, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v24, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v25, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v26, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v33, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v34, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v35, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v36, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v44, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v45, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v46, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v55, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v56, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
-  connect(v66, SIGNAL(textChanged(const QString&)),
-          this, SLOT(widgetChanged(const QString&) ) );
+  connect(v11, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v12, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v13, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v14, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v15, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v16, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v22, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v23, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v24, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v25, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v26, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v33, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v34, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v35, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v36, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v44, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v45, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v46, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v55, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v56, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
+  connect(v66, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
 
   QDoubleValidator* v11Val = new QDoubleValidator(v11);
   v11->setValidator(v11Val);
@@ -717,44 +683,43 @@ void Symmetric6x6Widget::setupGui()
   QDoubleValidator* v66Val = new QDoubleValidator(v66);
   v66->setValidator(v66Val);
 
-  if (getFilterParameter() != nullptr)
+  if(getFilterParameter() != nullptr)
   {
-    label->setText(getFilterParameter()->getHumanLabel() );
+    label->setText(getFilterParameter()->getHumanLabel());
 
     FloatVec21_t data = getFilter()->property(PROPERTY_NAME_AS_CHAR).value<FloatVec21_t>();
-    v11->setText( QString::number(data.v11)  );
-    v12->setText( QString::number(data.v12)  );
-    v13->setText( QString::number(data.v13)  );
-    v14->setText( QString::number(data.v14)  );
-    v15->setText( QString::number(data.v15)  );
-    v16->setText( QString::number(data.v16)  );
+    v11->setText(QString::number(data.v11));
+    v12->setText(QString::number(data.v12));
+    v13->setText(QString::number(data.v13));
+    v14->setText(QString::number(data.v14));
+    v15->setText(QString::number(data.v15));
+    v16->setText(QString::number(data.v16));
 
-    v22->setText( QString::number(data.v22) );
-    v23->setText( QString::number(data.v23) );
-    v24->setText( QString::number(data.v24) );
-    v25->setText( QString::number(data.v25) );
-    v26->setText( QString::number(data.v26) );
+    v22->setText(QString::number(data.v22));
+    v23->setText(QString::number(data.v23));
+    v24->setText(QString::number(data.v24));
+    v25->setText(QString::number(data.v25));
+    v26->setText(QString::number(data.v26));
 
-    v33->setText( QString::number(data.v33) );
-    v34->setText( QString::number(data.v34) );
-    v35->setText( QString::number(data.v35) );
-    v36->setText( QString::number(data.v36) );
+    v33->setText(QString::number(data.v33));
+    v34->setText(QString::number(data.v34));
+    v35->setText(QString::number(data.v35));
+    v36->setText(QString::number(data.v36));
 
-    v44->setText( QString::number(data.v44) );
-    v45->setText( QString::number(data.v45) );
-    v46->setText( QString::number(data.v46) );
+    v44->setText(QString::number(data.v44));
+    v45->setText(QString::number(data.v45));
+    v46->setText(QString::number(data.v46));
 
-    v55->setText( QString::number(data.v55) );
-    v56->setText( QString::number(data.v56) );
+    v55->setText(QString::number(data.v55));
+    v56->setText(QString::number(data.v56));
 
-    v66->setText( QString::number(data.v66) );
+    v66->setText(QString::number(data.v66));
   }
 
-  //connect combobox to symmetry state
-  connect(comboBox, SIGNAL(currentIndexChanged( int )), this, SLOT( changeSym( int ) ) );
+  // connect combobox to symmetry state
+  connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(changeSym(int)));
   clearSym();
   changeSym(comboBox->currentIndex());
-
 }
 
 // -----------------------------------------------------------------------------
@@ -806,7 +771,6 @@ void Symmetric6x6Widget::filterNeedsInputParameters(AbstractFilter* filter)
   {
     getFilter()->notifyMissingProperty(getFilterParameter());
   }
-
 }
 
 // -----------------------------------------------------------------------------
@@ -814,7 +778,6 @@ void Symmetric6x6Widget::filterNeedsInputParameters(AbstractFilter* filter)
 // -----------------------------------------------------------------------------
 void Symmetric6x6Widget::beforePreflight()
 {
-
 }
 
 // -----------------------------------------------------------------------------
@@ -822,5 +785,4 @@ void Symmetric6x6Widget::beforePreflight()
 // -----------------------------------------------------------------------------
 void Symmetric6x6Widget::afterPreflight()
 {
-
 }
