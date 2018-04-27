@@ -23,10 +23,13 @@
 
 #include "SIMPLib/Plugin/ISIMPLibPlugin.h"
 
+#include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
+
 /**
  * @brief The UCSBUtilitiesPlugin class
  */
-class UCSBUtilitiesPlugin : public QObject, public ISIMPLibPlugin
+class UCSBUtilities_EXPORT UCSBUtilitiesPlugin : public QObject, public ISIMPLibPlugin
+
 {
     Q_OBJECT
     Q_INTERFACES(ISIMPLibPlugin)
