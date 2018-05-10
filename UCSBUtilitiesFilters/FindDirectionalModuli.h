@@ -43,6 +43,13 @@
 class FindDirectionalModuli : public AbstractFilter
 {
     Q_OBJECT
+    PYB11_CREATE_BINDINGS(FindDirectionalModuli SUPERCLASS AbstractFilter)
+    PYB11_PROPERTY(DataArrayPath FeaturePhasesArrayPath READ getFeaturePhasesArrayPath WRITE setFeaturePhasesArrayPath)
+    PYB11_PROPERTY(DataArrayPath CrystalStructuresArrayPath READ getCrystalStructuresArrayPath WRITE setCrystalStructuresArrayPath)
+    PYB11_PROPERTY(DataArrayPath CrystalCompliancesArrayPath READ getCrystalCompliancesArrayPath WRITE setCrystalCompliancesArrayPath)
+    PYB11_PROPERTY(DataArrayPath AvgQuatsArrayPath READ getAvgQuatsArrayPath WRITE setAvgQuatsArrayPath)
+    PYB11_PROPERTY(QString DirectionalModuliArrayName READ getDirectionalModuliArrayName WRITE setDirectionalModuliArrayName)
+    PYB11_PROPERTY(FloatVec3_t LoadingDirection READ getLoadingDirection WRITE setLoadingDirection)
   public:
     SIMPL_SHARED_POINTERS(FindDirectionalModuli)
     SIMPL_FILTER_NEW_MACRO(FindDirectionalModuli)

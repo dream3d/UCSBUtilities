@@ -28,6 +28,9 @@
 class CopyDataContainer : public AbstractFilter
 {
     Q_OBJECT
+    PYB11_CREATE_BINDINGS(CopyDataContainer SUPERCLASS AbstractFilter)
+    PYB11_PROPERTY(QString SelectedDataContainerName READ getSelectedDataContainerName WRITE setSelectedDataContainerName)
+    PYB11_PROPERTY(QString NewDataContainerName READ getNewDataContainerName WRITE setNewDataContainerName)
   public:
     SIMPL_SHARED_POINTERS(CopyDataContainer)
     SIMPL_FILTER_NEW_MACRO(CopyDataContainer)

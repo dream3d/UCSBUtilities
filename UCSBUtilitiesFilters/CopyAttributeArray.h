@@ -28,6 +28,9 @@
 class CopyAttributeArray : public AbstractFilter
 {
     Q_OBJECT
+    PYB11_CREATE_BINDINGS(CopyAttributeArray SUPERCLASS AbstractFilter)
+    PYB11_PROPERTY(DataArrayPath SelectedArrayPath READ getSelectedArrayPath WRITE setSelectedArrayPath)
+    PYB11_PROPERTY(QString NewArrayName READ getNewArrayName WRITE setNewArrayName)
   public:
     SIMPL_SHARED_POINTERS(CopyAttributeArray)
     SIMPL_FILTER_NEW_MACRO(CopyAttributeArray)

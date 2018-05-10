@@ -35,6 +35,11 @@
 class FindBoundaryAreas : public AbstractFilter
 {
     Q_OBJECT
+    PYB11_CREATE_BINDINGS(FindBoundaryAreas SUPERCLASS AbstractFilter)
+    PYB11_PROPERTY(DataArrayPath SurfaceMeshTriangleAreasArrayPath READ getSurfaceMeshTriangleAreasArrayPath WRITE setSurfaceMeshTriangleAreasArrayPath)
+    PYB11_PROPERTY(DataArrayPath SurfaceMeshFeatureFaceIdsArrayPath READ getSurfaceMeshFeatureFaceIdsArrayPath WRITE setSurfaceMeshFeatureFaceIdsArrayPath)
+    PYB11_PROPERTY(DataArrayPath SurfaceMeshBoundaryAreasArrayPath READ getSurfaceMeshBoundaryAreasArrayPath WRITE setSurfaceMeshBoundaryAreasArrayPath)
+    
   public:
     SIMPL_SHARED_POINTERS(FindBoundaryAreas)
     SIMPL_FILTER_NEW_MACRO(FindBoundaryAreas)

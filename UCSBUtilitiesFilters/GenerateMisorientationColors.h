@@ -29,6 +29,15 @@
 class GenerateMisorientationColors : public AbstractFilter
 {
     Q_OBJECT
+    PYB11_CREATE_BINDINGS(GenerateMisorientationColors SUPERCLASS AbstractFilter)
+    PYB11_PROPERTY(FloatVec3_t ReferenceAxis READ getReferenceAxis WRITE setReferenceAxis)
+    PYB11_PROPERTY(float ReferenceAngle READ getReferenceAngle WRITE setReferenceAngle)
+    PYB11_PROPERTY(DataArrayPath CellPhasesArrayPath READ getCellPhasesArrayPath WRITE setCellPhasesArrayPath)
+    PYB11_PROPERTY(DataArrayPath QuatsArrayPath READ getQuatsArrayPath WRITE setQuatsArrayPath)
+    PYB11_PROPERTY(DataArrayPath CrystalStructuresArrayPath READ getCrystalStructuresArrayPath WRITE setCrystalStructuresArrayPath)
+    PYB11_PROPERTY(DataArrayPath GoodVoxelsArrayPath READ getGoodVoxelsArrayPath WRITE setGoodVoxelsArrayPath)
+    PYB11_PROPERTY(QString MisorientationColorArrayName READ getMisorientationColorArrayName WRITE setMisorientationColorArrayName)
+    PYB11_PROPERTY(bool UseGoodVoxels READ getUseGoodVoxels WRITE setUseGoodVoxels)
   public:
     SIMPL_SHARED_POINTERS(GenerateMisorientationColors)
     SIMPL_FILTER_NEW_MACRO(GenerateMisorientationColors)

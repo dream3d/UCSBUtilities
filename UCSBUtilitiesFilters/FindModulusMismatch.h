@@ -34,6 +34,10 @@
 class FindModulusMismatch : public AbstractFilter
 {
     Q_OBJECT
+    PYB11_CREATE_BINDINGS(FindModulusMismatch SUPERCLASS AbstractFilter)
+    PYB11_PROPERTY(DataArrayPath ModuliArrayPath READ getModuliArrayPath WRITE setModuliArrayPath)
+    PYB11_PROPERTY(DataArrayPath SurfaceMeshFaceLabelsArrayPath READ getSurfaceMeshFaceLabelsArrayPath WRITE setSurfaceMeshFaceLabelsArrayPath)
+    PYB11_PROPERTY(QString SurfaceMeshDeltaModulusArrayName READ getSurfaceMeshDeltaModulusArrayName WRITE setSurfaceMeshDeltaModulusArrayName)
   public:
     SIMPL_SHARED_POINTERS(FindModulusMismatch)
     SIMPL_FILTER_NEW_MACRO(FindModulusMismatch)

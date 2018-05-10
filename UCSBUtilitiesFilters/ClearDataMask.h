@@ -28,6 +28,9 @@
 class ClearDataMask : public AbstractFilter
 {
     Q_OBJECT
+    PYB11_CREATE_BINDINGS(ClearDataMask SUPERCLASS AbstractFilter)
+    PYB11_PROPERTY(DataArrayPath MaskArrayPath READ getMaskArrayPath WRITE setMaskArrayPath)
+
   public:
     SIMPL_SHARED_POINTERS(ClearDataMask)
     SIMPL_FILTER_NEW_MACRO(ClearDataMask)

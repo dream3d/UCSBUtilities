@@ -29,6 +29,9 @@
 class InputCrystalCompliances : public AbstractFilter
 {
     Q_OBJECT
+    PYB11_CREATE_BINDINGS(InputCrystalCompliances SUPERCLASS AbstractFilter)
+    PYB11_PROPERTY(FloatVec21_t Compliances READ getCompliances WRITE setCompliances)
+    PYB11_PROPERTY(DataArrayPath CrystalCompliancesArrayPath READ getCrystalCompliancesArrayPath WRITE setCrystalCompliancesArrayPath)
   public:
     SIMPL_SHARED_POINTERS(InputCrystalCompliances)
     SIMPL_FILTER_NEW_MACRO(InputCrystalCompliances)
