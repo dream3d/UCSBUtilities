@@ -23,10 +23,12 @@
 #include "SIMPLib/SIMPLib.h"
 #include "UCSBUtilities/FilterParameters/Symmetric6x6FilterParameter.h"
 
+#include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
+
 /**
  * @brief The InputCrystalCompliances class. See [Filter documentation](@ref inputcrystalcompliances) for details.
  */
-class InputCrystalCompliances : public AbstractFilter
+class UCSBUtilities_EXPORT InputCrystalCompliances : public AbstractFilter
 {
     Q_OBJECT
     PYB11_CREATE_BINDINGS(InputCrystalCompliances SUPERCLASS AbstractFilter)

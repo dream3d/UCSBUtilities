@@ -31,7 +31,9 @@
 #include "SIMPLib/Filtering/AbstractFilter.h"
 #include "SIMPLib/SIMPLib.h"
 
-class FindModulusMismatch : public AbstractFilter
+#include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
+
+class UCSBUtilities_EXPORT FindModulusMismatch : public AbstractFilter
 {
     Q_OBJECT
     PYB11_CREATE_BINDINGS(FindModulusMismatch SUPERCLASS AbstractFilter)

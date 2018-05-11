@@ -22,10 +22,12 @@
 #include "SIMPLib/Filtering/AbstractFilter.h"
 #include "SIMPLib/SIMPLib.h"
 
+#include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
+
 /**
  * @brief The CopyDataContainer class. See [Filter documentation](@ref copydatacontainer) for details.
  */
-class CopyDataContainer : public AbstractFilter
+class UCSBUtilities_EXPORT CopyDataContainer : public AbstractFilter
 {
     Q_OBJECT
     PYB11_CREATE_BINDINGS(CopyDataContainer SUPERCLASS AbstractFilter)

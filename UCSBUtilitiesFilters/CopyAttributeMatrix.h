@@ -22,10 +22,12 @@
 #include "SIMPLib/Filtering/AbstractFilter.h"
 #include "SIMPLib/SIMPLib.h"
 
+#include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
+
 /**
  * @brief The CopyAttributeMatrix class. See [Filter documentation](@ref copyattributematrix) for details.
  */
-class CopyAttributeMatrix : public AbstractFilter
+class UCSBUtilities_EXPORT CopyAttributeMatrix : public AbstractFilter
 {
     Q_OBJECT
     PYB11_CREATE_BINDINGS(CopyAttributeMatrix SUPERCLASS AbstractFilter)

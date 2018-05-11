@@ -23,10 +23,12 @@
 #include "SIMPLib/Filtering/AbstractFilter.h"
 #include "SIMPLib/SIMPLib.h"
 
+#include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
+
 /**
  * @brief The GenerateMisorientationColors class. See [Filter documentation](@ref generateipfcolors) for details.
  */
-class GenerateMisorientationColors : public AbstractFilter
+class UCSBUtilities_EXPORT GenerateMisorientationColors : public AbstractFilter
 {
     Q_OBJECT
     PYB11_CREATE_BINDINGS(GenerateMisorientationColors SUPERCLASS AbstractFilter)

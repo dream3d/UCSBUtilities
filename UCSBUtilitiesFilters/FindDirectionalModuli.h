@@ -33,6 +33,8 @@
 #include "OrientationLib/LaueOps/LaueOps.h"
 #include "OrientationLib/LaueOps/OrthoRhombicOps.h"
 
+#include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
+
 /**
  * @class FindDirectionalModuli FindDirectionalModuli.h DREAM3DLib/GenericFilters/FindDirectionalModuli.h
  * @brief
@@ -40,7 +42,7 @@
  * @date Nov 19, 2011
  * @version 1.0
  */
-class FindDirectionalModuli : public AbstractFilter
+class UCSBUtilities_EXPORT FindDirectionalModuli : public AbstractFilter
 {
     Q_OBJECT
     PYB11_CREATE_BINDINGS(FindDirectionalModuli SUPERCLASS AbstractFilter)

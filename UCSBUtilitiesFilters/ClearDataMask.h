@@ -22,10 +22,12 @@
 #include "SIMPLib/Filtering/AbstractFilter.h"
 #include "SIMPLib/SIMPLib.h"
 
+#include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
+
 /**
  * @brief The ClearDataMask class. See [Filter documentation](@ref cleardatamask) for details.
  */
-class ClearDataMask : public AbstractFilter
+class UCSBUtilities_EXPORT ClearDataMask : public AbstractFilter
 {
     Q_OBJECT
     PYB11_CREATE_BINDINGS(ClearDataMask SUPERCLASS AbstractFilter)

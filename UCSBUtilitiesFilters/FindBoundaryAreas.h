@@ -25,6 +25,8 @@
 #include "SIMPLib/Filtering/AbstractFilter.h"
 #include "SIMPLib/SIMPLib.h"
 
+#include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
+
 /**
  * @class FindBoundaryAreas FindBoundaryAreas.h /FilterCategoryFilters/FindBoundaryAreas.h
  * @brief
@@ -32,7 +34,7 @@
  * @date
  * @version 1.0
  */
-class FindBoundaryAreas : public AbstractFilter
+class UCSBUtilities_EXPORT FindBoundaryAreas : public AbstractFilter
 {
     Q_OBJECT
     PYB11_CREATE_BINDINGS(FindBoundaryAreas SUPERCLASS AbstractFilter)
