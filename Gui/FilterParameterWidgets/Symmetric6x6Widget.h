@@ -79,10 +79,6 @@ public slots:
   void trigonalv25Changed(const QString& dummy);
   void trigonalv46Changed(const QString& dummy);
 
-signals:
-  void errorSettingFilterParameter(const QString& msg);
-  void parametersChanged();
-
 private:
   Symmetric6x6FilterParameter* m_FilterParameter;
 

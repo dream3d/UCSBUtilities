@@ -66,10 +66,6 @@ public slots:
   void beforePreflight();                                  // Called just before the "dataCheck()" is called
   void afterPreflight();                                   // Called just after the dataCheck() is called.
 
-signals:
-  void errorSettingFilterParameter(const QString& msg);
-  void parametersChanged();
-
 private:
   FloatVec4FilterParameter* m_FilterParameter;
 
