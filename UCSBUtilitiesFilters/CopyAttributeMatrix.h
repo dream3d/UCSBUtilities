@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _copyattributematrix_h_
-#define _copyattributematrix_h_
+#pragma once
 
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
@@ -155,4 +154,3 @@ class UCSBUtilities_EXPORT CopyAttributeMatrix : public AbstractFilter
     CopyAttributeMatrix& operator=(CopyAttributeMatrix&&) = delete;      // Move Assignment
 };
 
-#endif /* _CopyAttributeMatrix_H_ */

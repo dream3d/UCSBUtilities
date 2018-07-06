@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _orthorhombicopsmisocolor_h_
-#define _orthorhombicopsmisocolor_h_
+#pragma once
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
@@ -56,5 +55,4 @@ class OrthoRhombicOpsMisoColor : public OrthoRhombicOps
     void operator=(const OrthoRhombicOpsMisoColor&) = delete;           // Move assignment Not Implemented
 };
 
-#endif /* ORTHORHOMBICOpsMisoColor_H_ */
 

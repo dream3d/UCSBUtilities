@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _generatemisorientationcolors_h_
-#define _generatemisorientationcolors_h_
+#pragma once
 
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/FilterParameters/FloatVec3FilterParameter.h"
@@ -188,4 +187,3 @@ class UCSBUtilities_EXPORT GenerateMisorientationColors : public AbstractFilter
     GenerateMisorientationColors& operator=(GenerateMisorientationColors&&) = delete;      // Move Assignment
 };
 
-#endif /* _GenerateMisorientationColors_H_ */

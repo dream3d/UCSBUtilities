@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
  
-#ifndef _ucsbutilitiesplugin_h_
-#define _ucsbutilitiesplugin_h_
+#pragma once
 
 #include <QtCore/QObject>
 #include <QtCore/QSettings>
@@ -176,4 +175,3 @@ class UCSBUtilities_EXPORT UCSBUtilitiesPlugin : public QObject, public ISIMPLib
     void operator=(const UCSBUtilitiesPlugin&) = delete;      // Move assignment Not Implemented
 };
 
-#endif /* _UCSBUtilities_H_ */

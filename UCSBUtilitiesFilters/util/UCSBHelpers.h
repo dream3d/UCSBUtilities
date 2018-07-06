@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _ucsbhelpers_h_
-#define _ucsbhelpers_h_
+#pragma once
 
 #include <vector>
 
@@ -187,4 +186,3 @@ public:
 };
 
 
-#endif /* _UCSBHelpers_H_ */

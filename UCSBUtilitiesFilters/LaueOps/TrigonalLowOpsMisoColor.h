@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _trigonallowopsmisocolor_h_
-#define _trigonallowopsmisocolor_h_
+#pragma once
 
 
 #include "SIMPLib/SIMPLib.h"
@@ -58,5 +57,4 @@ class TrigonalLowOpsMisoColor : public TrigonalLowOps
     void operator=(const TrigonalLowOpsMisoColor&) = delete;          // Move assignment Not Implemented
 };
 
-#endif /* TrigonalLowOpsMisoColor_H_ */
 

@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _monoclinicopsmisocolor_h_
-#define _monoclinicopsmisocolor_h_
+#pragma once
 
 
 #include "SIMPLib/SIMPLib.h"
@@ -56,5 +55,4 @@ class MonoclinicOpsMisoColor : public MonoclinicOps
     void operator=(const MonoclinicOpsMisoColor&) = delete;         // Move assignment Not Implemented
 };
 
-#endif /* MonoclinicOpsMisoColor_H_ */
 

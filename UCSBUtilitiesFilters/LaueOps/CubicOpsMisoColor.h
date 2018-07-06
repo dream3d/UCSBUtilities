@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _cubicopsmisocolor_h_
-#define _cubicopsmisocolor_h_
+#pragma once
 
 
 #include "SIMPLib/SIMPLib.h"
@@ -52,5 +51,4 @@ class CubicOpsMisoColor : public CubicOps
     void operator=(const CubicOpsMisoColor&) = delete;    // Move assignment Not Implemented
 };
 
-#endif /* CUBICOpsMisoColor_H_ */
 

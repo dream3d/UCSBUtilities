@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _findboundaryareas_h_
-#define _findboundaryareas_h_
+#pragma once
 
 #include <QtCore/QString>
 
@@ -174,6 +173,5 @@ class UCSBUtilities_EXPORT FindBoundaryAreas : public AbstractFilter
     FindBoundaryAreas& operator=(FindBoundaryAreas&&) = delete;      // Move Assignment
 };
 
-#endif /* FindBoundaryAreas_H_ */
 
 

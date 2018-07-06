@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _ucsbutilitiesconstants_h_
-#define _ucsbutilitiesconstants_h_
+#pragma once
 
 #include <QtCore/QString>
 
@@ -52,4 +51,3 @@ namespace DREAM3D
     const QString MicroTextureRegionNumCells("MicroTextureRegionNumCells");
   }
 }
-#endif

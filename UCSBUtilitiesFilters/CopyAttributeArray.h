@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _copyattributearray_h_
-#define _copyattributearray_h_
+#pragma once
 
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
@@ -155,4 +154,3 @@ class UCSBUtilities_EXPORT CopyAttributeArray : public AbstractFilter
     CopyAttributeArray& operator=(CopyAttributeArray&&) = delete;      // Move Assignment
 };
 
-#endif /* _CopyAttributeArray_H_ */

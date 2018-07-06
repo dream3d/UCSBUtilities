@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _hexagonallowopsmisocolor_h_
-#define _hexagonallowopsmisocolor_h_
+#pragma once
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
@@ -57,5 +56,4 @@ class HexagonalLowOpsMisoColor : public HexagonalLowOps
     void operator=(const HexagonalLowOpsMisoColor&) = delete;           // Move assignment Not Implemented
 };
 
-#endif /* HexagonalLowOpsMisoColor_H_ */
 

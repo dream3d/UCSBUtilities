@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _findmodulusmismatch_h_
-#define _findmodulusmismatch_h_
+#pragma once
 
 #include <vector>
 #include <QtCore/QString>
@@ -173,4 +172,3 @@ class UCSBUtilities_EXPORT FindModulusMismatch : public AbstractFilter
     FindModulusMismatch& operator=(FindModulusMismatch&&) = delete;      // Move Assignment
 };
 
-#endif /* FindModulusMismatch_H_ */

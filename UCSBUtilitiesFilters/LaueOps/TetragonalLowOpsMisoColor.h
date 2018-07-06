@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _tetragonallowopsmisocolor_h_
-#define _tetragonallowopsmisocolor_h_
+#pragma once
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
@@ -56,5 +55,4 @@ class TetragonalLowOpsMisoColor : public TetragonalLowOps
     void operator=(const TetragonalLowOpsMisoColor&) = delete;            // Move assignment Not Implemented
 };
 
-#endif /* TetragonalLowOpsMisoColor_H_ */
 

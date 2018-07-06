@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _finddirectionalmoduli_h_
-#define _finddirectionalmoduli_h_
+#pragma once
 
 #include <vector>
 #include <QtCore/QString>
@@ -199,4 +198,3 @@ class UCSBUtilities_EXPORT FindDirectionalModuli : public AbstractFilter
     FindDirectionalModuli& operator=(FindDirectionalModuli&&) = delete;      // Move Assignment
 };
 
-#endif /* FindDirectionalModuli_H_ */

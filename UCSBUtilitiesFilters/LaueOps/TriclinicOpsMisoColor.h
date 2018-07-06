@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _triclinicopsmisocolor_h_
-#define _triclinicopsmisocolor_h_
+#pragma once
 
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
@@ -55,5 +54,4 @@ class TriclinicOpsMisoColor : public TriclinicOps
     void operator=(const TriclinicOpsMisoColor&) = delete;        // Move assignment Not Implemented
 };
 
-#endif /* TriclinicOpsMisoColor_H_ */
 

@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _copydatacontainer_h_
-#define _copydatacontainer_h_
+#pragma once
 
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
@@ -155,4 +154,3 @@ class UCSBUtilities_EXPORT CopyDataContainer : public AbstractFilter
     CopyDataContainer& operator=(CopyDataContainer&&) = delete;      // Move Assignment
 };
 
-#endif /* _CopyDataContainer_H_ */

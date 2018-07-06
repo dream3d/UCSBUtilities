@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _inputcrystalcompliances_h_
-#define _inputcrystalcompliances_h_
+#pragma once
 
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
@@ -158,4 +157,3 @@ class UCSBUtilities_EXPORT InputCrystalCompliances : public AbstractFilter
     InputCrystalCompliances& operator=(InputCrystalCompliances&&) = delete;      // Move Assignment
 };
 
-#endif /* InputCrystalCompliances_H_ */

@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _cleardatamask_h_
-#define _cleardatamask_h_
+#pragma once
 
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
@@ -155,4 +154,3 @@ class UCSBUtilities_EXPORT ClearDataMask : public AbstractFilter
     ClearDataMask& operator=(ClearDataMask&&) = delete;      // Move Assignment
 };
 
-#endif /* ClearDataMask_H_ */

@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _symmetric6x6filterparameter_h_
-#define _symmetric6x6filterparameter_h_
+#pragma once
 
 #include <QtCore/QJsonObject>
 #include <QtCore/QJsonArray>
@@ -151,4 +150,3 @@ public:
     void operator=(const Symmetric6x6FilterParameter&) = delete;              // Move assignment Not Implemented
 };
 
-#endif /* _Symmetric6x6FilterParameter_H_ */

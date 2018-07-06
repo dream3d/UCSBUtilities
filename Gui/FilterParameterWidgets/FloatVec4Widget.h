@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _floatvec4widget_h_
-#define _floatvec4widget_h_
+#pragma once
 
 #include <QtCore/QObject>
 #include <QtCore/QPointer>
@@ -73,4 +72,3 @@ private:
   void operator=(const FloatVec4Widget&) = delete;  // Move assignment Not Implemented
 };
 
-#endif /* _FloatVec4Widget_H_ */

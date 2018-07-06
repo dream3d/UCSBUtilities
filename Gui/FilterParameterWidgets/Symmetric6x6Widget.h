@@ -15,8 +15,7 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#ifndef _symmetric6x6widget_h_
-#define _symmetric6x6widget_h_
+#pragma once
 
 #include <QtCore/QObject>
 #include <QtCore/QPointer>
@@ -101,4 +100,3 @@ private:
   void operator=(const Symmetric6x6Widget&) = delete;     // Move assignment Not Implemented
 };
 
-#endif /* _Symmetric6x6Widget_H_ */
