@@ -24,22 +24,28 @@
 #include "SIMPLib/Filtering/FilterManager.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
+#include "UCSBUtilities/UCSBUtilitiesVersion.h"
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-UCSBUtilitiesPlugin::UCSBUtilitiesPlugin() :
-m_Version("0.1.0"),                            // Initialize UCSBUtilities's Version Number Here
-m_CompatibilityVersion("0.1.0"), // Initialize UCSBUtilities's Compatibility Version Number Here
-m_Vendor("Vendor Name"),                                // Initialize UCSBUtilities's Vendor Name Here
-m_URL("URL"),                                           // Initialize Company URL Here
-m_Location("Location"),                                 // Initialize UCSBUtilities library Location Here
-m_Description("Description"),                           // Initialize UCSBUtilities's Description Here
-m_Copyright("Copyright"),                               // Initialize UCSBUtilities's Copyright Here
-m_Filters(QList<QString>()),                        // Initialize UCSBUtilities's List of Dependencies Here
-m_DidLoad(false)
+UCSBUtilitiesPlugin::UCSBUtilitiesPlugin()
+: m_Version(UCSBUtilities::Version::Package())
+, m_CompatibilityVersion(UCSBUtilities::Version::Package())
+, m_Vendor("University of California, Santa Barbara")
+, // Initialize UCSBUtilities's Vendor Name Here
+    m_URL("https://github.com/dream3d/UCSBUtilities")
+, // Initialize Company URL Here
+    m_Location("")
+, // Initialize UCSBUtilities library Location Here
+    m_Description("")
+, // Initialize UCSBUtilities's Description Here
+    m_Copyright("")
+, // Initialize UCSBUtilities's Copyright Here
+    m_Filters(QList<QString>())
+, // Initialize UCSBUtilities's List of Dependencies Here
+    m_DidLoad(false)
 {
-
 }
 
 // -----------------------------------------------------------------------------
@@ -70,7 +76,6 @@ QString UCSBUtilitiesPlugin::getPluginBaseName()
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
-
 
 // -----------------------------------------------------------------------------
 //
@@ -124,9 +129,9 @@ QString UCSBUtilitiesPlugin::getDescription()
   QFileInfo licenseFileInfo(licenseFile);
   QString text = "<<--Description was not read-->>";
 
-  if ( licenseFileInfo.exists() )
+  if(licenseFileInfo.exists())
   {
-    if ( licenseFile.open(QIODevice::ReadOnly | QIODevice::Text) )
+    if(licenseFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
       QTextStream in(&licenseFile);
       text = in.readAll();
@@ -155,9 +160,9 @@ QString UCSBUtilitiesPlugin::getLicense()
   QFileInfo licenseFileInfo(licenseFile);
   QString text = "<<--License was not read-->>";
 
-  if ( licenseFileInfo.exists() )
+  if(licenseFileInfo.exists())
   {
-    if ( licenseFile.open(QIODevice::ReadOnly | QIODevice::Text) )
+    if(licenseFile.open(QIODevice::ReadOnly | QIODevice::Text))
     {
       QTextStream in(&licenseFile);
       text = in.readAll();
@@ -174,18 +179,18 @@ QMap<QString, QString> UCSBUtilitiesPlugin::getThirdPartyLicenses()
   QMap<QString, QString> licenseMap;
   QList<QString> fileStrList;
   fileStrList.push_back(":/ThirdParty/HDF5.txt");
-  
+
   fileStrList.push_back(":/ThirdParty/Qt.txt");
   fileStrList.push_back(":/ThirdParty/Qwt.txt");
 
-  for (QList<QString>::iterator iter = fileStrList.begin(); iter != fileStrList.end(); iter++)
+  for(QList<QString>::iterator iter = fileStrList.begin(); iter != fileStrList.end(); iter++)
   {
     QFile file(*iter);
     QFileInfo licenseFileInfo(file);
 
-    if ( licenseFileInfo.exists() )
+    if(licenseFileInfo.exists())
     {
-      if ( file.open(QIODevice::ReadOnly | QIODevice::Text) )
+      if(file.open(QIODevice::ReadOnly | QIODevice::Text))
       {
         QTextStream in(&file);
         licenseMap.insert(licenseFileInfo.baseName(), in.readAll());
