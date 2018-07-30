@@ -149,7 +149,7 @@ class UCSBUtilities_EXPORT CopyAttributeMatrix : public AbstractFilter
 
   public:
     CopyAttributeMatrix(const CopyAttributeMatrix&) = delete; // Copy Constructor Not Implemented
-    CopyAttributeMatrix(CopyAttributeMatrix&&) = delete;      // Move Constructor
+    CopyAttributeMatrix(CopyAttributeMatrix&&) = delete;      // Move Constructor Not Implemented
     CopyAttributeMatrix& operator=(const CopyAttributeMatrix&) = delete; // Copy Assignment Not Implemented
     CopyAttributeMatrix& operator=(CopyAttributeMatrix&&) = delete;      // Move Assignment
 };

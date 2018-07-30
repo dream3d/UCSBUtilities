@@ -149,7 +149,7 @@ class UCSBUtilities_EXPORT ClearDataMask : public AbstractFilter
 
   public:
     ClearDataMask(const ClearDataMask&) = delete;  // Copy Constructor Not Implemented
-    ClearDataMask(ClearDataMask&&) = delete;       // Move Constructor
+    ClearDataMask(ClearDataMask&&) = delete;       // Move Constructor Not Implemented
     ClearDataMask& operator=(const ClearDataMask&) = delete; // Copy Assignment Not Implemented
     ClearDataMask& operator=(ClearDataMask&&) = delete;      // Move Assignment
 };

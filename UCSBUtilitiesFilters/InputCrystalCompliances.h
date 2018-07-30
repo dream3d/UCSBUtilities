@@ -152,7 +152,7 @@ class UCSBUtilities_EXPORT InputCrystalCompliances : public AbstractFilter
 
   public:
     InputCrystalCompliances(const InputCrystalCompliances&) = delete; // Copy Constructor Not Implemented
-    InputCrystalCompliances(InputCrystalCompliances&&) = delete;      // Move Constructor
+    InputCrystalCompliances(InputCrystalCompliances&&) = delete;      // Move Constructor Not Implemented
     InputCrystalCompliances& operator=(const InputCrystalCompliances&) = delete; // Copy Assignment Not Implemented
     InputCrystalCompliances& operator=(InputCrystalCompliances&&) = delete;      // Move Assignment
 };

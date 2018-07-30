@@ -149,7 +149,7 @@ class UCSBUtilities_EXPORT CopyDataContainer : public AbstractFilter
 
   public:
     CopyDataContainer(const CopyDataContainer&) = delete; // Copy Constructor Not Implemented
-    CopyDataContainer(CopyDataContainer&&) = delete;      // Move Constructor
+    CopyDataContainer(CopyDataContainer&&) = delete;      // Move Constructor Not Implemented
     CopyDataContainer& operator=(const CopyDataContainer&) = delete; // Copy Assignment Not Implemented
     CopyDataContainer& operator=(CopyDataContainer&&) = delete;      // Move Assignment
 };

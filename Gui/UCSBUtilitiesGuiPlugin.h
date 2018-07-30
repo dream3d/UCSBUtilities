@@ -20,7 +20,7 @@ public:
 
 public:
   UCSBUtilitiesGuiPlugin(const UCSBUtilitiesGuiPlugin&) = delete;            // Copy Constructor Not Implemented
-  UCSBUtilitiesGuiPlugin(UCSBUtilitiesGuiPlugin&&) = delete;                 // Move Constructor
+  UCSBUtilitiesGuiPlugin(UCSBUtilitiesGuiPlugin&&) = delete;                 // Move Constructor Not Implemented
   UCSBUtilitiesGuiPlugin& operator=(const UCSBUtilitiesGuiPlugin&) = delete; // Copy Assignment Not Implemented
   UCSBUtilitiesGuiPlugin& operator=(UCSBUtilitiesGuiPlugin&&) = delete;      // Move Assignment Not Implemented
 };

@@ -193,7 +193,7 @@ class UCSBUtilities_EXPORT FindDirectionalModuli : public AbstractFilter
 
   public:
     FindDirectionalModuli(const FindDirectionalModuli&) = delete; // Copy Constructor Not Implemented
-    FindDirectionalModuli(FindDirectionalModuli&&) = delete;      // Move Constructor
+    FindDirectionalModuli(FindDirectionalModuli&&) = delete;      // Move Constructor Not Implemented
     FindDirectionalModuli& operator=(const FindDirectionalModuli&) = delete; // Copy Assignment Not Implemented
     FindDirectionalModuli& operator=(FindDirectionalModuli&&) = delete;      // Move Assignment
 };
