@@ -170,7 +170,7 @@ class UCSBUtilities_EXPORT FindBoundaryAreas : public AbstractFilter
     FindBoundaryAreas(const FindBoundaryAreas&) = delete; // Copy Constructor Not Implemented
     FindBoundaryAreas(FindBoundaryAreas&&) = delete;      // Move Constructor Not Implemented
     FindBoundaryAreas& operator=(const FindBoundaryAreas&) = delete; // Copy Assignment Not Implemented
-    FindBoundaryAreas& operator=(FindBoundaryAreas&&) = delete;      // Move Assignment
+    FindBoundaryAreas& operator=(FindBoundaryAreas&&) = delete;      // Move Assignment Not Implemented
 };
 
 

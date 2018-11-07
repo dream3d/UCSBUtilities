@@ -184,6 +184,6 @@ class UCSBUtilities_EXPORT GenerateMisorientationColors : public AbstractFilter
     GenerateMisorientationColors(const GenerateMisorientationColors&) = delete; // Copy Constructor Not Implemented
     GenerateMisorientationColors(GenerateMisorientationColors&&) = delete;      // Move Constructor Not Implemented
     GenerateMisorientationColors& operator=(const GenerateMisorientationColors&) = delete; // Copy Assignment Not Implemented
-    GenerateMisorientationColors& operator=(GenerateMisorientationColors&&) = delete;      // Move Assignment
+    GenerateMisorientationColors& operator=(GenerateMisorientationColors&&) = delete;      // Move Assignment Not Implemented
 };
 

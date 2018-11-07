@@ -151,6 +151,6 @@ class UCSBUtilities_EXPORT CopyAttributeArray : public AbstractFilter
     CopyAttributeArray(const CopyAttributeArray&) = delete; // Copy Constructor Not Implemented
     CopyAttributeArray(CopyAttributeArray&&) = delete;      // Move Constructor Not Implemented
     CopyAttributeArray& operator=(const CopyAttributeArray&) = delete; // Copy Assignment Not Implemented
-    CopyAttributeArray& operator=(CopyAttributeArray&&) = delete;      // Move Assignment
+    CopyAttributeArray& operator=(CopyAttributeArray&&) = delete;      // Move Assignment Not Implemented
 };
 
