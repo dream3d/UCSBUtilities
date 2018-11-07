@@ -45,14 +45,11 @@ class MonoclinicOpsMisoColor : public MonoclinicOps
      */
     virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
-
-  protected:
-
-
-
-  private:
+  public:
     MonoclinicOpsMisoColor(const MonoclinicOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    void operator=(const MonoclinicOpsMisoColor&) = delete;         // Move assignment Not Implemented
+    MonoclinicOpsMisoColor(MonoclinicOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
+    MonoclinicOpsMisoColor& operator=(const MonoclinicOpsMisoColor&) = delete; // Copy Assignment Not Implemented
+    MonoclinicOpsMisoColor& operator=(MonoclinicOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
 };
 
 

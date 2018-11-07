@@ -45,10 +45,11 @@ class CubicOpsMisoColor : public CubicOps
      */
     virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
-
-  private:
+  public:
     CubicOpsMisoColor(const CubicOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    void operator=(const CubicOpsMisoColor&) = delete;    // Move assignment Not Implemented
+    CubicOpsMisoColor(CubicOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
+    CubicOpsMisoColor& operator=(const CubicOpsMisoColor&) = delete; // Copy Assignment Not Implemented
+    CubicOpsMisoColor& operator=(CubicOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
 };
 
 

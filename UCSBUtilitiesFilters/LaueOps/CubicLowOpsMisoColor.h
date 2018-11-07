@@ -52,9 +52,12 @@ class CubicLowOpsMisoColor : public CubicLowOps
     float _calcMisoQuat(const QuatF quatsym[24], int numsym,
                         QuatF& q1, QuatF& q2,
                         float& n1, float& n2, float& n3);
-  private:
+
+  public:
     CubicLowOpsMisoColor(const CubicLowOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    void operator=(const CubicLowOpsMisoColor&) = delete;       // Move assignment Not Implemented
+    CubicLowOpsMisoColor(CubicLowOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
+    CubicLowOpsMisoColor& operator=(const CubicLowOpsMisoColor&) = delete; // Copy Assignment Not Implemented
+    CubicLowOpsMisoColor& operator=(CubicLowOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
 };
 
 

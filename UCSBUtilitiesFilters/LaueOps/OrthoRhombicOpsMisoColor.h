@@ -46,13 +46,11 @@ class OrthoRhombicOpsMisoColor : public OrthoRhombicOps
      */
     virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
-
-  protected:
-
-
-  private:
+  public:
     OrthoRhombicOpsMisoColor(const OrthoRhombicOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    void operator=(const OrthoRhombicOpsMisoColor&) = delete;           // Move assignment Not Implemented
+    OrthoRhombicOpsMisoColor(OrthoRhombicOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
+    OrthoRhombicOpsMisoColor& operator=(const OrthoRhombicOpsMisoColor&) = delete; // Copy Assignment Not Implemented
+    OrthoRhombicOpsMisoColor& operator=(OrthoRhombicOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
 };
 
 

@@ -45,14 +45,11 @@ class TetragonalLowOpsMisoColor : public TetragonalLowOps
      */
     virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
-
-
-  protected:
-
-
-  private:
+  public:
     TetragonalLowOpsMisoColor(const TetragonalLowOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    void operator=(const TetragonalLowOpsMisoColor&) = delete;            // Move assignment Not Implemented
+    TetragonalLowOpsMisoColor(TetragonalLowOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
+    TetragonalLowOpsMisoColor& operator=(const TetragonalLowOpsMisoColor&) = delete; // Copy Assignment Not Implemented
+    TetragonalLowOpsMisoColor& operator=(TetragonalLowOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
 };
 
 

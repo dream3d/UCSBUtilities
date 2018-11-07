@@ -45,11 +45,11 @@ class HexagonalOpsMisoColor : public HexagonalOps
      */
     virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
-  protected:
-
-  private:
+  public:
     HexagonalOpsMisoColor(const HexagonalOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    void operator=(const HexagonalOpsMisoColor&) = delete;        // Move assignment Not Implemented
+    HexagonalOpsMisoColor(HexagonalOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
+    HexagonalOpsMisoColor& operator=(const HexagonalOpsMisoColor&) = delete; // Copy Assignment Not Implemented
+    HexagonalOpsMisoColor& operator=(HexagonalOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
 };
 
 

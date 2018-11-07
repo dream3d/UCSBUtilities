@@ -47,14 +47,11 @@ class TrigonalLowOpsMisoColor : public TrigonalLowOps
      */
     virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
 
-
-
-  protected:
-
-
-  private:
+  public:
     TrigonalLowOpsMisoColor(const TrigonalLowOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    void operator=(const TrigonalLowOpsMisoColor&) = delete;          // Move assignment Not Implemented
+    TrigonalLowOpsMisoColor(TrigonalLowOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
+    TrigonalLowOpsMisoColor& operator=(const TrigonalLowOpsMisoColor&) = delete; // Copy Assignment Not Implemented
+    TrigonalLowOpsMisoColor& operator=(TrigonalLowOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
 };
 
 
