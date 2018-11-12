@@ -144,7 +144,7 @@ void ClearDataMask::execute()
 AbstractFilter::Pointer ClearDataMask::newFilterInstance(bool copyFilterParameters) const
 {
   ClearDataMask::Pointer filter = ClearDataMask::New();
-  if(true == copyFilterParameters)
+  if(copyFilterParameters)
   {
     copyFilterParameterInstanceVariables(filter.get());
   }

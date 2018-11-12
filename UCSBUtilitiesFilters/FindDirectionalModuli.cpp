@@ -434,7 +434,7 @@ void FindDirectionalModuli::execute()
 AbstractFilter::Pointer FindDirectionalModuli::newFilterInstance(bool copyFilterParameters) const
 {
   FindDirectionalModuli::Pointer filter = FindDirectionalModuli::New();
-  if(true == copyFilterParameters)
+  if(copyFilterParameters)
   {
     copyFilterParameterInstanceVariables(filter.get());
   }

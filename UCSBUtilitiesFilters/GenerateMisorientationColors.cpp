@@ -71,7 +71,7 @@ class GenerateMisorientationColorsImpl
       m_NotSupported(notSupported),
       m_MisorientationColor(colors)
     {}
-    virtual ~GenerateMisorientationColorsImpl() {}
+    virtual ~GenerateMisorientationColorsImpl() = default;
 
     void convert(size_t start, size_t end) const
     {
@@ -131,8 +131,7 @@ class GenerateMisorientationColorsImpl
 
         }
         // Make sure we are using a valid Euler Angles with valid crystal symmetry
-        else if( (missingGoodVoxels == true || m_GoodVoxels[i] == true)
-                 && m_CrystalStructures[phase] < Ebsd::CrystalStructure::LaueGroupEnd )
+        else if((missingGoodVoxels || m_GoodVoxels[i]) && m_CrystalStructures[phase] < Ebsd::CrystalStructure::LaueGroupEnd)
         {
           argb = ops[m_CrystalStructures[phase]]->generateMisorientationColor(cellQuat, refQuat);
           m_MisorientationColor[index] = RgbColor::dRed(argb);
@@ -283,7 +282,7 @@ void GenerateMisorientationColors::dataCheck()
 
   // The good voxels array is optional, If it is available we are going to use it, otherwise we are going to create it
   cDims[0] = 1;
-  if (getUseGoodVoxels() == true)
+  if(getUseGoodVoxels())
   {
     // The good voxels array is optional, If it is available we are going to use it, otherwise we are going to create it
     cDims[0] = 1;
@@ -339,7 +338,7 @@ void GenerateMisorientationColors::execute()
 #endif
 
 #ifdef SIMPL_USE_PARALLEL_ALGORITHMS
-  if (doParallel == true)
+  if(doParallel)
   {
     tbb::parallel_for(tbb::blocked_range<size_t>(0, totalPoints),
                       GenerateMisorientationColorsImpl( normRefDir, m_ReferenceAngle, reinterpret_cast<QuatF*>(m_Quats), m_CellPhases, m_CrystalStructures, m_GoodVoxels, notSupported->getPointer(0), m_MisorientationColor), tbb::auto_partitioner());
@@ -384,7 +383,7 @@ void GenerateMisorientationColors::execute()
 AbstractFilter::Pointer GenerateMisorientationColors::newFilterInstance(bool copyFilterParameters) const
 {
   GenerateMisorientationColors::Pointer filter = GenerateMisorientationColors::New();
-  if(true == copyFilterParameters)
+  if(copyFilterParameters)
   {
     copyFilterParameterInstanceVariables(filter.get());
   }

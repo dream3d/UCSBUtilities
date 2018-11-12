@@ -83,7 +83,7 @@ void CopyDataContainer::dataCheck()
   setErrorCondition(0);
   setWarningCondition(0);
 
-  if (getNewDataContainerName().isEmpty() == true)
+  if(getNewDataContainerName().isEmpty())
   {
     setErrorCondition(-11001);
     QString ss = QObject::tr("The new Data Container name must be set");
@@ -130,7 +130,7 @@ void CopyDataContainer::execute()
 AbstractFilter::Pointer CopyDataContainer::newFilterInstance(bool copyFilterParameters) const
 {
   CopyDataContainer::Pointer filter = CopyDataContainer::New();
-  if(true == copyFilterParameters)
+  if(copyFilterParameters)
   {
     copyFilterParameterInstanceVariables(filter.get());
   }

@@ -250,7 +250,7 @@ void InputCrystalCompliances::execute()
 AbstractFilter::Pointer InputCrystalCompliances::newFilterInstance(bool copyFilterParameters) const
 {
   InputCrystalCompliances::Pointer filter = InputCrystalCompliances::New();
-  if(true == copyFilterParameters)
+  if(copyFilterParameters)
   {
     copyFilterParameterInstanceVariables(filter.get());
   }

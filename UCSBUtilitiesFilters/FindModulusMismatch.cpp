@@ -45,7 +45,7 @@ class FindModulusMismatchImpl
       m_DeltaModuli(deltaMod)
     {}
 
-    virtual ~FindModulusMismatchImpl() {}
+    virtual ~FindModulusMismatchImpl() = default;
 
     void generate(size_t start, size_t end) const
     {
@@ -192,7 +192,7 @@ void FindModulusMismatch::execute()
   int64_t numTriangles = m_SurfaceMeshFaceLabelsPtr.lock()->getNumberOfTuples();
 
 #ifdef SIMPL_USE_PARALLEL_ALGORITHMS
-  if (doParallel == true)
+  if(doParallel)
   {
     tbb::parallel_for(tbb::blocked_range<size_t>(0, numTriangles),
                       FindModulusMismatchImpl(m_SurfaceMeshFaceLabels, m_Moduli, m_SurfaceMeshDeltaModulus), tbb::auto_partitioner());
@@ -213,7 +213,7 @@ void FindModulusMismatch::execute()
 AbstractFilter::Pointer FindModulusMismatch::newFilterInstance(bool copyFilterParameters) const
 {
   FindModulusMismatch::Pointer filter = FindModulusMismatch::New();
-  if(true == copyFilterParameters)
+  if(copyFilterParameters)
   {
     copyFilterParameterInstanceVariables(filter.get());
   }

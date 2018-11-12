@@ -83,7 +83,7 @@ void CopyAttributeArray::dataCheck()
   setErrorCondition(0);
   setWarningCondition(0);
 
-  if(m_NewArrayName.isEmpty() == true)
+  if(m_NewArrayName.isEmpty())
   {
     setErrorCondition(-11009);
     QString ss = QObject::tr("The new Attribute Array name must be set");
@@ -142,7 +142,7 @@ void CopyAttributeArray::execute()
 AbstractFilter::Pointer CopyAttributeArray::newFilterInstance(bool copyFilterParameters) const
 {
   CopyAttributeArray::Pointer filter = CopyAttributeArray::New();
-  if(true == copyFilterParameters)
+  if(copyFilterParameters)
   {
     copyFilterParameterInstanceVariables(filter.get());
   }

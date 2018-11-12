@@ -28,18 +28,12 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-TetragonalOpsMisoColor::TetragonalOpsMisoColor() :
-  TetragonalOps()
-{
-}
+TetragonalOpsMisoColor::TetragonalOpsMisoColor() = default;
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-TetragonalOpsMisoColor::~TetragonalOpsMisoColor()
-{
-  
-}
+TetragonalOpsMisoColor::~TetragonalOpsMisoColor() = default;
 
 // -----------------------------------------------------------------------------
 //

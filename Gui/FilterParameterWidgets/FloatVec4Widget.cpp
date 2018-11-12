@@ -106,7 +106,7 @@ void FloatVec4Widget::filterNeedsInputParameters(AbstractFilter* filter)
   QVariant v;
   v.setValue(data);
   ok = filter->setProperty(PROPERTY_NAME_AS_CHAR, v);
-  if(false == ok)
+  if(!ok)
   {
     getFilter()->notifyMissingProperty(getFilterParameter());
   }

@@ -28,19 +28,12 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-OrthoRhombicOpsMisoColor::OrthoRhombicOpsMisoColor() :
-  OrthoRhombicOps()
-{
-  
-}
+OrthoRhombicOpsMisoColor::OrthoRhombicOpsMisoColor() = default;
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-OrthoRhombicOpsMisoColor::~OrthoRhombicOpsMisoColor()
-{
-  
-}
+OrthoRhombicOpsMisoColor::~OrthoRhombicOpsMisoColor() = default;
 
 // -----------------------------------------------------------------------------
 //

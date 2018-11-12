@@ -20,15 +20,12 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-Symmetric6x6FilterParameter::Symmetric6x6FilterParameter() :
-FilterParameter()
-{}
+Symmetric6x6FilterParameter::Symmetric6x6FilterParameter() = default;
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-Symmetric6x6FilterParameter::~Symmetric6x6FilterParameter()
-{}
+Symmetric6x6FilterParameter::~Symmetric6x6FilterParameter() = default;
 
 // -----------------------------------------------------------------------------
 //

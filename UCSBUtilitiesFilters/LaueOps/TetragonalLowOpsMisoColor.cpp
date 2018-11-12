@@ -26,11 +26,7 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-TetragonalLowOpsMisoColor::TetragonalLowOpsMisoColor() :
-  TetragonalLowOps()
-{
-
-}
+TetragonalLowOpsMisoColor::TetragonalLowOpsMisoColor() = default;
 
 // -----------------------------------------------------------------------------
 //

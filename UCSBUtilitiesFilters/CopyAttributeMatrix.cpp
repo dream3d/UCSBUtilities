@@ -83,7 +83,7 @@ void CopyAttributeMatrix::dataCheck()
   setErrorCondition(0);
   setWarningCondition(0);
 
-  if (m_NewAttributeMatrix.isEmpty() == true)
+  if(m_NewAttributeMatrix.isEmpty())
   {
     setErrorCondition(-11004);
     QString ss = QObject::tr("The new Attribute Matrix name must be set");
@@ -131,7 +131,7 @@ void CopyAttributeMatrix::execute()
 AbstractFilter::Pointer CopyAttributeMatrix::newFilterInstance(bool copyFilterParameters) const
 {
   CopyAttributeMatrix::Pointer filter = CopyAttributeMatrix::New();
-  if(true == copyFilterParameters)
+  if(copyFilterParameters)
   {
     copyFilterParameterInstanceVariables(filter.get());
   }

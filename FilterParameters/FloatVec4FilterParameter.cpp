@@ -20,15 +20,12 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-FloatVec4FilterParameter::FloatVec4FilterParameter() :
-FilterParameter()
-{}
+FloatVec4FilterParameter::FloatVec4FilterParameter() = default;
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-FloatVec4FilterParameter::~FloatVec4FilterParameter()
-{}
+FloatVec4FilterParameter::~FloatVec4FilterParameter() = default;
 
 // -----------------------------------------------------------------------------
 //

@@ -158,7 +158,7 @@ void FindBoundaryAreas::execute()
 AbstractFilter::Pointer FindBoundaryAreas::newFilterInstance(bool copyFilterParameters) const
 {
   FindBoundaryAreas::Pointer filter = FindBoundaryAreas::New();
-  if(true == copyFilterParameters)
+  if(copyFilterParameters)
   {
     copyFilterParameterInstanceVariables(filter.get());
   }
