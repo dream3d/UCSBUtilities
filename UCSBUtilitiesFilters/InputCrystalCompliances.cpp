@@ -31,7 +31,6 @@
 // -----------------------------------------------------------------------------
 InputCrystalCompliances::InputCrystalCompliances()
 : m_CrystalCompliancesArrayPath("", "", "")
-, m_CrystalCompliances(nullptr)
 {
   m_Compliances.v11 = 1;
   m_Compliances.v12 = 1;
@@ -121,7 +120,6 @@ void InputCrystalCompliances::readFilterParameters(AbstractFilterParametersReade
 // -----------------------------------------------------------------------------
 void InputCrystalCompliances::initialize()
 {
-
 }
 
 // -----------------------------------------------------------------------------

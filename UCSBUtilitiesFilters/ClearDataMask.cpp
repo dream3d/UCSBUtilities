@@ -29,7 +29,6 @@
 // -----------------------------------------------------------------------------
 ClearDataMask::ClearDataMask()
 : m_MaskArrayPath("", "", "")
-, m_Mask(nullptr)
 {
 }
 
@@ -66,7 +65,6 @@ void ClearDataMask::readFilterParameters(AbstractFilterParametersReader* reader,
 // -----------------------------------------------------------------------------
 void ClearDataMask::initialize()
 {
-
 }
 
 // -----------------------------------------------------------------------------

@@ -43,11 +43,6 @@ FindDirectionalModuli::FindDirectionalModuli()
 , m_CrystalCompliancesArrayPath("", "", "")
 , m_AvgQuatsArrayPath("", "", "")
 , m_DirectionalModuliArrayName("DirectionalModuli")
-, m_DirectionalModuli(nullptr)
-, m_FeaturePhases(nullptr)
-, m_AvgQuats(nullptr)
-, m_CrystalStructures(nullptr)
-, m_CrystalCompliances(nullptr)
 {
   m_LoadingDirection.x = 0.0f;
   m_LoadingDirection.y = 0.0f;
@@ -113,7 +108,6 @@ void FindDirectionalModuli::readFilterParameters(AbstractFilterParametersReader*
 // -----------------------------------------------------------------------------
 void FindDirectionalModuli::initialize()
 {
-
 }
 
 // -----------------------------------------------------------------------------

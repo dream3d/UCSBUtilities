@@ -17,7 +17,7 @@
 
 #include "CubicLowOpsMisoColor.h"
 
-#include <assert.h>
+#include <cassert>
 
 // Include this FIRST because there is a needed define for some compiles
 // to expose some of the constants needed below

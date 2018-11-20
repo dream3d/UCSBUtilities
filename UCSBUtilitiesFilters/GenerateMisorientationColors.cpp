@@ -169,11 +169,6 @@ GenerateMisorientationColors::GenerateMisorientationColors()
 , m_GoodVoxelsArrayPath("", "", "")
 , m_MisorientationColorArrayName(SIMPL::CellData::MisorientationColor)
 , m_UseGoodVoxels(false)
-, m_CellPhases(nullptr)
-, m_Quats(nullptr)
-, m_CrystalStructures(nullptr)
-, m_GoodVoxels(nullptr)
-, m_MisorientationColor(nullptr)
 {
   m_ReferenceAxis.x = 0.0f;
   m_ReferenceAxis.y = 0.0f;
@@ -243,7 +238,6 @@ void GenerateMisorientationColors::readFilterParameters(AbstractFilterParameters
 // -----------------------------------------------------------------------------
 void GenerateMisorientationColors::initialize()
 {
-
 }
 
 // -----------------------------------------------------------------------------

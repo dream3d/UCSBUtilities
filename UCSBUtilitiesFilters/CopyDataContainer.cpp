@@ -72,7 +72,6 @@ void CopyDataContainer::readFilterParameters(AbstractFilterParametersReader* rea
 // -----------------------------------------------------------------------------
 void CopyDataContainer::initialize()
 {
-
 }
 
 // -----------------------------------------------------------------------------

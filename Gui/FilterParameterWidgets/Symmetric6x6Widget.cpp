@@ -440,32 +440,32 @@ void Symmetric6x6Widget::setTriclinicSym()
 
 void Symmetric6x6Widget::clearSym()
 {
-  disconnect(v11, 0, 0, 0);
-  disconnect(v12, 0, 0, 0);
-  disconnect(v13, 0, 0, 0);
-  disconnect(v14, 0, 0, 0);
-  disconnect(v15, 0, 0, 0);
-  disconnect(v16, 0, 0, 0);
+  disconnect(v11, nullptr, nullptr, nullptr);
+  disconnect(v12, nullptr, nullptr, nullptr);
+  disconnect(v13, nullptr, nullptr, nullptr);
+  disconnect(v14, nullptr, nullptr, nullptr);
+  disconnect(v15, nullptr, nullptr, nullptr);
+  disconnect(v16, nullptr, nullptr, nullptr);
 
-  disconnect(v22, 0, 0, 0);
-  disconnect(v23, 0, 0, 0);
-  disconnect(v24, 0, 0, 0);
-  disconnect(v25, 0, 0, 0);
-  disconnect(v26, 0, 0, 0);
+  disconnect(v22, nullptr, nullptr, nullptr);
+  disconnect(v23, nullptr, nullptr, nullptr);
+  disconnect(v24, nullptr, nullptr, nullptr);
+  disconnect(v25, nullptr, nullptr, nullptr);
+  disconnect(v26, nullptr, nullptr, nullptr);
 
-  disconnect(v33, 0, 0, 0);
-  disconnect(v34, 0, 0, 0);
-  disconnect(v35, 0, 0, 0);
-  disconnect(v36, 0, 0, 0);
+  disconnect(v33, nullptr, nullptr, nullptr);
+  disconnect(v34, nullptr, nullptr, nullptr);
+  disconnect(v35, nullptr, nullptr, nullptr);
+  disconnect(v36, nullptr, nullptr, nullptr);
 
-  disconnect(v44, 0, 0, 0);
-  disconnect(v45, 0, 0, 0);
-  disconnect(v46, 0, 0, 0);
+  disconnect(v44, nullptr, nullptr, nullptr);
+  disconnect(v45, nullptr, nullptr, nullptr);
+  disconnect(v46, nullptr, nullptr, nullptr);
 
-  disconnect(v55, 0, 0, 0);
-  disconnect(v56, 0, 0, 0);
+  disconnect(v55, nullptr, nullptr, nullptr);
+  disconnect(v56, nullptr, nullptr, nullptr);
 
-  disconnect(v66, 0, 0, 0);
+  disconnect(v66, nullptr, nullptr, nullptr);
 
   v11->setEnabled(true);
   v12->setEnabled(true);

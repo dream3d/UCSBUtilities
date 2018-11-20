@@ -72,7 +72,6 @@ void CopyAttributeMatrix::readFilterParameters(AbstractFilterParametersReader* r
 // -----------------------------------------------------------------------------
 void CopyAttributeMatrix::initialize()
 {
-
 }
 
 // -----------------------------------------------------------------------------
