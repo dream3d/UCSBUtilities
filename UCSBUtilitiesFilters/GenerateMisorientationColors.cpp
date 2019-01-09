@@ -366,9 +366,6 @@ void GenerateMisorientationColors::execute()
     setWarningCondition(-5001);
     notifyWarningMessage(getHumanLabel(), msg, getWarningCondition());
   }
-
-  /* Let the GUI know we are done with this filter */
-  notifyStatusMessage(getHumanLabel(), "Complete");
 }
 
 // -----------------------------------------------------------------------------

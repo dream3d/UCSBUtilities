@@ -239,7 +239,6 @@ void InputCrystalCompliances::execute()
     m_CrystalCompliances[index + 35] = m_Compliances.v66;
   }
 
-  notifyStatusMessage(getHumanLabel(), "Complete");
 }
 
 // -----------------------------------------------------------------------------

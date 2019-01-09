@@ -122,7 +122,6 @@ void CopyAttributeMatrix::execute()
   dataCheck(); // calling the dataCheck will rename the array, so nothing is required here
   if(getErrorCondition() < 0) { return; }
 
-  notifyStatusMessage(getHumanLabel(), "Complete");
 }
 // -----------------------------------------------------------------------------
 //

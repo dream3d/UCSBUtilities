@@ -120,7 +120,6 @@ void CopyDataContainer::execute()
   dataCheck(); // calling the dataCheck will copy the array, so nothing is required here
   if(getErrorCondition() < 0) { return; }
 
-  notifyStatusMessage(getHumanLabel(), "Complete");
 }
 
 // -----------------------------------------------------------------------------
