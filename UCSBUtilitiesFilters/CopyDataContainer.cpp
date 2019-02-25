@@ -44,7 +44,7 @@ CopyDataContainer::~CopyDataContainer() = default;
 // -----------------------------------------------------------------------------
 void CopyDataContainer::setupFilterParameters()
 {
-  FilterParameterVector parameters;
+  FilterParameterVectorType parameters;
 
   {
     DataContainerSelectionFilterParameter::RequirementType req;

@@ -187,7 +187,7 @@ GenerateMisorientationColors::~GenerateMisorientationColors() = default;
 // -----------------------------------------------------------------------------
 void GenerateMisorientationColors::setupFilterParameters()
 {
-  FilterParameterVector parameters;
+  FilterParameterVectorType parameters;
   parameters.push_back(SIMPL_NEW_FLOAT_VEC3_FP("Reference Orientation Axis", ReferenceAxis, FilterParameter::Parameter, GenerateMisorientationColors));
 
   parameters.push_back(SIMPL_NEW_FLOAT_FP("Reference Orientation Angle (Degrees)", ReferenceAngle, FilterParameter::Parameter, GenerateMisorientationColors));

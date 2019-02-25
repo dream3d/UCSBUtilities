@@ -44,7 +44,7 @@ CopyAttributeArray::~CopyAttributeArray() = default;
 // -----------------------------------------------------------------------------
 void CopyAttributeArray::setupFilterParameters()
 {
-  FilterParameterVector parameters;
+  FilterParameterVectorType parameters;
 
   {
     DataArraySelectionFilterParameter::RequirementType req;

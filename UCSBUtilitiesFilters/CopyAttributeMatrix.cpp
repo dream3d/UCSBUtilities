@@ -44,7 +44,7 @@ CopyAttributeMatrix::~CopyAttributeMatrix() = default;
 // -----------------------------------------------------------------------------
 void CopyAttributeMatrix::setupFilterParameters()
 {
-  FilterParameterVector parameters;
+  FilterParameterVectorType parameters;
 
   {
     AttributeMatrixSelectionFilterParameter::RequirementType req;

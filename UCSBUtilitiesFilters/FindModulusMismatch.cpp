@@ -94,7 +94,7 @@ FindModulusMismatch::~FindModulusMismatch() = default;
 // -----------------------------------------------------------------------------
 void FindModulusMismatch::setupFilterParameters()
 {
-  FilterParameterVector parameters;
+  FilterParameterVectorType parameters;
 
   {
     DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(SIMPL::Defaults::AnyPrimitive, 1, AttributeMatrix::Category::Any);
