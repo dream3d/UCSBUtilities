@@ -30,8 +30,8 @@ class UCSBUtilities_EXPORT CopyDataContainer : public AbstractFilter
 {
     Q_OBJECT
     PYB11_CREATE_BINDINGS(CopyDataContainer SUPERCLASS AbstractFilter)
-    PYB11_PROPERTY(QString SelectedDataContainerName READ getSelectedDataContainerName WRITE setSelectedDataContainerName)
-    PYB11_PROPERTY(QString NewDataContainerName READ getNewDataContainerName WRITE setNewDataContainerName)
+    PYB11_PROPERTY(DataArrayPath SelectedDataContainerName READ getSelectedDataContainerName WRITE setSelectedDataContainerName)
+    PYB11_PROPERTY(DataArrayPath NewDataContainerName READ getNewDataContainerName WRITE setNewDataContainerName)
   public:
     SIMPL_SHARED_POINTERS(CopyDataContainer)
     SIMPL_FILTER_NEW_MACRO(CopyDataContainer)
@@ -39,11 +39,11 @@ class UCSBUtilities_EXPORT CopyDataContainer : public AbstractFilter
 
     ~CopyDataContainer() override;
 
-    SIMPL_FILTER_PARAMETER(QString, SelectedDataContainerName)
-    Q_PROPERTY(QString SelectedDataContainerName READ getSelectedDataContainerName WRITE setSelectedDataContainerName)
+    SIMPL_FILTER_PARAMETER(DataArrayPath, SelectedDataContainerName)
+    Q_PROPERTY(DataArrayPath SelectedDataContainerName READ getSelectedDataContainerName WRITE setSelectedDataContainerName)
 
-    SIMPL_FILTER_PARAMETER(QString, NewDataContainerName)
-    Q_PROPERTY(QString NewDataContainerName READ getNewDataContainerName WRITE setNewDataContainerName)
+    SIMPL_FILTER_PARAMETER(DataArrayPath, NewDataContainerName)
+    Q_PROPERTY(DataArrayPath NewDataContainerName READ getNewDataContainerName WRITE setNewDataContainerName)
 
     /**
      * @brief getCompiledLibraryName Reimplemented from @see AbstractFilter class
