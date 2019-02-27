@@ -19,6 +19,7 @@
 
 #include "SIMPLib/Common/Constants.h"
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
+#include "SIMPLib/FilterParameters/DataContainerCreationFilterParameter.h"
 #include "SIMPLib/FilterParameters/DataContainerSelectionFilterParameter.h"
 #include "SIMPLib/FilterParameters/StringFilterParameter.h"
 
@@ -62,8 +63,8 @@ void CopyDataContainer::setupFilterParameters()
 void CopyDataContainer::readFilterParameters(AbstractFilterParametersReader* reader, int index)
 {
   reader->openFilterGroup(this, index);
-  setSelectedDataContainerName( reader->readString("SelectedDataContainerName", getSelectedDataContainerName()) );
-  setNewDataContainerName( reader->readString( "NewDataContainerName", getNewDataContainerName() ) );
+  setSelectedDataContainerName( reader->readDataArrayPath("SelectedDataContainerName", getSelectedDataContainerName()) );
+  setNewDataContainerName( reader->readDataArrayPath( "NewDataContainerName", getNewDataContainerName()) );
   reader->closeFilterGroup();
 }
 
@@ -93,7 +94,7 @@ void CopyDataContainer::dataCheck()
   if(getErrorCondition() < 0) { return; }
 
   DataContainer::Pointer dcNew = dc->deepCopy(getInPreflight());
-  dcNew->setName(getNewDataContainerName());
+  dcNew->setName(getNewDataContainerName().getDataContainerName());
   getDataContainerArray()->addDataContainer(dcNew);
 }
 
