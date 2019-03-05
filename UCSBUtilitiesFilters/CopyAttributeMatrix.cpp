@@ -96,7 +96,7 @@ void CopyAttributeMatrix::dataCheck()
 
   AttributeMatrix::Pointer p = attrMat->deepCopy(getInPreflight());
   p->setName(getNewAttributeMatrix());
-  dc->addAttributeMatrix(getNewAttributeMatrix(), p );
+  dc->addAttributeMatrix(p);
 }
 
 // -----------------------------------------------------------------------------

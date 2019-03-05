@@ -50,7 +50,7 @@ class UCSBUtilities_EXPORT FindDirectionalModuli : public AbstractFilter
     PYB11_PROPERTY(DataArrayPath CrystalCompliancesArrayPath READ getCrystalCompliancesArrayPath WRITE setCrystalCompliancesArrayPath)
     PYB11_PROPERTY(DataArrayPath AvgQuatsArrayPath READ getAvgQuatsArrayPath WRITE setAvgQuatsArrayPath)
     PYB11_PROPERTY(QString DirectionalModuliArrayName READ getDirectionalModuliArrayName WRITE setDirectionalModuliArrayName)
-    PYB11_PROPERTY(FloatVec3_t LoadingDirection READ getLoadingDirection WRITE setLoadingDirection)
+    PYB11_PROPERTY(FloatVec3Type LoadingDirection READ getLoadingDirection WRITE setLoadingDirection)
   public:
     SIMPL_SHARED_POINTERS(FindDirectionalModuli)
     SIMPL_FILTER_NEW_MACRO(FindDirectionalModuli)
@@ -73,8 +73,8 @@ class UCSBUtilities_EXPORT FindDirectionalModuli : public AbstractFilter
     SIMPL_FILTER_PARAMETER(QString, DirectionalModuliArrayName)
     Q_PROPERTY(QString DirectionalModuliArrayName READ getDirectionalModuliArrayName WRITE setDirectionalModuliArrayName)
 
-    SIMPL_FILTER_PARAMETER(FloatVec3_t, LoadingDirection)
-    Q_PROPERTY(FloatVec3_t LoadingDirection READ getLoadingDirection WRITE setLoadingDirection)
+    SIMPL_FILTER_PARAMETER(FloatVec3Type, LoadingDirection)
+    Q_PROPERTY(FloatVec3Type LoadingDirection READ getLoadingDirection WRITE setLoadingDirection)
 
     /**
      * @brief getCompiledLibraryName Reimplemented from @see AbstractFilter class

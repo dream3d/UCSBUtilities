@@ -60,16 +60,15 @@
 class GenerateMisorientationColorsImpl
 {
   public:
-    GenerateMisorientationColorsImpl(FloatVec3_t referenceAxis, float refAngle, QuatF* quats, int32_t* phases, uint32_t* crystalStructures,
-                                     bool* goodVoxels, uint8_t* notSupported, uint8_t* colors) :
-      m_ReferenceAxis(referenceAxis),
-      m_ReferenceAngle(refAngle),
-      m_Quats(quats),
-      m_CellPhases(phases),
-      m_CrystalStructures(crystalStructures),
-      m_GoodVoxels(goodVoxels),
-      m_NotSupported(notSupported),
-      m_MisorientationColor(colors)
+    GenerateMisorientationColorsImpl(FloatVec3Type referenceAxis, float refAngle, QuatF* quats, int32_t* phases, uint32_t* crystalStructures, bool* goodVoxels, uint8_t* notSupported, uint8_t* colors)
+    : m_ReferenceAxis(referenceAxis)
+    , m_ReferenceAngle(refAngle)
+    , m_Quats(quats)
+    , m_CellPhases(phases)
+    , m_CrystalStructures(crystalStructures)
+    , m_GoodVoxels(goodVoxels)
+    , m_NotSupported(notSupported)
+    , m_MisorientationColor(colors)
     {}
     virtual ~GenerateMisorientationColorsImpl() = default;
 
@@ -96,7 +95,7 @@ class GenerateMisorientationColorsImpl
 
       ops.push_back(OrthoRhombicOpsMisoColor::New()); // Axis OrthorhombicOps
 
-      QuatF refQuat = {m_ReferenceAxis.x * sinf(m_ReferenceAngle), m_ReferenceAxis.y * sinf(m_ReferenceAngle), m_ReferenceAxis.z * sinf(m_ReferenceAngle), cosf(m_ReferenceAngle)};
+      QuatF refQuat = {m_ReferenceAxis[0] * sinf(m_ReferenceAngle), m_ReferenceAxis[1] * sinf(m_ReferenceAngle), m_ReferenceAxis[2] * sinf(m_ReferenceAngle), cosf(m_ReferenceAngle)};
       QuatF cellQuat = {0.0f, 0.0f, 0.0f, 1.0f};
       SIMPL::Rgb argb = 0x00000000;
 
@@ -148,7 +147,7 @@ class GenerateMisorientationColorsImpl
     }
 #endif
   private:
-    FloatVec3_t  m_ReferenceAxis;
+    FloatVec3Type m_ReferenceAxis;
     float m_ReferenceAngle;
     QuatF* m_Quats;
     int32_t* m_CellPhases;
@@ -170,9 +169,9 @@ GenerateMisorientationColors::GenerateMisorientationColors()
 , m_MisorientationColorArrayName(SIMPL::CellData::MisorientationColor)
 , m_UseGoodVoxels(false)
 {
-  m_ReferenceAxis.x = 0.0f;
-  m_ReferenceAxis.y = 0.0f;
-  m_ReferenceAxis.z = 1.0f;
+  m_ReferenceAxis[0] = 0.0f;
+  m_ReferenceAxis[1] = 0.0f;
+  m_ReferenceAxis[2] = 1.0f;
   m_ReferenceAngle = 0.0f;
 
 }
@@ -319,9 +318,9 @@ void GenerateMisorientationColors::execute()
   size_t totalPoints = m_CellPhasesPtr.lock()->getNumberOfTuples();
 
   // Make sure we are dealing with a unit 1 vector.
-  FloatVec3_t normRefDir = m_ReferenceAxis; // Make a copy of the reference Direction
+  FloatVec3Type normRefDir = m_ReferenceAxis; // Make a copy of the reference Direction
 
-  MatrixMath::Normalize3x1(normRefDir.x, normRefDir.y, normRefDir.z);
+  MatrixMath::Normalize3x1(normRefDir[0], normRefDir[1], normRefDir[2]);
   // Create 1 of every type of Ops class. This condenses the code below
   UInt8ArrayType::Pointer notSupported = UInt8ArrayType::CreateArray(13, "_INTERNAL_USE_ONLY_NotSupportedArray");
   notSupported->initializeWithZeros();

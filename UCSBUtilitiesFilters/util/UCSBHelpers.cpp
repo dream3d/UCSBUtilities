@@ -37,7 +37,7 @@ IDataArray::Pointer UCSBHelpers::ReorderCopy(StatsDataArray::Pointer array, QVec
     return IDataArray::Pointer();
   }
   StatsDataArray::Pointer daCopyPtr = StatsDataArray::New();
-  daCopyPtr->resize(array->getNumberOfTuples());
+  daCopyPtr->resizeTuples(array->getNumberOfTuples());
   daCopyPtr->initializeWithZeros();
   StatsDataArray& daCopy = *daCopyPtr;
   for(size_t i = 0; i < array->getNumberOfTuples(); i++)
@@ -79,7 +79,7 @@ IDataArray::Pointer UCSBHelpers::ReorderCopy(ModifiedLambertProjectionArray::Poi
     return IDataArray::NullPointer();
   }
   ModifiedLambertProjectionArray::Pointer daCopyPtr = ModifiedLambertProjectionArray::New();
-  daCopyPtr->resize(array->getNumberOfTuples());
+  daCopyPtr->resizeTuples(array->getNumberOfTuples());
   daCopyPtr->initializeWithZeros();
   ModifiedLambertProjectionArray& daCopy = *daCopyPtr;
   for(size_t i = 0; i < array->getNumberOfTuples(); i++)

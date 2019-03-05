@@ -31,7 +31,7 @@ class UCSBUtilities_EXPORT GenerateMisorientationColors : public AbstractFilter
 {
     Q_OBJECT
     PYB11_CREATE_BINDINGS(GenerateMisorientationColors SUPERCLASS AbstractFilter)
-    PYB11_PROPERTY(FloatVec3_t ReferenceAxis READ getReferenceAxis WRITE setReferenceAxis)
+    PYB11_PROPERTY(FloatVec3Type ReferenceAxis READ getReferenceAxis WRITE setReferenceAxis)
     PYB11_PROPERTY(float ReferenceAngle READ getReferenceAngle WRITE setReferenceAngle)
     PYB11_PROPERTY(DataArrayPath CellPhasesArrayPath READ getCellPhasesArrayPath WRITE setCellPhasesArrayPath)
     PYB11_PROPERTY(DataArrayPath QuatsArrayPath READ getQuatsArrayPath WRITE setQuatsArrayPath)
@@ -46,8 +46,8 @@ class UCSBUtilities_EXPORT GenerateMisorientationColors : public AbstractFilter
 
     ~GenerateMisorientationColors() override;
 
-    SIMPL_FILTER_PARAMETER(FloatVec3_t, ReferenceAxis)
-    Q_PROPERTY(FloatVec3_t ReferenceAxis READ getReferenceAxis WRITE setReferenceAxis)
+    SIMPL_FILTER_PARAMETER(FloatVec3Type, ReferenceAxis)
+    Q_PROPERTY(FloatVec3Type ReferenceAxis READ getReferenceAxis WRITE setReferenceAxis)
 
     SIMPL_FILTER_PARAMETER(float, ReferenceAngle)
     Q_PROPERTY(float ReferenceAngle READ getReferenceAngle WRITE setReferenceAngle)

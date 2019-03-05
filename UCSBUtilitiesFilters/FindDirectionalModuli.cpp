@@ -44,9 +44,9 @@ FindDirectionalModuli::FindDirectionalModuli()
 , m_AvgQuatsArrayPath("", "", "")
 , m_DirectionalModuliArrayName("DirectionalModuli")
 {
-  m_LoadingDirection.x = 0.0f;
-  m_LoadingDirection.y = 0.0f;
-  m_LoadingDirection.z = 1.0f;
+  m_LoadingDirection[0] = 0.0f;
+  m_LoadingDirection[1] = 0.0f;
+  m_LoadingDirection[2] = 1.0f;
 
   m_OrientationOps = LaueOps::getOrientationOpsVector();
 
@@ -150,7 +150,7 @@ void FindDirectionalModuli::dataCheck()
   { m_CrystalCompliances = m_CrystalCompliancesPtr.lock()->getPointer(0); }
 
   //make sure the direction isn't undefined
-  if(0 == m_LoadingDirection.x && 0 == m_LoadingDirection.y && 0 == m_LoadingDirection.z)
+  if(0 == m_LoadingDirection[0] && 0 == m_LoadingDirection[1] && 0 == m_LoadingDirection[2])
   {
     setErrorCondition(-1);
     notifyErrorMessage(getHumanLabel(), "A non-zero direction must be choosen", getErrorCondition());
@@ -228,9 +228,9 @@ void FindDirectionalModuli::execute()
   //float crystalLoading[3];
 
   //normalize loading direction
-  sampleLoading[0] = m_LoadingDirection.x;
-  sampleLoading[1] = m_LoadingDirection.y;
-  sampleLoading[2] = m_LoadingDirection.z;
+  sampleLoading[0] = m_LoadingDirection[0];
+  sampleLoading[1] = m_LoadingDirection[1];
+  sampleLoading[2] = m_LoadingDirection[2];
   MatrixMath::Normalize3x1(sampleLoading);
 
   //determine a rotation that aligns the loading with the sample 100 direction (as quaternion)
@@ -242,9 +242,9 @@ void FindDirectionalModuli::execute()
   else if(sampleLoading[0] <= -1.0f + std::numeric_limits<float>::epsilon())
   {
     //-100 aligned (rotate 180 deg about any non 100 axis)
-    q2.x = 0.0f;
-    q2.y = 0.0f;
-    q2.z = 1.0f;
+    q2[0] = 0.0f;
+    q2[1] = 0.0f;
+    q2[2] = 1.0f;
     q2.w = 0.0f;
   }
   else
@@ -252,15 +252,15 @@ void FindDirectionalModuli::execute()
     //not a special case, get appropriate quaternion manually
     /* for two unit vectors u and v the quaternion defining the rotation (u -> v)
      *  n = u x v
-     *  q.x = n.x
-     *  q.y = n.y
-     *  q.z = n.z
+     *  q[0] = n[0]
+     *  q[1] = n[1]
+     *  q[2] = n[2]
      *  q.w = 1 + u.v
      *  normalize q
      */
-    q2.x = 0.0f;
-    q2.y = sampleLoading[2];
-    q2.z = -sampleLoading[1];
+    q2[0] = 0.0f;
+    q2[1] = sampleLoading[2];
+    q2[2] = -sampleLoading[1];
     q2.w = 1.0f + sampleLoading[0];
     QuaternionMathF::UnitQuaternion(q2);
   }
@@ -328,18 +328,18 @@ void FindDirectionalModuli::execute()
 
       */
 
-      //Instead I've solved the above symbolically for the quaternion derivted rotation matrix
-      // float g00 = (1.0f - (2.0f * q1.y * q1.y) - (2.0f * q1.z * q1.z));
-      // float g01 = ((2.0f * q1.x * q1.y) - (2.0f * q1.z * q1.w));
-      // float g02 = ((2.0f * q1.x * q1.z) + (2.0f * q1.y * q1.w));
+      // Instead I've solved the above symbolically for the quaternion derivted rotation matrix
+      // float g00 = (1.0f - (2.0f * q1[1] * q1[1]) - (2.0f * q1[2] * q1[2]));
+      // float g01 = ((2.0f * q1[0] * q1[1]) - (2.0f * q1[2] * q1.w));
+      // float g02 = ((2.0f * q1[0] * q1[2]) + (2.0f * q1[1] * q1.w));
 
-      // float g10 = ((2.0f * q1.x * q1.y) + (2.0f * q1.z * q1.w));
-      // float g11 = (1.0f - (2.0f * q1.x * q1.x) - (2.0f * q1.z * q1.z));
-      // float g12 = (2.0f * q1.y * q1.z) - (2.0f * q1.x * q1.w);
+      // float g10 = ((2.0f * q1[0] * q1[1]) + (2.0f * q1[2] * q1.w));
+      // float g11 = (1.0f - (2.0f * q1[0] * q1[0]) - (2.0f * q1[2] * q1[2]));
+      // float g12 = (2.0f * q1[1] * q1[2]) - (2.0f * q1[0] * q1.w);
 
-      // float g20 = ((2.0f * q1.x * q1.z) - (2.0f * q1.y * q1.w));
-      // float g21 = (2.0f * q1.y * q1.z) + (2.0f * q1.x * q1.w);
-      // float g22 = (1.0f - (2.0f * q1.x * q1.x) - (2.0f * q1.y * q1.y));
+      // float g20 = ((2.0f * q1[0] * q1[2]) - (2.0f * q1[1] * q1.w));
+      // float g21 = (2.0f * q1[1] * q1[2]) + (2.0f * q1[0] * q1.w);
+      // float g22 = (1.0f - (2.0f * q1[0] * q1[0]) - (2.0f * q1[1] * q1[1]));
 
       //everything simplifies to a function of 4 factors
       // float a = g11 * g22 - g12 * g21;
@@ -348,9 +348,9 @@ void FindDirectionalModuli::execute()
       // float denom = powf(g02 * g11 * g20 - g01 * g12 * g20 - g02 * g10 * g21 + g00 * g12 * g21 + g01 * g10 * g22 - g00 * g11 * g22, 4);
 
       //these can be expressed more compactly directly from quaternions (especially if a unit quaternion is assumed)
-      float a = 1.0f - 2.0f * (qTotal.y * qTotal.y + qTotal.z * qTotal.z);
-      float b = 2.0f * (qTotal.x * qTotal.y - qTotal.z * qTotal.w);
-      float c = 2.0f * (qTotal.x * qTotal.z + qTotal.y * qTotal.w);
+      float a = 1.0f - 2.0f * (qTotal[1] * qTotal[1] + qTotal[2] * qTotal[2]);
+      float b = 2.0f * (qTotal[0] * qTotal[1] - qTotal[2] * qTotal.w);
+      float c = 2.0f * (qTotal[0] * qTotal[2] + qTotal[1] * qTotal.w);
       //denom = 1.0
 
       //squares are used extensively, compute once
