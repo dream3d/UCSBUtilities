@@ -95,7 +95,7 @@ void CopyDataContainer::dataCheck()
 
   DataContainer::Pointer dcNew = dc->deepCopy(getInPreflight());
   dcNew->setName(getNewDataContainerName().getDataContainerName());
-  getDataContainerArray()->addDataContainer(dcNew);
+  getDataContainerArray()->addOrReplaceDataContainer(dcNew);
 }
 
 // -----------------------------------------------------------------------------
