@@ -360,8 +360,7 @@ void GenerateMisorientationColors::execute()
     {
       QString msg("The symmetry of ");
       msg.append(ops[i]->getSymmetryName()).append(" is not currently supported for misorientation coloring. Elements with this symmetry have been set to black");
-      setWarningCondition(-5000);
-      notifyWarningMessage(getHumanLabel(), msg, getWarningCondition());
+      notifyWarningMessage("", msg, -5000);
     }
   }
 
@@ -369,8 +368,7 @@ void GenerateMisorientationColors::execute()
   if (notSupported->getValue(12) == 1)
   {
     QString msg("There were elements with an unknown crystal symmetry due most likely being marked as 'a 'bad'. These elements have been colored black BUT black is a valid color for misorientation coloring. Please understand this when visualizing your data");
-    setWarningCondition(-5001);
-    notifyWarningMessage(getHumanLabel(), msg, getWarningCondition());
+    notifyWarningMessage("", msg, -5001);
   }
 }
 
