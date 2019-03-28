@@ -26,6 +26,13 @@
 #include "UCSBUtilities/FilterParameters/Symmetric6x6FilterParameter.h"
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
 
+/* Create Enumerations to allow the created Attribute Arrays to take part in renaming */
+enum createdPathID : RenameDataPath::DataID_t
+{
+  DataArrayID30 = 30,
+  DataArrayID31 = 31,
+};
+
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -132,7 +139,8 @@ void InputCrystalCompliances::dataCheck()
 
   // create compliances
   QVector<size_t> cDims(2, 6); // 6 by 6 array
-  m_CrystalCompliancesPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>, AbstractFilter, float>(this, getCrystalCompliancesArrayPath(), 0, cDims);
+  m_CrystalCompliancesPtr =
+      getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>, AbstractFilter, float>(this, getCrystalCompliancesArrayPath(), 0, cDims, "", DataArrayID31); /* @ADD_DATAARRAY_ID@ */
   if(nullptr != m_CrystalCompliancesPtr.lock())
   { m_CrystalCompliances = m_CrystalCompliancesPtr.lock()->getPointer(0); }
 }
