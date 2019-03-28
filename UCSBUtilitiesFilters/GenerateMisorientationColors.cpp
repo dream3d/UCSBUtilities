@@ -276,7 +276,7 @@ void GenerateMisorientationColors::dataCheck()
 
   cDims[0] = 3;
   tempPath.update(getCellPhasesArrayPath().getDataContainerName(), getCellPhasesArrayPath().getAttributeMatrixName(), getMisorientationColorArrayName() );
-  m_MisorientationColorPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<uint8_t>, AbstractFilter, uint8_t>(this, tempPath, 0, cDims, "", DataArrayID31); /* @ADD_DATAARRAY_ID@ */
+  m_MisorientationColorPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<uint8_t>, AbstractFilter, uint8_t>(this, tempPath, 0, cDims, "", DataArrayID31);
   if(nullptr != m_MisorientationColorPtr.lock())                              /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
   { m_MisorientationColor = m_MisorientationColorPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
 

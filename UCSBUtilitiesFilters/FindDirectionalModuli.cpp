@@ -129,7 +129,7 @@ void FindDirectionalModuli::dataCheck()
   //create moduli
   QVector<size_t> dims(1, 1);
   tempPath.update(getFeaturePhasesArrayPath().getDataContainerName(), getFeaturePhasesArrayPath().getAttributeMatrixName(), getDirectionalModuliArrayName() );
-  m_DirectionalModuliPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>, AbstractFilter, float>(this, tempPath, 0, dims, "", DataArrayID31); /* @ADD_DATAARRAY_ID@ */
+  m_DirectionalModuliPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>, AbstractFilter, float>(this, tempPath, 0, dims, "", DataArrayID31);
   if(nullptr != m_DirectionalModuliPtr.lock())
   { m_DirectionalModuli = m_DirectionalModuliPtr.lock()->getPointer(0); }
 
