@@ -134,8 +134,8 @@ void InputCrystalCompliances::initialize()
 // -----------------------------------------------------------------------------
 void InputCrystalCompliances::dataCheck()
 {
-  setErrorCondition(0);
-  setWarningCondition(0);
+  clearErrorCondition();
+  clearWarningCondition();
 
   // create compliances
   QVector<size_t> cDims(2, 6); // 6 by 6 array
@@ -162,8 +162,8 @@ void InputCrystalCompliances::preflight()
 // -----------------------------------------------------------------------------
 void InputCrystalCompliances::execute()
 {
-  setErrorCondition(0);
-  setWarningCondition(0);
+  clearErrorCondition();
+  clearWarningCondition();
   dataCheck();
   if(getErrorCondition() < 0) { return; }
 

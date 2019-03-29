@@ -132,8 +132,8 @@ void FindModulusMismatch::readFilterParameters(AbstractFilterParametersReader* r
 // -----------------------------------------------------------------------------
 void FindModulusMismatch::dataCheckVoxel()
 {
-  setErrorCondition(0);
-  setWarningCondition(0);
+  clearErrorCondition();
+  clearWarningCondition();
 
   QVector<size_t> dims(1, 1);
   m_ModuliPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<float>, AbstractFilter>(this, getModuliArrayPath(), dims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
@@ -147,8 +147,8 @@ void FindModulusMismatch::dataCheckVoxel()
 void FindModulusMismatch::dataCheckSurfaceMesh()
 {
   DataArrayPath tempPath;
-  setErrorCondition(0);
-  setWarningCondition(0);
+  clearErrorCondition();
+  clearWarningCondition();
 
   DataContainer::Pointer sm = getDataContainerArray()->getPrereqDataContainer(this, getSurfaceMeshFaceLabelsArrayPath().getDataContainerName());
   if(getErrorCondition() < 0 || nullptr == sm.get()) { return; }
@@ -183,8 +183,8 @@ void FindModulusMismatch::preflight()
 // -----------------------------------------------------------------------------
 void FindModulusMismatch::execute()
 {
-  setErrorCondition(0);
-  setWarningCondition(0);
+  clearErrorCondition();
+  clearWarningCondition();
   dataCheckVoxel();
   if(getErrorCondition() < 0) { return; }
   dataCheckSurfaceMesh();

@@ -251,8 +251,8 @@ void GenerateMisorientationColors::initialize()
 // -----------------------------------------------------------------------------
 void GenerateMisorientationColors::dataCheck()
 {
-  setErrorCondition(0);
-  setWarningCondition(0);
+  clearErrorCondition();
+  clearWarningCondition();
   DataArrayPath tempPath;
 
   QVector<DataArrayPath> dataArrayPaths;
@@ -317,8 +317,8 @@ void GenerateMisorientationColors::preflight()
 // -----------------------------------------------------------------------------
 void GenerateMisorientationColors::execute()
 {
-  setErrorCondition(0);
-  setWarningCondition(0);
+  clearErrorCondition();
+  clearWarningCondition();
   dataCheck();
   if(getErrorCondition() < 0) { return; }
 
