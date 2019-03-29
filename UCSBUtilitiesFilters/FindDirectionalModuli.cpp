@@ -426,7 +426,7 @@ void FindDirectionalModuli::execute()
     }
   }
 
-  notifyStatusMessage(getHumanLabel(), "Completed");
+  notifyStatusMessage("Completed");
 }
 
 // -----------------------------------------------------------------------------
