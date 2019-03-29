@@ -210,7 +210,7 @@ void FindModulusMismatch::execute()
     serial.generate(0, numTriangles);
   }
 
-  notifyStatusMessage("", "Completed");
+  notifyStatusMessage(getHumanLabel(), "Completed");
 }
 
 // -----------------------------------------------------------------------------

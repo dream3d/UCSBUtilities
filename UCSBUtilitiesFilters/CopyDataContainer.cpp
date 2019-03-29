@@ -85,8 +85,9 @@ void CopyDataContainer::dataCheck()
 
   if(getNewDataContainerName().isEmpty())
   {
+    setErrorCondition(-11001);
     QString ss = QObject::tr("The new Data Container name must be set");
-    notifyErrorMessage("", ss, -11001);
+    notifyErrorMessage(getHumanLabel(), ss, getErrorCondition());
   }
 
   DataContainer::Pointer dc = getDataContainerArray()->getPrereqDataContainer(this, getSelectedDataContainerName());

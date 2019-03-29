@@ -159,25 +159,29 @@ void FindDirectionalModuli::dataCheck()
   //make sure the direction isn't undefined
   if(0 == m_LoadingDirection[0] && 0 == m_LoadingDirection[1] && 0 == m_LoadingDirection[2])
   {
-    notifyErrorMessage("", "A non-zero direction must be choosen", -1);
+    setErrorCondition(-1);
+    notifyErrorMessage(getHumanLabel(), "A non-zero direction must be choosen", getErrorCondition());
   }
 
   //make sure quats + phases are from same attribute matrix + data container
   if( !getFeaturePhasesArrayPath().hasSameAttributeMatrixPath(getAvgQuatsArrayPath()) )
   {
-    notifyErrorMessage("", "Feature Phases and Average Quats must belong to the same DataContainer / AtributreMatrix", -2);
+    setErrorCondition(-2);
+    notifyErrorMessage(getHumanLabel(), "Feature Phases and Average Quats must belong to the same DataContainer / AtributreMatrix", getErrorCondition());
   }
 
   //make sure compliances + crystal structures are from the same attribute matrix + data container
   if( !getCrystalStructuresArrayPath().hasSameAttributeMatrixPath(getCrystalCompliancesArrayPath()) )
   {
-    notifyErrorMessage("", "Crystal Structures and Crystal Compliances must belong to the same DataContainer / AtributreMatrix", -2);
+    setErrorCondition(-2);
+    notifyErrorMessage(getHumanLabel(), "Crystal Structures and Crystal Compliances must belong to the same DataContainer / AtributreMatrix", getErrorCondition());
   }
 
   //make sure everything is in the same data container (may not be true for synthetic volumes using a stats gen container but the user can copy the ensemble attribute matrix over)
   if( !getAvgQuatsArrayPath().hasSameDataContainer(getCrystalStructuresArrayPath()) )
   {
-    notifyErrorMessage("", "Crystal Structures and Average Quaternions must belong to the same DataContainer", -2);
+    setErrorCondition(-2);
+    notifyErrorMessage(getHumanLabel(), "Crystal Structures and Average Quaternions must belong to the same DataContainer", getErrorCondition());
   }
 }
 
@@ -422,7 +426,7 @@ void FindDirectionalModuli::execute()
     }
   }
 
-  notifyStatusMessage("", "Completed");
+  notifyStatusMessage(getHumanLabel(), "Completed");
 }
 
 // -----------------------------------------------------------------------------

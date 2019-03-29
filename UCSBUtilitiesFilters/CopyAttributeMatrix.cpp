@@ -84,8 +84,9 @@ void CopyAttributeMatrix::dataCheck()
 
   if(m_NewAttributeMatrix.isEmpty())
   {
+    setErrorCondition(-11004);
     QString ss = QObject::tr("The new Attribute Matrix name must be set");
-    notifyErrorMessage("", ss, -11004);
+    notifyErrorMessage(getHumanLabel(), ss, getErrorCondition());
   }
 
   AttributeMatrix::Pointer attrMat = getDataContainerArray()->getPrereqAttributeMatrixFromPath<AbstractFilter>(this, getSelectedAttributeMatrixPath(), -301);
