@@ -86,7 +86,7 @@ void CopyAttributeArray::dataCheck()
   {
     setErrorCondition(-11009);
     QString ss = QObject::tr("The new Attribute Array name must be set");
-    notifyErrorMessage(getHumanLabel(), ss, getErrorCondition());
+    notifyErrorMessage(ss, getErrorCondition());
     return;
   }
 
@@ -106,7 +106,7 @@ void CopyAttributeArray::dataCheck()
   {
     setErrorCondition(err);
     QString ss = QObject::tr("Attempt to copy Attribute Array '%1' to '%2' failed").arg(daName).arg(m_NewArrayName);
-    notifyErrorMessage(getHumanLabel(), ss, getErrorCondition());
+    notifyErrorMessage(ss, getErrorCondition());
   }
 }
 

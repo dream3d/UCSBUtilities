@@ -160,28 +160,28 @@ void FindDirectionalModuli::dataCheck()
   if(0 == m_LoadingDirection[0] && 0 == m_LoadingDirection[1] && 0 == m_LoadingDirection[2])
   {
     setErrorCondition(-1);
-    notifyErrorMessage(getHumanLabel(), "A non-zero direction must be choosen", getErrorCondition());
+    notifyErrorMessage("A non-zero direction must be choosen", getErrorCondition());
   }
 
   //make sure quats + phases are from same attribute matrix + data container
   if( !getFeaturePhasesArrayPath().hasSameAttributeMatrixPath(getAvgQuatsArrayPath()) )
   {
     setErrorCondition(-2);
-    notifyErrorMessage(getHumanLabel(), "Feature Phases and Average Quats must belong to the same DataContainer / AtributreMatrix", getErrorCondition());
+    notifyErrorMessage("Feature Phases and Average Quats must belong to the same DataContainer / AtributreMatrix", getErrorCondition());
   }
 
   //make sure compliances + crystal structures are from the same attribute matrix + data container
   if( !getCrystalStructuresArrayPath().hasSameAttributeMatrixPath(getCrystalCompliancesArrayPath()) )
   {
     setErrorCondition(-2);
-    notifyErrorMessage(getHumanLabel(), "Crystal Structures and Crystal Compliances must belong to the same DataContainer / AtributreMatrix", getErrorCondition());
+    notifyErrorMessage("Crystal Structures and Crystal Compliances must belong to the same DataContainer / AtributreMatrix", getErrorCondition());
   }
 
   //make sure everything is in the same data container (may not be true for synthetic volumes using a stats gen container but the user can copy the ensemble attribute matrix over)
   if( !getAvgQuatsArrayPath().hasSameDataContainer(getCrystalStructuresArrayPath()) )
   {
     setErrorCondition(-2);
-    notifyErrorMessage(getHumanLabel(), "Crystal Structures and Average Quaternions must belong to the same DataContainer", getErrorCondition());
+    notifyErrorMessage("Crystal Structures and Average Quaternions must belong to the same DataContainer", getErrorCondition());
   }
 }
 
