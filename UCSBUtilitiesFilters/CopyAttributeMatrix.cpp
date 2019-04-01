@@ -84,13 +84,15 @@ void CopyAttributeMatrix::dataCheck()
 
   if(m_NewAttributeMatrix.isEmpty())
   {
-    setErrorCondition(-11004);
     QString ss = QObject::tr("The new Attribute Matrix name must be set");
-    notifyErrorMessage(ss, getErrorCondition());
+    setErrorCondition(-11004, ss);
   }
 
   AttributeMatrix::Pointer attrMat = getDataContainerArray()->getPrereqAttributeMatrixFromPath<AbstractFilter>(this, getSelectedAttributeMatrixPath(), -301);
-  if(getErrorCondition() < 0 ) { return; }
+  if(getErrorCode() < 0)
+  {
+    return;
+  }
 
   DataContainer::Pointer dc = getDataContainerArray()->getDataContainer(getSelectedAttributeMatrixPath().getDataContainerName());
 
@@ -120,8 +122,10 @@ void CopyAttributeMatrix::execute()
   clearErrorCondition();
   clearWarningCondition();
   dataCheck(); // calling the dataCheck will rename the array, so nothing is required here
-  if(getErrorCondition() < 0) { return; }
-
+  if(getErrorCode() < 0)
+  {
+    return;
+  }
 }
 // -----------------------------------------------------------------------------
 //

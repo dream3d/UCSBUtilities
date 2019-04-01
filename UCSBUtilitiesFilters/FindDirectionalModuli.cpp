@@ -159,29 +159,25 @@ void FindDirectionalModuli::dataCheck()
   //make sure the direction isn't undefined
   if(0 == m_LoadingDirection[0] && 0 == m_LoadingDirection[1] && 0 == m_LoadingDirection[2])
   {
-    setErrorCondition(-1);
-    notifyErrorMessage("A non-zero direction must be choosen", getErrorCondition());
+    setErrorCondition(-1, "A non-zero direction must be choosen");
   }
 
   //make sure quats + phases are from same attribute matrix + data container
   if( !getFeaturePhasesArrayPath().hasSameAttributeMatrixPath(getAvgQuatsArrayPath()) )
   {
-    setErrorCondition(-2);
-    notifyErrorMessage("Feature Phases and Average Quats must belong to the same DataContainer / AtributreMatrix", getErrorCondition());
+    setErrorCondition(-2, "Feature Phases and Average Quats must belong to the same DataContainer / AtributreMatrix");
   }
 
   //make sure compliances + crystal structures are from the same attribute matrix + data container
   if( !getCrystalStructuresArrayPath().hasSameAttributeMatrixPath(getCrystalCompliancesArrayPath()) )
   {
-    setErrorCondition(-2);
-    notifyErrorMessage("Crystal Structures and Crystal Compliances must belong to the same DataContainer / AtributreMatrix", getErrorCondition());
+    setErrorCondition(-2, "Crystal Structures and Crystal Compliances must belong to the same DataContainer / AtributreMatrix");
   }
 
   //make sure everything is in the same data container (may not be true for synthetic volumes using a stats gen container but the user can copy the ensemble attribute matrix over)
   if( !getAvgQuatsArrayPath().hasSameDataContainer(getCrystalStructuresArrayPath()) )
   {
-    setErrorCondition(-2);
-    notifyErrorMessage("Crystal Structures and Average Quaternions must belong to the same DataContainer", getErrorCondition());
+    setErrorCondition(-2, "Crystal Structures and Average Quaternions must belong to the same DataContainer");
   }
 }
 
@@ -207,7 +203,10 @@ void FindDirectionalModuli::execute()
   clearErrorCondition();
   clearWarningCondition();
   dataCheck();
-  if(getErrorCondition() < 0) { return; }
+  if(getErrorCode() < 0)
+  {
+    return;
+  }
 
   //get number of features
   size_t totalFeatures = m_DirectionalModuliPtr.lock()->getNumberOfTuples();

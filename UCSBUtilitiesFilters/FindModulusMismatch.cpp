@@ -151,7 +151,10 @@ void FindModulusMismatch::dataCheckSurfaceMesh()
   clearWarningCondition();
 
   DataContainer::Pointer sm = getDataContainerArray()->getPrereqDataContainer(this, getSurfaceMeshFaceLabelsArrayPath().getDataContainerName());
-  if(getErrorCondition() < 0 || nullptr == sm.get()) { return; }
+  if(getErrorCode() < 0 || nullptr == sm.get())
+  {
+    return;
+  }
 
   QVector<size_t> dims(1, 2);
   m_SurfaceMeshFaceLabelsPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<int32_t>, AbstractFilter>(this, getSurfaceMeshFaceLabelsArrayPath(), dims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
@@ -186,9 +189,15 @@ void FindModulusMismatch::execute()
   clearErrorCondition();
   clearWarningCondition();
   dataCheckVoxel();
-  if(getErrorCondition() < 0) { return; }
+  if(getErrorCode() < 0)
+  {
+    return;
+  }
   dataCheckSurfaceMesh();
-  if(getErrorCondition() < 0) { return; }
+  if(getErrorCode() < 0)
+  {
+    return;
+  }
 
 #ifdef SIMPL_USE_PARALLEL_ALGORITHMS
   tbb::task_scheduler_init init;

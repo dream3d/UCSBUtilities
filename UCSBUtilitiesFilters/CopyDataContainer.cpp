@@ -85,13 +85,15 @@ void CopyDataContainer::dataCheck()
 
   if(getNewDataContainerName().isEmpty())
   {
-    setErrorCondition(-11001);
     QString ss = QObject::tr("The new Data Container name must be set");
-    notifyErrorMessage(ss, getErrorCondition());
+    setErrorCondition(-11001, ss);
   }
 
   DataContainer::Pointer dc = getDataContainerArray()->getPrereqDataContainer(this, getSelectedDataContainerName());
-  if(getErrorCondition() < 0) { return; }
+  if(getErrorCode() < 0)
+  {
+    return;
+  }
 
   DataContainer::Pointer dcNew = dc->deepCopy(getInPreflight());
   dcNew->setName(getNewDataContainerName().getDataContainerName());
@@ -119,8 +121,10 @@ void CopyDataContainer::execute()
   clearErrorCondition();
   clearWarningCondition();
   dataCheck(); // calling the dataCheck will copy the array, so nothing is required here
-  if(getErrorCondition() < 0) { return; }
-
+  if(getErrorCode() < 0)
+  {
+    return;
+  }
 }
 
 // -----------------------------------------------------------------------------

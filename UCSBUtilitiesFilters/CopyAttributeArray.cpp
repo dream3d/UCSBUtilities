@@ -84,16 +84,18 @@ void CopyAttributeArray::dataCheck()
 
   if(m_NewArrayName.isEmpty())
   {
-    setErrorCondition(-11009);
     QString ss = QObject::tr("The new Attribute Array name must be set");
-    notifyErrorMessage(ss, getErrorCondition());
+    setErrorCondition(-11009, ss);
     return;
   }
 
   QString daName = getSelectedArrayPath().getDataArrayName();
 
   IDataArray::Pointer dataArray = getDataContainerArray()->getPrereqIDataArrayFromPath<IDataArray, AbstractFilter>(this, getSelectedArrayPath());
-  if(getErrorCondition() < 0) { return; }
+  if(getErrorCode() < 0)
+  {
+    return;
+  }
 
   DataArrayPath path(getSelectedArrayPath().getDataContainerName(), getSelectedArrayPath().getAttributeMatrixName(), "");
   AttributeMatrix::Pointer attrMat = getDataContainerArray()->getAttributeMatrix(path);
@@ -104,9 +106,8 @@ void CopyAttributeArray::dataCheck()
 
   if (0 != err)
   {
-    setErrorCondition(err);
     QString ss = QObject::tr("Attempt to copy Attribute Array '%1' to '%2' failed").arg(daName).arg(m_NewArrayName);
-    notifyErrorMessage(ss, getErrorCondition());
+    setErrorCondition(err, ss);
   }
 }
 
@@ -131,8 +132,10 @@ void CopyAttributeArray::execute()
   clearErrorCondition();
   clearWarningCondition();
   dataCheck(); // calling the dataCheck will copy the array, so nothing is required here
-  if(getErrorCondition() < 0) { return; }
-
+  if(getErrorCode() < 0)
+  {
+    return;
+  }
 }
 // -----------------------------------------------------------------------------
 //

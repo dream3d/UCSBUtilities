@@ -135,7 +135,10 @@ void FindBoundaryAreas::execute()
   clearErrorCondition();
   clearWarningCondition();
   dataCheck();
-  if(getErrorCondition() < 0) { return; }
+  if(getErrorCode() < 0)
+  {
+    return;
+  }
 
   // get number of face features
   size_t numFaces = m_SurfaceMeshTriangleAreasPtr.lock()->getNumberOfTuples();

@@ -165,7 +165,10 @@ void InputCrystalCompliances::execute()
   clearErrorCondition();
   clearWarningCondition();
   dataCheck();
-  if(getErrorCondition() < 0) { return; }
+  if(getErrorCode() < 0)
+  {
+    return;
+  }
 
   // determine number of phases
   size_t numPhases = m_CrystalCompliancesPtr.lock()->getNumberOfTuples();
