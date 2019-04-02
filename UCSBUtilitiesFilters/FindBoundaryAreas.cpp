@@ -96,8 +96,8 @@ void FindBoundaryAreas::initialize()
 // -----------------------------------------------------------------------------
 void FindBoundaryAreas::dataCheck()
 {
-  clearErrorCondition();
-  clearWarningCondition();
+  clearErrorCode();
+  clearWarningCode();
 
   QVector<size_t> dims(1, 1);
   m_SurfaceMeshFeatureFaceIdsPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<int32_t>, AbstractFilter>(this, getSurfaceMeshFeatureFaceIdsArrayPath(), dims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
@@ -132,8 +132,8 @@ void FindBoundaryAreas::preflight()
 // -----------------------------------------------------------------------------
 void FindBoundaryAreas::execute()
 {
-  clearErrorCondition();
-  clearWarningCondition();
+  clearErrorCode();
+  clearWarningCode();
   dataCheck();
   if(getErrorCode() < 0)
   {

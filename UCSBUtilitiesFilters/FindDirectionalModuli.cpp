@@ -123,8 +123,8 @@ void FindDirectionalModuli::initialize()
 void FindDirectionalModuli::dataCheck()
 {
   DataArrayPath tempPath;
-  clearErrorCondition();
-  clearWarningCondition();
+  clearErrorCode();
+  clearWarningCode();
 
   //create moduli
   QVector<size_t> dims(1, 1);
@@ -200,8 +200,8 @@ void FindDirectionalModuli::preflight()
 // -----------------------------------------------------------------------------
 void FindDirectionalModuli::execute()
 {
-  clearErrorCondition();
-  clearWarningCondition();
+  clearErrorCode();
+  clearWarningCode();
   dataCheck();
   if(getErrorCode() < 0)
   {

@@ -80,8 +80,8 @@ void CopyDataContainer::initialize()
 // -----------------------------------------------------------------------------
 void CopyDataContainer::dataCheck()
 {
-  clearErrorCondition();
-  clearWarningCondition();
+  clearErrorCode();
+  clearWarningCode();
 
   if(getNewDataContainerName().isEmpty())
   {
@@ -118,8 +118,8 @@ void CopyDataContainer::preflight()
 // -----------------------------------------------------------------------------
 void CopyDataContainer::execute()
 {
-  clearErrorCondition();
-  clearWarningCondition();
+  clearErrorCode();
+  clearWarningCode();
   dataCheck(); // calling the dataCheck will copy the array, so nothing is required here
   if(getErrorCode() < 0)
   {

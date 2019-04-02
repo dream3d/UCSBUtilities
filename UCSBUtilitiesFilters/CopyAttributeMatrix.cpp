@@ -79,8 +79,8 @@ void CopyAttributeMatrix::initialize()
 // -----------------------------------------------------------------------------
 void CopyAttributeMatrix::dataCheck()
 {
-  clearErrorCondition();
-  clearWarningCondition();
+  clearErrorCode();
+  clearWarningCode();
 
   if(m_NewAttributeMatrix.isEmpty())
   {
@@ -119,8 +119,8 @@ void CopyAttributeMatrix::preflight()
 // -----------------------------------------------------------------------------
 void CopyAttributeMatrix::execute()
 {
-  clearErrorCondition();
-  clearWarningCondition();
+  clearErrorCode();
+  clearWarningCode();
   dataCheck(); // calling the dataCheck will rename the array, so nothing is required here
   if(getErrorCode() < 0)
   {
