@@ -31,6 +31,7 @@
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
 #include "SIMPLib/FilterParameters/StringFilterParameter.h"
 #include "SIMPLib/FilterParameters/LinkedBooleanFilterParameter.h"
+#include "SIMPLib/FilterParameters/LinkedPathCreationFilterParameter.h"
 #include "SIMPLib/FilterParameters/SeparatorFilterParameter.h"
 #include "SIMPLib/Utilities/ColorTable.h"
 
@@ -218,7 +219,7 @@ void GenerateMisorientationColors::setupFilterParameters()
     parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Crystal Structures", CrystalStructuresArrayPath, FilterParameter::RequiredArray, GenerateMisorientationColors, req));
   }
   parameters.push_back(SeparatorFilterParameter::New("Element Data", FilterParameter::CreatedArray));
-  parameters.push_back(SIMPL_NEW_STRING_FP("Misorientation Colors", MisorientationColorArrayName, FilterParameter::CreatedArray, GenerateMisorientationColors));
+  parameters.push_back(SIMPL_NEW_DA_WITH_LINKED_AM_FP("Misorientation Colors", MisorientationColorArrayName, CellPhasesArrayPath, CellPhasesArrayPath, FilterParameter::CreatedArray, GenerateMisorientationColors));
   setFilterParameters(parameters);
 }
 

@@ -21,6 +21,7 @@
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/FloatVec3FilterParameter.h"
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
+#include "SIMPLib/FilterParameters/LinkedPathCreationFilterParameter.h"
 #include "SIMPLib/FilterParameters/StringFilterParameter.h"
 #include "SIMPLib/FilterParameters/SeparatorFilterParameter.h"
 #include "SIMPLib/Math/SIMPLibMath.h"
@@ -90,7 +91,7 @@ void FindDirectionalModuli::setupFilterParameters()
     parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Single Crystal Compliances", CrystalCompliancesArrayPath, FilterParameter::RequiredArray, FindDirectionalModuli, req));
   }
 
-  parameters.push_back(SIMPL_NEW_STRING_FP("DirectionalModuli", DirectionalModuliArrayName, FilterParameter::CreatedArray, FindDirectionalModuli));
+  parameters.push_back(SIMPL_NEW_DA_WITH_LINKED_AM_FP("DirectionalModuli", DirectionalModuliArrayName, FeaturePhasesArrayPath, FeaturePhasesArrayPath, FilterParameter::CreatedArray, FindDirectionalModuli));
 
   setFilterParameters(parameters);
 }

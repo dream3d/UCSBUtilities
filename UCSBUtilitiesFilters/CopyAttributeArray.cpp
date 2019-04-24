@@ -20,7 +20,7 @@
 #include "SIMPLib/Common/Constants.h"
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
-#include "SIMPLib/FilterParameters/StringFilterParameter.h"
+#include "SIMPLib/FilterParameters/LinkedPathCreationFilterParameter.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
@@ -51,7 +51,7 @@ void CopyAttributeArray::setupFilterParameters()
     parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Attribute Array to Copy", SelectedArrayPath, FilterParameter::RequiredArray, CopyAttributeArray, req));
   }
 
-  parameters.push_back(SIMPL_NEW_STRING_FP("Copied Attribute Array", NewArrayName, FilterParameter::CreatedArray, CopyAttributeArray));
+  parameters.push_back(SIMPL_NEW_DA_WITH_LINKED_AM_FP("Copied Attribute Array", NewArrayName, SelectedArrayPath, SelectedArrayPath, FilterParameter::CreatedArray, CopyAttributeArray));
 
   setFilterParameters(parameters);
 }

@@ -20,6 +20,7 @@
 #include "SIMPLib/Common/Constants.h"
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/AttributeMatrixSelectionFilterParameter.h"
+#include "SIMPLib/FilterParameters/LinkedPathCreationFilterParameter.h"
 #include "SIMPLib/FilterParameters/StringFilterParameter.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
@@ -51,7 +52,7 @@ void CopyAttributeMatrix::setupFilterParameters()
     parameters.push_back(SIMPL_NEW_AM_SELECTION_FP("Attribute Matrix to Copy", SelectedAttributeMatrixPath, FilterParameter::RequiredArray, CopyAttributeMatrix, req));
   }
 
-  parameters.push_back(SIMPL_NEW_STRING_FP("Copied Attribute Matrix", NewAttributeMatrix, FilterParameter::CreatedArray, CopyAttributeMatrix));
+  parameters.push_back(SIMPL_NEW_AM_WITH_LINKED_DC_FP("Copied Attribute Matrix", NewAttributeMatrix, SelectedAttributeMatrixPath, FilterParameter::CreatedArray, CopyAttributeMatrix));
 
   setFilterParameters(parameters);
 }
