@@ -1,5 +1,5 @@
-Input Crystal Compliances 
-=============
+# Input Crystal Compliances  #
+
 
 ## Group (Subgroup) ##
 

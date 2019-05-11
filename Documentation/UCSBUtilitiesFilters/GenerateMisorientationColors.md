@@ -1,5 +1,5 @@
-Generate Misorientation Colors 
-=============
+# Generate Misorientation Colors  #
+
 
 ## Group (Subgroup) ##
 
