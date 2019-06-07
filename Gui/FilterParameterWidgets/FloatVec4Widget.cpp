@@ -17,7 +17,6 @@
 
 #include "FloatVec4Widget.h"
 
-#include <QtCore/QMetaProperty>
 #include <QtGui/QDoubleValidator>
 
 #include "SVWidgetsLib/Core/SVWidgetsLibConstants.h"

@@ -17,8 +17,6 @@
 
 #include "Symmetric6x6Widget.h"
 
-#include <QtCore/QMetaProperty>
-#include <QtCore/QSignalMapper>
 
 #include "SVWidgetsLib/Core/SVWidgetsLibConstants.h"
 
