@@ -30,7 +30,7 @@ UCSBHelpers::~UCSBHelpers() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-IDataArray::Pointer UCSBHelpers::ReorderCopy(StatsDataArray::Pointer array, QVector<size_t> newOrderMap)
+IDataArray::Pointer UCSBHelpers::ReorderCopy(StatsDataArray::Pointer array, std::vector<size_t> newOrderMap)
 {
   if( static_cast<size_t>(newOrderMap.size()) != array->getNumberOfTuples())
   {
@@ -52,7 +52,7 @@ IDataArray::Pointer UCSBHelpers::ReorderCopy(StatsDataArray::Pointer array, QVec
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-IDataArray::Pointer UCSBHelpers::ReorderCopy(StringDataArray::Pointer array, QVector<size_t> newOrderMap)
+IDataArray::Pointer UCSBHelpers::ReorderCopy(StringDataArray::Pointer array, std::vector<size_t> newOrderMap)
 {
   if(static_cast<size_t>(newOrderMap.size()) != array->getNumberOfTuples())
   {
@@ -72,7 +72,7 @@ IDataArray::Pointer UCSBHelpers::ReorderCopy(StringDataArray::Pointer array, QVe
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-IDataArray::Pointer UCSBHelpers::ReorderCopy(ModifiedLambertProjectionArray::Pointer array, QVector<size_t> newOrderMap)
+IDataArray::Pointer UCSBHelpers::ReorderCopy(ModifiedLambertProjectionArray::Pointer array, std::vector<size_t> newOrderMap)
 {
   if( static_cast<size_t>(newOrderMap.size()) != array->getNumberOfTuples())
   {

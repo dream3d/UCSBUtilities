@@ -138,7 +138,7 @@ void InputCrystalCompliances::dataCheck()
   clearWarningCode();
 
   // create compliances
-  QVector<size_t> cDims(2, 6); // 6 by 6 array
+  std::vector<size_t> cDims(2, 6); // 6 by 6 array
   m_CrystalCompliancesPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>, AbstractFilter, float>(this, getCrystalCompliancesArrayPath(), 0, cDims, "", DataArrayID31);
   if(nullptr != m_CrystalCompliancesPtr.lock())
   { m_CrystalCompliances = m_CrystalCompliancesPtr.lock()->getPointer(0); }

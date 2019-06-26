@@ -128,7 +128,7 @@ void FindDirectionalModuli::dataCheck()
   clearWarningCode();
 
   //create moduli
-  QVector<size_t> dims(1, 1);
+  std::vector<size_t> dims(1, 1);
   tempPath.update(getFeaturePhasesArrayPath().getDataContainerName(), getFeaturePhasesArrayPath().getAttributeMatrixName(), getDirectionalModuliArrayName() );
   m_DirectionalModuliPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>, AbstractFilter, float>(this, tempPath, 0, dims, "", DataArrayID31);
   if(nullptr != m_DirectionalModuliPtr.lock())
@@ -152,7 +152,7 @@ void FindDirectionalModuli::dataCheck()
   { m_AvgQuats = m_AvgQuatsPtr.lock()->getPointer(0); }
 
   //check compliances
-  QVector<size_t> complianceDims(2, 6);
+  std::vector<size_t> complianceDims(2, 6);
   m_CrystalCompliancesPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<float>, AbstractFilter>(this, getCrystalCompliancesArrayPath(), complianceDims);
   if(nullptr != m_CrystalCompliancesPtr.lock())
   { m_CrystalCompliances = m_CrystalCompliancesPtr.lock()->getPointer(0); }

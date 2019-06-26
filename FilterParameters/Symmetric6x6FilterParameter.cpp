@@ -30,8 +30,8 @@ Symmetric6x6FilterParameter::~Symmetric6x6FilterParameter() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-Symmetric6x6FilterParameter::Pointer Symmetric6x6FilterParameter::New(const QString& humanLabel, const QString& propertyName,
-  const FloatVec21_t& defaultValue, Category category, SetterCallbackType setterCallback, GetterCallbackType getterCallback, int groupIndex)
+Symmetric6x6FilterParameter::Pointer Symmetric6x6FilterParameter::New(const QString& humanLabel, const QString& propertyName, const FloatVec21_t& defaultValue, Category category,
+                                                                      const SetterCallbackType& setterCallback, const GetterCallbackType& getterCallback, int groupIndex)
 {
 
   Symmetric6x6FilterParameter::Pointer ptr = Symmetric6x6FilterParameter::New();

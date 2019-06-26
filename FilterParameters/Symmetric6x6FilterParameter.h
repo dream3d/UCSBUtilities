@@ -114,11 +114,10 @@ public:
   typedef std::function<void(FloatVec21_t)> SetterCallbackType;
   typedef std::function<FloatVec21_t(void)> GetterCallbackType;
 
-    static Pointer New(const QString& humanLabel, const QString& propertyName,
-    const FloatVec21_t& defaultValue, Category category, SetterCallbackType setterCallback,
-    GetterCallbackType getterCallback, int groupIndex = -1);
+  static Pointer New(const QString& humanLabel, const QString& propertyName, const FloatVec21_t& defaultValue, Category category, const SetterCallbackType& setterCallback,
+                     const GetterCallbackType& getterCallback, int groupIndex = -1);
 
-    virtual ~Symmetric6x6FilterParameter();
+  virtual ~Symmetric6x6FilterParameter();
 
   /**
    * @brief getWidgetType Returns the type of widget that displays and controls

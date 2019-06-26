@@ -37,10 +37,10 @@ public:
     UCSBHelpers();
     virtual ~UCSBHelpers();
 
-    template<typename T>
-    static IDataArray::Pointer ReorderCopy(typename DataArray<T>::Pointer array, QVector<size_t> newOrderMap)
+    template <typename T>
+    static IDataArray::Pointer ReorderCopy(typename DataArray<T>::Pointer array, std::vector<size_t> newOrderMap)
     {
-      if(newOrderMap.size() != static_cast<QVector<size_t>::size_type>(array->getNumberOfTuples()))
+      if(newOrderMap.size() != static_cast<std::vector<size_t>::size_type>(array->getNumberOfTuples()))
       {
         return IDataArray::NullPointer();
       }
@@ -66,8 +66,8 @@ public:
      * @param newOrderMap
      * @return
      */
-    template<typename T>
-    static IDataArray::Pointer ReorderCopy(typename NeighborList<T>::Pointer array, QVector<size_t> newOrderMap)
+    template <typename T>
+    static IDataArray::Pointer ReorderCopy(typename NeighborList<T>::Pointer array, std::vector<size_t> newOrderMap)
     {
       size_t newOrderMapSize = static_cast<size_t>(newOrderMap.size());
       if( newOrderMapSize != array->getNumberOfTuples())
@@ -94,7 +94,7 @@ public:
      * @param newOrderMap
      * @return
      */
-    static IDataArray::Pointer ReorderCopy(StatsDataArray::Pointer array, QVector<size_t> newOrderMap);
+    static IDataArray::Pointer ReorderCopy(StatsDataArray::Pointer array, std::vector<size_t> newOrderMap);
 
     /**
      * @brief ReorderCopy
@@ -102,18 +102,17 @@ public:
      * @param newOrderMap
      * @return
      */
-    static IDataArray::Pointer ReorderCopy(StringDataArray::Pointer array, QVector<size_t> newOrderMap);
-
+    static IDataArray::Pointer ReorderCopy(StringDataArray::Pointer array, std::vector<size_t> newOrderMap);
 
     /**
      * @brief reorderCopy
      * @param newOrderMap
      * @return
      */
-    template<typename T>
-    static IDataArray::Pointer ReorderCopy(typename StructArray<T>::Pointer array, QVector<size_t> newOrderMap)
+    template <typename T>
+    static IDataArray::Pointer ReorderCopy(typename StructArray<T>::Pointer array, std::vector<size_t> newOrderMap)
     {
-      if(newOrderMap.size() != static_cast<QVector<size_t>::size_type>(array->getNumberOfTuples()))
+      if(newOrderMap.size() != static_cast<std::vector<size_t>::size_type>(array->getNumberOfTuples()))
       {
         return IDataArray::NullPointer();
       }
@@ -138,7 +137,7 @@ public:
      * @param newOrderMap
      * @return
      */
-    static IDataArray::Pointer ReorderCopy(ModifiedLambertProjectionArray::Pointer array, QVector<size_t> newOrderMap);
+    static IDataArray::Pointer ReorderCopy(ModifiedLambertProjectionArray::Pointer array, std::vector<size_t> newOrderMap);
 
     /**
      * @brief computes linear regression

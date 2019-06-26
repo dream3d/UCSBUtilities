@@ -187,7 +187,7 @@ SIMPL::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatF& q, const 
 // -----------------------------------------------------------------------------
 UInt8ArrayType::Pointer CubicOpsMisoColor::generateMisorientationTriangleLegend(float angle, int n1, int n2, int imageDim)
 {
-  QVector<size_t> dims(1, 4);
+  std::vector<size_t> dims(1, 4);
   UInt8ArrayType::Pointer image = UInt8ArrayType::CreateArray(imageDim * imageDim, dims, "Cubic High Misorientation Triangle Legend");
 
   //uint32_t* pixelPtr = reinterpret_cast<uint32_t*>(image->getPointer(0));

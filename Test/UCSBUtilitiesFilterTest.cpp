@@ -58,17 +58,17 @@ template<typename T>
 void __TestReorderCopy()
 {
   size_t numTuples = 10;
-  QVector<size_t> cDims(1, 5);
+  std::vector<size_t> cDims(1, 5);
   QString name("Source Array");
 
   //make sure that an incorrectly sized order returns a null pointer
   typename DataArray<T>::Pointer src = DataArray<T>::CreateArray(numTuples, cDims, name, false);
-  QVector<size_t> wrongSize(numTuples + 1);
+  std::vector<size_t> wrongSize(numTuples + 1);
   typename DataArray<T>::Pointer copy = std::dynamic_pointer_cast<DataArray<T> >(UCSBHelpers::ReorderCopy<T>(src,wrongSize));
   DREAM3D_REQUIRE_EQUAL(copy.get(), 0);
 
   // fill reorder vector with same index (using this would be the same result as deep copy)
-  QVector<size_t> newOrder(numTuples);
+  std::vector<size_t> newOrder(numTuples);
   for(size_t i = 0; i < numTuples; i++)
   {
     newOrder[i] = i;
