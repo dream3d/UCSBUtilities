@@ -342,7 +342,7 @@ void GenerateMisorientationColors::execute()
 
   MatrixMath::Normalize3x1(normRefDir[0], normRefDir[1], normRefDir[2]);
   // Create 1 of every type of Ops class. This condenses the code below
-  UInt8ArrayType::Pointer notSupported = UInt8ArrayType::CreateArray(13, "_INTERNAL_USE_ONLY_NotSupportedArray");
+  UInt8ArrayType::Pointer notSupported = UInt8ArrayType::CreateArray(13, "_INTERNAL_USE_ONLY_NotSupportedArray", true);
   notSupported->initializeWithZeros();
 
 #ifdef SIMPL_USE_PARALLEL_ALGORITHMS

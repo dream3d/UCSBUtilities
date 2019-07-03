@@ -58,7 +58,7 @@ IDataArray::Pointer UCSBHelpers::ReorderCopy(StringDataArray::Pointer array, std
   {
     return IDataArray::NullPointer();
   }
-  StringDataArray::Pointer daCopy = StringDataArray::CreateArray(array->getNumberOfTuples(), array->getName());
+  StringDataArray::Pointer daCopy = StringDataArray::CreateArray(array->getNumberOfTuples(), array->getName(), true);
   daCopy->initializeWithZeros();
   for(QVector<QString>::size_type i = 0; i < array->getNumberOfTuples(); ++i)
   {
