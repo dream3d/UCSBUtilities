@@ -37,6 +37,7 @@
 
 #include "EbsdLib/EbsdConstants.h"
 
+#include "OrientationLib/Core/Quaternion.hpp"
 #include "OrientationLib/LaueOps/LaueOps.h"
 
 #include "UCSBUtilitiesFilters/LaueOps/CubicOpsMisoColor.h"
@@ -68,7 +69,7 @@ enum createdPathID : RenameDataPath::DataID_t
 class GenerateMisorientationColorsImpl
 {
   public:
-    GenerateMisorientationColorsImpl(FloatVec3Type referenceAxis, float refAngle, QuatF* quats, int32_t* phases, uint32_t* crystalStructures, bool* goodVoxels, uint8_t* notSupported, uint8_t* colors)
+    GenerateMisorientationColorsImpl(FloatVec3Type referenceAxis, float refAngle, float* quats, int32_t* phases, uint32_t* crystalStructures, bool* goodVoxels, uint8_t* notSupported, uint8_t* colors)
     : m_ReferenceAxis(referenceAxis)
     , m_ReferenceAngle(refAngle)
     , m_Quats(quats)
@@ -103,8 +104,8 @@ class GenerateMisorientationColorsImpl
 
       ops.push_back(OrthoRhombicOpsMisoColor::New()); // Axis OrthorhombicOps
 
-      QuatF refQuat = {m_ReferenceAxis[0] * sinf(m_ReferenceAngle), m_ReferenceAxis[1] * sinf(m_ReferenceAngle), m_ReferenceAxis[2] * sinf(m_ReferenceAngle), cosf(m_ReferenceAngle)};
-      QuatF cellQuat = {0.0f, 0.0f, 0.0f, 1.0f};
+      Quaternion<double> refQuat = {m_ReferenceAxis[0] * sinf(m_ReferenceAngle), m_ReferenceAxis[1] * sinf(m_ReferenceAngle), m_ReferenceAxis[2] * sinf(m_ReferenceAngle), cosf(m_ReferenceAngle)};
+      Quaternion<double> cellQuat = {0.0f, 0.0f, 0.0f, 1.0f};
       SIMPL::Rgb argb = 0x00000000;
 
       bool missingGoodVoxels = false;
@@ -121,7 +122,7 @@ class GenerateMisorientationColorsImpl
         m_MisorientationColor[index] = 0;
         m_MisorientationColor[index + 1] = 0;
         m_MisorientationColor[index + 2] = 0;
-        cellQuat = m_Quats[i];
+        cellQuat = Quaternion<double>(m_Quats[i * 4], m_Quats[i * 4 + 1], m_Quats[i * 4 + 2], m_Quats[i * 3]);
 
         if (m_CrystalStructures[phase] != Ebsd::CrystalStructure::Cubic_High &&
             m_CrystalStructures[phase] != Ebsd::CrystalStructure::Hexagonal_High)
@@ -157,7 +158,7 @@ class GenerateMisorientationColorsImpl
   private:
     FloatVec3Type m_ReferenceAxis;
     float m_ReferenceAngle;
-    QuatF* m_Quats;
+    float* m_Quats;
     int32_t* m_CellPhases;
     uint32_t* m_CrystalStructures;
     bool* m_GoodVoxels;
@@ -354,13 +355,13 @@ void GenerateMisorientationColors::execute()
   if(doParallel)
   {
     tbb::parallel_for(tbb::blocked_range<size_t>(0, totalPoints),
-                      GenerateMisorientationColorsImpl( normRefDir, m_ReferenceAngle, reinterpret_cast<QuatF*>(m_Quats), m_CellPhases, m_CrystalStructures, m_GoodVoxels, notSupported->getPointer(0), m_MisorientationColor), tbb::auto_partitioner());
-
+                      GenerateMisorientationColorsImpl(normRefDir, m_ReferenceAngle, m_Quats, m_CellPhases, m_CrystalStructures, m_GoodVoxels, notSupported->getPointer(0), m_MisorientationColor),
+                      tbb::auto_partitioner());
   }
   else
 #endif
   {
-    GenerateMisorientationColorsImpl serial( normRefDir, m_ReferenceAngle, reinterpret_cast<QuatF*>(m_Quats), m_CellPhases, m_CrystalStructures, m_GoodVoxels, notSupported->getPointer(0), m_MisorientationColor);
+    GenerateMisorientationColorsImpl serial(normRefDir, m_ReferenceAngle, m_Quats, m_CellPhases, m_CrystalStructures, m_GoodVoxels, notSupported->getPointer(0), m_MisorientationColor);
     serial.convert(0, totalPoints);
   }
 

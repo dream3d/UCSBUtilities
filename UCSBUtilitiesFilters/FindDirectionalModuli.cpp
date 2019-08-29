@@ -35,6 +35,11 @@
 
 #include "EbsdLib/EbsdConstants.h"
 
+#include "OrientationLib/LaueOps/CubicOps.h"
+#include "OrientationLib/LaueOps/HexagonalOps.h"
+#include "OrientationLib/LaueOps/LaueOps.h"
+#include "OrientationLib/LaueOps/OrthoRhombicOps.h"
+
 /* Create Enumerations to allow the created Attribute Arrays to take part in renaming */
 enum createdPathID : RenameDataPath::DataID_t
 {
@@ -56,8 +61,10 @@ FindDirectionalModuli::FindDirectionalModuli()
   m_LoadingDirection[1] = 0.0f;
   m_LoadingDirection[2] = 1.0f;
 
-  m_OrientationOps = LaueOps::getOrientationOpsVector();
-
+  //  std::vector<LaueOps::Pointer> m_OrientationOps = LaueOps::getOrientationOpsVector();
+  //  CubicOps::Pointer m_CubicOps;
+  //  HexagonalOps::Pointer m_HexOps;
+  //  OrthoRhombicOps::Pointer m_OrthoOps;
 }
 
 // -----------------------------------------------------------------------------
@@ -244,7 +251,7 @@ void FindDirectionalModuli::execute()
   if(sampleLoading[0] >= 1.0f - std::numeric_limits<float>::epsilon())
   {
     //already 100 aligned
-    QuaternionMathF::Identity(q2);
+    q2.identity();
   }
   else if(sampleLoading[0] <= -1.0f + std::numeric_limits<float>::epsilon())
   {
@@ -252,7 +259,7 @@ void FindDirectionalModuli::execute()
     q2[0] = 0.0f;
     q2[1] = 0.0f;
     q2[2] = 1.0f;
-    q2.w = 0.0f;
+    q2[3] = 0.0f;
   }
   else
   {
@@ -268,8 +275,8 @@ void FindDirectionalModuli::execute()
     q2[0] = 0.0f;
     q2[1] = sampleLoading[2];
     q2[2] = -sampleLoading[1];
-    q2.w = 1.0f + sampleLoading[0];
-    QuaternionMathF::UnitQuaternion(q2);
+    q2[3] = 1.0f + sampleLoading[0];
+    q2 = q2.unitQuaternion();
   }
 
   //loop over all grains
@@ -284,8 +291,8 @@ void FindDirectionalModuli::execute()
     if(xtal < Ebsd::CrystalStructure::LaueGroupEnd)
     {
       //concatenate rotation with crystal orientation (determine rotation from crystal frame to sample loading direction)
-      QuaternionMathF::Copy(avgQuats[i], q1);
-      QuaternionMathF::Multiply(q1, q2, qTotal);
+      q1 = QuatF(m_AvgQuats + i * 4);
+      QuatF qTotal = q1 * q2;
 
       /*
       This method is straightforward but computationally very expensive/wasteful (since it computes the full rotated compliance matrix and we only need s'11)
@@ -356,8 +363,8 @@ void FindDirectionalModuli::execute()
 
       //these can be expressed more compactly directly from quaternions (especially if a unit quaternion is assumed)
       float a = 1.0f - 2.0f * (qTotal[1] * qTotal[1] + qTotal[2] * qTotal[2]);
-      float b = 2.0f * (qTotal[0] * qTotal[1] - qTotal[2] * qTotal.w);
-      float c = 2.0f * (qTotal[0] * qTotal[2] + qTotal[1] * qTotal.w);
+      float b = 2.0f * (qTotal[0] * qTotal[1] - qTotal[2] * qTotal[3]);
+      float c = 2.0f * (qTotal[0] * qTotal[2] + qTotal[1] * qTotal[3]);
       //denom = 1.0
 
       //squares are used extensively, compute once

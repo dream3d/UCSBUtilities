@@ -36,20 +36,19 @@ HexagonalOpsMisoColor::~HexagonalOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
+SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
 {
-  float n1, n2, n3, w;
-  float xo, xo1, xo2, xo3, x, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11;
-  float yo, yo1, yo2, yo3, y, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11;
-  float zo, zo1, zo2, zo3, z, z1, z2, z3, z4, z5, z6, z7, z8, z9, z10, z11;
-  float k, h, s, v;
+  double n1, n2, n3, w;
+  double xo, xo1, xo2, xo3, x, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11;
+  double yo, yo1, yo2, yo3, y, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11;
+  double zo, zo1, zo2, zo3, z, z1, z2, z3, z4, z5, z6, z7, z8, z9, z10, z11;
+  double k, h, s, v;
 
   //get misorientation as rodriguez vector in FZ
-  QuatF q1, q2;
-  QuaternionMathF::Copy(q, q1);
-  QuaternionMathF::Copy(refFrame, q2);
+  QuatType q1 = q;
+  QuatType q2 = refFrame;
   w = getMisoQuat(q1, q2, n1, n2, n3);
-  FOrientArrayType rod(n1, n2, n3, tan(w / 2.0f));
+  OrientationType rod(n1, n2, n3, tan(w / 2.0f));
   rod = getMDFFZRod(rod);
   xo = rod[0];
   yo = rod[1];

@@ -27,11 +27,6 @@
 #include "SIMPLib/Filtering/AbstractFilter.h"
 #include "SIMPLib/SIMPLib.h"
 
-#include "OrientationLib/LaueOps/CubicOps.h"
-#include "OrientationLib/LaueOps/HexagonalOps.h"
-#include "OrientationLib/LaueOps/LaueOps.h"
-#include "OrientationLib/LaueOps/OrthoRhombicOps.h"
-
 #include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
 
 /**
@@ -179,11 +174,6 @@ class UCSBUtilities_EXPORT FindDirectionalModuli : public AbstractFilter
 
 
   private:
-    std::vector<LaueOps::Pointer> m_OrientationOps;
-    CubicOps::Pointer m_CubicOps;
-    HexagonalOps::Pointer m_HexOps;
-    OrthoRhombicOps::Pointer m_OrthoOps;
-
     DEFINE_DATAARRAY_VARIABLE(float, DirectionalModuli)
     DEFINE_DATAARRAY_VARIABLE(int32_t, FeaturePhases)
     DEFINE_DATAARRAY_VARIABLE(float, AvgQuats)

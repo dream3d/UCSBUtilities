@@ -20,7 +20,6 @@
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/DataArrays/DataArray.hpp"
-#include "SIMPLib/Math/QuaternionMath.hpp"
 
 #include "OrientationLib/OrientationLib.h"
 #include "OrientationLib/LaueOps/TriclinicOps.h"
@@ -35,7 +34,7 @@ class TriclinicOpsMisoColor : public TriclinicOps
     SIMPL_STATIC_NEW_MACRO(TriclinicOpsMisoColor)
 
     TriclinicOpsMisoColor();
-    virtual ~TriclinicOpsMisoColor();
+    ~TriclinicOpsMisoColor() override;
 
     /**
      * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
@@ -43,7 +42,7 @@ class TriclinicOpsMisoColor : public TriclinicOps
      * @param refDir The sample reference direction
      * @return Returns the ARGB Quadruplet SIMPL::Rgb
      */
-    virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
+    SIMPL::Rgb generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const override;
 
   public:
     TriclinicOpsMisoColor(const TriclinicOpsMisoColor&) = delete; // Copy Constructor Not Implemented

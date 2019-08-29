@@ -40,22 +40,21 @@ CubicLowOpsMisoColor::~CubicLowOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-SIMPL::Rgb CubicLowOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
+SIMPL::Rgb CubicLowOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
 {
   assert(false);
 #if 0
-  float n1, n2, n3, w;
-  float x, x1, x2, x3, x4;
-  float y, y1, y2, y3, y4;
-  float z, z1, z2, z3, z4;
-  float k, h, s, v, c, r, g, b;
+  double n1, n2, n3, w;
+  double x, x1, x2, x3, x4;
+  double y, y1, y2, y3, y4;
+  double z, z1, z2, z3, z4;
+  double k, h, s, v, c, r, g, b;
 
   //get misorientation as rodriguez vector in FZ (eq. c7.1)
-  QuatF q1, q2;
-  QuaternionMathF::Copy(q, q1);
-  QuaternionMathF::Copy(refFrame, q2);
+  QuatType q1 = q;
+  QuatType q2 = refFrame;
   w = getMisoQuat(q1, q2, n1, n2, n3);
-  FOrientArrayType rod(n1, n2, n3, tan(w / 2.0f));
+  OrientArrayType rod(n1, n2, n3, tan(w / 2.0f));
   rod = getMDFFZRod(rod);
   x = rod[0] * rod[3];
   y = rod[1] * rod[3];

@@ -99,17 +99,16 @@ void _TripletSort(T a, T b, T c, T& x, T& y, T& z)
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-SIMPL::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
+SIMPL::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
 {
-  float n1, n2, n3, w;
-  float x, x1, x2, x3, x4, x5, x6, x7;
-  float y, y1, y2, y3, y4, y5, y6, y7;
-  float z, z1, z2, z3, z4, z5, z6, z7;
-  float k, h, s, v;
+  double n1, n2, n3, w;
+  double x, x1, x2, x3, x4, x5, x6, x7;
+  double y, y1, y2, y3, y4, y5, y6, y7;
+  double z, z1, z2, z3, z4, z5, z6, z7;
+  double k, h, s, v;
 
-  QuatF q1, q2;
-  QuaternionMathF::Copy(q, q1);
-  QuaternionMathF::Copy(refFrame, q2);
+  QuatType q1 = q;
+  QuatType q2 = refFrame;
 
   //get disorientation
   w = getMisoQuat(q1, q2, n1, n2, n3);
@@ -185,7 +184,7 @@ SIMPL::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatF& q, const 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-UInt8ArrayType::Pointer CubicOpsMisoColor::generateMisorientationTriangleLegend(float angle, int n1, int n2, int imageDim)
+UInt8ArrayType::Pointer CubicOpsMisoColor::generateMisorientationTriangleLegend(double angle, int n1, int n2, int imageDim)
 {
   std::vector<size_t> dims(1, 4);
   UInt8ArrayType::Pointer image = UInt8ArrayType::CreateArray(imageDim * imageDim, dims, "Cubic High Misorientation Triangle Legend");
@@ -492,14 +491,14 @@ UInt8ArrayType::Pointer CubicOpsMisoColor::generateMisorientationTriangleLegend(
   ///fill triangles
   for(std::vector< std::pair<double, double> >::size_type i = 0; i < ba.size(); i++)
   {
-    QuatF quat, refQuat;
+    QuatType quat, refQuat;
     refQuat.x = 0;
     refQuat.y = 0;
     refQuat.z = 0;
     refQuat.w = 1;
     //have rodrigues vector, need quat
-    float tanAng = sqrt(d1[i] * d1[i] + d2[i] * d2[i] + d3[i] * d3[i]);
-    float cosAng = cosf(atanf(tanAng));
+    double tanAng = sqrt(d1[i] * d1[i] + d2[i] * d2[i] + d3[i] * d3[i]);
+    double cosAng = cosf(atanf(tanAng));
     quat.x = d1[i] * cosAng * tanAng;
     quat.y = d2[i] * cosAng * tanAng;
     quat.z = d3[i] * cosAng * tanAng;
