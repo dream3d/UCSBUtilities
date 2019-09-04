@@ -219,24 +219,6 @@ void FindDirectionalModuli::execute()
   //get number of features
   size_t totalFeatures = m_DirectionalModuliPtr.lock()->getNumberOfTuples();
 
-  //wrap quats
-  QuatF* avgQuats = reinterpret_cast<QuatF*>(m_AvgQuats);
-
-  // //fill compliance matrix for each phase
-  // typedef Eigen::Matrix<float, 6, 6> Matrix6f;
-  // size_t totalPhases = m_CrystalCompliancesPtr.lock()->getNumberOfTuples();
-  // std::vector<Matrix6f, Eigen::aligned_allocator<Matrix6f> > compliance(totalPhases, Matrix6f::Zero());
-  // for(int i = 0; i < totalPhases; i++)
-  // {
-  //   size_t index = i * 36;
-  //   compliance[i] << m_CrystalCompliances[index + 0],  m_CrystalCompliances[index + 1],  m_CrystalCompliances[index + 2],  m_CrystalCompliances[index + 3],  m_CrystalCompliances[index + 4],  m_CrystalCompliances[index + 5],
-  //                    m_CrystalCompliances[index + 6],  m_CrystalCompliances[index + 7],  m_CrystalCompliances[index + 8],  m_CrystalCompliances[index + 9],  m_CrystalCompliances[index + 10], m_CrystalCompliances[index + 11],
-  //                    m_CrystalCompliances[index + 12], m_CrystalCompliances[index + 13], m_CrystalCompliances[index + 14], m_CrystalCompliances[index + 15], m_CrystalCompliances[index + 16], m_CrystalCompliances[index + 17],
-  //                    m_CrystalCompliances[index + 18], m_CrystalCompliances[index + 19], m_CrystalCompliances[index + 20], m_CrystalCompliances[index + 21], m_CrystalCompliances[index + 22], m_CrystalCompliances[index + 23],
-  //                    m_CrystalCompliances[index + 24], m_CrystalCompliances[index + 25], m_CrystalCompliances[index + 26], m_CrystalCompliances[index + 27], m_CrystalCompliances[index + 28], m_CrystalCompliances[index + 29],
-  //                    m_CrystalCompliances[index + 30], m_CrystalCompliances[index + 31], m_CrystalCompliances[index + 32], m_CrystalCompliances[index + 33], m_CrystalCompliances[index + 34], m_CrystalCompliances[index + 35] ;
-  // }
-
   QuatF q1, q2, qTotal;
   float sampleLoading[3];
   //float crystalLoading[3];
