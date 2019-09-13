@@ -21,12 +21,10 @@
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/DataArrays/DataArray.hpp"
-#include "SIMPLib/Math/QuaternionMath.hpp"
 
-#include "OrientationLib/OrientationLib.h"
+#include "OrientationLib/Core/Orientation.hpp"
 #include "OrientationLib/LaueOps/TrigonalLowOps.h"
-#include "OrientationLib/OrientationMath/OrientationArray.hpp"
-
+#include "OrientationLib/OrientationLib.h"
 
 class TrigonalLowOpsMisoColor : public TrigonalLowOps
 {
@@ -36,8 +34,7 @@ class TrigonalLowOpsMisoColor : public TrigonalLowOps
     SIMPL_STATIC_NEW_MACRO(TrigonalLowOpsMisoColor)
 
     TrigonalLowOpsMisoColor();
-    virtual ~TrigonalLowOpsMisoColor();
-
+    ~TrigonalLowOpsMisoColor() override;
 
     /**
      * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
@@ -45,7 +42,7 @@ class TrigonalLowOpsMisoColor : public TrigonalLowOps
      * @param refDir The sample reference direction
      * @return Returns the ARGB Quadruplet SIMPL::Rgb
      */
-    virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
+    SIMPL::Rgb generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const override;
 
   public:
     TrigonalLowOpsMisoColor(const TrigonalLowOpsMisoColor&) = delete; // Copy Constructor Not Implemented

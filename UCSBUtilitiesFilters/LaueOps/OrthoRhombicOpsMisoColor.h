@@ -20,7 +20,6 @@
 #include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/DataArrays/DataArray.hpp"
-#include "SIMPLib/Math/QuaternionMath.hpp"
 
 #include "OrientationLib/OrientationLib.h"
 #include "OrientationLib/LaueOps/OrthoRhombicOps.h"
@@ -35,8 +34,7 @@ class OrthoRhombicOpsMisoColor : public OrthoRhombicOps
     SIMPL_STATIC_NEW_MACRO(OrthoRhombicOpsMisoColor)
 
     OrthoRhombicOpsMisoColor();
-    virtual ~OrthoRhombicOpsMisoColor();
-
+    ~OrthoRhombicOpsMisoColor() override;
 
     /**
      * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
@@ -44,7 +42,7 @@ class OrthoRhombicOpsMisoColor : public OrthoRhombicOps
      * @param refDir The sample reference direction
      * @return Returns the ARGB Quadruplet SIMPL::Rgb
      */
-    virtual SIMPL::Rgb generateMisorientationColor(const QuatF& q, const QuatF& refFrame);
+    SIMPL::Rgb generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const override;
 
   public:
     OrthoRhombicOpsMisoColor(const OrthoRhombicOpsMisoColor&) = delete; // Copy Constructor Not Implemented

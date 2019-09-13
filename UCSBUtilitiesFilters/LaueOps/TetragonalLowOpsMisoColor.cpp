@@ -36,7 +36,7 @@ TetragonalLowOpsMisoColor::~TetragonalLowOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-SIMPL::Rgb TetragonalLowOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
+SIMPL::Rgb TetragonalLowOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
 {
   Q_ASSERT(false);
 

@@ -35,6 +35,11 @@
 
 #include "EbsdLib/EbsdConstants.h"
 
+#include "OrientationLib/LaueOps/CubicOps.h"
+#include "OrientationLib/LaueOps/HexagonalOps.h"
+#include "OrientationLib/LaueOps/LaueOps.h"
+#include "OrientationLib/LaueOps/OrthoRhombicOps.h"
+
 /* Create Enumerations to allow the created Attribute Arrays to take part in renaming */
 enum createdPathID : RenameDataPath::DataID_t
 {
@@ -56,8 +61,10 @@ FindDirectionalModuli::FindDirectionalModuli()
   m_LoadingDirection[1] = 0.0f;
   m_LoadingDirection[2] = 1.0f;
 
-  m_OrientationOps = LaueOps::getOrientationOpsVector();
-
+  //  std::vector<LaueOps::Pointer> m_OrientationOps = LaueOps::getOrientationOpsVector();
+  //  CubicOps::Pointer m_CubicOps;
+  //  HexagonalOps::Pointer m_HexOps;
+  //  OrthoRhombicOps::Pointer m_OrthoOps;
 }
 
 // -----------------------------------------------------------------------------
@@ -212,24 +219,6 @@ void FindDirectionalModuli::execute()
   //get number of features
   size_t totalFeatures = m_DirectionalModuliPtr.lock()->getNumberOfTuples();
 
-  //wrap quats
-  QuatF* avgQuats = reinterpret_cast<QuatF*>(m_AvgQuats);
-
-  // //fill compliance matrix for each phase
-  // typedef Eigen::Matrix<float, 6, 6> Matrix6f;
-  // size_t totalPhases = m_CrystalCompliancesPtr.lock()->getNumberOfTuples();
-  // std::vector<Matrix6f, Eigen::aligned_allocator<Matrix6f> > compliance(totalPhases, Matrix6f::Zero());
-  // for(int i = 0; i < totalPhases; i++)
-  // {
-  //   size_t index = i * 36;
-  //   compliance[i] << m_CrystalCompliances[index + 0],  m_CrystalCompliances[index + 1],  m_CrystalCompliances[index + 2],  m_CrystalCompliances[index + 3],  m_CrystalCompliances[index + 4],  m_CrystalCompliances[index + 5],
-  //                    m_CrystalCompliances[index + 6],  m_CrystalCompliances[index + 7],  m_CrystalCompliances[index + 8],  m_CrystalCompliances[index + 9],  m_CrystalCompliances[index + 10], m_CrystalCompliances[index + 11],
-  //                    m_CrystalCompliances[index + 12], m_CrystalCompliances[index + 13], m_CrystalCompliances[index + 14], m_CrystalCompliances[index + 15], m_CrystalCompliances[index + 16], m_CrystalCompliances[index + 17],
-  //                    m_CrystalCompliances[index + 18], m_CrystalCompliances[index + 19], m_CrystalCompliances[index + 20], m_CrystalCompliances[index + 21], m_CrystalCompliances[index + 22], m_CrystalCompliances[index + 23],
-  //                    m_CrystalCompliances[index + 24], m_CrystalCompliances[index + 25], m_CrystalCompliances[index + 26], m_CrystalCompliances[index + 27], m_CrystalCompliances[index + 28], m_CrystalCompliances[index + 29],
-  //                    m_CrystalCompliances[index + 30], m_CrystalCompliances[index + 31], m_CrystalCompliances[index + 32], m_CrystalCompliances[index + 33], m_CrystalCompliances[index + 34], m_CrystalCompliances[index + 35] ;
-  // }
-
   QuatF q1, q2, qTotal;
   float sampleLoading[3];
   //float crystalLoading[3];
@@ -244,7 +233,7 @@ void FindDirectionalModuli::execute()
   if(sampleLoading[0] >= 1.0f - std::numeric_limits<float>::epsilon())
   {
     //already 100 aligned
-    QuaternionMathF::Identity(q2);
+    q2.identity();
   }
   else if(sampleLoading[0] <= -1.0f + std::numeric_limits<float>::epsilon())
   {
@@ -252,7 +241,7 @@ void FindDirectionalModuli::execute()
     q2[0] = 0.0f;
     q2[1] = 0.0f;
     q2[2] = 1.0f;
-    q2.w = 0.0f;
+    q2[3] = 0.0f;
   }
   else
   {
@@ -268,8 +257,8 @@ void FindDirectionalModuli::execute()
     q2[0] = 0.0f;
     q2[1] = sampleLoading[2];
     q2[2] = -sampleLoading[1];
-    q2.w = 1.0f + sampleLoading[0];
-    QuaternionMathF::UnitQuaternion(q2);
+    q2[3] = 1.0f + sampleLoading[0];
+    q2 = q2.unitQuaternion();
   }
 
   //loop over all grains
@@ -284,8 +273,8 @@ void FindDirectionalModuli::execute()
     if(xtal < Ebsd::CrystalStructure::LaueGroupEnd)
     {
       //concatenate rotation with crystal orientation (determine rotation from crystal frame to sample loading direction)
-      QuaternionMathF::Copy(avgQuats[i], q1);
-      QuaternionMathF::Multiply(q1, q2, qTotal);
+      q1 = QuatF(m_AvgQuats + i * 4);
+      QuatF qTotal = q1 * q2;
 
       /*
       This method is straightforward but computationally very expensive/wasteful (since it computes the full rotated compliance matrix and we only need s'11)
@@ -356,8 +345,8 @@ void FindDirectionalModuli::execute()
 
       //these can be expressed more compactly directly from quaternions (especially if a unit quaternion is assumed)
       float a = 1.0f - 2.0f * (qTotal[1] * qTotal[1] + qTotal[2] * qTotal[2]);
-      float b = 2.0f * (qTotal[0] * qTotal[1] - qTotal[2] * qTotal.w);
-      float c = 2.0f * (qTotal[0] * qTotal[2] + qTotal[1] * qTotal.w);
+      float b = 2.0f * (qTotal[0] * qTotal[1] - qTotal[2] * qTotal[3]);
+      float c = 2.0f * (qTotal[0] * qTotal[2] + qTotal[1] * qTotal[3]);
       //denom = 1.0
 
       //squares are used extensively, compute once

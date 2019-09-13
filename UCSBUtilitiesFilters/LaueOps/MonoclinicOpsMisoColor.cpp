@@ -36,7 +36,7 @@ MonoclinicOpsMisoColor::~MonoclinicOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-SIMPL::Rgb MonoclinicOpsMisoColor::generateMisorientationColor(const QuatF& q, const QuatF& refFrame)
+SIMPL::Rgb MonoclinicOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
 {
   Q_ASSERT(false);
   return RgbColor::dRgb(0, 0, 0, 0);
