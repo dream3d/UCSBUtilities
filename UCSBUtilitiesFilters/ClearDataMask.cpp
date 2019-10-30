@@ -15,11 +15,18 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <memory>
+
 #include "ClearDataMask.h"
 
+#include <QtCore/QTextStream>
+
 #include "SIMPLib/Common/Constants.h"
+
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
+#include "SIMPLib/DataContainers/DataContainerArray.h"
+#include "SIMPLib/DataContainers/DataContainer.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
@@ -154,7 +161,7 @@ AbstractFilter::Pointer ClearDataMask::newFilterInstance(bool copyFilterParamete
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString ClearDataMask::getCompiledLibraryName() const
+QString ClearDataMask::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -162,7 +169,7 @@ const QString ClearDataMask::getCompiledLibraryName() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString ClearDataMask::getBrandingString() const
+QString ClearDataMask::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -170,7 +177,7 @@ const QString ClearDataMask::getBrandingString() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString ClearDataMask::getFilterVersion() const
+QString ClearDataMask::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -181,13 +188,13 @@ const QString ClearDataMask::getFilterVersion() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString ClearDataMask::getGroupName() const
+QString ClearDataMask::getGroupName() const
 { return SIMPL::FilterGroups::ProcessingFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QUuid ClearDataMask::getUuid()
+QUuid ClearDataMask::getUuid() const
 {
   return QUuid("{39df0167-1ef8-5e01-8702-c08c8afba1c0}");
 }
@@ -195,11 +202,52 @@ const QUuid ClearDataMask::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString ClearDataMask::getSubGroupName() const
+QString ClearDataMask::getSubGroupName() const
 { return SIMPL::FilterSubGroups::CleanupFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString ClearDataMask::getHumanLabel() const
+QString ClearDataMask::getHumanLabel() const
 { return "Clear Data (Mask)"; }
+
+// -----------------------------------------------------------------------------
+ClearDataMask::Pointer ClearDataMask::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+std::shared_ptr<ClearDataMask> ClearDataMask::New()
+{
+  struct make_shared_enabler : public ClearDataMask
+  {
+  };
+  std::shared_ptr<make_shared_enabler> val = std::make_shared<make_shared_enabler>();
+  val->setupFilterParameters();
+  return val;
+}
+
+// -----------------------------------------------------------------------------
+QString ClearDataMask::getNameOfClass() const
+{
+  return QString("ClearDataMask");
+}
+
+// -----------------------------------------------------------------------------
+QString ClearDataMask::ClassName()
+{
+  return QString("ClearDataMask");
+}
+
+// -----------------------------------------------------------------------------
+void ClearDataMask::setMaskArrayPath(const DataArrayPath& value)
+{
+  m_MaskArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath ClearDataMask::getMaskArrayPath() const
+{
+  return m_MaskArrayPath;
+}

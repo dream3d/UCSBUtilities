@@ -17,8 +17,9 @@
 
 #pragma once
 
+#include <memory>
+
 #include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/DataArrays/DataArray.hpp"
 
 #include "OrientationLib/OrientationLib.h"
@@ -29,9 +30,23 @@
 class TrigonalOpsMisoColor : public TrigonalOps
 {
   public:
-    SIMPL_SHARED_POINTERS(TrigonalOpsMisoColor)
-     SIMPL_TYPE_MACRO_SUPER_OVERRIDE(TrigonalOpsMisoColor, TrigonalOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(TrigonalOpsMisoColor)
+    using Self = TrigonalOpsMisoColor;
+    using Pointer = std::shared_ptr<Self>;
+    using ConstPointer = std::shared_ptr<const Self>;
+    using WeakPointer = std::weak_ptr<Self>;
+    using ConstWeakPointer = std::weak_ptr<Self>;
+    static Pointer NullPointer();
+
+    /**
+     * @brief Returns the name of the class for TrigonalOpsMisoColor
+     */
+    QString getNameOfClass() const override;
+    /**
+     * @brief Returns the name of the class for TrigonalOpsMisoColor
+     */
+    static QString ClassName();
+
+    static Pointer New();
 
     TrigonalOpsMisoColor();
     ~TrigonalOpsMisoColor() override;
@@ -49,6 +64,8 @@ class TrigonalOpsMisoColor : public TrigonalOps
     TrigonalOpsMisoColor(TrigonalOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
     TrigonalOpsMisoColor& operator=(const TrigonalOpsMisoColor&) = delete; // Copy Assignment Not Implemented
     TrigonalOpsMisoColor& operator=(TrigonalOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
+
+  private:
 };
 
 

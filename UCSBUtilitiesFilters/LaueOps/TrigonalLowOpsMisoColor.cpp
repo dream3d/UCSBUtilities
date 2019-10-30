@@ -45,3 +45,27 @@ SIMPL::Rgb TrigonalLowOpsMisoColor::generateMisorientationColor(const QuatType& 
   return rgb;
 }
 
+// -----------------------------------------------------------------------------
+TrigonalLowOpsMisoColor::Pointer TrigonalLowOpsMisoColor::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+QString TrigonalLowOpsMisoColor::getNameOfClass() const
+{
+  return QString("TrigonalLowOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+QString TrigonalLowOpsMisoColor::ClassName()
+{
+  return QString("TrigonalLowOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+TrigonalLowOpsMisoColor::Pointer TrigonalLowOpsMisoColor::New()
+{
+  Pointer sharedPtr(new(TrigonalLowOpsMisoColor));
+  return sharedPtr;
+}

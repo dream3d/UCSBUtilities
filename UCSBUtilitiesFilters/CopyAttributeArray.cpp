@@ -15,12 +15,18 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <memory>
+
 #include "CopyAttributeArray.h"
 
+#include <QtCore/QTextStream>
+
 #include "SIMPLib/Common/Constants.h"
+
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
 #include "SIMPLib/FilterParameters/LinkedPathCreationFilterParameter.h"
+#include "SIMPLib/DataContainers/DataContainerArray.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
@@ -153,7 +159,7 @@ AbstractFilter::Pointer CopyAttributeArray::newFilterInstance(bool copyFilterPar
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeArray::getCompiledLibraryName() const
+QString CopyAttributeArray::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -161,7 +167,7 @@ const QString CopyAttributeArray::getCompiledLibraryName() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeArray::getBrandingString() const
+QString CopyAttributeArray::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -169,7 +175,7 @@ const QString CopyAttributeArray::getBrandingString() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeArray::getFilterVersion() const
+QString CopyAttributeArray::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -180,13 +186,13 @@ const QString CopyAttributeArray::getFilterVersion() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeArray::getGroupName() const
+QString CopyAttributeArray::getGroupName() const
 { return SIMPL::FilterGroups::CoreFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QUuid CopyAttributeArray::getUuid()
+QUuid CopyAttributeArray::getUuid() const
 {
   return QUuid("{06d9ebfd-4c69-566a-8f4c-30e133a523e7}");
 }
@@ -194,11 +200,64 @@ const QUuid CopyAttributeArray::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeArray::getSubGroupName() const
+QString CopyAttributeArray::getSubGroupName() const
 { return SIMPL::FilterSubGroups::MemoryManagementFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeArray::getHumanLabel() const
+QString CopyAttributeArray::getHumanLabel() const
 { return "Copy Attribute Array"; }
+
+// -----------------------------------------------------------------------------
+CopyAttributeArray::Pointer CopyAttributeArray::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+std::shared_ptr<CopyAttributeArray> CopyAttributeArray::New()
+{
+  struct make_shared_enabler : public CopyAttributeArray
+  {
+  };
+  std::shared_ptr<make_shared_enabler> val = std::make_shared<make_shared_enabler>();
+  val->setupFilterParameters();
+  return val;
+}
+
+// -----------------------------------------------------------------------------
+QString CopyAttributeArray::getNameOfClass() const
+{
+  return QString("CopyAttributeArray");
+}
+
+// -----------------------------------------------------------------------------
+QString CopyAttributeArray::ClassName()
+{
+  return QString("CopyAttributeArray");
+}
+
+// -----------------------------------------------------------------------------
+void CopyAttributeArray::setSelectedArrayPath(const DataArrayPath& value)
+{
+  m_SelectedArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath CopyAttributeArray::getSelectedArrayPath() const
+{
+  return m_SelectedArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void CopyAttributeArray::setNewArrayName(const QString& value)
+{
+  m_NewArrayName = value;
+}
+
+// -----------------------------------------------------------------------------
+QString CopyAttributeArray::getNewArrayName() const
+{
+  return m_NewArrayName;
+}

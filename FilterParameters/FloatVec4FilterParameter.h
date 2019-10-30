@@ -17,6 +17,8 @@
 
 #pragma once
 
+#include <memory>
+
 #include <QtCore/QJsonObject>
 
 #include "SIMPLib/FilterParameters/FilterParameter.h"
@@ -51,15 +53,27 @@ Q_DECLARE_METATYPE(FloatVec4_t)
 class FloatVec4FilterParameter : public FilterParameter
 {
 public:
-  SIMPL_SHARED_POINTERS(FloatVec4FilterParameter)
-    SIMPL_STATIC_NEW_MACRO(FloatVec4FilterParameter)
-    SIMPL_TYPE_MACRO(FloatVec4FilterParameter)
+  using Self = FloatVec4FilterParameter;
+  using Pointer = std::shared_ptr<Self>;
+  using ConstPointer = std::shared_ptr<const Self>;
+  using WeakPointer = std::weak_ptr<Self>;
+  using ConstWeakPointer = std::weak_ptr<Self>;
+  static Pointer NullPointer();
 
-    static Pointer New(const QString& humanLabel, const QString& propertyName,
-    const FloatVec4_t& defaultValue, Category category,
-     int groupIndex = -1);
+  static Pointer New();
 
-    virtual ~FloatVec4FilterParameter();
+  /**
+   * @brief Returns the name of the class for FloatVec4FilterParameter
+   */
+  QString getNameOfClass() const override;
+  /**
+   * @brief Returns the name of the class for FloatVec4FilterParameter
+   */
+  static QString ClassName();
+
+  static Pointer New(const QString& humanLabel, const QString& propertyName, const FloatVec4_t& defaultValue, Category category, int groupIndex = -1);
+
+  virtual ~FloatVec4FilterParameter();
 
   /**
    * @brief getWidgetType Returns the type of widget that displays and controls

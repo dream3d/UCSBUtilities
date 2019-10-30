@@ -17,12 +17,14 @@
 
 #pragma once
 
+#include <memory>
+
 #include <QtCore/QString>
 
-#include "SIMPLib/Common/SIMPLibSetGetMacros.h"
+#include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/DataArrays/IDataArray.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
-#include "SIMPLib/SIMPLib.h"
+#include "SIMPLib/DataArrays/DataArray.hpp"
 
 #include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
 
@@ -36,47 +38,96 @@
 class UCSBUtilities_EXPORT FindBoundaryAreas : public AbstractFilter
 {
     Q_OBJECT
+
+#ifdef SIMPL_ENABLE_PYTHON
     PYB11_CREATE_BINDINGS(FindBoundaryAreas SUPERCLASS AbstractFilter)
+    PYB11_SHARED_POINTERS(FindBoundaryAreas)
+    PYB11_FILTER_NEW_MACRO(FindBoundaryAreas)
+    PYB11_FILTER_PARAMETER(DataArrayPath, SurfaceMeshTriangleAreasArrayPath)
+    PYB11_FILTER_PARAMETER(DataArrayPath, SurfaceMeshFeatureFaceIdsArrayPath)
+    PYB11_FILTER_PARAMETER(DataArrayPath, SurfaceMeshBoundaryAreasArrayPath)
     PYB11_PROPERTY(DataArrayPath SurfaceMeshTriangleAreasArrayPath READ getSurfaceMeshTriangleAreasArrayPath WRITE setSurfaceMeshTriangleAreasArrayPath)
     PYB11_PROPERTY(DataArrayPath SurfaceMeshFeatureFaceIdsArrayPath READ getSurfaceMeshFeatureFaceIdsArrayPath WRITE setSurfaceMeshFeatureFaceIdsArrayPath)
     PYB11_PROPERTY(DataArrayPath SurfaceMeshBoundaryAreasArrayPath READ getSurfaceMeshBoundaryAreasArrayPath WRITE setSurfaceMeshBoundaryAreasArrayPath)
-    
+#endif
+
   public:
-    SIMPL_SHARED_POINTERS(FindBoundaryAreas)
-    SIMPL_FILTER_NEW_MACRO(FindBoundaryAreas)
-    SIMPL_TYPE_MACRO_SUPER_OVERRIDE(FindBoundaryAreas, AbstractFilter)
+    using Self = FindBoundaryAreas;
+    using Pointer = std::shared_ptr<Self>;
+    using ConstPointer = std::shared_ptr<const Self>;
+    using WeakPointer = std::weak_ptr<Self>;
+    using ConstWeakPointer = std::weak_ptr<Self>;
+    static Pointer NullPointer();
+
+    static std::shared_ptr<FindBoundaryAreas> New();
+
+    /**
+     * @brief Returns the name of the class for FindBoundaryAreas
+     */
+    QString getNameOfClass() const override;
+    /**
+     * @brief Returns the name of the class for FindBoundaryAreas
+     */
+    static QString ClassName();
 
     ~FindBoundaryAreas() override;
 
     //required arrays
-    SIMPL_FILTER_PARAMETER(DataArrayPath, SurfaceMeshTriangleAreasArrayPath)
+    /**
+     * @brief Setter property for SurfaceMeshTriangleAreasArrayPath
+     */
+    void setSurfaceMeshTriangleAreasArrayPath(const DataArrayPath& value);
+    /**
+     * @brief Getter property for SurfaceMeshTriangleAreasArrayPath
+     * @return Value of SurfaceMeshTriangleAreasArrayPath
+     */
+    DataArrayPath getSurfaceMeshTriangleAreasArrayPath() const;
+
     Q_PROPERTY(DataArrayPath SurfaceMeshTriangleAreasArrayPath READ getSurfaceMeshTriangleAreasArrayPath WRITE setSurfaceMeshTriangleAreasArrayPath)
 
-    SIMPL_FILTER_PARAMETER(DataArrayPath, SurfaceMeshFeatureFaceIdsArrayPath)
+    /**
+     * @brief Setter property for SurfaceMeshFeatureFaceIdsArrayPath
+     */
+    void setSurfaceMeshFeatureFaceIdsArrayPath(const DataArrayPath& value);
+    /**
+     * @brief Getter property for SurfaceMeshFeatureFaceIdsArrayPath
+     * @return Value of SurfaceMeshFeatureFaceIdsArrayPath
+     */
+    DataArrayPath getSurfaceMeshFeatureFaceIdsArrayPath() const;
+
     Q_PROPERTY(DataArrayPath SurfaceMeshFeatureFaceIdsArrayPath READ getSurfaceMeshFeatureFaceIdsArrayPath WRITE setSurfaceMeshFeatureFaceIdsArrayPath)
 
     //created array path
-    SIMPL_FILTER_PARAMETER(DataArrayPath, SurfaceMeshBoundaryAreasArrayPath)
+    /**
+     * @brief Setter property for SurfaceMeshBoundaryAreasArrayPath
+     */
+    void setSurfaceMeshBoundaryAreasArrayPath(const DataArrayPath& value);
+    /**
+     * @brief Getter property for SurfaceMeshBoundaryAreasArrayPath
+     * @return Value of SurfaceMeshBoundaryAreasArrayPath
+     */
+    DataArrayPath getSurfaceMeshBoundaryAreasArrayPath() const;
+
     Q_PROPERTY(DataArrayPath SurfaceMeshBoundaryAreasArrayPath READ getSurfaceMeshBoundaryAreasArrayPath WRITE setSurfaceMeshBoundaryAreasArrayPath)
 
     /**
      * @brief getCompiledLibraryName Reimplemented from @see AbstractFilter class
      */
-    const QString getCompiledLibraryName() const override;
+    QString getCompiledLibraryName() const override;
 
     /**
      * @brief getBrandingString Returns the branding string for the filter, which is a tag
      * used to denote the filter's association with specific plugins
      * @return Branding string
     */
-    const QString getBrandingString() const override;
+    QString getBrandingString() const override;
 
     /**
      * @brief getFilterVersion Returns a version string for this filter. Default
      * value is an empty string.
      * @return
      */
-    const QString getFilterVersion() const override;
+    QString getFilterVersion() const override;
 
     /**
      * @brief newFilterInstance Reimplemented from @see AbstractFilter class
@@ -86,23 +137,23 @@ class UCSBUtilities_EXPORT FindBoundaryAreas : public AbstractFilter
     /**
      * @brief getGroupName Reimplemented from @see AbstractFilter class
      */
-    const QString getGroupName() const override;
+    QString getGroupName() const override;
 
     /**
      * @brief getSubGroupName Reimplemented from @see AbstractFilter class
      */
-    const QString getSubGroupName() const override;
+    QString getSubGroupName() const override;
 
     /**
      * @brief getUuid Return the unique identifier for this filter.
      * @return A QUuid object.
      */
-    const QUuid getUuid() override;
+    QUuid getUuid() const override;
 
     /**
      * @brief getHumanLabel Reimplemented from @see AbstractFilter class
      */
-    const QString getHumanLabel() const override;
+    QString getHumanLabel() const override;
 
     /**
      * @brief setupFilterParameters Reimplemented from @see AbstractFilter class
@@ -162,9 +213,16 @@ class UCSBUtilities_EXPORT FindBoundaryAreas : public AbstractFilter
 
 
   private:
-    DEFINE_DATAARRAY_VARIABLE(double, SurfaceMeshTriangleAreas)
-    DEFINE_DATAARRAY_VARIABLE(int32_t, SurfaceMeshFeatureFaceIds)
-    DEFINE_DATAARRAY_VARIABLE(double, SurfaceMeshBoundaryAreas)
+    std::weak_ptr<DataArray<double>> m_SurfaceMeshTriangleAreasPtr;
+    double* m_SurfaceMeshTriangleAreas = nullptr;
+    std::weak_ptr<DataArray<int32_t>> m_SurfaceMeshFeatureFaceIdsPtr;
+    int32_t* m_SurfaceMeshFeatureFaceIds = nullptr;
+    std::weak_ptr<DataArray<double>> m_SurfaceMeshBoundaryAreasPtr;
+    double* m_SurfaceMeshBoundaryAreas = nullptr;
+
+    DataArrayPath m_SurfaceMeshTriangleAreasArrayPath = {};
+    DataArrayPath m_SurfaceMeshFeatureFaceIdsArrayPath = {};
+    DataArrayPath m_SurfaceMeshBoundaryAreasArrayPath = {};
 
   public:
     FindBoundaryAreas(const FindBoundaryAreas&) = delete; // Copy Constructor Not Implemented

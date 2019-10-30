@@ -199,3 +199,28 @@ SIMPL::Rgb OrthoRhombicOpsMisoColor::generateMisorientationColor(const QuatType&
   SIMPL::Rgb rgb = 0xFFFFFFFF;
   return RgbColor::dRgb(255 - RgbColor::dRed(rgb), 255 - RgbColor::dGreen(rgb), 255 - RgbColor::dBlue(rgb), 0);
 }
+
+// -----------------------------------------------------------------------------
+OrthoRhombicOpsMisoColor::Pointer OrthoRhombicOpsMisoColor::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+QString OrthoRhombicOpsMisoColor::getNameOfClass() const
+{
+  return QString("OrthoRhombicOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+QString OrthoRhombicOpsMisoColor::ClassName()
+{
+  return QString("OrthoRhombicOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+OrthoRhombicOpsMisoColor::Pointer OrthoRhombicOpsMisoColor::New()
+{
+  Pointer sharedPtr(new(OrthoRhombicOpsMisoColor));
+  return sharedPtr;
+}

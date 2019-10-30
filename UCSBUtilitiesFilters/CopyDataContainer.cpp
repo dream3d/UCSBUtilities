@@ -15,13 +15,20 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <memory>
+
 #include "CopyDataContainer.h"
 
+#include <QtCore/QTextStream>
+
 #include "SIMPLib/Common/Constants.h"
+
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/DataContainerCreationFilterParameter.h"
 #include "SIMPLib/FilterParameters/DataContainerSelectionFilterParameter.h"
 #include "SIMPLib/FilterParameters/StringFilterParameter.h"
+#include "SIMPLib/DataContainers/DataContainerArray.h"
+#include "SIMPLib/DataContainers/DataContainer.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
@@ -143,7 +150,7 @@ AbstractFilter::Pointer CopyDataContainer::newFilterInstance(bool copyFilterPara
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyDataContainer::getCompiledLibraryName() const
+QString CopyDataContainer::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -151,7 +158,7 @@ const QString CopyDataContainer::getCompiledLibraryName() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyDataContainer::getBrandingString() const
+QString CopyDataContainer::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -159,7 +166,7 @@ const QString CopyDataContainer::getBrandingString() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyDataContainer::getFilterVersion() const
+QString CopyDataContainer::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -171,13 +178,13 @@ const QString CopyDataContainer::getFilterVersion() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyDataContainer::getGroupName() const
+QString CopyDataContainer::getGroupName() const
 { return SIMPL::FilterGroups::CoreFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QUuid CopyDataContainer::getUuid()
+QUuid CopyDataContainer::getUuid() const
 {
   return QUuid("{ac8d51d8-9167-5628-a060-95a8863a76b1}");
 }
@@ -185,11 +192,64 @@ const QUuid CopyDataContainer::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyDataContainer::getSubGroupName() const
+QString CopyDataContainer::getSubGroupName() const
 { return SIMPL::FilterSubGroups::MemoryManagementFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyDataContainer::getHumanLabel() const
+QString CopyDataContainer::getHumanLabel() const
 { return "Copy Data Container"; }
+
+// -----------------------------------------------------------------------------
+CopyDataContainer::Pointer CopyDataContainer::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+std::shared_ptr<CopyDataContainer> CopyDataContainer::New()
+{
+  struct make_shared_enabler : public CopyDataContainer
+  {
+  };
+  std::shared_ptr<make_shared_enabler> val = std::make_shared<make_shared_enabler>();
+  val->setupFilterParameters();
+  return val;
+}
+
+// -----------------------------------------------------------------------------
+QString CopyDataContainer::getNameOfClass() const
+{
+  return QString("CopyDataContainer");
+}
+
+// -----------------------------------------------------------------------------
+QString CopyDataContainer::ClassName()
+{
+  return QString("CopyDataContainer");
+}
+
+// -----------------------------------------------------------------------------
+void CopyDataContainer::setSelectedDataContainerName(const DataArrayPath& value)
+{
+  m_SelectedDataContainerName = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath CopyDataContainer::getSelectedDataContainerName() const
+{
+  return m_SelectedDataContainerName;
+}
+
+// -----------------------------------------------------------------------------
+void CopyDataContainer::setNewDataContainerName(const DataArrayPath& value)
+{
+  m_NewDataContainerName = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath CopyDataContainer::getNewDataContainerName() const
+{
+  return m_NewDataContainerName;
+}

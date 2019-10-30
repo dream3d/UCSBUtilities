@@ -17,8 +17,9 @@
 
 #pragma once
 
+#include <memory>
+
 #include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/DataArrays/DataArray.hpp"
 
 #include "OrientationLib/OrientationLib.h"
@@ -29,9 +30,23 @@
 class OrthoRhombicOpsMisoColor : public OrthoRhombicOps
 {
   public:
-    SIMPL_SHARED_POINTERS(OrthoRhombicOpsMisoColor)
-     SIMPL_TYPE_MACRO_SUPER_OVERRIDE(OrthoRhombicOpsMisoColor, OrthoRhombicOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(OrthoRhombicOpsMisoColor)
+    using Self = OrthoRhombicOpsMisoColor;
+    using Pointer = std::shared_ptr<Self>;
+    using ConstPointer = std::shared_ptr<const Self>;
+    using WeakPointer = std::weak_ptr<Self>;
+    using ConstWeakPointer = std::weak_ptr<Self>;
+    static Pointer NullPointer();
+
+    /**
+     * @brief Returns the name of the class for OrthoRhombicOpsMisoColor
+     */
+    QString getNameOfClass() const override;
+    /**
+     * @brief Returns the name of the class for OrthoRhombicOpsMisoColor
+     */
+    static QString ClassName();
+
+    static Pointer New();
 
     OrthoRhombicOpsMisoColor();
     ~OrthoRhombicOpsMisoColor() override;
@@ -49,6 +64,8 @@ class OrthoRhombicOpsMisoColor : public OrthoRhombicOps
     OrthoRhombicOpsMisoColor(OrthoRhombicOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
     OrthoRhombicOpsMisoColor& operator=(const OrthoRhombicOpsMisoColor&) = delete; // Copy Assignment Not Implemented
     OrthoRhombicOpsMisoColor& operator=(OrthoRhombicOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
+
+  private:
 };
 
 

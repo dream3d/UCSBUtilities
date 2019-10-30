@@ -79,3 +79,51 @@ void Symmetric6x6FilterParameter::writeJson(QJsonObject &json)
   json["Compliances"] = compliancesArray;
 }
 
+// -----------------------------------------------------------------------------
+Symmetric6x6FilterParameter::Pointer Symmetric6x6FilterParameter::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+Symmetric6x6FilterParameter::Pointer Symmetric6x6FilterParameter::New()
+{
+  Pointer sharedPtr(new(Symmetric6x6FilterParameter));
+  return sharedPtr;
+}
+
+// -----------------------------------------------------------------------------
+QString Symmetric6x6FilterParameter::getNameOfClass() const
+{
+  return QString("Symmetric6x6FilterParameter");
+}
+
+// -----------------------------------------------------------------------------
+QString Symmetric6x6FilterParameter::ClassName()
+{
+  return QString("Symmetric6x6FilterParameter");
+}
+
+// -----------------------------------------------------------------------------
+void Symmetric6x6FilterParameter::setSetterCallback(const Symmetric6x6FilterParameter::SetterCallbackType& value)
+{
+  m_SetterCallback = value;
+}
+
+// -----------------------------------------------------------------------------
+Symmetric6x6FilterParameter::SetterCallbackType Symmetric6x6FilterParameter::getSetterCallback() const
+{
+  return m_SetterCallback;
+}
+
+// -----------------------------------------------------------------------------
+void Symmetric6x6FilterParameter::setGetterCallback(const Symmetric6x6FilterParameter::GetterCallbackType& value)
+{
+  m_GetterCallback = value;
+}
+
+// -----------------------------------------------------------------------------
+Symmetric6x6FilterParameter::GetterCallbackType Symmetric6x6FilterParameter::getGetterCallback() const
+{
+  return m_GetterCallback;
+}

@@ -17,8 +17,9 @@
 
 #pragma once
 
+#include <memory>
+
 #include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/DataArrays/DataArray.hpp"
 
 #include "OrientationLib/OrientationLib.h"
@@ -28,9 +29,23 @@
 class HexagonalOpsMisoColor : public HexagonalOps
 {
   public:
-    SIMPL_SHARED_POINTERS(HexagonalOpsMisoColor)
-     SIMPL_TYPE_MACRO_SUPER_OVERRIDE(HexagonalOpsMisoColor, HexagonalOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(HexagonalOpsMisoColor)
+    using Self = HexagonalOpsMisoColor;
+    using Pointer = std::shared_ptr<Self>;
+    using ConstPointer = std::shared_ptr<const Self>;
+    using WeakPointer = std::weak_ptr<Self>;
+    using ConstWeakPointer = std::weak_ptr<Self>;
+    static Pointer NullPointer();
+
+    /**
+     * @brief Returns the name of the class for HexagonalOpsMisoColor
+     */
+    QString getNameOfClass() const override;
+    /**
+     * @brief Returns the name of the class for HexagonalOpsMisoColor
+     */
+    static QString ClassName();
+
+    static Pointer New();
 
     HexagonalOpsMisoColor();
     ~HexagonalOpsMisoColor() override;
@@ -48,6 +63,8 @@ class HexagonalOpsMisoColor : public HexagonalOps
     HexagonalOpsMisoColor(HexagonalOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
     HexagonalOpsMisoColor& operator=(const HexagonalOpsMisoColor&) = delete; // Copy Assignment Not Implemented
     HexagonalOpsMisoColor& operator=(HexagonalOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
+
+  private:
 };
 
 

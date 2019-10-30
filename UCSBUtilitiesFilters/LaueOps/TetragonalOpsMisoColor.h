@@ -17,8 +17,9 @@
 
 #pragma once
 
+#include <memory>
+
 #include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/DataArrays/DataArray.hpp"
 
 #include "OrientationLib/OrientationLib.h"
@@ -29,9 +30,23 @@
 class TetragonalOpsMisoColor : public TetragonalOps
 {
   public:
-    SIMPL_SHARED_POINTERS(TetragonalOpsMisoColor)
-     SIMPL_TYPE_MACRO_SUPER_OVERRIDE(TetragonalOpsMisoColor, TetragonalOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(TetragonalOpsMisoColor)
+    using Self = TetragonalOpsMisoColor;
+    using Pointer = std::shared_ptr<Self>;
+    using ConstPointer = std::shared_ptr<const Self>;
+    using WeakPointer = std::weak_ptr<Self>;
+    using ConstWeakPointer = std::weak_ptr<Self>;
+    static Pointer NullPointer();
+
+    /**
+     * @brief Returns the name of the class for TetragonalOpsMisoColor
+     */
+    QString getNameOfClass() const override;
+    /**
+     * @brief Returns the name of the class for TetragonalOpsMisoColor
+     */
+    static QString ClassName();
+
+    static Pointer New();
 
     TetragonalOpsMisoColor();
     ~TetragonalOpsMisoColor() override;
@@ -49,6 +64,8 @@ class TetragonalOpsMisoColor : public TetragonalOps
     TetragonalOpsMisoColor(TetragonalOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
     TetragonalOpsMisoColor& operator=(const TetragonalOpsMisoColor&) = delete; // Copy Assignment Not Implemented
     TetragonalOpsMisoColor& operator=(TetragonalOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
+
+  private:
 };
 
 

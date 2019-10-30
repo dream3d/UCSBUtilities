@@ -46,3 +46,27 @@ SIMPL::Rgb TriclinicOpsMisoColor::generateMisorientationColor(const QuatType& q,
   return rgb;
 }
 
+// -----------------------------------------------------------------------------
+TriclinicOpsMisoColor::Pointer TriclinicOpsMisoColor::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+QString TriclinicOpsMisoColor::getNameOfClass() const
+{
+  return QString("TriclinicOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+QString TriclinicOpsMisoColor::ClassName()
+{
+  return QString("TriclinicOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+TriclinicOpsMisoColor::Pointer TriclinicOpsMisoColor::New()
+{
+  Pointer sharedPtr(new(TriclinicOpsMisoColor));
+  return sharedPtr;
+}

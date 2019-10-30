@@ -103,3 +103,28 @@ SIMPL::Rgb CubicLowOpsMisoColor::generateMisorientationColor(const QuatType& q, 
   SIMPL::Rgb rgb = 0xFFFFFFFF;
   return RgbColor::dRgb(255 - RgbColor::dRed(rgb), 255 - RgbColor::dGreen(rgb), 255 - RgbColor::dBlue(rgb), 0);
 }
+
+// -----------------------------------------------------------------------------
+CubicLowOpsMisoColor::Pointer CubicLowOpsMisoColor::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+QString CubicLowOpsMisoColor::getNameOfClass() const
+{
+  return QString("CubicLowOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+QString CubicLowOpsMisoColor::ClassName()
+{
+  return QString("CubicLowOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+CubicLowOpsMisoColor::Pointer CubicLowOpsMisoColor::New()
+{
+  Pointer sharedPtr(new(CubicLowOpsMisoColor));
+  return sharedPtr;
+}

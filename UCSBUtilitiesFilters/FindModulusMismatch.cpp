@@ -15,11 +15,18 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <memory>
+
+#include <QtCore/QTextStream>
+
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
+
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
 #include "SIMPLib/FilterParameters/LinkedPathCreationFilterParameter.h"
 #include "SIMPLib/FilterParameters/StringFilterParameter.h"
 #include "SIMPLib/FilterParameters/SeparatorFilterParameter.h"
+#include "SIMPLib/DataContainers/DataContainerArray.h"
+#include "SIMPLib/DataContainers/DataContainer.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
@@ -239,7 +246,7 @@ AbstractFilter::Pointer FindModulusMismatch::newFilterInstance(bool copyFilterPa
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindModulusMismatch::getCompiledLibraryName() const
+QString FindModulusMismatch::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -247,7 +254,7 @@ const QString FindModulusMismatch::getCompiledLibraryName() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindModulusMismatch::getBrandingString() const
+QString FindModulusMismatch::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -255,7 +262,7 @@ const QString FindModulusMismatch::getBrandingString() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindModulusMismatch::getFilterVersion() const
+QString FindModulusMismatch::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -266,14 +273,14 @@ const QString FindModulusMismatch::getFilterVersion() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindModulusMismatch::getGroupName() const
+QString FindModulusMismatch::getGroupName() const
 { return SIMPL::FilterGroups::StatisticsFilters; }
 
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QUuid FindModulusMismatch::getUuid()
+QUuid FindModulusMismatch::getUuid() const
 {
   return QUuid("{a0b4c16f-bfb1-57cf-aba1-eb08b5486abb}");
 }
@@ -281,13 +288,77 @@ const QUuid FindModulusMismatch::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindModulusMismatch::getSubGroupName() const
+QString FindModulusMismatch::getSubGroupName() const
 { return SIMPL::FilterSubGroups::CrystallographyFilters; }
 
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindModulusMismatch::getHumanLabel() const
+QString FindModulusMismatch::getHumanLabel() const
 { return "Find Elastic Modulus Mismatch"; }
 
+// -----------------------------------------------------------------------------
+FindModulusMismatch::Pointer FindModulusMismatch::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+std::shared_ptr<FindModulusMismatch> FindModulusMismatch::New()
+{
+  struct make_shared_enabler : public FindModulusMismatch
+  {
+  };
+  std::shared_ptr<make_shared_enabler> val = std::make_shared<make_shared_enabler>();
+  val->setupFilterParameters();
+  return val;
+}
+
+// -----------------------------------------------------------------------------
+QString FindModulusMismatch::getNameOfClass() const
+{
+  return QString("FindModulusMismatch");
+}
+
+// -----------------------------------------------------------------------------
+QString FindModulusMismatch::ClassName()
+{
+  return QString("FindModulusMismatch");
+}
+
+// -----------------------------------------------------------------------------
+void FindModulusMismatch::setModuliArrayPath(const DataArrayPath& value)
+{
+  m_ModuliArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath FindModulusMismatch::getModuliArrayPath() const
+{
+  return m_ModuliArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void FindModulusMismatch::setSurfaceMeshFaceLabelsArrayPath(const DataArrayPath& value)
+{
+  m_SurfaceMeshFaceLabelsArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath FindModulusMismatch::getSurfaceMeshFaceLabelsArrayPath() const
+{
+  return m_SurfaceMeshFaceLabelsArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void FindModulusMismatch::setSurfaceMeshDeltaModulusArrayName(const QString& value)
+{
+  m_SurfaceMeshDeltaModulusArrayName = value;
+}
+
+// -----------------------------------------------------------------------------
+QString FindModulusMismatch::getSurfaceMeshDeltaModulusArrayName() const
+{
+  return m_SurfaceMeshDeltaModulusArrayName;
+}

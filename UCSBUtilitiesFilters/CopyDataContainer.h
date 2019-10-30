@@ -17,9 +17,10 @@
 
 #pragma once
 
-#include "SIMPLib/Common/SIMPLibSetGetMacros.h"
-#include "SIMPLib/Filtering/AbstractFilter.h"
+#include <memory>
+
 #include "SIMPLib/SIMPLib.h"
+#include "SIMPLib/Filtering/AbstractFilter.h"
 
 #include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
 
@@ -29,40 +30,80 @@
 class UCSBUtilities_EXPORT CopyDataContainer : public AbstractFilter
 {
     Q_OBJECT
+
+#ifdef SIMPL_ENABLE_PYTHON
     PYB11_CREATE_BINDINGS(CopyDataContainer SUPERCLASS AbstractFilter)
+    PYB11_SHARED_POINTERS(CopyDataContainer)
+    PYB11_FILTER_NEW_MACRO(CopyDataContainer)
+    PYB11_FILTER_PARAMETER(DataArrayPath, SelectedDataContainerName)
+    PYB11_FILTER_PARAMETER(DataArrayPath, NewDataContainerName)
     PYB11_PROPERTY(DataArrayPath SelectedDataContainerName READ getSelectedDataContainerName WRITE setSelectedDataContainerName)
     PYB11_PROPERTY(DataArrayPath NewDataContainerName READ getNewDataContainerName WRITE setNewDataContainerName)
+#endif
+
   public:
-    SIMPL_SHARED_POINTERS(CopyDataContainer)
-    SIMPL_FILTER_NEW_MACRO(CopyDataContainer)
-    SIMPL_TYPE_MACRO_SUPER_OVERRIDE(CopyDataContainer, AbstractFilter)
+    using Self = CopyDataContainer;
+    using Pointer = std::shared_ptr<Self>;
+    using ConstPointer = std::shared_ptr<const Self>;
+    using WeakPointer = std::weak_ptr<Self>;
+    using ConstWeakPointer = std::weak_ptr<Self>;
+    static Pointer NullPointer();
+
+    static std::shared_ptr<CopyDataContainer> New();
+
+    /**
+     * @brief Returns the name of the class for CopyDataContainer
+     */
+    QString getNameOfClass() const override;
+    /**
+     * @brief Returns the name of the class for CopyDataContainer
+     */
+    static QString ClassName();
 
     ~CopyDataContainer() override;
 
-    SIMPL_FILTER_PARAMETER(DataArrayPath, SelectedDataContainerName)
+    /**
+     * @brief Setter property for SelectedDataContainerName
+     */
+    void setSelectedDataContainerName(const DataArrayPath& value);
+    /**
+     * @brief Getter property for SelectedDataContainerName
+     * @return Value of SelectedDataContainerName
+     */
+    DataArrayPath getSelectedDataContainerName() const;
+
     Q_PROPERTY(DataArrayPath SelectedDataContainerName READ getSelectedDataContainerName WRITE setSelectedDataContainerName)
 
-    SIMPL_FILTER_PARAMETER(DataArrayPath, NewDataContainerName)
+    /**
+     * @brief Setter property for NewDataContainerName
+     */
+    void setNewDataContainerName(const DataArrayPath& value);
+    /**
+     * @brief Getter property for NewDataContainerName
+     * @return Value of NewDataContainerName
+     */
+    DataArrayPath getNewDataContainerName() const;
+
     Q_PROPERTY(DataArrayPath NewDataContainerName READ getNewDataContainerName WRITE setNewDataContainerName)
 
     /**
      * @brief getCompiledLibraryName Reimplemented from @see AbstractFilter class
      */
-    const QString getCompiledLibraryName() const override;
+    QString getCompiledLibraryName() const override;
 
     /**
      * @brief getBrandingString Returns the branding string for the filter, which is a tag
      * used to denote the filter's association with specific plugins
      * @return Branding string
     */
-    const QString getBrandingString() const override;
+    QString getBrandingString() const override;
 
     /**
      * @brief getFilterVersion Returns a version string for this filter. Default
      * value is an empty string.
      * @return
      */
-    const QString getFilterVersion() const override;
+    QString getFilterVersion() const override;
 
     /**
      * @brief newFilterInstance Reimplemented from @see AbstractFilter class
@@ -72,23 +113,23 @@ class UCSBUtilities_EXPORT CopyDataContainer : public AbstractFilter
     /**
      * @brief getGroupName Reimplemented from @see AbstractFilter class
      */
-    const QString getGroupName() const override;
+    QString getGroupName() const override;
 
     /**
      * @brief getSubGroupName Reimplemented from @see AbstractFilter class
      */
-    const QString getSubGroupName() const override;
+    QString getSubGroupName() const override;
 
     /**
      * @brief getUuid Return the unique identifier for this filter.
      * @return A QUuid object.
      */
-    const QUuid getUuid() override;
+    QUuid getUuid() const override;
 
     /**
      * @brief getHumanLabel Reimplemented from @see AbstractFilter class
      */
-    const QString getHumanLabel() const override;
+    QString getHumanLabel() const override;
 
     /**
      * @brief setupFilterParameters Reimplemented from @see AbstractFilter class
@@ -152,5 +193,9 @@ class UCSBUtilities_EXPORT CopyDataContainer : public AbstractFilter
     CopyDataContainer(CopyDataContainer&&) = delete;      // Move Constructor Not Implemented
     CopyDataContainer& operator=(const CopyDataContainer&) = delete; // Copy Assignment Not Implemented
     CopyDataContainer& operator=(CopyDataContainer&&) = delete;      // Move Assignment Not Implemented
+
+  private:
+    DataArrayPath m_SelectedDataContainerName = {};
+    DataArrayPath m_NewDataContainerName = {};
 };
 

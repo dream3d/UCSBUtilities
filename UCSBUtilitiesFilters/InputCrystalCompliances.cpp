@@ -15,12 +15,18 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <memory>
+
 #include "InputCrystalCompliances.h"
 
+#include <QtCore/QTextStream>
+
 #include "SIMPLib/Common/Constants.h"
+
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/DataArrayCreationFilterParameter.h"
 #include "SIMPLib/FilterParameters/SeparatorFilterParameter.h"
+#include "SIMPLib/DataContainers/DataContainerArray.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
 #include "UCSBUtilities/FilterParameters/Symmetric6x6FilterParameter.h"
@@ -267,7 +273,7 @@ AbstractFilter::Pointer InputCrystalCompliances::newFilterInstance(bool copyFilt
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString InputCrystalCompliances::getCompiledLibraryName() const
+QString InputCrystalCompliances::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -275,7 +281,7 @@ const QString InputCrystalCompliances::getCompiledLibraryName() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString InputCrystalCompliances::getBrandingString() const
+QString InputCrystalCompliances::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -283,7 +289,7 @@ const QString InputCrystalCompliances::getBrandingString() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString InputCrystalCompliances::getFilterVersion() const
+QString InputCrystalCompliances::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -293,13 +299,13 @@ const QString InputCrystalCompliances::getFilterVersion() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString InputCrystalCompliances::getGroupName() const
+QString InputCrystalCompliances::getGroupName() const
 { return SIMPL::FilterGroups::Generic; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QUuid InputCrystalCompliances::getUuid()
+QUuid InputCrystalCompliances::getUuid() const
 {
   return QUuid("{436eab43-0531-5e56-9309-5931109a85ca}");
 }
@@ -307,11 +313,64 @@ const QUuid InputCrystalCompliances::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString InputCrystalCompliances::getSubGroupName() const
+QString InputCrystalCompliances::getSubGroupName() const
 { return SIMPL::FilterSubGroups::CrystallographyFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString InputCrystalCompliances::getHumanLabel() const
+QString InputCrystalCompliances::getHumanLabel() const
 { return "Input Crystal Compliances"; }
+
+// -----------------------------------------------------------------------------
+InputCrystalCompliances::Pointer InputCrystalCompliances::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+std::shared_ptr<InputCrystalCompliances> InputCrystalCompliances::New()
+{
+  struct make_shared_enabler : public InputCrystalCompliances
+  {
+  };
+  std::shared_ptr<make_shared_enabler> val = std::make_shared<make_shared_enabler>();
+  val->setupFilterParameters();
+  return val;
+}
+
+// -----------------------------------------------------------------------------
+QString InputCrystalCompliances::getNameOfClass() const
+{
+  return QString("InputCrystalCompliances");
+}
+
+// -----------------------------------------------------------------------------
+QString InputCrystalCompliances::ClassName()
+{
+  return QString("InputCrystalCompliances");
+}
+
+// -----------------------------------------------------------------------------
+void InputCrystalCompliances::setCompliances(const FloatVec21_t& value)
+{
+  m_Compliances = value;
+}
+
+// -----------------------------------------------------------------------------
+FloatVec21_t InputCrystalCompliances::getCompliances() const
+{
+  return m_Compliances;
+}
+
+// -----------------------------------------------------------------------------
+void InputCrystalCompliances::setCrystalCompliancesArrayPath(const DataArrayPath& value)
+{
+  m_CrystalCompliancesArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath InputCrystalCompliances::getCrystalCompliancesArrayPath() const
+{
+  return m_CrystalCompliancesArrayPath;
+}

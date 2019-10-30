@@ -43,3 +43,27 @@ SIMPL::Rgb TetragonalLowOpsMisoColor::generateMisorientationColor(const QuatType
   return RgbColor::dRgb(0, 0, 0, 0);
 }
 
+// -----------------------------------------------------------------------------
+TetragonalLowOpsMisoColor::Pointer TetragonalLowOpsMisoColor::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+QString TetragonalLowOpsMisoColor::getNameOfClass() const
+{
+  return QString("TetragonalLowOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+QString TetragonalLowOpsMisoColor::ClassName()
+{
+  return QString("TetragonalLowOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+TetragonalLowOpsMisoColor::Pointer TetragonalLowOpsMisoColor::New()
+{
+  Pointer sharedPtr(new(TetragonalLowOpsMisoColor));
+  return sharedPtr;
+}

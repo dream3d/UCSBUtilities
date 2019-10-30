@@ -15,9 +15,14 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <memory>
+
 #include "FindDirectionalModuli.h"
 
+#include <QtCore/QTextStream>
+
 #include "SIMPLib/Common/Constants.h"
+
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/FloatVec3FilterParameter.h"
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
@@ -26,6 +31,7 @@
 #include "SIMPLib/FilterParameters/SeparatorFilterParameter.h"
 #include "SIMPLib/Math/SIMPLibMath.h"
 #include "SIMPLib/Math/MatrixMath.h"
+#include "SIMPLib/DataContainers/DataContainerArray.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
@@ -60,11 +66,6 @@ FindDirectionalModuli::FindDirectionalModuli()
   m_LoadingDirection[0] = 0.0f;
   m_LoadingDirection[1] = 0.0f;
   m_LoadingDirection[2] = 1.0f;
-
-  //  std::vector<LaueOps::Pointer> m_OrientationOps = LaueOps::getOrientationOpsVector();
-  //  CubicOps::Pointer m_CubicOps;
-  //  HexagonalOps::Pointer m_HexOps;
-  //  OrthoRhombicOps::Pointer m_OrthoOps;
 }
 
 // -----------------------------------------------------------------------------
@@ -434,7 +435,7 @@ AbstractFilter::Pointer FindDirectionalModuli::newFilterInstance(bool copyFilter
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindDirectionalModuli::getCompiledLibraryName() const
+QString FindDirectionalModuli::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -442,7 +443,7 @@ const QString FindDirectionalModuli::getCompiledLibraryName() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindDirectionalModuli::getBrandingString() const
+QString FindDirectionalModuli::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -450,7 +451,7 @@ const QString FindDirectionalModuli::getBrandingString() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindDirectionalModuli::getFilterVersion() const
+QString FindDirectionalModuli::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -460,14 +461,14 @@ const QString FindDirectionalModuli::getFilterVersion() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindDirectionalModuli::getGroupName() const
+QString FindDirectionalModuli::getGroupName() const
 { return SIMPL::FilterGroups::StatisticsFilters; }
 
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QUuid FindDirectionalModuli::getUuid()
+QUuid FindDirectionalModuli::getUuid() const
 {
   return QUuid("{ce4e8767-d74e-52a1-b34c-7fe0d1efa3b9}");
 }
@@ -475,13 +476,113 @@ const QUuid FindDirectionalModuli::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindDirectionalModuli::getSubGroupName() const
+QString FindDirectionalModuli::getSubGroupName() const
 { return SIMPL::FilterSubGroups::CrystallographyFilters; }
 
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindDirectionalModuli::getHumanLabel() const
+QString FindDirectionalModuli::getHumanLabel() const
 { return "Find Directional Moduli"; }
 
+// -----------------------------------------------------------------------------
+FindDirectionalModuli::Pointer FindDirectionalModuli::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+std::shared_ptr<FindDirectionalModuli> FindDirectionalModuli::New()
+{
+  struct make_shared_enabler : public FindDirectionalModuli
+  {
+  };
+  std::shared_ptr<make_shared_enabler> val = std::make_shared<make_shared_enabler>();
+  val->setupFilterParameters();
+  return val;
+}
+
+// -----------------------------------------------------------------------------
+QString FindDirectionalModuli::getNameOfClass() const
+{
+  return QString("FindDirectionalModuli");
+}
+
+// -----------------------------------------------------------------------------
+QString FindDirectionalModuli::ClassName()
+{
+  return QString("FindDirectionalModuli");
+}
+
+// -----------------------------------------------------------------------------
+void FindDirectionalModuli::setFeaturePhasesArrayPath(const DataArrayPath& value)
+{
+  m_FeaturePhasesArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath FindDirectionalModuli::getFeaturePhasesArrayPath() const
+{
+  return m_FeaturePhasesArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void FindDirectionalModuli::setCrystalStructuresArrayPath(const DataArrayPath& value)
+{
+  m_CrystalStructuresArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath FindDirectionalModuli::getCrystalStructuresArrayPath() const
+{
+  return m_CrystalStructuresArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void FindDirectionalModuli::setCrystalCompliancesArrayPath(const DataArrayPath& value)
+{
+  m_CrystalCompliancesArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath FindDirectionalModuli::getCrystalCompliancesArrayPath() const
+{
+  return m_CrystalCompliancesArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void FindDirectionalModuli::setAvgQuatsArrayPath(const DataArrayPath& value)
+{
+  m_AvgQuatsArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath FindDirectionalModuli::getAvgQuatsArrayPath() const
+{
+  return m_AvgQuatsArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void FindDirectionalModuli::setDirectionalModuliArrayName(const QString& value)
+{
+  m_DirectionalModuliArrayName = value;
+}
+
+// -----------------------------------------------------------------------------
+QString FindDirectionalModuli::getDirectionalModuliArrayName() const
+{
+  return m_DirectionalModuliArrayName;
+}
+
+// -----------------------------------------------------------------------------
+void FindDirectionalModuli::setLoadingDirection(const FloatVec3Type& value)
+{
+  m_LoadingDirection = value;
+}
+
+// -----------------------------------------------------------------------------
+FloatVec3Type FindDirectionalModuli::getLoadingDirection() const
+{
+  return m_LoadingDirection;
+}

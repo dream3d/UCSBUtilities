@@ -15,6 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <memory>
+
 #include "GenerateMisorientationColors.h"
 
 #ifdef SIMPL_USE_PARALLEL_ALGORITHMS
@@ -24,7 +26,10 @@
 #include <tbb/task_scheduler_init.h>
 #endif
 
+#include <QtCore/QTextStream>
+
 #include "SIMPLib/Common/Constants.h"
+
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/FloatVec3FilterParameter.h"
 #include "SIMPLib/FilterParameters/FloatFilterParameter.h"
@@ -34,6 +39,7 @@
 #include "SIMPLib/FilterParameters/LinkedPathCreationFilterParameter.h"
 #include "SIMPLib/FilterParameters/SeparatorFilterParameter.h"
 #include "SIMPLib/Utilities/ColorTable.h"
+#include "SIMPLib/DataContainers/DataContainerArray.h"
 
 #include "EbsdLib/EbsdConstants.h"
 
@@ -402,7 +408,7 @@ AbstractFilter::Pointer GenerateMisorientationColors::newFilterInstance(bool cop
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString GenerateMisorientationColors::getCompiledLibraryName() const
+QString GenerateMisorientationColors::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -410,7 +416,7 @@ const QString GenerateMisorientationColors::getCompiledLibraryName() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString GenerateMisorientationColors::getBrandingString() const
+QString GenerateMisorientationColors::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -418,7 +424,7 @@ const QString GenerateMisorientationColors::getBrandingString() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString GenerateMisorientationColors::getFilterVersion() const
+QString GenerateMisorientationColors::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -428,13 +434,13 @@ const QString GenerateMisorientationColors::getFilterVersion() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString GenerateMisorientationColors::getGroupName() const
+QString GenerateMisorientationColors::getGroupName() const
 { return SIMPL::FilterGroups::ProcessingFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QUuid GenerateMisorientationColors::getUuid()
+QUuid GenerateMisorientationColors::getUuid() const
 {
   return QUuid("{7152790d-26a4-571a-8fef-493120eced6d}");
 }
@@ -442,11 +448,136 @@ const QUuid GenerateMisorientationColors::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString GenerateMisorientationColors::getSubGroupName() const
+QString GenerateMisorientationColors::getSubGroupName() const
 { return SIMPL::FilterSubGroups::CrystallographyFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString GenerateMisorientationColors::getHumanLabel() const
+QString GenerateMisorientationColors::getHumanLabel() const
 { return "Generate Misorientation Colors"; }
+
+// -----------------------------------------------------------------------------
+GenerateMisorientationColors::Pointer GenerateMisorientationColors::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+std::shared_ptr<GenerateMisorientationColors> GenerateMisorientationColors::New()
+{
+  struct make_shared_enabler : public GenerateMisorientationColors
+  {
+  };
+  std::shared_ptr<make_shared_enabler> val = std::make_shared<make_shared_enabler>();
+  val->setupFilterParameters();
+  return val;
+}
+
+// -----------------------------------------------------------------------------
+QString GenerateMisorientationColors::getNameOfClass() const
+{
+  return QString("GenerateMisorientationColors");
+}
+
+// -----------------------------------------------------------------------------
+QString GenerateMisorientationColors::ClassName()
+{
+  return QString("GenerateMisorientationColors");
+}
+
+// -----------------------------------------------------------------------------
+void GenerateMisorientationColors::setReferenceAxis(const FloatVec3Type& value)
+{
+  m_ReferenceAxis = value;
+}
+
+// -----------------------------------------------------------------------------
+FloatVec3Type GenerateMisorientationColors::getReferenceAxis() const
+{
+  return m_ReferenceAxis;
+}
+
+// -----------------------------------------------------------------------------
+void GenerateMisorientationColors::setReferenceAngle(float value)
+{
+  m_ReferenceAngle = value;
+}
+
+// -----------------------------------------------------------------------------
+float GenerateMisorientationColors::getReferenceAngle() const
+{
+  return m_ReferenceAngle;
+}
+
+// -----------------------------------------------------------------------------
+void GenerateMisorientationColors::setCellPhasesArrayPath(const DataArrayPath& value)
+{
+  m_CellPhasesArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath GenerateMisorientationColors::getCellPhasesArrayPath() const
+{
+  return m_CellPhasesArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void GenerateMisorientationColors::setQuatsArrayPath(const DataArrayPath& value)
+{
+  m_QuatsArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath GenerateMisorientationColors::getQuatsArrayPath() const
+{
+  return m_QuatsArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void GenerateMisorientationColors::setCrystalStructuresArrayPath(const DataArrayPath& value)
+{
+  m_CrystalStructuresArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath GenerateMisorientationColors::getCrystalStructuresArrayPath() const
+{
+  return m_CrystalStructuresArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void GenerateMisorientationColors::setGoodVoxelsArrayPath(const DataArrayPath& value)
+{
+  m_GoodVoxelsArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath GenerateMisorientationColors::getGoodVoxelsArrayPath() const
+{
+  return m_GoodVoxelsArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void GenerateMisorientationColors::setMisorientationColorArrayName(const QString& value)
+{
+  m_MisorientationColorArrayName = value;
+}
+
+// -----------------------------------------------------------------------------
+QString GenerateMisorientationColors::getMisorientationColorArrayName() const
+{
+  return m_MisorientationColorArrayName;
+}
+
+// -----------------------------------------------------------------------------
+void GenerateMisorientationColors::setUseGoodVoxels(bool value)
+{
+  m_UseGoodVoxels = value;
+}
+
+// -----------------------------------------------------------------------------
+bool GenerateMisorientationColors::getUseGoodVoxels() const
+{
+  return m_UseGoodVoxels;
+}

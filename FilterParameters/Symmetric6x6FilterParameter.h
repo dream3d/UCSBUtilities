@@ -17,6 +17,8 @@
 
 #pragma once
 
+#include <memory>
+
 #include <QtCore/QJsonObject>
 #include <QtCore/QJsonArray>
 
@@ -107,9 +109,23 @@ Q_DECLARE_METATYPE(FloatVec21_t)
 class Symmetric6x6FilterParameter : public FilterParameter
 {
 public:
-  SIMPL_SHARED_POINTERS(Symmetric6x6FilterParameter)
-    SIMPL_STATIC_NEW_MACRO(Symmetric6x6FilterParameter)
-    SIMPL_TYPE_MACRO(Symmetric6x6FilterParameter)
+  using Self = Symmetric6x6FilterParameter;
+  using Pointer = std::shared_ptr<Self>;
+  using ConstPointer = std::shared_ptr<const Self>;
+  using WeakPointer = std::weak_ptr<Self>;
+  using ConstWeakPointer = std::weak_ptr<Self>;
+  static Pointer NullPointer();
+
+  static Pointer New();
+
+  /**
+   * @brief Returns the name of the class for Symmetric6x6FilterParameter
+   */
+  QString getNameOfClass() const override;
+  /**
+   * @brief Returns the name of the class for Symmetric6x6FilterParameter
+   */
+  static QString ClassName();
 
   typedef std::function<void(FloatVec21_t)> SetterCallbackType;
   typedef std::function<FloatVec21_t(void)> GetterCallbackType;
@@ -138,13 +154,33 @@ public:
      */
     void writeJson(QJsonObject& json) override;
 
-    SIMPL_INSTANCE_PROPERTY(SetterCallbackType, SetterCallback)
-    SIMPL_INSTANCE_PROPERTY(GetterCallbackType, GetterCallback)
+    /**
+     * @brief Setter property for SetterCallback
+     */
+    void setSetterCallback(const Symmetric6x6FilterParameter::SetterCallbackType& value);
+    /**
+     * @brief Getter property for SetterCallback
+     * @return Value of SetterCallback
+     */
+    Symmetric6x6FilterParameter::SetterCallbackType getSetterCallback() const;
+
+    /**
+     * @brief Setter property for GetterCallback
+     */
+    void setGetterCallback(const Symmetric6x6FilterParameter::GetterCallbackType& value);
+    /**
+     * @brief Getter property for GetterCallback
+     * @return Value of GetterCallback
+     */
+    Symmetric6x6FilterParameter::GetterCallbackType getGetterCallback() const;
 
   protected:
     Symmetric6x6FilterParameter();
 
   private:
+    Symmetric6x6FilterParameter::SetterCallbackType m_SetterCallback = {};
+    Symmetric6x6FilterParameter::GetterCallbackType m_GetterCallback = {};
+
     Symmetric6x6FilterParameter(const Symmetric6x6FilterParameter&) = delete; // Copy Constructor Not Implemented
     void operator=(const Symmetric6x6FilterParameter&) = delete;              // Move assignment Not Implemented
 };

@@ -55,3 +55,27 @@ QString FloatVec4FilterParameter::getWidgetType() const
   return QString("FloatVec4Widget");
 }
 
+// -----------------------------------------------------------------------------
+FloatVec4FilterParameter::Pointer FloatVec4FilterParameter::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+FloatVec4FilterParameter::Pointer FloatVec4FilterParameter::New()
+{
+  Pointer sharedPtr(new(FloatVec4FilterParameter));
+  return sharedPtr;
+}
+
+// -----------------------------------------------------------------------------
+QString FloatVec4FilterParameter::getNameOfClass() const
+{
+  return QString("FloatVec4FilterParameter");
+}
+
+// -----------------------------------------------------------------------------
+QString FloatVec4FilterParameter::ClassName()
+{
+  return QString("FloatVec4FilterParameter");
+}

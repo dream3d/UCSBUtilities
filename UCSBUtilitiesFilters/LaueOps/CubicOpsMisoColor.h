@@ -18,8 +18,9 @@
 #pragma once
 
 
+#include <memory>
+
 #include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/DataArrays/DataArray.hpp"
 
 #include "OrientationLib/OrientationLib.h"
@@ -29,9 +30,23 @@
 class CubicOpsMisoColor : public CubicOps
 {
   public:
-    SIMPL_SHARED_POINTERS(CubicOpsMisoColor)
-     SIMPL_TYPE_MACRO_SUPER_OVERRIDE(CubicOpsMisoColor, CubicOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(CubicOpsMisoColor)
+    using Self = CubicOpsMisoColor;
+    using Pointer = std::shared_ptr<Self>;
+    using ConstPointer = std::shared_ptr<const Self>;
+    using WeakPointer = std::weak_ptr<Self>;
+    using ConstWeakPointer = std::weak_ptr<Self>;
+    static Pointer NullPointer();
+
+    /**
+     * @brief Returns the name of the class for CubicOpsMisoColor
+     */
+    QString getNameOfClass() const override;
+    /**
+     * @brief Returns the name of the class for CubicOpsMisoColor
+     */
+    static QString ClassName();
+
+    static Pointer New();
 
     CubicOpsMisoColor();
     ~CubicOpsMisoColor() override;
@@ -49,6 +64,8 @@ class CubicOpsMisoColor : public CubicOps
     CubicOpsMisoColor(CubicOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
     CubicOpsMisoColor& operator=(const CubicOpsMisoColor&) = delete; // Copy Assignment Not Implemented
     CubicOpsMisoColor& operator=(CubicOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
+
+  private:
 };
 
 

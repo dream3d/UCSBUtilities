@@ -15,13 +15,19 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <memory>
+
 #include "FindBoundaryAreas.h"
 
+#include <QtCore/QTextStream>
+
 #include "SIMPLib/Common/Constants.h"
+
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
 #include "SIMPLib/FilterParameters/DataArrayCreationFilterParameter.h"
 #include "SIMPLib/FilterParameters/SeparatorFilterParameter.h"
+#include "SIMPLib/DataContainers/DataContainerArray.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
@@ -174,7 +180,7 @@ AbstractFilter::Pointer FindBoundaryAreas::newFilterInstance(bool copyFilterPara
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindBoundaryAreas::getCompiledLibraryName() const
+QString FindBoundaryAreas::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -182,7 +188,7 @@ const QString FindBoundaryAreas::getCompiledLibraryName() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindBoundaryAreas::getBrandingString() const
+QString FindBoundaryAreas::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -190,7 +196,7 @@ const QString FindBoundaryAreas::getBrandingString() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindBoundaryAreas::getFilterVersion() const
+QString FindBoundaryAreas::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -200,13 +206,13 @@ const QString FindBoundaryAreas::getFilterVersion() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindBoundaryAreas::getGroupName() const
+QString FindBoundaryAreas::getGroupName() const
 { return SIMPL::FilterGroups::SurfaceMeshingFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QUuid FindBoundaryAreas::getUuid()
+QUuid FindBoundaryAreas::getUuid() const
 {
   return QUuid("{0cdb2c7f-55cb-5fc7-9108-b0c6826bd803}");
 }
@@ -214,12 +220,76 @@ const QUuid FindBoundaryAreas::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindBoundaryAreas::getSubGroupName() const
+QString FindBoundaryAreas::getSubGroupName() const
 { return SIMPL::FilterSubGroups::MiscFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString FindBoundaryAreas::getHumanLabel() const
+QString FindBoundaryAreas::getHumanLabel() const
 { return "Find Face Feature Boundary Areas"; }
 
+// -----------------------------------------------------------------------------
+FindBoundaryAreas::Pointer FindBoundaryAreas::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+std::shared_ptr<FindBoundaryAreas> FindBoundaryAreas::New()
+{
+  struct make_shared_enabler : public FindBoundaryAreas
+  {
+  };
+  std::shared_ptr<make_shared_enabler> val = std::make_shared<make_shared_enabler>();
+  val->setupFilterParameters();
+  return val;
+}
+
+// -----------------------------------------------------------------------------
+QString FindBoundaryAreas::getNameOfClass() const
+{
+  return QString("FindBoundaryAreas");
+}
+
+// -----------------------------------------------------------------------------
+QString FindBoundaryAreas::ClassName()
+{
+  return QString("FindBoundaryAreas");
+}
+
+// -----------------------------------------------------------------------------
+void FindBoundaryAreas::setSurfaceMeshTriangleAreasArrayPath(const DataArrayPath& value)
+{
+  m_SurfaceMeshTriangleAreasArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath FindBoundaryAreas::getSurfaceMeshTriangleAreasArrayPath() const
+{
+  return m_SurfaceMeshTriangleAreasArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void FindBoundaryAreas::setSurfaceMeshFeatureFaceIdsArrayPath(const DataArrayPath& value)
+{
+  m_SurfaceMeshFeatureFaceIdsArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath FindBoundaryAreas::getSurfaceMeshFeatureFaceIdsArrayPath() const
+{
+  return m_SurfaceMeshFeatureFaceIdsArrayPath;
+}
+
+// -----------------------------------------------------------------------------
+void FindBoundaryAreas::setSurfaceMeshBoundaryAreasArrayPath(const DataArrayPath& value)
+{
+  m_SurfaceMeshBoundaryAreasArrayPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath FindBoundaryAreas::getSurfaceMeshBoundaryAreasArrayPath() const
+{
+  return m_SurfaceMeshBoundaryAreasArrayPath;
+}

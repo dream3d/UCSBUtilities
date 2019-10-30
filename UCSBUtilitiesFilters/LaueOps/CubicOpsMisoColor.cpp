@@ -980,3 +980,28 @@ std::vector< std::pair<double, double> > CubicOpsMisoColor::rodri2pair(std::vect
   return result;
 }
 #endif
+
+// -----------------------------------------------------------------------------
+CubicOpsMisoColor::Pointer CubicOpsMisoColor::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+QString CubicOpsMisoColor::getNameOfClass() const
+{
+  return QString("CubicOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+QString CubicOpsMisoColor::ClassName()
+{
+  return QString("CubicOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+CubicOpsMisoColor::Pointer CubicOpsMisoColor::New()
+{
+  Pointer sharedPtr(new(CubicOpsMisoColor));
+  return sharedPtr;
+}

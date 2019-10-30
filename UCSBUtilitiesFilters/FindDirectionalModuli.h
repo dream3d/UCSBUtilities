@@ -17,15 +17,17 @@
 
 #pragma once
 
+#include <memory>
+
 #include <vector>
 #include <QtCore/QString>
 
-#include "SIMPLib/Common/SIMPLibSetGetMacros.h"
+#include "SIMPLib/SIMPLib.h"
 #include "SIMPLib/DataArrays/IDataArray.h"
 #include "SIMPLib/DataContainers/DataContainer.h"
 #include "SIMPLib/FilterParameters/FloatVec3FilterParameter.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
-#include "SIMPLib/SIMPLib.h"
+#include "SIMPLib/DataArrays/DataArray.hpp"
 
 #include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
 
@@ -39,56 +41,136 @@
 class UCSBUtilities_EXPORT FindDirectionalModuli : public AbstractFilter
 {
     Q_OBJECT
+
+#ifdef SIMPL_ENABLE_PYTHON
     PYB11_CREATE_BINDINGS(FindDirectionalModuli SUPERCLASS AbstractFilter)
+    PYB11_SHARED_POINTERS(FindDirectionalModuli)
+    PYB11_FILTER_NEW_MACRO(FindDirectionalModuli)
+    PYB11_FILTER_PARAMETER(DataArrayPath, FeaturePhasesArrayPath)
+    PYB11_FILTER_PARAMETER(DataArrayPath, CrystalStructuresArrayPath)
+    PYB11_FILTER_PARAMETER(DataArrayPath, CrystalCompliancesArrayPath)
+    PYB11_FILTER_PARAMETER(DataArrayPath, AvgQuatsArrayPath)
+    PYB11_FILTER_PARAMETER(QString, DirectionalModuliArrayName)
+    PYB11_FILTER_PARAMETER(FloatVec3Type, LoadingDirection)
     PYB11_PROPERTY(DataArrayPath FeaturePhasesArrayPath READ getFeaturePhasesArrayPath WRITE setFeaturePhasesArrayPath)
     PYB11_PROPERTY(DataArrayPath CrystalStructuresArrayPath READ getCrystalStructuresArrayPath WRITE setCrystalStructuresArrayPath)
     PYB11_PROPERTY(DataArrayPath CrystalCompliancesArrayPath READ getCrystalCompliancesArrayPath WRITE setCrystalCompliancesArrayPath)
     PYB11_PROPERTY(DataArrayPath AvgQuatsArrayPath READ getAvgQuatsArrayPath WRITE setAvgQuatsArrayPath)
     PYB11_PROPERTY(QString DirectionalModuliArrayName READ getDirectionalModuliArrayName WRITE setDirectionalModuliArrayName)
     PYB11_PROPERTY(FloatVec3Type LoadingDirection READ getLoadingDirection WRITE setLoadingDirection)
+#endif
+
   public:
-    SIMPL_SHARED_POINTERS(FindDirectionalModuli)
-    SIMPL_FILTER_NEW_MACRO(FindDirectionalModuli)
-    SIMPL_TYPE_MACRO_SUPER_OVERRIDE(FindDirectionalModuli, AbstractFilter)
+    using Self = FindDirectionalModuli;
+    using Pointer = std::shared_ptr<Self>;
+    using ConstPointer = std::shared_ptr<const Self>;
+    using WeakPointer = std::weak_ptr<Self>;
+    using ConstWeakPointer = std::weak_ptr<Self>;
+    static Pointer NullPointer();
+
+    static std::shared_ptr<FindDirectionalModuli> New();
+
+    /**
+     * @brief Returns the name of the class for FindDirectionalModuli
+     */
+    QString getNameOfClass() const override;
+    /**
+     * @brief Returns the name of the class for FindDirectionalModuli
+     */
+    static QString ClassName();
 
     ~FindDirectionalModuli() override;
 
-    SIMPL_FILTER_PARAMETER(DataArrayPath, FeaturePhasesArrayPath)
+    /**
+     * @brief Setter property for FeaturePhasesArrayPath
+     */
+    void setFeaturePhasesArrayPath(const DataArrayPath& value);
+    /**
+     * @brief Getter property for FeaturePhasesArrayPath
+     * @return Value of FeaturePhasesArrayPath
+     */
+    DataArrayPath getFeaturePhasesArrayPath() const;
+
     Q_PROPERTY(DataArrayPath FeaturePhasesArrayPath READ getFeaturePhasesArrayPath WRITE setFeaturePhasesArrayPath)
 
-    SIMPL_FILTER_PARAMETER(DataArrayPath, CrystalStructuresArrayPath)
+    /**
+     * @brief Setter property for CrystalStructuresArrayPath
+     */
+    void setCrystalStructuresArrayPath(const DataArrayPath& value);
+    /**
+     * @brief Getter property for CrystalStructuresArrayPath
+     * @return Value of CrystalStructuresArrayPath
+     */
+    DataArrayPath getCrystalStructuresArrayPath() const;
+
     Q_PROPERTY(DataArrayPath CrystalStructuresArrayPath READ getCrystalStructuresArrayPath WRITE setCrystalStructuresArrayPath)
 
-    SIMPL_FILTER_PARAMETER(DataArrayPath, CrystalCompliancesArrayPath)
+    /**
+     * @brief Setter property for CrystalCompliancesArrayPath
+     */
+    void setCrystalCompliancesArrayPath(const DataArrayPath& value);
+    /**
+     * @brief Getter property for CrystalCompliancesArrayPath
+     * @return Value of CrystalCompliancesArrayPath
+     */
+    DataArrayPath getCrystalCompliancesArrayPath() const;
+
     Q_PROPERTY(DataArrayPath CrystalCompliancesArrayPath READ getCrystalCompliancesArrayPath WRITE setCrystalCompliancesArrayPath)
 
-    SIMPL_FILTER_PARAMETER(DataArrayPath, AvgQuatsArrayPath)
+    /**
+     * @brief Setter property for AvgQuatsArrayPath
+     */
+    void setAvgQuatsArrayPath(const DataArrayPath& value);
+    /**
+     * @brief Getter property for AvgQuatsArrayPath
+     * @return Value of AvgQuatsArrayPath
+     */
+    DataArrayPath getAvgQuatsArrayPath() const;
+
     Q_PROPERTY(DataArrayPath AvgQuatsArrayPath READ getAvgQuatsArrayPath WRITE setAvgQuatsArrayPath)
 
-    SIMPL_FILTER_PARAMETER(QString, DirectionalModuliArrayName)
+    /**
+     * @brief Setter property for DirectionalModuliArrayName
+     */
+    void setDirectionalModuliArrayName(const QString& value);
+    /**
+     * @brief Getter property for DirectionalModuliArrayName
+     * @return Value of DirectionalModuliArrayName
+     */
+    QString getDirectionalModuliArrayName() const;
+
     Q_PROPERTY(QString DirectionalModuliArrayName READ getDirectionalModuliArrayName WRITE setDirectionalModuliArrayName)
 
-    SIMPL_FILTER_PARAMETER(FloatVec3Type, LoadingDirection)
+    /**
+     * @brief Setter property for LoadingDirection
+     */
+    void setLoadingDirection(const FloatVec3Type& value);
+    /**
+     * @brief Getter property for LoadingDirection
+     * @return Value of LoadingDirection
+     */
+    FloatVec3Type getLoadingDirection() const;
+
     Q_PROPERTY(FloatVec3Type LoadingDirection READ getLoadingDirection WRITE setLoadingDirection)
 
     /**
      * @brief getCompiledLibraryName Reimplemented from @see AbstractFilter class
      */
-    const QString getCompiledLibraryName() const override;
+    QString getCompiledLibraryName() const override;
 
     /**
      * @brief getBrandingString Returns the branding string for the filter, which is a tag
      * used to denote the filter's association with specific plugins
      * @return Branding string
     */
-    const QString getBrandingString() const override;
+    QString getBrandingString() const override;
 
     /**
      * @brief getFilterVersion Returns a version string for this filter. Default
      * value is an empty string.
      * @return
      */
-    const QString getFilterVersion() const override;
+    QString getFilterVersion() const override;
 
     /**
      * @brief newFilterInstance Reimplemented from @see AbstractFilter class
@@ -98,23 +180,23 @@ class UCSBUtilities_EXPORT FindDirectionalModuli : public AbstractFilter
     /**
      * @brief getGroupName Reimplemented from @see AbstractFilter class
      */
-    const QString getGroupName() const override;
+    QString getGroupName() const override;
 
     /**
      * @brief getSubGroupName Reimplemented from @see AbstractFilter class
      */
-    const QString getSubGroupName() const override;
+    QString getSubGroupName() const override;
 
     /**
      * @brief getUuid Return the unique identifier for this filter.
      * @return A QUuid object.
      */
-    const QUuid getUuid() override;
+    QUuid getUuid() const override;
 
     /**
      * @brief getHumanLabel Reimplemented from @see AbstractFilter class
      */
-    const QString getHumanLabel() const override;
+    QString getHumanLabel() const override;
 
     /**
      * @brief setupFilterParameters Reimplemented from @see AbstractFilter class
@@ -174,12 +256,25 @@ class UCSBUtilities_EXPORT FindDirectionalModuli : public AbstractFilter
 
 
   private:
-    DEFINE_DATAARRAY_VARIABLE(float, DirectionalModuli)
-    DEFINE_DATAARRAY_VARIABLE(int32_t, FeaturePhases)
-    DEFINE_DATAARRAY_VARIABLE(float, AvgQuats)
 
-    DEFINE_DATAARRAY_VARIABLE(unsigned int, CrystalStructures)
-    DEFINE_DATAARRAY_VARIABLE(float, CrystalCompliances)
+    std::weak_ptr<DataArray<float>> m_DirectionalModuliPtr;
+    float* m_DirectionalModuli = nullptr;
+    std::weak_ptr<DataArray<int32_t>> m_FeaturePhasesPtr;
+    int32_t* m_FeaturePhases = nullptr;
+    std::weak_ptr<DataArray<float>> m_AvgQuatsPtr;
+    float* m_AvgQuats = nullptr;
+    std::weak_ptr<DataArray<unsigned int>> m_CrystalStructuresPtr;
+    unsigned int* m_CrystalStructures = nullptr;
+    std::weak_ptr<DataArray<float>> m_CrystalCompliancesPtr;
+    float* m_CrystalCompliances = nullptr;
+
+    DataArrayPath m_FeaturePhasesArrayPath = {};
+    DataArrayPath m_CrystalStructuresArrayPath = {};
+    DataArrayPath m_CrystalCompliancesArrayPath = {};
+    DataArrayPath m_AvgQuatsArrayPath = {};
+    QString m_DirectionalModuliArrayName = {};
+    FloatVec3Type m_LoadingDirection = {};
+
 
   public:
     FindDirectionalModuli(const FindDirectionalModuli&) = delete; // Copy Constructor Not Implemented

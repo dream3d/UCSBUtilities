@@ -228,3 +228,28 @@ SIMPL::Rgb TetragonalOpsMisoColor::generateMisorientationColor(const QuatType& q
   SIMPL::Rgb rgb = 0xFFFFFFFF;
   return RgbColor::dRgb(255 - RgbColor::dRed(rgb), 255 - RgbColor::dGreen(rgb), 255 - RgbColor::dBlue(rgb), 0);
 }
+
+// -----------------------------------------------------------------------------
+TetragonalOpsMisoColor::Pointer TetragonalOpsMisoColor::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+QString TetragonalOpsMisoColor::getNameOfClass() const
+{
+  return QString("TetragonalOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+QString TetragonalOpsMisoColor::ClassName()
+{
+  return QString("TetragonalOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+TetragonalOpsMisoColor::Pointer TetragonalOpsMisoColor::New()
+{
+  Pointer sharedPtr(new(TetragonalOpsMisoColor));
+  return sharedPtr;
+}

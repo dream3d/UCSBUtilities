@@ -17,17 +17,21 @@
 
 #pragma once
 
+#include <memory>
+
 #include <vector>
 
 #include <QtCore/QVector>
 
 #include "SIMPLib/DataArrays/DataArray.hpp"
-#include "SIMPLib/DataArrays/IDataArray.h"
 #include "SIMPLib/DataArrays/NeighborList.hpp"
 #include "SIMPLib/DataArrays/StatsDataArray.h"
 #include "SIMPLib/DataArrays/StringDataArray.h"
 #include "SIMPLib/DataArrays/StructArray.hpp"
 #include "SIMPLib/SIMPLib.h"
+
+class IDataArray;
+using IDataArrayShPtrType = std::shared_ptr<IDataArray>;
 
 #include "OrientationLib/Utilities/ModifiedLambertProjectionArray.h"
 
@@ -44,7 +48,7 @@ public:
       {
         return IDataArray::NullPointer();
       }
-      IDataArray::Pointer daCopy = array->createNewArray(array->getNumberOfTuples(), array->getComponentDimensions(), array->getName(), array->isAllocated());
+      IDataArrayShPtrType daCopy = array->createNewArray(array->getNumberOfTuples(), array->getComponentDimensions(), array->getName(), array->isAllocated());
       if(array->isAllocated() == true)
       {
         daCopy->initializeWithZeros();
@@ -67,7 +71,7 @@ public:
      * @return
      */
     template <typename T>
-    static IDataArray::Pointer ReorderCopy(typename NeighborList<T>::Pointer array, std::vector<size_t> newOrderMap)
+    static IDataArrayShPtrType ReorderCopy(typename NeighborList<T>::Pointer array, std::vector<size_t> newOrderMap)
     {
       size_t newOrderMapSize = static_cast<size_t>(newOrderMap.size());
       if( newOrderMapSize != array->getNumberOfTuples())
@@ -94,7 +98,7 @@ public:
      * @param newOrderMap
      * @return
      */
-    static IDataArray::Pointer ReorderCopy(StatsDataArray::Pointer array, std::vector<size_t> newOrderMap);
+    static IDataArrayShPtrType ReorderCopy(StatsDataArray::Pointer array, std::vector<size_t> newOrderMap);
 
     /**
      * @brief ReorderCopy
@@ -102,7 +106,7 @@ public:
      * @param newOrderMap
      * @return
      */
-    static IDataArray::Pointer ReorderCopy(StringDataArray::Pointer array, std::vector<size_t> newOrderMap);
+    static IDataArrayShPtrType ReorderCopy(StringDataArray::Pointer array, std::vector<size_t> newOrderMap);
 
     /**
      * @brief reorderCopy
@@ -110,13 +114,13 @@ public:
      * @return
      */
     template <typename T>
-    static IDataArray::Pointer ReorderCopy(typename StructArray<T>::Pointer array, std::vector<size_t> newOrderMap)
+    static IDataArrayShPtrType ReorderCopy(typename StructArray<T>::Pointer array, std::vector<size_t> newOrderMap)
     {
       if(newOrderMap.size() != static_cast<std::vector<size_t>::size_type>(array->getNumberOfTuples()))
       {
         return IDataArray::NullPointer();
       }
-      IDataArray::Pointer daCopy = createNewArray(array->getNumberOfTuples(), array->getComponentDimensions(), array->getName(), array->isAllocated());
+      IDataArrayShPtrType daCopy = createNewArray(array->getNumberOfTuples(), array->getComponentDimensions(), array->getName(), array->isAllocated());
       if(array->isAllocated() == true)
       {
         daCopy->initializeWithZeros();
@@ -131,13 +135,12 @@ public:
       return daCopy;
     }
 
-
     /**
      * @brief reorderCopy
      * @param newOrderMap
      * @return
      */
-    static IDataArray::Pointer ReorderCopy(ModifiedLambertProjectionArray::Pointer array, std::vector<size_t> newOrderMap);
+    static IDataArrayShPtrType ReorderCopy(ModifiedLambertProjectionArray::Pointer array, std::vector<size_t> newOrderMap);
 
     /**
      * @brief computes linear regression

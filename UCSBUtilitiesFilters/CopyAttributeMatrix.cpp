@@ -15,13 +15,20 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <memory>
+
 #include "CopyAttributeMatrix.h"
 
+#include <QtCore/QTextStream>
+
 #include "SIMPLib/Common/Constants.h"
+
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/AttributeMatrixSelectionFilterParameter.h"
 #include "SIMPLib/FilterParameters/LinkedPathCreationFilterParameter.h"
 #include "SIMPLib/FilterParameters/StringFilterParameter.h"
+#include "SIMPLib/DataContainers/DataContainerArray.h"
+#include "SIMPLib/DataContainers/DataContainer.h"
 
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
@@ -144,7 +151,7 @@ AbstractFilter::Pointer CopyAttributeMatrix::newFilterInstance(bool copyFilterPa
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeMatrix::getCompiledLibraryName() const
+QString CopyAttributeMatrix::getCompiledLibraryName() const
 {
   return UCSBUtilitiesConstants::UCSBUtilitiesBaseName;
 }
@@ -152,7 +159,7 @@ const QString CopyAttributeMatrix::getCompiledLibraryName() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeMatrix::getBrandingString() const
+QString CopyAttributeMatrix::getBrandingString() const
 {
   return "UCSBUtilities";
 }
@@ -160,7 +167,7 @@ const QString CopyAttributeMatrix::getBrandingString() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeMatrix::getFilterVersion() const
+QString CopyAttributeMatrix::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
@@ -171,13 +178,13 @@ const QString CopyAttributeMatrix::getFilterVersion() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeMatrix::getGroupName() const
+QString CopyAttributeMatrix::getGroupName() const
 { return SIMPL::FilterGroups::CoreFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QUuid CopyAttributeMatrix::getUuid()
+QUuid CopyAttributeMatrix::getUuid() const
 {
   return QUuid("{9bc962eb-f363-5caf-9f82-23a26be8ae2f}");
 }
@@ -185,11 +192,64 @@ const QUuid CopyAttributeMatrix::getUuid()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeMatrix::getSubGroupName() const
+QString CopyAttributeMatrix::getSubGroupName() const
 { return SIMPL::FilterSubGroups::MemoryManagementFilters; }
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-const QString CopyAttributeMatrix::getHumanLabel() const
+QString CopyAttributeMatrix::getHumanLabel() const
 { return "Copy Attribute Matrix"; }
+
+// -----------------------------------------------------------------------------
+CopyAttributeMatrix::Pointer CopyAttributeMatrix::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+std::shared_ptr<CopyAttributeMatrix> CopyAttributeMatrix::New()
+{
+  struct make_shared_enabler : public CopyAttributeMatrix
+  {
+  };
+  std::shared_ptr<make_shared_enabler> val = std::make_shared<make_shared_enabler>();
+  val->setupFilterParameters();
+  return val;
+}
+
+// -----------------------------------------------------------------------------
+QString CopyAttributeMatrix::getNameOfClass() const
+{
+  return QString("CopyAttributeMatrix");
+}
+
+// -----------------------------------------------------------------------------
+QString CopyAttributeMatrix::ClassName()
+{
+  return QString("CopyAttributeMatrix");
+}
+
+// -----------------------------------------------------------------------------
+void CopyAttributeMatrix::setSelectedAttributeMatrixPath(const DataArrayPath& value)
+{
+  m_SelectedAttributeMatrixPath = value;
+}
+
+// -----------------------------------------------------------------------------
+DataArrayPath CopyAttributeMatrix::getSelectedAttributeMatrixPath() const
+{
+  return m_SelectedAttributeMatrixPath;
+}
+
+// -----------------------------------------------------------------------------
+void CopyAttributeMatrix::setNewAttributeMatrix(const QString& value)
+{
+  m_NewAttributeMatrix = value;
+}
+
+// -----------------------------------------------------------------------------
+QString CopyAttributeMatrix::getNewAttributeMatrix() const
+{
+  return m_NewAttributeMatrix;
+}

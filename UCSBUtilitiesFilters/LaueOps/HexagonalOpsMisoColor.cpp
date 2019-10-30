@@ -222,3 +222,28 @@ SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatType& q,
   SIMPL::Rgb rgb = ColorUtilities::ConvertHSVtoRgb(h, s, v);
   return RgbColor::dRgb(255 - RgbColor::dRed(rgb), 255 - RgbColor::dGreen(rgb), 255 - RgbColor::dBlue(rgb), 0);
 }
+
+// -----------------------------------------------------------------------------
+HexagonalOpsMisoColor::Pointer HexagonalOpsMisoColor::NullPointer()
+{
+  return Pointer(static_cast<Self*>(nullptr));
+}
+
+// -----------------------------------------------------------------------------
+QString HexagonalOpsMisoColor::getNameOfClass() const
+{
+  return QString("HexagonalOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+QString HexagonalOpsMisoColor::ClassName()
+{
+  return QString("HexagonalOpsMisoColor");
+}
+
+// -----------------------------------------------------------------------------
+HexagonalOpsMisoColor::Pointer HexagonalOpsMisoColor::New()
+{
+  Pointer sharedPtr(new(HexagonalOpsMisoColor));
+  return sharedPtr;
+}

@@ -18,8 +18,9 @@
 #pragma once
 
 
+#include <memory>
+
 #include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/Common/SIMPLibSetGetMacros.h"
 #include "SIMPLib/DataArrays/DataArray.hpp"
 
 #include "OrientationLib/OrientationLib.h"
@@ -29,9 +30,23 @@
 class MonoclinicOpsMisoColor : public MonoclinicOps
 {
   public:
-    SIMPL_SHARED_POINTERS(MonoclinicOpsMisoColor)
-     SIMPL_TYPE_MACRO_SUPER_OVERRIDE(MonoclinicOpsMisoColor, MonoclinicOpsMisoColor)
-    SIMPL_STATIC_NEW_MACRO(MonoclinicOpsMisoColor)
+    using Self = MonoclinicOpsMisoColor;
+    using Pointer = std::shared_ptr<Self>;
+    using ConstPointer = std::shared_ptr<const Self>;
+    using WeakPointer = std::weak_ptr<Self>;
+    using ConstWeakPointer = std::weak_ptr<Self>;
+    static Pointer NullPointer();
+
+    /**
+     * @brief Returns the name of the class for MonoclinicOpsMisoColor
+     */
+    QString getNameOfClass() const override;
+    /**
+     * @brief Returns the name of the class for MonoclinicOpsMisoColor
+     */
+    static QString ClassName();
+
+    static Pointer New();
 
     MonoclinicOpsMisoColor();
     ~MonoclinicOpsMisoColor() override;
@@ -49,6 +64,8 @@ class MonoclinicOpsMisoColor : public MonoclinicOps
     MonoclinicOpsMisoColor(MonoclinicOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
     MonoclinicOpsMisoColor& operator=(const MonoclinicOpsMisoColor&) = delete; // Copy Assignment Not Implemented
     MonoclinicOpsMisoColor& operator=(MonoclinicOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
+
+  private:
 };
 
 
