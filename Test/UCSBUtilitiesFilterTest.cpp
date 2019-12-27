@@ -15,6 +15,8 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
+#include <random>
+
 #include <QtCore/QFile>
 
 #include "SIMPLib/DataArrays/DataArray.hpp"
@@ -35,14 +37,14 @@ class UCSBUtilitiesFilterTest
 {
 
   public:
-    UCSBUtilitiesFilterTest() {}
-    virtual ~UCSBUtilitiesFilterTest() = default;
+    UCSBUtilitiesFilterTest() = default;
+    ~UCSBUtilitiesFilterTest() = default;
 
-  // -----------------------------------------------------------------------------
-  //
-  // -----------------------------------------------------------------------------
-  void RemoveTestFiles()
-  {
+    // -----------------------------------------------------------------------------
+    //
+    // -----------------------------------------------------------------------------
+    void RemoveTestFiles()
+    {
   #if REMOVE_TEST_FILES
     QFile::remove(UnitTest::UCSBUtilitiesFilterTest::TestFile1);
     QFile::remove(UnitTest::UCSBUtilitiesFilterTest::TestFile2);
@@ -64,7 +66,7 @@ void __TestReorderCopy()
   typename DataArray<T>::Pointer src = DataArray<T>::CreateArray(numTuples, cDims, name, false);
   std::vector<size_t> wrongSize(numTuples + 1);
   typename DataArray<T>::Pointer copy = std::dynamic_pointer_cast<DataArray<T> >(UCSBHelpers::ReorderCopy<T>(src,wrongSize));
-  DREAM3D_REQUIRE_EQUAL(copy.get(), 0);
+  DREAM3D_REQUIRE_EQUAL(copy.get(), 0)
 
   // fill reorder vector with same index (using this would be the same result as deep copy)
   std::vector<size_t> newOrder(numTuples);
@@ -73,14 +75,16 @@ void __TestReorderCopy()
     newOrder[i] = i;
   }
 
-  //shuffle order
-  std::random_shuffle(newOrder.begin(), newOrder.end());
+  // shuffle order
+  std::random_device rng;
+  std::mt19937 urng(rng());
+  std::shuffle(newOrder.begin(), newOrder.end(), urng);
 
   // First lets try it without allocating any memory
   copy = std::dynamic_pointer_cast<DataArray<T> >(UCSBHelpers::ReorderCopy<T>(src, newOrder));
 
   //if newOrder is inporperly size a null pointer is returned
-  DREAM3D_REQUIRE_NE(copy.get(), 0);
+  DREAM3D_REQUIRE_NE(copy.get(), 0)
 
   //check sizes
   DREAM3D_REQUIRED(copy->getNumberOfTuples(), ==, src->getNumberOfTuples() );
