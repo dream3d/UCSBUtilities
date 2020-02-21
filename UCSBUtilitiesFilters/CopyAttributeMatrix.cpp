@@ -96,7 +96,7 @@ void CopyAttributeMatrix::dataCheck()
     setErrorCondition(-11004, ss);
   }
 
-  AttributeMatrix::Pointer attrMat = getDataContainerArray()->getPrereqAttributeMatrixFromPath<AbstractFilter>(this, getSelectedAttributeMatrixPath(), -301);
+  AttributeMatrix::Pointer attrMat = getDataContainerArray()->getPrereqAttributeMatrixFromPath(this, getSelectedAttributeMatrixPath(), -301);
   if(getErrorCode() < 0)
   {
     return;
