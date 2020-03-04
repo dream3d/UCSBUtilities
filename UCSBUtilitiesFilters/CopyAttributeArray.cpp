@@ -97,7 +97,7 @@ void CopyAttributeArray::dataCheck()
 
   QString daName = getSelectedArrayPath().getDataArrayName();
 
-  IDataArray::Pointer dataArray = getDataContainerArray()->getPrereqIDataArrayFromPath<IDataArray, AbstractFilter>(this, getSelectedArrayPath());
+  IDataArray::Pointer dataArray = getDataContainerArray()->getPrereqIDataArrayFromPath(this, getSelectedArrayPath());
   if(getErrorCode() < 0)
   {
     return;

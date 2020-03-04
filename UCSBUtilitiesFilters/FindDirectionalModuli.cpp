@@ -138,30 +138,30 @@ void FindDirectionalModuli::dataCheck()
   //create moduli
   std::vector<size_t> dims(1, 1);
   tempPath.update(getFeaturePhasesArrayPath().getDataContainerName(), getFeaturePhasesArrayPath().getAttributeMatrixName(), getDirectionalModuliArrayName() );
-  m_DirectionalModuliPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>, AbstractFilter, float>(this, tempPath, 0, dims, "", DataArrayID31);
+  m_DirectionalModuliPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>>(this, tempPath, 0, dims, "", DataArrayID31);
   if(nullptr != m_DirectionalModuliPtr.lock())
   { m_DirectionalModuli = m_DirectionalModuliPtr.lock()->getPointer(0); }
 
   //check feature phases
-  m_FeaturePhasesPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<int32_t>, AbstractFilter>(this, getFeaturePhasesArrayPath(), dims);
+  m_FeaturePhasesPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<int32_t>>(this, getFeaturePhasesArrayPath(), dims);
   if(nullptr != m_FeaturePhasesPtr.lock())
   { m_FeaturePhases = m_FeaturePhasesPtr.lock()->getPointer(0); }
 
   //check crystal structures
-  m_CrystalStructuresPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<unsigned int>, AbstractFilter>(this, getCrystalStructuresArrayPath(), dims);
+  m_CrystalStructuresPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<unsigned int>>(this, getCrystalStructuresArrayPath(), dims);
   if(nullptr != m_CrystalStructuresPtr.lock())
   { m_CrystalStructures = m_CrystalStructuresPtr.lock()->getPointer(0); }
   dims[0] = 3;
 
   //check quats
   dims[0] = 4;
-  m_AvgQuatsPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<float>, AbstractFilter>(this, getAvgQuatsArrayPath(), dims);
+  m_AvgQuatsPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<float>>(this, getAvgQuatsArrayPath(), dims);
   if(nullptr != m_AvgQuatsPtr.lock())
   { m_AvgQuats = m_AvgQuatsPtr.lock()->getPointer(0); }
 
   //check compliances
   std::vector<size_t> complianceDims(2, 6);
-  m_CrystalCompliancesPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<float>, AbstractFilter>(this, getCrystalCompliancesArrayPath(), complianceDims);
+  m_CrystalCompliancesPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<float>>(this, getCrystalCompliancesArrayPath(), complianceDims);
   if(nullptr != m_CrystalCompliancesPtr.lock())
   { m_CrystalCompliances = m_CrystalCompliancesPtr.lock()->getPointer(0); }
 
