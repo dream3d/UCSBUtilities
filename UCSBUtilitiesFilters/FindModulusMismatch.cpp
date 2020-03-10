@@ -178,15 +178,10 @@ void FindModulusMismatch::dataCheckSurfaceMesh()
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-void FindModulusMismatch::preflight()
+void FindModulusMismatch::dataCheck()
 {
-  setInPreflight(true);
-  emit preflightAboutToExecute();
-  emit updateFilterParameters(this);
   dataCheckVoxel();
   dataCheckSurfaceMesh();
-  emit preflightExecuted();
-  setInPreflight(false);
 }
 
 // -----------------------------------------------------------------------------
@@ -196,12 +191,7 @@ void FindModulusMismatch::execute()
 {
   clearErrorCode();
   clearWarningCode();
-  dataCheckVoxel();
-  if(getErrorCode() < 0)
-  {
-    return;
-  }
-  dataCheckSurfaceMesh();
+  dataCheck();
   if(getErrorCode() < 0)
   {
     return;
