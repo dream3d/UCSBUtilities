@@ -191,7 +191,12 @@ void FindModulusMismatch::execute()
 {
   clearErrorCode();
   clearWarningCode();
-  dataCheck();
+  dataCheckVoxel();
+  if(getErrorCode() < 0)
+  {
+    return;
+  }
+  dataCheckSurfaceMesh();
   if(getErrorCode() < 0)
   {
     return;
