@@ -97,7 +97,7 @@ void CopyAttributeArray::dataCheck()
 
   QString daName = getSelectedArrayPath().getDataArrayName();
 
-  IDataArray::Pointer dataArray = getDataContainerArray()->getPrereqIDataArrayFromPath<IDataArray, AbstractFilter>(this, getSelectedArrayPath());
+  IDataArray::Pointer dataArray = getDataContainerArray()->getPrereqIDataArrayFromPath(this, getSelectedArrayPath());
   if(getErrorCode() < 0)
   {
     return;
@@ -117,18 +117,6 @@ void CopyAttributeArray::dataCheck()
   }
 }
 
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
-void CopyAttributeArray::preflight()
-{
-  setInPreflight(true);
-  emit preflightAboutToExecute();
-  emit updateFilterParameters(this);
-  dataCheck();
-  emit preflightExecuted();
-  setInPreflight(false);
-}
 
 // -----------------------------------------------------------------------------
 //

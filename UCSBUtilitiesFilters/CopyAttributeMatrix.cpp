@@ -96,7 +96,7 @@ void CopyAttributeMatrix::dataCheck()
     setErrorCondition(-11004, ss);
   }
 
-  AttributeMatrix::Pointer attrMat = getDataContainerArray()->getPrereqAttributeMatrixFromPath<AbstractFilter>(this, getSelectedAttributeMatrixPath(), -301);
+  AttributeMatrix::Pointer attrMat = getDataContainerArray()->getPrereqAttributeMatrixFromPath(this, getSelectedAttributeMatrixPath(), -301);
   if(getErrorCode() < 0)
   {
     return;
@@ -109,18 +109,6 @@ void CopyAttributeMatrix::dataCheck()
   dc->addOrReplaceAttributeMatrix(p);
 }
 
-// -----------------------------------------------------------------------------
-//
-// -----------------------------------------------------------------------------
-void CopyAttributeMatrix::preflight()
-{
-  setInPreflight(true);
-  emit preflightAboutToExecute();
-  emit updateFilterParameters(this);
-  dataCheck();
-  emit preflightExecuted();
-  setInPreflight(false);
-}
 
 // -----------------------------------------------------------------------------
 //
