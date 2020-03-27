@@ -32,13 +32,13 @@ class UCSBUtilities_EXPORT ClearDataMask : public AbstractFilter
 {
     Q_OBJECT
 
-#ifdef SIMPL_ENABLE_PYTHON
-    PYB11_CREATE_BINDINGS(ClearDataMask SUPERCLASS AbstractFilter)
+    // Start Python bindings declarations
+    PYB11_BEGIN_BINDINGS(ClearDataMask SUPERCLASS AbstractFilter)
     PYB11_SHARED_POINTERS(ClearDataMask)
     PYB11_FILTER_NEW_MACRO(ClearDataMask)
-    PYB11_FILTER_PARAMETER(DataArrayPath, MaskArrayPath)
     PYB11_PROPERTY(DataArrayPath MaskArrayPath READ getMaskArrayPath WRITE setMaskArrayPath)
-#endif
+    PYB11_END_BINDINGS()
+    // End Python bindings declarations
 
   public:
     using Self = ClearDataMask;

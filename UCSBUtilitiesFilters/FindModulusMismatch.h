@@ -38,17 +38,15 @@ class UCSBUtilities_EXPORT FindModulusMismatch : public AbstractFilter
 {
     Q_OBJECT
 
-#ifdef SIMPL_ENABLE_PYTHON
-    PYB11_CREATE_BINDINGS(FindModulusMismatch SUPERCLASS AbstractFilter)
+    // Start Python bindings declarations
+    PYB11_BEGIN_BINDINGS(FindModulusMismatch SUPERCLASS AbstractFilter)
     PYB11_SHARED_POINTERS(FindModulusMismatch)
     PYB11_FILTER_NEW_MACRO(FindModulusMismatch)
-    PYB11_FILTER_PARAMETER(DataArrayPath, ModuliArrayPath)
-    PYB11_FILTER_PARAMETER(DataArrayPath, SurfaceMeshFaceLabelsArrayPath)
-    PYB11_FILTER_PARAMETER(QString, SurfaceMeshDeltaModulusArrayName)
     PYB11_PROPERTY(DataArrayPath ModuliArrayPath READ getModuliArrayPath WRITE setModuliArrayPath)
     PYB11_PROPERTY(DataArrayPath SurfaceMeshFaceLabelsArrayPath READ getSurfaceMeshFaceLabelsArrayPath WRITE setSurfaceMeshFaceLabelsArrayPath)
     PYB11_PROPERTY(QString SurfaceMeshDeltaModulusArrayName READ getSurfaceMeshDeltaModulusArrayName WRITE setSurfaceMeshDeltaModulusArrayName)
-#endif
+    PYB11_END_BINDINGS()
+    // End Python bindings declarations
 
   public:
     using Self = FindModulusMismatch;

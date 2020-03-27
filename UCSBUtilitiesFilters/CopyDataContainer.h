@@ -31,15 +31,14 @@ class UCSBUtilities_EXPORT CopyDataContainer : public AbstractFilter
 {
     Q_OBJECT
 
-#ifdef SIMPL_ENABLE_PYTHON
-    PYB11_CREATE_BINDINGS(CopyDataContainer SUPERCLASS AbstractFilter)
+    // Start Python bindings declarations
+    PYB11_BEGIN_BINDINGS(CopyDataContainer SUPERCLASS AbstractFilter)
     PYB11_SHARED_POINTERS(CopyDataContainer)
     PYB11_FILTER_NEW_MACRO(CopyDataContainer)
-    PYB11_FILTER_PARAMETER(DataArrayPath, SelectedDataContainerName)
-    PYB11_FILTER_PARAMETER(DataArrayPath, NewDataContainerName)
     PYB11_PROPERTY(DataArrayPath SelectedDataContainerName READ getSelectedDataContainerName WRITE setSelectedDataContainerName)
     PYB11_PROPERTY(DataArrayPath NewDataContainerName READ getNewDataContainerName WRITE setNewDataContainerName)
-#endif
+    PYB11_END_BINDINGS()
+    // End Python bindings declarations
 
   public:
     using Self = CopyDataContainer;

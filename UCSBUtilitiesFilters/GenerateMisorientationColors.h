@@ -33,18 +33,10 @@ class UCSBUtilities_EXPORT GenerateMisorientationColors : public AbstractFilter
 {
     Q_OBJECT
 
-#ifdef SIMPL_ENABLE_PYTHON
-    PYB11_CREATE_BINDINGS(GenerateMisorientationColors SUPERCLASS AbstractFilter)
+    // Start Python bindings declarations
+    PYB11_BEGIN_BINDINGS(GenerateMisorientationColors SUPERCLASS AbstractFilter)
     PYB11_SHARED_POINTERS(GenerateMisorientationColors)
     PYB11_FILTER_NEW_MACRO(GenerateMisorientationColors)
-    PYB11_FILTER_PARAMETER(FloatVec3Type, ReferenceAxis)
-    PYB11_FILTER_PARAMETER(float, ReferenceAngle)
-    PYB11_FILTER_PARAMETER(DataArrayPath, CellPhasesArrayPath)
-    PYB11_FILTER_PARAMETER(DataArrayPath, QuatsArrayPath)
-    PYB11_FILTER_PARAMETER(DataArrayPath, CrystalStructuresArrayPath)
-    PYB11_FILTER_PARAMETER(DataArrayPath, GoodVoxelsArrayPath)
-    PYB11_FILTER_PARAMETER(QString, MisorientationColorArrayName)
-    PYB11_FILTER_PARAMETER(bool, UseGoodVoxels)
     PYB11_PROPERTY(FloatVec3Type ReferenceAxis READ getReferenceAxis WRITE setReferenceAxis)
     PYB11_PROPERTY(float ReferenceAngle READ getReferenceAngle WRITE setReferenceAngle)
     PYB11_PROPERTY(DataArrayPath CellPhasesArrayPath READ getCellPhasesArrayPath WRITE setCellPhasesArrayPath)
@@ -53,7 +45,8 @@ class UCSBUtilities_EXPORT GenerateMisorientationColors : public AbstractFilter
     PYB11_PROPERTY(DataArrayPath GoodVoxelsArrayPath READ getGoodVoxelsArrayPath WRITE setGoodVoxelsArrayPath)
     PYB11_PROPERTY(QString MisorientationColorArrayName READ getMisorientationColorArrayName WRITE setMisorientationColorArrayName)
     PYB11_PROPERTY(bool UseGoodVoxels READ getUseGoodVoxels WRITE setUseGoodVoxels)
-#endif
+    PYB11_END_BINDINGS()
+    // End Python bindings declarations
 
   public:
     using Self = GenerateMisorientationColors;

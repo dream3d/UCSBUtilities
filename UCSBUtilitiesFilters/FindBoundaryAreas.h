@@ -39,17 +39,15 @@ class UCSBUtilities_EXPORT FindBoundaryAreas : public AbstractFilter
 {
     Q_OBJECT
 
-#ifdef SIMPL_ENABLE_PYTHON
-    PYB11_CREATE_BINDINGS(FindBoundaryAreas SUPERCLASS AbstractFilter)
+    // Start Python bindings declarations
+    PYB11_BEGIN_BINDINGS(FindBoundaryAreas SUPERCLASS AbstractFilter)
     PYB11_SHARED_POINTERS(FindBoundaryAreas)
     PYB11_FILTER_NEW_MACRO(FindBoundaryAreas)
-    PYB11_FILTER_PARAMETER(DataArrayPath, SurfaceMeshTriangleAreasArrayPath)
-    PYB11_FILTER_PARAMETER(DataArrayPath, SurfaceMeshFeatureFaceIdsArrayPath)
-    PYB11_FILTER_PARAMETER(DataArrayPath, SurfaceMeshBoundaryAreasArrayPath)
     PYB11_PROPERTY(DataArrayPath SurfaceMeshTriangleAreasArrayPath READ getSurfaceMeshTriangleAreasArrayPath WRITE setSurfaceMeshTriangleAreasArrayPath)
     PYB11_PROPERTY(DataArrayPath SurfaceMeshFeatureFaceIdsArrayPath READ getSurfaceMeshFeatureFaceIdsArrayPath WRITE setSurfaceMeshFeatureFaceIdsArrayPath)
     PYB11_PROPERTY(DataArrayPath SurfaceMeshBoundaryAreasArrayPath READ getSurfaceMeshBoundaryAreasArrayPath WRITE setSurfaceMeshBoundaryAreasArrayPath)
-#endif
+    PYB11_END_BINDINGS()
+    // End Python bindings declarations
 
   public:
     using Self = FindBoundaryAreas;
