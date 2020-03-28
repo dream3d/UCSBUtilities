@@ -101,7 +101,7 @@ void _TripletSort(T a, T b, T c, T& x, T& y, T& z)
 // -----------------------------------------------------------------------------
 SIMPL::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
 {
-  double n1, n2, n3, w;
+  // double n1, n2, n3, w;
   double x, x1, x2, x3, x4, x5, x6, x7;
   double y, y1, y2, y3, y4, y5, y6, y7;
   double z, z1, z2, z3, z4, z5, z6, z7;
@@ -111,15 +111,15 @@ SIMPL::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatType& q, con
   QuatType q2 = refFrame;
 
   //get disorientation
-  w = getMisoQuat(q1, q2, n1, n2, n3);
-  n1 = fabs(n1);
-  n2 = fabs(n2);
-  n3 = fabs(n3);
+  OrientationD axisAngle = calculateMisorientation(q1, q2);
+  axisAngle[0] = fabs(axisAngle[0]);
+  axisAngle[1] = fabs(axisAngle[1]);
+  axisAngle[2] = fabs(axisAngle[2]);
 
-  _TripletSort(n1, n2, n3, z, y, x);
+  _TripletSort(axisAngle[0], axisAngle[1], axisAngle[2], z, y, x);
 
   //eq c9.1
-  k = tan(w / 2.0f);
+  k = tan(axisAngle[3] / 2.0f);
   x = x * k;
   y = y * k;
   z = z * k;
