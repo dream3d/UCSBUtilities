@@ -359,7 +359,7 @@ void GenerateMisorientationColors::execute()
     serial.convert(0, totalPoints);
   }
 
-  QVector<LaueOps::Pointer> ops = LaueOps::getOrientationOpsQVector();
+  std::vector<LaueOps::Pointer> ops = LaueOps::GetAllOrientationOps();
 
   // Check and warn about unsupported crystal symmetries in the computation which will show as black
   for (size_t i = 0; i < notSupported->getNumberOfTuples() - 1; i++)
