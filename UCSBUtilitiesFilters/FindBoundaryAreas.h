@@ -41,6 +41,7 @@ class UCSBUtilities_EXPORT FindBoundaryAreas : public AbstractFilter
 
     // Start Python bindings declarations
     PYB11_BEGIN_BINDINGS(FindBoundaryAreas SUPERCLASS AbstractFilter)
+    PYB11_FILTER()
     PYB11_SHARED_POINTERS(FindBoundaryAreas)
     PYB11_FILTER_NEW_MACRO(FindBoundaryAreas)
     PYB11_PROPERTY(DataArrayPath SurfaceMeshTriangleAreasArrayPath READ getSurfaceMeshTriangleAreasArrayPath WRITE setSurfaceMeshTriangleAreasArrayPath)

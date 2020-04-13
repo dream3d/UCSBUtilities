@@ -40,6 +40,7 @@ class UCSBUtilities_EXPORT FindModulusMismatch : public AbstractFilter
 
     // Start Python bindings declarations
     PYB11_BEGIN_BINDINGS(FindModulusMismatch SUPERCLASS AbstractFilter)
+    PYB11_FILTER()
     PYB11_SHARED_POINTERS(FindModulusMismatch)
     PYB11_FILTER_NEW_MACRO(FindModulusMismatch)
     PYB11_PROPERTY(DataArrayPath ModuliArrayPath READ getModuliArrayPath WRITE setModuliArrayPath)

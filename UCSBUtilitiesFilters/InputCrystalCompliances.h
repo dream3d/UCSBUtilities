@@ -35,6 +35,7 @@ class UCSBUtilities_EXPORT InputCrystalCompliances : public AbstractFilter
 
     // Start Python bindings declarations
     PYB11_BEGIN_BINDINGS(InputCrystalCompliances SUPERCLASS AbstractFilter)
+    PYB11_FILTER()
     PYB11_SHARED_POINTERS(InputCrystalCompliances)
     PYB11_FILTER_NEW_MACRO(InputCrystalCompliances)
     PYB11_PROPERTY(FloatVec21_t Compliances READ getCompliances WRITE setCompliances)

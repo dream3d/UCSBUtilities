@@ -34,6 +34,7 @@ class UCSBUtilities_EXPORT ClearDataMask : public AbstractFilter
 
     // Start Python bindings declarations
     PYB11_BEGIN_BINDINGS(ClearDataMask SUPERCLASS AbstractFilter)
+    PYB11_FILTER()
     PYB11_SHARED_POINTERS(ClearDataMask)
     PYB11_FILTER_NEW_MACRO(ClearDataMask)
     PYB11_PROPERTY(DataArrayPath MaskArrayPath READ getMaskArrayPath WRITE setMaskArrayPath)

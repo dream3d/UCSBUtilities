@@ -33,6 +33,7 @@ class UCSBUtilities_EXPORT CopyDataContainer : public AbstractFilter
 
     // Start Python bindings declarations
     PYB11_BEGIN_BINDINGS(CopyDataContainer SUPERCLASS AbstractFilter)
+    PYB11_FILTER()
     PYB11_SHARED_POINTERS(CopyDataContainer)
     PYB11_FILTER_NEW_MACRO(CopyDataContainer)
     PYB11_PROPERTY(DataArrayPath SelectedDataContainerName READ getSelectedDataContainerName WRITE setSelectedDataContainerName)
