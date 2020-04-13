@@ -39,12 +39,12 @@
 #include <Eigen/Dense>
 #include <Eigen/StdVector>
 
-#include "EbsdLib/EbsdConstants.h"
+#include "EbsdLib/Core/EbsdLibConstants.h"
 
-#include "OrientationLib/LaueOps/CubicOps.h"
-#include "OrientationLib/LaueOps/HexagonalOps.h"
-#include "OrientationLib/LaueOps/LaueOps.h"
-#include "OrientationLib/LaueOps/OrthoRhombicOps.h"
+#include "EbsdLib/LaueOps/CubicOps.h"
+#include "EbsdLib/LaueOps/HexagonalOps.h"
+#include "EbsdLib/LaueOps/LaueOps.h"
+#include "EbsdLib/LaueOps/OrthoRhombicOps.h"
 
 /* Create Enumerations to allow the created Attribute Arrays to take part in renaming */
 enum createdPathID : RenameDataPath::DataID_t
@@ -258,7 +258,7 @@ void FindDirectionalModuli::execute()
     //get phase and crystal structure
     size_t phase = m_FeaturePhases[i];
     size_t xtal = m_CrystalStructures[phase];
-    if(xtal < Ebsd::CrystalStructure::LaueGroupEnd)
+    if(xtal < EbsdLib::CrystalStructure::LaueGroupEnd)
     {
       //concatenate rotation with crystal orientation (determine rotation from crystal frame to sample loading direction)
       q1 = QuatF(m_AvgQuats + i * 4);

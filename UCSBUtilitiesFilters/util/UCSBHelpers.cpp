@@ -67,8 +67,7 @@ IDataArray::Pointer UCSBHelpers::ReorderCopy(StringDataArray::Pointer array, std
   return daCopy;
 }
 
-
-
+#if 0
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -89,6 +88,7 @@ IDataArray::Pointer UCSBHelpers::ReorderCopy(ModifiedLambertProjectionArray::Poi
 
   return daCopyPtr;
 }
+#endif
 
 // -----------------------------------------------------------------------------
 //

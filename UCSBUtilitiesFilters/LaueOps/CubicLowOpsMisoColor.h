@@ -17,16 +17,12 @@
 
 #pragma once
 
-
 #include <memory>
 
-#include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/DataArrays/DataArray.hpp"
+#include "EbsdLib/EbsdLib.h"
+#include "EbsdLib/LaueOps/CubicLowOps.h"
 
-#include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/LaueOps/CubicLowOps.h"
-
-
+#include "SIMPLib/Utilities/ColorTable.h"
 
 class CubicLowOpsMisoColor : public CubicLowOps
 {

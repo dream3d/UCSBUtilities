@@ -35,19 +35,15 @@ include(${SIMPLProj_SOURCE_DIR}/Source/SIMPLib/SIMPLibMacros.cmake)
 
 get_filename_component(${PLUGIN_NAME}_PARENT_SOURCE_DIR "${${PLUGIN_NAME}_SOURCE_DIR}" DIRECTORY)
 get_filename_component(${PLUGIN_NAME}_PARENT_BINARY_DIR "${${PLUGIN_NAME}_BINARY_DIR}" DIRECTORY)
-get_filename_component(OrientationLib_PARENT_SOURCE_DIR "${OrientationLib_SOURCE_DIR}" DIRECTORY)
-get_filename_component(OrientationLib_PARENT_BINARY_DIR "${OrientationLib_BINARY_DIR}" DIRECTORY)
 
 SIMPL_GenerateUnitTestFile(PLUGIN_NAME ${PLUGIN_NAME}
                            TEST_DATA_DIR ${${PLUGIN_NAME}_SOURCE_DIR}/Test/Data
                            SOURCES ${TEST_NAMES}
-                           LINK_LIBRARIES Qt5::Core Qt5::Gui H5Support SIMPLib
+                           LINK_LIBRARIES Qt5::Core Qt5::Gui SIMPLib EbsdLib
                            INCLUDE_DIRS ${${PLUGIN_NAME}_PARENT_SOURCE_DIR}
                                         ${${PLUGIN_NAME}Test_SOURCE_DIR}
                                         ${${PLUGIN_NAME}Test_BINARY_DIR}
                                         ${${PLUGIN_NAME}_PARENT_BINARY_DIR}
-                                        ${OrientationLib_PARENT_SOURCE_DIR}
-                                        ${OrientationLib_PARENT_BINARY_DIR}
 )
 
 #------------------------------------------------------------------------------

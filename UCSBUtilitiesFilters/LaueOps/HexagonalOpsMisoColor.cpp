@@ -17,12 +17,9 @@
 
 #include "HexagonalOpsMisoColor.h"
 
-// Include this FIRST because there is a needed define for some compiles
-// to expose some of the constants needed below
-#include "SIMPLib/Math/SIMPLibMath.h"
 #include "SIMPLib/Utilities/ColorUtilities.h"
 
-
+#include "EbsdLib/Math/EbsdLibMath.h"
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -61,7 +58,7 @@ SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatType& q,
   k *= (atan2(yo , xo) <= M_PI / 12.0f) ? xo : (sqrt(3.0f) * xo + yo) / 2.0f;
   xo1 = xo * k * w;
   yo1 = yo * k * w;
-  zo1 = zo * w / (2.0f - SIMPLib::Constants::k_Sqrt3);
+  zo1 = zo * w / (2.0f - EbsdLib::Constants::k_Sqrt3);
 
   //eq c5.3
   k = 3.0f * atan2(yo1, xo1);
@@ -94,14 +91,17 @@ SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatType& q,
   //eq c1.3
   //3 rotation matricies (in paper) can be multiplied into one (here) for simplicity / speed
   //g1*g2*g3 = {{sqrt(2/3), -1/sqrt(6), -1/sqrt(6)},{0, 1/sqrt(2), -1/sqrt(2)},{1/sqrt(3), 1/sqrt(3), 1/sqrt(3)}}
-  x2 = x1 * (SIMPLib::Constants::k_Sqrt2 / SIMPLib::Constants::k_Sqrt3) - (y1 + z1) / (SIMPLib::Constants::k_Sqrt2 * SIMPLib::Constants::k_Sqrt3);
-  y2 = (y1 - z1) / SIMPLib::Constants::k_Sqrt2;
-  z2 = (x1 + y1 + z1) / SIMPLib::Constants::k_Sqrt3;
+  x2 = x1 * (EbsdLib::Constants::k_Sqrt2 / EbsdLib::Constants::k_Sqrt3) - (y1 + z1) / (EbsdLib::Constants::k_Sqrt2 * EbsdLib::Constants::k_Sqrt3);
+  y2 = (y1 - z1) / EbsdLib::Constants::k_Sqrt2;
+  z2 = (x1 + y1 + z1) / EbsdLib::Constants::k_Sqrt3;
 
   //eq c1.4
   k = atan2(y2, x2);
-  if(k < 0.0f) {k += SIMPLib::Constants::k_2Pi;}
-  x3 = sqrt(x2 * x2 + y2 * y2) * sin(SIMPLib::Constants::k_Pi / 6.0f + fmod(k, SIMPLib::Constants::k_2Pi / 3.0f)) / SIMPLib::Constants::k_HalfSqrt2;
+  if(k < 0.0f)
+  {
+    k += EbsdLib::Constants::k_2Pi;
+  }
+  x3 = sqrt(x2 * x2 + y2 * y2) * sin(EbsdLib::Constants::k_Pi / 6.0f + fmod(k, EbsdLib::Constants::k_2Pi / 3.0f)) / EbsdLib::Constants::k_HalfSqrt2;
   y3 = x3;
   x3 *= cos(k);
   y3 *= sin(k);
@@ -117,8 +117,11 @@ SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatType& q,
 
   //eq c1.6, 7, and 8 (from matlab code not paper)
   k = atan2(y4, x4);
-  if(k < 0.0f) {k += SIMPLib::Constants::k_2Pi;}
-  k *= 3.0f / SIMPLib::Constants::k_2Pi;
+  if(k < 0.0f)
+  {
+    k += EbsdLib::Constants::k_2Pi;
+  }
+  k *= 3.0f / EbsdLib::Constants::k_2Pi;
   size_t type = 0;
   if(0.0f < k && k < 1.0f) {type = 1;}
   else if(1.0f < k && k < 2.0f) {type = 2;}   
@@ -126,8 +129,8 @@ SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatType& q,
 
   switch(type) {
     case 1:
-      x5 = (x4 + y4 * SIMPLib::Constants::k_Sqrt3) / 2.0f;
-      y5 = (-x4 * SIMPLib::Constants::k_Sqrt3 + y4) / 2.0f;
+      x5 = (x4 + y4 * EbsdLib::Constants::k_Sqrt3) / 2.0f;
+      y5 = (-x4 * EbsdLib::Constants::k_Sqrt3 + y4) / 2.0f;
       z5 = z4;
       break;
       
@@ -138,8 +141,8 @@ SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatType& q,
       break;
 
     case 3:
-      x5 = (x4 - y4 * SIMPLib::Constants::k_Sqrt3) / 2.0f;
-      y5 = (x4 * SIMPLib::Constants::k_Sqrt3 + y4) / 2.0f;
+      x5 = (x4 - y4 * EbsdLib::Constants::k_Sqrt3) / 2.0f;
+      y5 = (x4 * EbsdLib::Constants::k_Sqrt3 + y4) / 2.0f;
       z5 = z4;
       break;
   }
@@ -172,8 +175,8 @@ SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatType& q,
 
   switch(type) {
     case 1:
-      x9 = (x8 - y8 * SIMPLib::Constants::k_Sqrt3) / 2.0f;
-      y9 = (x8 * SIMPLib::Constants::k_Sqrt3 + y8) / 2.0f;
+      x9 = (x8 - y8 * EbsdLib::Constants::k_Sqrt3) / 2.0f;
+      y9 = (x8 * EbsdLib::Constants::k_Sqrt3 + y8) / 2.0f;
       z9 = z8;
       break;
       
@@ -184,8 +187,8 @@ SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatType& q,
       break;
 
     case 3:
-      x9 = (x8 + y8 * SIMPLib::Constants::k_Sqrt3) / 2.0f;
-      y9 = (-x8 * SIMPLib::Constants::k_Sqrt3 + y8) / 2.0f;
+      x9 = (x8 + y8 * EbsdLib::Constants::k_Sqrt3) / 2.0f;
+      y9 = (-x8 * EbsdLib::Constants::k_Sqrt3 + y8) / 2.0f;
       z9 = z8;
       break;
 
@@ -196,8 +199,8 @@ SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatType& q,
   }
 
   //c1.9
-  x10 = (x9 - y9 * SIMPLib::Constants::k_Sqrt3) / 2.0f;
-  y10 = (x9 * SIMPLib::Constants::k_Sqrt3 + y9) / 2.0f;
+  x10 = (x9 - y9 * EbsdLib::Constants::k_Sqrt3) / 2.0f;
+  y10 = (x9 * EbsdLib::Constants::k_Sqrt3 + y9) / 2.0f;
   z10 = z9;
 
   //cartesian to traditional hsv
@@ -205,15 +208,21 @@ SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatType& q,
   y11 = (x11 > 0.0f) ? acos(z10 / x11) : 0.0f;//theta
   z11 = (x11 > 0.0f) ? atan2(y10, x10) : 0.0f;//rho
 
-  h = z11 - SIMPLib::Constants::k_2Pi / 3.0f;
-  if(h < 0.0f) {h += SIMPLib::Constants::k_2Pi;}
-  h /= SIMPLib::Constants::k_2Pi;
+  h = z11 - EbsdLib::Constants::k_2Pi / 3.0f;
+  if(h < 0.0f)
+  {
+    h += EbsdLib::Constants::k_2Pi;
+  }
+  h /= EbsdLib::Constants::k_2Pi;
 
-  if(y11 < SIMPLib::Constants::k_Pi / 2.0f) {
-    s = (4.0f * x11 * y11) / (SIMPLib::Constants::k_Pi * ( 1 + x11 ));
+  if(y11 < EbsdLib::Constants::k_Pi / 2.0f)
+  {
+    s = (4.0f * x11 * y11) / (EbsdLib::Constants::k_Pi * (1 + x11));
     v = (x11 + 1.0f) / 2.0f;
-  } else {//>= pi/2
-    v = 2.0f * x11 * (0.75f - y11 / SIMPLib::Constants::k_Pi) + 0.5f;
+  }
+  else
+  { //>= pi/2
+    v = 2.0f * x11 * (0.75f - y11 / EbsdLib::Constants::k_Pi) + 0.5f;
     k = (v > 0.0f) ? 0.5f / v : 1.0f;
     s = 1.0f - (1.0f - x11) * k;
   }

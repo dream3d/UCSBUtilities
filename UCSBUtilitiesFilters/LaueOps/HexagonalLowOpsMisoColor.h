@@ -19,13 +19,10 @@
 
 #include <memory>
 
-#include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/DataArrays/DataArray.hpp"
+#include "EbsdLib/EbsdLib.h"
+#include "EbsdLib/LaueOps/HexagonalLowOps.h"
 
-#include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/LaueOps/HexagonalLowOps.h"
-
-
+#include "SIMPLib/Utilities/ColorTable.h"
 
 class HexagonalLowOpsMisoColor : public HexagonalLowOps
 {

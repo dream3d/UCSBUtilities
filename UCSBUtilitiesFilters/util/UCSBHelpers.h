@@ -33,7 +33,7 @@
 class IDataArray;
 using IDataArrayShPtrType = std::shared_ptr<IDataArray>;
 
-#include "OrientationLib/Utilities/ModifiedLambertProjectionArray.h"
+#include "EbsdLib/Utilities/ModifiedLambertProjectionArray.h"
 
 class UCSBHelpers
 {
@@ -135,13 +135,14 @@ public:
       return daCopy;
     }
 
+#if 0
     /**
      * @brief reorderCopy
      * @param newOrderMap
      * @return
      */
     static IDataArrayShPtrType ReorderCopy(ModifiedLambertProjectionArray::Pointer array, std::vector<size_t> newOrderMap);
-
+#endif
     /**
      * @brief computes linear regression
      * @param fit slope

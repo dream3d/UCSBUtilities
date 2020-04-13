@@ -19,13 +19,10 @@
 
 #include <memory>
 
-#include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/DataArrays/DataArray.hpp"
+#include "EbsdLib/EbsdLib.h"
+#include "EbsdLib/LaueOps/TriclinicOps.h"
 
-#include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/LaueOps/TriclinicOps.h"
-
-
+#include "SIMPLib/Utilities/ColorTable.h"
 
 class TriclinicOpsMisoColor : public TriclinicOps
 {

@@ -19,12 +19,10 @@
 
 #include <memory>
 
-#include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/DataArrays/DataArray.hpp"
+#include "EbsdLib/EbsdLib.h"
+#include "EbsdLib/LaueOps/TetragonalLowOps.h"
 
-#include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/LaueOps/TetragonalLowOps.h"
-
+#include "SIMPLib/Utilities/ColorTable.h"
 
 class TetragonalLowOpsMisoColor : public TetragonalLowOps
 {

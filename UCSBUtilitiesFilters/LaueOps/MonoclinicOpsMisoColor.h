@@ -17,15 +17,12 @@
 
 #pragma once
 
-
 #include <memory>
 
-#include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/DataArrays/DataArray.hpp"
+#include "EbsdLib/EbsdLib.h"
+#include "EbsdLib/LaueOps/MonoclinicOps.h"
 
-#include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/LaueOps/MonoclinicOps.h"
-
+#include "SIMPLib/Utilities/ColorTable.h"
 
 class MonoclinicOpsMisoColor : public MonoclinicOps
 {

@@ -19,13 +19,12 @@
 
 #include <memory>
 
-#include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/DataArrays/DataArray.hpp"
+#include <QtCore/QString>
 
-#include "OrientationLib/OrientationLib.h"
-#include "OrientationLib/LaueOps/OrthoRhombicOps.h"
+#include "EbsdLib/EbsdLib.h"
+#include "EbsdLib/LaueOps/OrthoRhombicOps.h"
 
-
+#include "SIMPLib/Utilities/ColorTable.h"
 
 class OrthoRhombicOpsMisoColor : public OrthoRhombicOps
 {

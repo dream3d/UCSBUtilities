@@ -111,7 +111,7 @@ SIMPL::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatType& q, con
   QuatType q2 = refFrame;
 
   //get disorientation
-  OrientationD axisAngle = calculateMisorientation(q1, q2);
+  OrientationD axisAngle = CubicOps::calculateMisorientation(q1, q2);
   axisAngle[0] = fabs(axisAngle[0]);
   axisAngle[1] = fabs(axisAngle[1]);
   axisAngle[2] = fabs(axisAngle[2]);

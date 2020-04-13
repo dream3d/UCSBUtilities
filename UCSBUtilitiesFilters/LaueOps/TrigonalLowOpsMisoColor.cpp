@@ -17,11 +17,7 @@
 
 #include "TrigonalLowOpsMisoColor.h"
 
-// Include this FIRST because there is a needed define for some compiles
-// to expose some of the constants needed below
-#include "SIMPLib/Math/SIMPLibMath.h"
-#include "SIMPLib/Utilities/ColorTable.h"
-
+#include <stdexcept>
 
 // -----------------------------------------------------------------------------
 //
@@ -40,7 +36,7 @@ SIMPL::Rgb TrigonalLowOpsMisoColor::generateMisorientationColor(const QuatType& 
 {
   SIMPL::Rgb rgb = RgbColor::dRgb(0, 0, 0, 0);
 
-  Q_ASSERT(false);
+  throw std::runtime_error("TrigonalLowOpsMisoColor::generateMisorientationColor is not implemented");
 
   return rgb;
 }

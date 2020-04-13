@@ -17,15 +17,7 @@
 
 #include "CubicLowOpsMisoColor.h"
 
-#include <cassert>
-
-// Include this FIRST because there is a needed define for some compiles
-// to expose some of the constants needed below
-#include "SIMPLib/Math/SIMPLibMath.h"
-#include "SIMPLib/Utilities/ColorTable.h"
-
-
-
+#include <stdexcept>
 
 // -----------------------------------------------------------------------------
 //
@@ -42,7 +34,8 @@ CubicLowOpsMisoColor::~CubicLowOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 SIMPL::Rgb CubicLowOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
 {
-  assert(false);
+  throw std::runtime_error("CubicLowOpsMisoColor::generateMisorientationColor is not implemented");
+
 #if 0
   double n1, n2, n3, w;
   double x, x1, x2, x3, x4;

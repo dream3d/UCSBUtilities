@@ -17,11 +17,7 @@
 
 #include "TetragonalLowOpsMisoColor.h"
 
-// Include this FIRST because there is a needed define for some compiles
-// to expose some of the constants needed below
-#include "SIMPLib/Math/SIMPLibMath.h"
-#include "SIMPLib/Utilities/ColorTable.h"
-
+#include <stdexcept>
 
 // -----------------------------------------------------------------------------
 //
@@ -38,7 +34,7 @@ TetragonalLowOpsMisoColor::~TetragonalLowOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 SIMPL::Rgb TetragonalLowOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
 {
-  Q_ASSERT(false);
+  throw std::runtime_error("TetragonalLowOpsMisoColor::generateMisorientationColor is not implemented");
 
   return RgbColor::dRgb(0, 0, 0, 0);
 }

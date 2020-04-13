@@ -15,21 +15,11 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <memory>
-
 #include "GenerateMisorientationColors.h"
-
-#ifdef SIMPL_USE_PARALLEL_ALGORITHMS
-#include <tbb/parallel_for.h>
-#include <tbb/blocked_range.h>
-#include <tbb/partitioner.h>
-#include <tbb/task_scheduler_init.h>
-#endif
 
 #include <QtCore/QTextStream>
 
 #include "SIMPLib/Common/Constants.h"
-
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/FloatVec3FilterParameter.h"
 #include "SIMPLib/FilterParameters/FloatFilterParameter.h"
@@ -40,11 +30,7 @@
 #include "SIMPLib/FilterParameters/SeparatorFilterParameter.h"
 #include "SIMPLib/Utilities/ColorTable.h"
 #include "SIMPLib/DataContainers/DataContainerArray.h"
-
-#include "EbsdLib/EbsdConstants.h"
-
-#include "OrientationLib/Core/Quaternion.hpp"
-#include "OrientationLib/LaueOps/LaueOps.h"
+#include "SIMPLib/Math/MatrixMath.h"
 
 #include "UCSBUtilitiesFilters/LaueOps/CubicOpsMisoColor.h"
 #include "UCSBUtilitiesFilters/LaueOps/CubicLowOpsMisoColor.h"
@@ -60,6 +46,17 @@
 
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
+
+#include "EbsdLib/Core/EbsdLibConstants.h"
+#include "EbsdLib/Core/Quaternion.hpp"
+#include "EbsdLib/LaueOps/LaueOps.h"
+
+#ifdef SIMPL_USE_PARALLEL_ALGORITHMS
+#include <tbb/parallel_for.h>
+#include <tbb/blocked_range.h>
+#include <tbb/partitioner.h>
+#include <tbb/task_scheduler_init.h>
+#endif
 
 /* Create Enumerations to allow the created Attribute Arrays to take part in renaming */
 enum createdPathID : RenameDataPath::DataID_t
@@ -130,11 +127,10 @@ class GenerateMisorientationColorsImpl
         m_MisorientationColor[index + 2] = 0;
         cellQuat = Quaternion<double>(m_Quats[i * 4], m_Quats[i * 4 + 1], m_Quats[i * 4 + 2], m_Quats[i * 3]);
 
-        if (m_CrystalStructures[phase] != Ebsd::CrystalStructure::Cubic_High &&
-            m_CrystalStructures[phase] != Ebsd::CrystalStructure::Hexagonal_High)
+        if(m_CrystalStructures[phase] != EbsdLib::CrystalStructure::Cubic_High && m_CrystalStructures[phase] != EbsdLib::CrystalStructure::Hexagonal_High)
         {
           uint32_t idx = m_CrystalStructures[phase];
-          if (idx == Ebsd::CrystalStructure::UnknownCrystalStructure)
+          if(idx == EbsdLib::CrystalStructure::UnknownCrystalStructure)
           {
             idx = 12;
           }
@@ -145,7 +141,7 @@ class GenerateMisorientationColorsImpl
 
         }
         // Make sure we are using a valid Euler Angles with valid crystal symmetry
-        else if((missingGoodVoxels || m_GoodVoxels[i]) && m_CrystalStructures[phase] < Ebsd::CrystalStructure::LaueGroupEnd)
+        else if((missingGoodVoxels || m_GoodVoxels[i]) && m_CrystalStructures[phase] < EbsdLib::CrystalStructure::LaueGroupEnd)
         {
           argb = ops[m_CrystalStructures[phase]]->generateMisorientationColor(cellQuat, refQuat);
           m_MisorientationColor[index] = RgbColor::dRed(argb);

@@ -17,13 +17,7 @@
 
 #include "OrthoRhombicOpsMisoColor.h"
 
-#include <cassert>
-
-// Include this FIRST because there is a needed define for some compiles
-// to expose some of the constants needed below
-#include "SIMPLib/Math/SIMPLibMath.h"
-#include "SIMPLib/Utilities/ColorTable.h"
-#include "SIMPLib/Utilities/ColorUtilities.h"
+#include <stdexcept>
 
 // -----------------------------------------------------------------------------
 //
@@ -40,8 +34,8 @@ OrthoRhombicOpsMisoColor::~OrthoRhombicOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 SIMPL::Rgb OrthoRhombicOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
 {
-  assert(false);
-	#if 0
+  throw std::runtime_error("OrthoRhombicOpsMisoColor::generateMisorientationColor is not implemented");
+#if 0
   double n1, n2, n3, w;
   double x, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11;
   double y, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11;

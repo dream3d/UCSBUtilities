@@ -17,15 +17,12 @@
 
 #pragma once
 
-
 #include <memory>
 
-#include "SIMPLib/SIMPLib.h"
-#include "SIMPLib/DataArrays/DataArray.hpp"
+#include "EbsdLib/EbsdLib.h"
+#include "EbsdLib/LaueOps/TrigonalLowOps.h"
 
-#include "OrientationLib/Core/Orientation.hpp"
-#include "OrientationLib/LaueOps/TrigonalLowOps.h"
-#include "OrientationLib/OrientationLib.h"
+#include "SIMPLib/Utilities/ColorTable.h"
 
 class TrigonalLowOpsMisoColor : public TrigonalLowOps
 {
