@@ -55,7 +55,6 @@
 #include <tbb/parallel_for.h>
 #include <tbb/blocked_range.h>
 #include <tbb/partitioner.h>
-#include <tbb/task_scheduler_init.h>
 #endif
 
 /* Create Enumerations to allow the created Attribute Arrays to take part in renaming */
@@ -337,12 +336,7 @@ void GenerateMisorientationColors::execute()
   notSupported->initializeWithZeros();
 
 #ifdef SIMPL_USE_PARALLEL_ALGORITHMS
-  tbb::task_scheduler_init init;
-  bool doParallel = true;
-#endif
-
-#ifdef SIMPL_USE_PARALLEL_ALGORITHMS
-  if(doParallel)
+  if(true)
   {
     tbb::parallel_for(tbb::blocked_range<size_t>(0, totalPoints),
                       GenerateMisorientationColorsImpl(normRefDir, m_ReferenceAngle, m_Quats, m_CellPhases, m_CrystalStructures, m_GoodVoxels, notSupported->getPointer(0), m_MisorientationColor),
