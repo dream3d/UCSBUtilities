@@ -44,6 +44,7 @@ class UCSBUtilities_EXPORT FindDirectionalModuli : public AbstractFilter
 
     // Start Python bindings declarations
     PYB11_BEGIN_BINDINGS(FindDirectionalModuli SUPERCLASS AbstractFilter)
+    PYB11_FILTER()
     PYB11_SHARED_POINTERS(FindDirectionalModuli)
     PYB11_FILTER_NEW_MACRO(FindDirectionalModuli)
     PYB11_PROPERTY(DataArrayPath FeaturePhasesArrayPath READ getFeaturePhasesArrayPath WRITE setFeaturePhasesArrayPath)

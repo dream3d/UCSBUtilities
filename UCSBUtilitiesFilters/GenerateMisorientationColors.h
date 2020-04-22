@@ -35,6 +35,7 @@ class UCSBUtilities_EXPORT GenerateMisorientationColors : public AbstractFilter
 
     // Start Python bindings declarations
     PYB11_BEGIN_BINDINGS(GenerateMisorientationColors SUPERCLASS AbstractFilter)
+    PYB11_FILTER()
     PYB11_SHARED_POINTERS(GenerateMisorientationColors)
     PYB11_FILTER_NEW_MACRO(GenerateMisorientationColors)
     PYB11_PROPERTY(FloatVec3Type ReferenceAxis READ getReferenceAxis WRITE setReferenceAxis)

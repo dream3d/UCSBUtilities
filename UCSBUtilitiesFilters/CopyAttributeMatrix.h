@@ -33,6 +33,7 @@ class UCSBUtilities_EXPORT CopyAttributeMatrix : public AbstractFilter
 
     // Start Python bindings declarations
     PYB11_BEGIN_BINDINGS(CopyAttributeMatrix SUPERCLASS AbstractFilter)
+    PYB11_FILTER()
     PYB11_SHARED_POINTERS(CopyAttributeMatrix)
     PYB11_FILTER_NEW_MACRO(CopyAttributeMatrix)
     PYB11_PROPERTY(DataArrayPath SelectedAttributeMatrixPath READ getSelectedAttributeMatrixPath WRITE setSelectedAttributeMatrixPath)
