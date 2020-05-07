@@ -21,7 +21,6 @@
 #include <QtCore/QTextStream>
 
 #include "SIMPLib/Common/Constants.h"
-
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/FloatVec3FilterParameter.h"
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
@@ -39,7 +38,6 @@
 #include <Eigen/StdVector>
 
 #include "EbsdLib/Core/EbsdLibConstants.h"
-
 #include "EbsdLib/LaueOps/CubicOps.h"
 #include "EbsdLib/LaueOps/HexagonalOps.h"
 #include "EbsdLib/LaueOps/LaueOps.h"
