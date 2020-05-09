@@ -15,7 +15,6 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-
 #include "ClearDataMask.h"
 
 #include <QtCore/QTextStream>
@@ -61,7 +60,7 @@ void ClearDataMask::setupFilterParameters()
 void ClearDataMask::readFilterParameters(AbstractFilterParametersReader* reader, int index)
 {
   reader->openFilterGroup(this, index);
-  setMaskArrayPath( reader->readDataArrayPath("MaskArrayPath", getMaskArrayPath() ) );
+  setMaskArrayPath(reader->readDataArrayPath("MaskArrayPath", getMaskArrayPath()));
   reader->closeFilterGroup();
 }
 
@@ -82,10 +81,11 @@ void ClearDataMask::dataCheck()
 
   std::vector<size_t> cDims(1, 1);
   m_MaskPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<bool>>(this, getMaskArrayPath(), cDims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
-  if(nullptr != m_MaskPtr.lock())               /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
-  { m_Mask = m_MaskPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
+  if(nullptr != m_MaskPtr.lock())                                                                                /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  {
+    m_Mask = m_MaskPtr.lock()->getPointer(0);
+  } /* Now assign the raw pointer to data from the DataArray<T> object */
 }
-
 
 // -----------------------------------------------------------------------------
 //
@@ -109,7 +109,7 @@ void ClearDataMask::execute()
 
   // convert to list of pointers
   std::vector<IDataArray::Pointer> arrayList;
-  for (QList<QString>::iterator iter = voxelArrayNames.begin(); iter != voxelArrayNames.end(); ++iter)
+  for(QList<QString>::iterator iter = voxelArrayNames.begin(); iter != voxelArrayNames.end(); ++iter)
   {
     IDataArray::Pointer p = m->getAttributeMatrix(attrMatName)->getAttributeArray(*iter);
     arrayList.push_back(p);
@@ -117,18 +117,17 @@ void ClearDataMask::execute()
 
   int32_t numArrays = arrayList.size();
 
-  for (size_t i = 0; i < totalPoints; i++)
+  for(size_t i = 0; i < totalPoints; i++)
   {
-    if (!m_Mask[i])
+    if(!m_Mask[i])
     {
-      for (int32_t j = 0; j < numArrays; j++)
+      for(int32_t j = 0; j < numArrays; j++)
       {
         int var = 0;
         arrayList[j]->initializeTuple(i, &var);
       }
     }
   }
-
 }
 
 // -----------------------------------------------------------------------------
@@ -167,7 +166,7 @@ QString ClearDataMask::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
-  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  vStream << UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
   return version;
 }
 
@@ -175,7 +174,9 @@ QString ClearDataMask::getFilterVersion() const
 //
 // -----------------------------------------------------------------------------
 QString ClearDataMask::getGroupName() const
-{ return SIMPL::FilterGroups::ProcessingFilters; }
+{
+  return SIMPL::FilterGroups::ProcessingFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
@@ -189,13 +190,17 @@ QUuid ClearDataMask::getUuid() const
 //
 // -----------------------------------------------------------------------------
 QString ClearDataMask::getSubGroupName() const
-{ return SIMPL::FilterSubGroups::CleanupFilters; }
+{
+  return SIMPL::FilterSubGroups::CleanupFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 QString ClearDataMask::getHumanLabel() const
-{ return "Clear Data (Mask)"; }
+{
+  return "Clear Data (Mask)";
+}
 
 // -----------------------------------------------------------------------------
 ClearDataMask::Pointer ClearDataMask::NullPointer()

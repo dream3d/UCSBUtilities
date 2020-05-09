@@ -31,147 +31,146 @@
  */
 class UCSBUtilities_EXPORT InputCrystalCompliances : public AbstractFilter
 {
-    Q_OBJECT
+  Q_OBJECT
 
-    // Start Python bindings declarations
-    PYB11_BEGIN_BINDINGS(InputCrystalCompliances SUPERCLASS AbstractFilter)
-    PYB11_FILTER()
-    PYB11_SHARED_POINTERS(InputCrystalCompliances)
-    PYB11_FILTER_NEW_MACRO(InputCrystalCompliances)
-    PYB11_PROPERTY(FloatVec21_t Compliances READ getCompliances WRITE setCompliances)
-    PYB11_PROPERTY(DataArrayPath CrystalCompliancesArrayPath READ getCrystalCompliancesArrayPath WRITE setCrystalCompliancesArrayPath)
-    PYB11_END_BINDINGS()
-    // End Python bindings declarations
+  // Start Python bindings declarations
+  PYB11_BEGIN_BINDINGS(InputCrystalCompliances SUPERCLASS AbstractFilter)
+  PYB11_FILTER()
+  PYB11_SHARED_POINTERS(InputCrystalCompliances)
+  PYB11_FILTER_NEW_MACRO(InputCrystalCompliances)
+  PYB11_PROPERTY(FloatVec21_t Compliances READ getCompliances WRITE setCompliances)
+  PYB11_PROPERTY(DataArrayPath CrystalCompliancesArrayPath READ getCrystalCompliancesArrayPath WRITE setCrystalCompliancesArrayPath)
+  PYB11_END_BINDINGS()
+  // End Python bindings declarations
 
-  public:
-    using Self = InputCrystalCompliances;
-    using Pointer = std::shared_ptr<Self>;
-    using ConstPointer = std::shared_ptr<const Self>;
-    using WeakPointer = std::weak_ptr<Self>;
-    using ConstWeakPointer = std::weak_ptr<const Self>;
-    static Pointer NullPointer();
+public:
+  using Self = InputCrystalCompliances;
+  using Pointer = std::shared_ptr<Self>;
+  using ConstPointer = std::shared_ptr<const Self>;
+  using WeakPointer = std::weak_ptr<Self>;
+  using ConstWeakPointer = std::weak_ptr<const Self>;
+  static Pointer NullPointer();
 
-    static std::shared_ptr<InputCrystalCompliances> New();
+  static std::shared_ptr<InputCrystalCompliances> New();
 
-    /**
-     * @brief Returns the name of the class for InputCrystalCompliances
-     */
-    QString getNameOfClass() const override;
-    /**
-     * @brief Returns the name of the class for InputCrystalCompliances
-     */
-    static QString ClassName();
+  /**
+   * @brief Returns the name of the class for InputCrystalCompliances
+   */
+  QString getNameOfClass() const override;
+  /**
+   * @brief Returns the name of the class for InputCrystalCompliances
+   */
+  static QString ClassName();
 
-    ~InputCrystalCompliances() override;
+  ~InputCrystalCompliances() override;
 
-    /**
-     * @brief Setter property for Compliances
-     */
-    void setCompliances(const FloatVec21_t& value);
-    /**
-     * @brief Getter property for Compliances
-     * @return Value of Compliances
-     */
-    FloatVec21_t getCompliances() const;
+  /**
+   * @brief Setter property for Compliances
+   */
+  void setCompliances(const FloatVec21_t& value);
+  /**
+   * @brief Getter property for Compliances
+   * @return Value of Compliances
+   */
+  FloatVec21_t getCompliances() const;
 
-    Q_PROPERTY(FloatVec21_t Compliances READ getCompliances WRITE setCompliances)
+  Q_PROPERTY(FloatVec21_t Compliances READ getCompliances WRITE setCompliances)
 
-    /**
-     * @brief Setter property for CrystalCompliancesArrayPath
-     */
-    void setCrystalCompliancesArrayPath(const DataArrayPath& value);
-    /**
-     * @brief Getter property for CrystalCompliancesArrayPath
-     * @return Value of CrystalCompliancesArrayPath
-     */
-    DataArrayPath getCrystalCompliancesArrayPath() const;
+  /**
+   * @brief Setter property for CrystalCompliancesArrayPath
+   */
+  void setCrystalCompliancesArrayPath(const DataArrayPath& value);
+  /**
+   * @brief Getter property for CrystalCompliancesArrayPath
+   * @return Value of CrystalCompliancesArrayPath
+   */
+  DataArrayPath getCrystalCompliancesArrayPath() const;
 
-    Q_PROPERTY(DataArrayPath CrystalCompliancesArrayPath READ getCrystalCompliancesArrayPath WRITE setCrystalCompliancesArrayPath)
+  Q_PROPERTY(DataArrayPath CrystalCompliancesArrayPath READ getCrystalCompliancesArrayPath WRITE setCrystalCompliancesArrayPath)
 
-    /**
-     * @brief getCompiledLibraryName Reimplemented from @see AbstractFilter class
-     */
-    QString getCompiledLibraryName() const override;
+  /**
+   * @brief getCompiledLibraryName Reimplemented from @see AbstractFilter class
+   */
+  QString getCompiledLibraryName() const override;
 
-    /**
-     * @brief getBrandingString Returns the branding string for the filter, which is a tag
-     * used to denote the filter's association with specific plugins
-     * @return Branding string
-    */
-    QString getBrandingString() const override;
+  /**
+   * @brief getBrandingString Returns the branding string for the filter, which is a tag
+   * used to denote the filter's association with specific plugins
+   * @return Branding string
+   */
+  QString getBrandingString() const override;
 
-    /**
-     * @brief getFilterVersion Returns a version string for this filter. Default
-     * value is an empty string.
-     * @return
-     */
-    QString getFilterVersion() const override;
+  /**
+   * @brief getFilterVersion Returns a version string for this filter. Default
+   * value is an empty string.
+   * @return
+   */
+  QString getFilterVersion() const override;
 
-    /**
-     * @brief newFilterInstance Reimplemented from @see AbstractFilter class
-     */
-    AbstractFilter::Pointer newFilterInstance(bool copyFilterParameters) const override;
+  /**
+   * @brief newFilterInstance Reimplemented from @see AbstractFilter class
+   */
+  AbstractFilter::Pointer newFilterInstance(bool copyFilterParameters) const override;
 
-    /**
-     * @brief getGroupName Reimplemented from @see AbstractFilter class
-     */
-    QString getGroupName() const override;
+  /**
+   * @brief getGroupName Reimplemented from @see AbstractFilter class
+   */
+  QString getGroupName() const override;
 
-    /**
-     * @brief getSubGroupName Reimplemented from @see AbstractFilter class
-     */
-    QString getSubGroupName() const override;
+  /**
+   * @brief getSubGroupName Reimplemented from @see AbstractFilter class
+   */
+  QString getSubGroupName() const override;
 
-    /**
-     * @brief getUuid Return the unique identifier for this filter.
-     * @return A QUuid object.
-     */
-    QUuid getUuid() const override;
+  /**
+   * @brief getUuid Return the unique identifier for this filter.
+   * @return A QUuid object.
+   */
+  QUuid getUuid() const override;
 
-    /**
-     * @brief getHumanLabel Reimplemented from @see AbstractFilter class
-     */
-    QString getHumanLabel() const override;
+  /**
+   * @brief getHumanLabel Reimplemented from @see AbstractFilter class
+   */
+  QString getHumanLabel() const override;
 
-    /**
-     * @brief setupFilterParameters Reimplemented from @see AbstractFilter class
-     */
-    void setupFilterParameters() override;
+  /**
+   * @brief setupFilterParameters Reimplemented from @see AbstractFilter class
+   */
+  void setupFilterParameters() override;
 
-    /**
-     * @brief readFilterParameters Reimplemented from @see AbstractFilter class
-     */
-    void readFilterParameters(AbstractFilterParametersReader* reader, int index) override;
+  /**
+   * @brief readFilterParameters Reimplemented from @see AbstractFilter class
+   */
+  void readFilterParameters(AbstractFilterParametersReader* reader, int index) override;
 
-    /**
-     * @brief execute Reimplemented from @see AbstractFilter class
-     */
-    void execute() override;
+  /**
+   * @brief execute Reimplemented from @see AbstractFilter class
+   */
+  void execute() override;
 
-  protected:
-    InputCrystalCompliances();
+protected:
+  InputCrystalCompliances();
 
-    /**
-     * @brief dataCheck Checks for the appropriate parameter values and availability of arrays
-     */
-    void dataCheck() override;
+  /**
+   * @brief dataCheck Checks for the appropriate parameter values and availability of arrays
+   */
+  void dataCheck() override;
 
-    /**
-     * @brief Initializes all the private instance variables.
-     */
-    void initialize();
+  /**
+   * @brief Initializes all the private instance variables.
+   */
+  void initialize();
 
-  private:
-    std::weak_ptr<DataArray<float>> m_CrystalCompliancesPtr;
-    float* m_CrystalCompliances = nullptr;
+private:
+  std::weak_ptr<DataArray<float>> m_CrystalCompliancesPtr;
+  float* m_CrystalCompliances = nullptr;
 
-    FloatVec21_t m_Compliances = {};
-    DataArrayPath m_CrystalCompliancesArrayPath = {};
+  FloatVec21_t m_Compliances = {};
+  DataArrayPath m_CrystalCompliancesArrayPath = {};
 
-  public:
-    InputCrystalCompliances(const InputCrystalCompliances&) = delete; // Copy Constructor Not Implemented
-    InputCrystalCompliances(InputCrystalCompliances&&) = delete;      // Move Constructor Not Implemented
-    InputCrystalCompliances& operator=(const InputCrystalCompliances&) = delete; // Copy Assignment Not Implemented
-    InputCrystalCompliances& operator=(InputCrystalCompliances&&) = delete;      // Move Assignment Not Implemented
+public:
+  InputCrystalCompliances(const InputCrystalCompliances&) = delete;            // Copy Constructor Not Implemented
+  InputCrystalCompliances(InputCrystalCompliances&&) = delete;                 // Move Constructor Not Implemented
+  InputCrystalCompliances& operator=(const InputCrystalCompliances&) = delete; // Copy Assignment Not Implemented
+  InputCrystalCompliances& operator=(InputCrystalCompliances&&) = delete;      // Move Assignment Not Implemented
 };
-

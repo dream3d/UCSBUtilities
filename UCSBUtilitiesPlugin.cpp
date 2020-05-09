@@ -35,17 +35,17 @@ UCSBUtilitiesPlugin::UCSBUtilitiesPlugin()
 , m_CompatibilityVersion(UCSBUtilities::Version::Package())
 , m_Vendor("University of California, Santa Barbara")
 , // Initialize UCSBUtilities's Vendor Name Here
-    m_URL("https://github.com/dream3d/UCSBUtilities")
+m_URL("https://github.com/dream3d/UCSBUtilities")
 , // Initialize Company URL Here
-    m_Location("")
+m_Location("")
 , // Initialize UCSBUtilities library Location Here
-    m_Description("")
+m_Description("")
 , // Initialize UCSBUtilities's Description Here
-    m_Copyright("")
+m_Copyright("")
 , // Initialize UCSBUtilities's Copyright Here
-    m_Filters(QList<QString>())
+m_Filters(QList<QString>())
 , // Initialize UCSBUtilities's List of Dependencies Here
-    m_DidLoad(false)
+m_DidLoad(false)
 {
 }
 

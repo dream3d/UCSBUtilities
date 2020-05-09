@@ -48,7 +48,6 @@ Symmetric6x6FilterParameter::Pointer Symmetric6x6FilterParameter::New(const QStr
   return ptr;
 }
 
-
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -60,7 +59,7 @@ QString Symmetric6x6FilterParameter::getWidgetType() const
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-void Symmetric6x6FilterParameter::readJson(const QJsonObject &json)
+void Symmetric6x6FilterParameter::readJson(const QJsonObject& json)
 {
   FloatVec21_t compliances;
   QJsonArray compliancesArray = json["Compliances"].toArray();
@@ -71,7 +70,7 @@ void Symmetric6x6FilterParameter::readJson(const QJsonObject &json)
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-void Symmetric6x6FilterParameter::writeJson(QJsonObject &json)
+void Symmetric6x6FilterParameter::writeJson(QJsonObject& json)
 {
   FloatVec21_t compliances = m_GetterCallback();
   QJsonArray compliancesArray;

@@ -15,7 +15,6 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-
 #include "CopyAttributeMatrix.h"
 
 #include <QtCore/QTextStream>
@@ -68,8 +67,8 @@ void CopyAttributeMatrix::setupFilterParameters()
 void CopyAttributeMatrix::readFilterParameters(AbstractFilterParametersReader* reader, int index)
 {
   reader->openFilterGroup(this, index);
-  setSelectedAttributeMatrixPath( reader->readDataArrayPath("SelectedAttributeMatrixPath", getSelectedAttributeMatrixPath()) );
-  setNewAttributeMatrix( reader->readString( "NewAttributeMatrix", getNewAttributeMatrix() ) );
+  setSelectedAttributeMatrixPath(reader->readDataArrayPath("SelectedAttributeMatrixPath", getSelectedAttributeMatrixPath()));
+  setNewAttributeMatrix(reader->readString("NewAttributeMatrix", getNewAttributeMatrix()));
   reader->closeFilterGroup();
 }
 
@@ -106,7 +105,6 @@ void CopyAttributeMatrix::dataCheck()
   p->setName(getNewAttributeMatrix());
   dc->addOrReplaceAttributeMatrix(p);
 }
-
 
 // -----------------------------------------------------------------------------
 //
@@ -157,7 +155,7 @@ QString CopyAttributeMatrix::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
-  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  vStream << UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
   return version;
 }
 
@@ -165,7 +163,9 @@ QString CopyAttributeMatrix::getFilterVersion() const
 //
 // -----------------------------------------------------------------------------
 QString CopyAttributeMatrix::getGroupName() const
-{ return SIMPL::FilterGroups::CoreFilters; }
+{
+  return SIMPL::FilterGroups::CoreFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
@@ -179,13 +179,17 @@ QUuid CopyAttributeMatrix::getUuid() const
 //
 // -----------------------------------------------------------------------------
 QString CopyAttributeMatrix::getSubGroupName() const
-{ return SIMPL::FilterSubGroups::MemoryManagementFilters; }
+{
+  return SIMPL::FilterSubGroups::MemoryManagementFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 QString CopyAttributeMatrix::getHumanLabel() const
-{ return "Copy Attribute Matrix"; }
+{
+  return "Copy Attribute Matrix";
+}
 
 // -----------------------------------------------------------------------------
 CopyAttributeMatrix::Pointer CopyAttributeMatrix::NullPointer()

@@ -97,4 +97,3 @@ private:
   Symmetric6x6Widget(const Symmetric6x6Widget&) = delete; // Copy Constructor Not Implemented
   void operator=(const Symmetric6x6Widget&) = delete;     // Move assignment Not Implemented
 };
-

@@ -70,101 +70,100 @@ enum createdPathID : RenameDataPath::DataID_t
  */
 class GenerateMisorientationColorsImpl
 {
-  public:
-    GenerateMisorientationColorsImpl(FloatVec3Type referenceAxis, float refAngle, float* quats, int32_t* phases, uint32_t* crystalStructures, bool* goodVoxels, uint8_t* notSupported, uint8_t* colors)
-    : m_ReferenceAxis(referenceAxis)
-    , m_ReferenceAngle(refAngle)
-    , m_Quats(quats)
-    , m_CellPhases(phases)
-    , m_CrystalStructures(crystalStructures)
-    , m_GoodVoxels(goodVoxels)
-    , m_NotSupported(notSupported)
-    , m_MisorientationColor(colors)
-    {}
-    virtual ~GenerateMisorientationColorsImpl() = default;
+public:
+  GenerateMisorientationColorsImpl(FloatVec3Type referenceAxis, float refAngle, float* quats, int32_t* phases, uint32_t* crystalStructures, bool* goodVoxels, uint8_t* notSupported, uint8_t* colors)
+  : m_ReferenceAxis(referenceAxis)
+  , m_ReferenceAngle(refAngle)
+  , m_Quats(quats)
+  , m_CellPhases(phases)
+  , m_CrystalStructures(crystalStructures)
+  , m_GoodVoxels(goodVoxels)
+  , m_NotSupported(notSupported)
+  , m_MisorientationColor(colors)
+  {
+  }
+  virtual ~GenerateMisorientationColorsImpl() = default;
 
-    void convert(size_t start, size_t end) const
+  void convert(size_t start, size_t end) const
+  {
+    QVector<LaueOps::Pointer> ops;
+    ops.push_back(HexagonalOpsMisoColor::New());
+
+    ops.push_back(CubicOpsMisoColor::New());
+
+    ops.push_back(HexagonalLowOpsMisoColor::New()); // Hex Low
+    ops.push_back(CubicLowOpsMisoColor::New());     // Cubic Low
+    ops.push_back(TriclinicOpsMisoColor::New());    // Triclinic
+    ops.push_back(MonoclinicOpsMisoColor::New());   // Monoclinic
+
+    ops.push_back(OrthoRhombicOpsMisoColor::New()); // OrthoRhombic
+
+    ops.push_back(TetragonalLowOpsMisoColor::New()); // Tetragonal-low
+    ops.push_back(TetragonalOpsMisoColor::New());    // Tetragonal-high
+
+    ops.push_back(TrigonalLowOpsMisoColor::New()); // Trigonal-low
+    ops.push_back(TrigonalOpsMisoColor::New());    // Trigonal-High
+
+    ops.push_back(OrthoRhombicOpsMisoColor::New()); // Axis OrthorhombicOps
+
+    Quaternion<double> refQuat = {m_ReferenceAxis[0] * sinf(m_ReferenceAngle), m_ReferenceAxis[1] * sinf(m_ReferenceAngle), m_ReferenceAxis[2] * sinf(m_ReferenceAngle), cosf(m_ReferenceAngle)};
+    Quaternion<double> cellQuat = {0.0f, 0.0f, 0.0f, 1.0f};
+    SIMPL::Rgb argb = 0x00000000;
+
+    bool missingGoodVoxels = false;
+    if(nullptr == m_GoodVoxels)
     {
-      QVector<LaueOps::Pointer> ops;
-      ops.push_back(HexagonalOpsMisoColor::New());
+      missingGoodVoxels = true;
+    }
+    int32_t phase = 0;
+    size_t index = 0;
+    for(size_t i = start; i < end; i++)
+    {
+      phase = m_CellPhases[i];
+      index = i * 3;
+      m_MisorientationColor[index] = 0;
+      m_MisorientationColor[index + 1] = 0;
+      m_MisorientationColor[index + 2] = 0;
+      cellQuat = Quaternion<double>(m_Quats[i * 4], m_Quats[i * 4 + 1], m_Quats[i * 4 + 2], m_Quats[i * 3]);
 
-      ops.push_back(CubicOpsMisoColor::New());
-
-      ops.push_back(HexagonalLowOpsMisoColor::New()); // Hex Low
-      ops.push_back(CubicLowOpsMisoColor::New()); // Cubic Low
-      ops.push_back(TriclinicOpsMisoColor::New()); // Triclinic
-      ops.push_back(MonoclinicOpsMisoColor::New()); // Monoclinic
-
-      ops.push_back(OrthoRhombicOpsMisoColor::New());// OrthoRhombic
-
-
-      ops.push_back(TetragonalLowOpsMisoColor::New()); // Tetragonal-low
-      ops.push_back(TetragonalOpsMisoColor::New());// Tetragonal-high
-
-      ops.push_back(TrigonalLowOpsMisoColor::New()); // Trigonal-low
-      ops.push_back(TrigonalOpsMisoColor::New());// Trigonal-High
-
-      ops.push_back(OrthoRhombicOpsMisoColor::New()); // Axis OrthorhombicOps
-
-      Quaternion<double> refQuat = {m_ReferenceAxis[0] * sinf(m_ReferenceAngle), m_ReferenceAxis[1] * sinf(m_ReferenceAngle), m_ReferenceAxis[2] * sinf(m_ReferenceAngle), cosf(m_ReferenceAngle)};
-      Quaternion<double> cellQuat = {0.0f, 0.0f, 0.0f, 1.0f};
-      SIMPL::Rgb argb = 0x00000000;
-
-      bool missingGoodVoxels = false;
-      if (nullptr == m_GoodVoxels)
+      if(m_CrystalStructures[phase] != EbsdLib::CrystalStructure::Cubic_High && m_CrystalStructures[phase] != EbsdLib::CrystalStructure::Hexagonal_High)
       {
-        missingGoodVoxels = true;
-      }
-      int32_t phase = 0;
-      size_t index = 0;
-      for (size_t i = start; i < end; i++)
-      {
-        phase = m_CellPhases[i];
-        index = i * 3;
+        uint32_t idx = m_CrystalStructures[phase];
+        if(idx == EbsdLib::CrystalStructure::UnknownCrystalStructure)
+        {
+          idx = 12;
+        }
+        m_NotSupported[idx] = 1;
         m_MisorientationColor[index] = 0;
         m_MisorientationColor[index + 1] = 0;
         m_MisorientationColor[index + 2] = 0;
-        cellQuat = Quaternion<double>(m_Quats[i * 4], m_Quats[i * 4 + 1], m_Quats[i * 4 + 2], m_Quats[i * 3]);
-
-        if(m_CrystalStructures[phase] != EbsdLib::CrystalStructure::Cubic_High && m_CrystalStructures[phase] != EbsdLib::CrystalStructure::Hexagonal_High)
-        {
-          uint32_t idx = m_CrystalStructures[phase];
-          if(idx == EbsdLib::CrystalStructure::UnknownCrystalStructure)
-          {
-            idx = 12;
-          }
-          m_NotSupported[idx] = 1;
-          m_MisorientationColor[index] = 0;
-          m_MisorientationColor[index + 1] = 0;
-          m_MisorientationColor[index + 2] = 0;
-
-        }
-        // Make sure we are using a valid Euler Angles with valid crystal symmetry
-        else if((missingGoodVoxels || m_GoodVoxels[i]) && m_CrystalStructures[phase] < EbsdLib::CrystalStructure::LaueGroupEnd)
-        {
-          argb = ops[m_CrystalStructures[phase]]->generateMisorientationColor(cellQuat, refQuat);
-          m_MisorientationColor[index] = RgbColor::dRed(argb);
-          m_MisorientationColor[index + 1] = RgbColor::dGreen(argb);
-          m_MisorientationColor[index + 2] = RgbColor::dBlue(argb);
-        }
+      }
+      // Make sure we are using a valid Euler Angles with valid crystal symmetry
+      else if((missingGoodVoxels || m_GoodVoxels[i]) && m_CrystalStructures[phase] < EbsdLib::CrystalStructure::LaueGroupEnd)
+      {
+        argb = ops[m_CrystalStructures[phase]]->generateMisorientationColor(cellQuat, refQuat);
+        m_MisorientationColor[index] = RgbColor::dRed(argb);
+        m_MisorientationColor[index + 1] = RgbColor::dGreen(argb);
+        m_MisorientationColor[index + 2] = RgbColor::dBlue(argb);
       }
     }
+  }
 
 #ifdef SIMPL_USE_PARALLEL_ALGORITHMS
-    void operator()(const tbb::blocked_range<size_t>& r) const
-    {
-      convert(r.begin(), r.end());
-    }
+  void operator()(const tbb::blocked_range<size_t>& r) const
+  {
+    convert(r.begin(), r.end());
+  }
 #endif
-  private:
-    FloatVec3Type m_ReferenceAxis;
-    float m_ReferenceAngle;
-    float* m_Quats;
-    int32_t* m_CellPhases;
-    uint32_t* m_CrystalStructures;
-    bool* m_GoodVoxels;
-    uint8_t* m_NotSupported;
-    uint8_t* m_MisorientationColor;
+private:
+  FloatVec3Type m_ReferenceAxis;
+  float m_ReferenceAngle;
+  float* m_Quats;
+  int32_t* m_CellPhases;
+  uint32_t* m_CrystalStructures;
+  bool* m_GoodVoxels;
+  uint8_t* m_NotSupported;
+  uint8_t* m_MisorientationColor;
 };
 
 // -----------------------------------------------------------------------------
@@ -183,7 +182,6 @@ GenerateMisorientationColors::GenerateMisorientationColors()
   m_ReferenceAxis[1] = 0.0f;
   m_ReferenceAxis[2] = 1.0f;
   m_ReferenceAngle = 0.0f;
-
 }
 
 // -----------------------------------------------------------------------------
@@ -221,7 +219,8 @@ void GenerateMisorientationColors::setupFilterParameters()
     parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Crystal Structures", CrystalStructuresArrayPath, FilterParameter::RequiredArray, GenerateMisorientationColors, req));
   }
   parameters.push_back(SeparatorFilterParameter::New("Element Data", FilterParameter::CreatedArray));
-  parameters.push_back(SIMPL_NEW_DA_WITH_LINKED_AM_FP("Misorientation Colors", MisorientationColorArrayName, CellPhasesArrayPath, CellPhasesArrayPath, FilterParameter::CreatedArray, GenerateMisorientationColors));
+  parameters.push_back(
+      SIMPL_NEW_DA_WITH_LINKED_AM_FP("Misorientation Colors", MisorientationColorArrayName, CellPhasesArrayPath, CellPhasesArrayPath, FilterParameter::CreatedArray, GenerateMisorientationColors));
   setFilterParameters(parameters);
 }
 
@@ -231,14 +230,14 @@ void GenerateMisorientationColors::setupFilterParameters()
 void GenerateMisorientationColors::readFilterParameters(AbstractFilterParametersReader* reader, int index)
 {
   reader->openFilterGroup(this, index);
-  setUseGoodVoxels(reader->readValue("UseGoodVoxels", getUseGoodVoxels() ) );
-  setMisorientationColorArrayName(reader->readString("MisorientationColorArrayName", getMisorientationColorArrayName() ) );
-  setGoodVoxelsArrayPath(reader->readDataArrayPath("GoodVoxelsArrayPath", getGoodVoxelsArrayPath() ) );
-  setCrystalStructuresArrayPath(reader->readDataArrayPath("CrystalStructuresArrayPath", getCrystalStructuresArrayPath() ) );
-  setQuatsArrayPath(reader->readDataArrayPath("QuatsArrayPath", getQuatsArrayPath() ) );
-  setCellPhasesArrayPath(reader->readDataArrayPath("CellPhasesArrayPath", getCellPhasesArrayPath() ) );
-  setReferenceAxis( reader->readFloatVec3("ReferenceAxis", getReferenceAxis() ) );
-  setReferenceAngle( reader->readValue("ReferenceAngle", getReferenceAngle() ) );
+  setUseGoodVoxels(reader->readValue("UseGoodVoxels", getUseGoodVoxels()));
+  setMisorientationColorArrayName(reader->readString("MisorientationColorArrayName", getMisorientationColorArrayName()));
+  setGoodVoxelsArrayPath(reader->readDataArrayPath("GoodVoxelsArrayPath", getGoodVoxelsArrayPath()));
+  setCrystalStructuresArrayPath(reader->readDataArrayPath("CrystalStructuresArrayPath", getCrystalStructuresArrayPath()));
+  setQuatsArrayPath(reader->readDataArrayPath("QuatsArrayPath", getQuatsArrayPath()));
+  setCellPhasesArrayPath(reader->readDataArrayPath("CellPhasesArrayPath", getCellPhasesArrayPath()));
+  setReferenceAxis(reader->readFloatVec3("ReferenceAxis", getReferenceAxis()));
+  setReferenceAngle(reader->readValue("ReferenceAngle", getReferenceAngle()));
   reader->closeFilterGroup();
 }
 
@@ -261,9 +260,12 @@ void GenerateMisorientationColors::dataCheck()
   QVector<DataArrayPath> dataArrayPaths;
 
   std::vector<size_t> cDims(1, 1);
-  m_CellPhasesPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<int32_t>>(this, getCellPhasesArrayPath(), cDims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
-  if(nullptr != m_CellPhasesPtr.lock())                     /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
-  { m_CellPhases = m_CellPhasesPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
+  m_CellPhasesPtr =
+      getDataContainerArray()->getPrereqArrayFromPath<DataArray<int32_t>>(this, getCellPhasesArrayPath(), cDims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
+  if(nullptr != m_CellPhasesPtr.lock())                                                                           /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  {
+    m_CellPhases = m_CellPhasesPtr.lock()->getPointer(0);
+  } /* Now assign the raw pointer to data from the DataArray<T> object */
   if(getErrorCode() >= 0)
   {
     dataArrayPaths.push_back(getCellPhasesArrayPath());
@@ -271,23 +273,30 @@ void GenerateMisorientationColors::dataCheck()
 
   cDims[0] = 4;
   m_QuatsPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<float>>(this, getQuatsArrayPath(), cDims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
-  if(nullptr != m_QuatsPtr.lock())                /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
-  { m_Quats = m_QuatsPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
+  if(nullptr != m_QuatsPtr.lock())                                                                                  /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  {
+    m_Quats = m_QuatsPtr.lock()->getPointer(0);
+  } /* Now assign the raw pointer to data from the DataArray<T> object */
   if(getErrorCode() >= 0)
   {
     dataArrayPaths.push_back(getQuatsArrayPath());
   }
 
   cDims[0] = 1;
-  m_CrystalStructuresPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<uint32_t>>(this, getCrystalStructuresArrayPath(), cDims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
-  if(nullptr != m_CrystalStructuresPtr.lock())                            /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
-  { m_CrystalStructures = m_CrystalStructuresPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
+  m_CrystalStructuresPtr =
+      getDataContainerArray()->getPrereqArrayFromPath<DataArray<uint32_t>>(this, getCrystalStructuresArrayPath(), cDims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
+  if(nullptr != m_CrystalStructuresPtr.lock()) /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  {
+    m_CrystalStructures = m_CrystalStructuresPtr.lock()->getPointer(0);
+  } /* Now assign the raw pointer to data from the DataArray<T> object */
 
   cDims[0] = 3;
-  tempPath.update(getCellPhasesArrayPath().getDataContainerName(), getCellPhasesArrayPath().getAttributeMatrixName(), getMisorientationColorArrayName() );
+  tempPath.update(getCellPhasesArrayPath().getDataContainerName(), getCellPhasesArrayPath().getAttributeMatrixName(), getMisorientationColorArrayName());
   m_MisorientationColorPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<uint8_t>>(this, tempPath, 0, cDims, "", DataArrayID31);
-  if(nullptr != m_MisorientationColorPtr.lock())                              /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
-  { m_MisorientationColor = m_MisorientationColorPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
+  if(nullptr != m_MisorientationColorPtr.lock()) /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  {
+    m_MisorientationColor = m_MisorientationColorPtr.lock()->getPointer(0);
+  } /* Now assign the raw pointer to data from the DataArray<T> object */
 
   // The good voxels array is optional, If it is available we are going to use it, otherwise we are going to create it
   cDims[0] = 1;
@@ -295,9 +304,12 @@ void GenerateMisorientationColors::dataCheck()
   {
     // The good voxels array is optional, If it is available we are going to use it, otherwise we are going to create it
     cDims[0] = 1;
-    m_GoodVoxelsPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<bool>>(this, getGoodVoxelsArrayPath(), cDims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
-    if(nullptr != m_GoodVoxelsPtr.lock())                     /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
-    { m_GoodVoxels = m_GoodVoxelsPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
+    m_GoodVoxelsPtr =
+        getDataContainerArray()->getPrereqArrayFromPath<DataArray<bool>>(this, getGoodVoxelsArrayPath(), cDims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
+    if(nullptr != m_GoodVoxelsPtr.lock())                                                                        /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+    {
+      m_GoodVoxels = m_GoodVoxelsPtr.lock()->getPointer(0);
+    } /* Now assign the raw pointer to data from the DataArray<T> object */
     if(getErrorCode() >= 0)
     {
       dataArrayPaths.push_back(getGoodVoxelsArrayPath());
@@ -310,7 +322,6 @@ void GenerateMisorientationColors::dataCheck()
 
   getDataContainerArray()->validateNumberOfTuples(this, dataArrayPaths);
 }
-
 
 // -----------------------------------------------------------------------------
 //
@@ -352,9 +363,9 @@ void GenerateMisorientationColors::execute()
   std::vector<LaueOps::Pointer> ops = LaueOps::GetAllOrientationOps();
 
   // Check and warn about unsupported crystal symmetries in the computation which will show as black
-  for (size_t i = 0; i < notSupported->getNumberOfTuples() - 1; i++)
+  for(size_t i = 0; i < notSupported->getNumberOfTuples() - 1; i++)
   {
-    if (notSupported->getValue(i) == 1)
+    if(notSupported->getValue(i) == 1)
     {
       QString msg("The symmetry of ");
       msg.append(ops[i]->getSymmetryName()).append(" is not currently supported for misorientation coloring. Elements with this symmetry have been set to black");
@@ -363,9 +374,10 @@ void GenerateMisorientationColors::execute()
   }
 
   // Check for bad voxels which will show up as black also.
-  if (notSupported->getValue(12) == 1)
+  if(notSupported->getValue(12) == 1)
   {
-    QString msg("There were elements with an unknown crystal symmetry due most likely being marked as 'a 'bad'. These elements have been colored black BUT black is a valid color for misorientation coloring. Please understand this when visualizing your data");
+    QString msg("There were elements with an unknown crystal symmetry due most likely being marked as 'a 'bad'. These elements have been colored black BUT black is a valid color for misorientation "
+                "coloring. Please understand this when visualizing your data");
     setWarningCondition(-5001, msg);
   }
 }
@@ -406,14 +418,16 @@ QString GenerateMisorientationColors::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
-  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  vStream << UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
   return version;
 }
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 QString GenerateMisorientationColors::getGroupName() const
-{ return SIMPL::FilterGroups::ProcessingFilters; }
+{
+  return SIMPL::FilterGroups::ProcessingFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
@@ -427,13 +441,17 @@ QUuid GenerateMisorientationColors::getUuid() const
 //
 // -----------------------------------------------------------------------------
 QString GenerateMisorientationColors::getSubGroupName() const
-{ return SIMPL::FilterSubGroups::CrystallographyFilters; }
+{
+  return SIMPL::FilterSubGroups::CrystallographyFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 QString GenerateMisorientationColors::getHumanLabel() const
-{ return "Generate Misorientation Colors"; }
+{
+  return "Generate Misorientation Colors";
+}
 
 // -----------------------------------------------------------------------------
 GenerateMisorientationColors::Pointer GenerateMisorientationColors::NullPointer()

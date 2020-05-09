@@ -26,48 +26,44 @@
 
 class CubicLowOpsMisoColor : public CubicLowOps
 {
-  public:
-    using Self = CubicLowOpsMisoColor;
-    using Pointer = std::shared_ptr<Self>;
-    using ConstPointer = std::shared_ptr<const Self>;
-    using WeakPointer = std::weak_ptr<Self>;
-    using ConstWeakPointer = std::weak_ptr<const Self>;
-    static Pointer NullPointer();
+public:
+  using Self = CubicLowOpsMisoColor;
+  using Pointer = std::shared_ptr<Self>;
+  using ConstPointer = std::shared_ptr<const Self>;
+  using WeakPointer = std::weak_ptr<Self>;
+  using ConstWeakPointer = std::weak_ptr<const Self>;
+  static Pointer NullPointer();
 
-    /**
-     * @brief Returns the name of the class for CubicLowOpsMisoColor
-     */
-    QString getNameOfClass() const override;
-    /**
-     * @brief Returns the name of the class for CubicLowOpsMisoColor
-     */
-    static QString ClassName();
+  /**
+   * @brief Returns the name of the class for CubicLowOpsMisoColor
+   */
+  QString getNameOfClass() const override;
+  /**
+   * @brief Returns the name of the class for CubicLowOpsMisoColor
+   */
+  static QString ClassName();
 
-    static Pointer New();
+  static Pointer New();
 
-    CubicLowOpsMisoColor();
-    ~CubicLowOpsMisoColor() override;
+  CubicLowOpsMisoColor();
+  ~CubicLowOpsMisoColor() override;
 
-    /**
-     * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
-     * @param q Quaternion representing the direction
-     * @param refDir The sample reference direction
-     * @return Returns the ARGB Quadruplet SIMPL::Rgb
-     */
-    SIMPL::Rgb generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const override;
+  /**
+   * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
+   * @param q Quaternion representing the direction
+   * @param refDir The sample reference direction
+   * @return Returns the ARGB Quadruplet SIMPL::Rgb
+   */
+  SIMPL::Rgb generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const override;
 
-  protected:
-    float _calcMisoQuat(const QuatF quatsym[24], int numsym,
-                        QuatF& q1, QuatF& q2,
-                        float& n1, float& n2, float& n3) const;
+protected:
+  float _calcMisoQuat(const QuatF quatsym[24], int numsym, QuatF& q1, QuatF& q2, float& n1, float& n2, float& n3) const;
 
-  public:
-    CubicLowOpsMisoColor(const CubicLowOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    CubicLowOpsMisoColor(CubicLowOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
-    CubicLowOpsMisoColor& operator=(const CubicLowOpsMisoColor&) = delete; // Copy Assignment Not Implemented
-    CubicLowOpsMisoColor& operator=(CubicLowOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
+public:
+  CubicLowOpsMisoColor(const CubicLowOpsMisoColor&) = delete;            // Copy Constructor Not Implemented
+  CubicLowOpsMisoColor(CubicLowOpsMisoColor&&) = delete;                 // Move Constructor Not Implemented
+  CubicLowOpsMisoColor& operator=(const CubicLowOpsMisoColor&) = delete; // Copy Assignment Not Implemented
+  CubicLowOpsMisoColor& operator=(CubicLowOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
 
-  private:
+private:
 };
-
-

@@ -48,8 +48,8 @@ typedef struct
   float v56;
   float v66;
 
-  void writeJson(QJsonArray &json)
-  { 
+  void writeJson(QJsonArray& json)
+  {
     json.push_back(v11);
     json.push_back(v12);
     json.push_back(v13);
@@ -73,9 +73,9 @@ typedef struct
     json.push_back(v66);
   }
 
-  bool readJson(QJsonArray &json)
+  bool readJson(QJsonArray& json)
   {
-    if (json.size() == 21)
+    if(json.size() == 21)
     {
       v11 = static_cast<float>(json[0].toDouble());
       v12 = static_cast<float>(json[1].toDouble());
@@ -140,48 +140,47 @@ public:
    * this FilterParameter subclass
    * @return
    */
-    QString getWidgetType() const override;
+  QString getWidgetType() const override;
 
-    /**
-     * @brief readJson
-     * @return
-     */
-    void readJson(const QJsonObject& json);
+  /**
+   * @brief readJson
+   * @return
+   */
+  void readJson(const QJsonObject& json);
 
-    /**
-     * @brief writeJson
-     * @return
-     */
-    void writeJson(QJsonObject& json) override;
+  /**
+   * @brief writeJson
+   * @return
+   */
+  void writeJson(QJsonObject& json) override;
 
-    /**
-     * @brief Setter property for SetterCallback
-     */
-    void setSetterCallback(const Symmetric6x6FilterParameter::SetterCallbackType& value);
-    /**
-     * @brief Getter property for SetterCallback
-     * @return Value of SetterCallback
-     */
-    Symmetric6x6FilterParameter::SetterCallbackType getSetterCallback() const;
+  /**
+   * @brief Setter property for SetterCallback
+   */
+  void setSetterCallback(const Symmetric6x6FilterParameter::SetterCallbackType& value);
+  /**
+   * @brief Getter property for SetterCallback
+   * @return Value of SetterCallback
+   */
+  Symmetric6x6FilterParameter::SetterCallbackType getSetterCallback() const;
 
-    /**
-     * @brief Setter property for GetterCallback
-     */
-    void setGetterCallback(const Symmetric6x6FilterParameter::GetterCallbackType& value);
-    /**
-     * @brief Getter property for GetterCallback
-     * @return Value of GetterCallback
-     */
-    Symmetric6x6FilterParameter::GetterCallbackType getGetterCallback() const;
+  /**
+   * @brief Setter property for GetterCallback
+   */
+  void setGetterCallback(const Symmetric6x6FilterParameter::GetterCallbackType& value);
+  /**
+   * @brief Getter property for GetterCallback
+   * @return Value of GetterCallback
+   */
+  Symmetric6x6FilterParameter::GetterCallbackType getGetterCallback() const;
 
-  protected:
-    Symmetric6x6FilterParameter();
+protected:
+  Symmetric6x6FilterParameter();
 
-  private:
-    Symmetric6x6FilterParameter::SetterCallbackType m_SetterCallback = {};
-    Symmetric6x6FilterParameter::GetterCallbackType m_GetterCallback = {};
+private:
+  Symmetric6x6FilterParameter::SetterCallbackType m_SetterCallback = {};
+  Symmetric6x6FilterParameter::GetterCallbackType m_GetterCallback = {};
 
-    Symmetric6x6FilterParameter(const Symmetric6x6FilterParameter&) = delete; // Copy Constructor Not Implemented
-    void operator=(const Symmetric6x6FilterParameter&) = delete;              // Move assignment Not Implemented
+  Symmetric6x6FilterParameter(const Symmetric6x6FilterParameter&) = delete; // Copy Constructor Not Implemented
+  void operator=(const Symmetric6x6FilterParameter&) = delete;              // Move assignment Not Implemented
 };
-

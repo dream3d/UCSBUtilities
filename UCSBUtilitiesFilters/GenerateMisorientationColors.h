@@ -31,240 +31,238 @@
  */
 class UCSBUtilities_EXPORT GenerateMisorientationColors : public AbstractFilter
 {
-    Q_OBJECT
+  Q_OBJECT
 
-    // Start Python bindings declarations
-    PYB11_BEGIN_BINDINGS(GenerateMisorientationColors SUPERCLASS AbstractFilter)
-    PYB11_FILTER()
-    PYB11_SHARED_POINTERS(GenerateMisorientationColors)
-    PYB11_FILTER_NEW_MACRO(GenerateMisorientationColors)
-    PYB11_PROPERTY(FloatVec3Type ReferenceAxis READ getReferenceAxis WRITE setReferenceAxis)
-    PYB11_PROPERTY(float ReferenceAngle READ getReferenceAngle WRITE setReferenceAngle)
-    PYB11_PROPERTY(DataArrayPath CellPhasesArrayPath READ getCellPhasesArrayPath WRITE setCellPhasesArrayPath)
-    PYB11_PROPERTY(DataArrayPath QuatsArrayPath READ getQuatsArrayPath WRITE setQuatsArrayPath)
-    PYB11_PROPERTY(DataArrayPath CrystalStructuresArrayPath READ getCrystalStructuresArrayPath WRITE setCrystalStructuresArrayPath)
-    PYB11_PROPERTY(DataArrayPath GoodVoxelsArrayPath READ getGoodVoxelsArrayPath WRITE setGoodVoxelsArrayPath)
-    PYB11_PROPERTY(QString MisorientationColorArrayName READ getMisorientationColorArrayName WRITE setMisorientationColorArrayName)
-    PYB11_PROPERTY(bool UseGoodVoxels READ getUseGoodVoxels WRITE setUseGoodVoxels)
-    PYB11_END_BINDINGS()
-    // End Python bindings declarations
+  // Start Python bindings declarations
+  PYB11_BEGIN_BINDINGS(GenerateMisorientationColors SUPERCLASS AbstractFilter)
+  PYB11_FILTER()
+  PYB11_SHARED_POINTERS(GenerateMisorientationColors)
+  PYB11_FILTER_NEW_MACRO(GenerateMisorientationColors)
+  PYB11_PROPERTY(FloatVec3Type ReferenceAxis READ getReferenceAxis WRITE setReferenceAxis)
+  PYB11_PROPERTY(float ReferenceAngle READ getReferenceAngle WRITE setReferenceAngle)
+  PYB11_PROPERTY(DataArrayPath CellPhasesArrayPath READ getCellPhasesArrayPath WRITE setCellPhasesArrayPath)
+  PYB11_PROPERTY(DataArrayPath QuatsArrayPath READ getQuatsArrayPath WRITE setQuatsArrayPath)
+  PYB11_PROPERTY(DataArrayPath CrystalStructuresArrayPath READ getCrystalStructuresArrayPath WRITE setCrystalStructuresArrayPath)
+  PYB11_PROPERTY(DataArrayPath GoodVoxelsArrayPath READ getGoodVoxelsArrayPath WRITE setGoodVoxelsArrayPath)
+  PYB11_PROPERTY(QString MisorientationColorArrayName READ getMisorientationColorArrayName WRITE setMisorientationColorArrayName)
+  PYB11_PROPERTY(bool UseGoodVoxels READ getUseGoodVoxels WRITE setUseGoodVoxels)
+  PYB11_END_BINDINGS()
+  // End Python bindings declarations
 
-  public:
-    using Self = GenerateMisorientationColors;
-    using Pointer = std::shared_ptr<Self>;
-    using ConstPointer = std::shared_ptr<const Self>;
-    using WeakPointer = std::weak_ptr<Self>;
-    using ConstWeakPointer = std::weak_ptr<const Self>;
-    static Pointer NullPointer();
+public:
+  using Self = GenerateMisorientationColors;
+  using Pointer = std::shared_ptr<Self>;
+  using ConstPointer = std::shared_ptr<const Self>;
+  using WeakPointer = std::weak_ptr<Self>;
+  using ConstWeakPointer = std::weak_ptr<const Self>;
+  static Pointer NullPointer();
 
-    static std::shared_ptr<GenerateMisorientationColors> New();
+  static std::shared_ptr<GenerateMisorientationColors> New();
 
-    /**
-     * @brief Returns the name of the class for GenerateMisorientationColors
-     */
-    QString getNameOfClass() const override;
-    /**
-     * @brief Returns the name of the class for GenerateMisorientationColors
-     */
-    static QString ClassName();
+  /**
+   * @brief Returns the name of the class for GenerateMisorientationColors
+   */
+  QString getNameOfClass() const override;
+  /**
+   * @brief Returns the name of the class for GenerateMisorientationColors
+   */
+  static QString ClassName();
 
-    ~GenerateMisorientationColors() override;
+  ~GenerateMisorientationColors() override;
 
-    /**
-     * @brief Setter property for ReferenceAxis
-     */
-    void setReferenceAxis(const FloatVec3Type& value);
-    /**
-     * @brief Getter property for ReferenceAxis
-     * @return Value of ReferenceAxis
-     */
-    FloatVec3Type getReferenceAxis() const;
+  /**
+   * @brief Setter property for ReferenceAxis
+   */
+  void setReferenceAxis(const FloatVec3Type& value);
+  /**
+   * @brief Getter property for ReferenceAxis
+   * @return Value of ReferenceAxis
+   */
+  FloatVec3Type getReferenceAxis() const;
 
-    Q_PROPERTY(FloatVec3Type ReferenceAxis READ getReferenceAxis WRITE setReferenceAxis)
+  Q_PROPERTY(FloatVec3Type ReferenceAxis READ getReferenceAxis WRITE setReferenceAxis)
 
-    /**
-     * @brief Setter property for ReferenceAngle
-     */
-    void setReferenceAngle(float value);
-    /**
-     * @brief Getter property for ReferenceAngle
-     * @return Value of ReferenceAngle
-     */
-    float getReferenceAngle() const;
+  /**
+   * @brief Setter property for ReferenceAngle
+   */
+  void setReferenceAngle(float value);
+  /**
+   * @brief Getter property for ReferenceAngle
+   * @return Value of ReferenceAngle
+   */
+  float getReferenceAngle() const;
 
-    Q_PROPERTY(float ReferenceAngle READ getReferenceAngle WRITE setReferenceAngle)
+  Q_PROPERTY(float ReferenceAngle READ getReferenceAngle WRITE setReferenceAngle)
 
-    /**
-     * @brief Setter property for CellPhasesArrayPath
-     */
-    void setCellPhasesArrayPath(const DataArrayPath& value);
-    /**
-     * @brief Getter property for CellPhasesArrayPath
-     * @return Value of CellPhasesArrayPath
-     */
-    DataArrayPath getCellPhasesArrayPath() const;
+  /**
+   * @brief Setter property for CellPhasesArrayPath
+   */
+  void setCellPhasesArrayPath(const DataArrayPath& value);
+  /**
+   * @brief Getter property for CellPhasesArrayPath
+   * @return Value of CellPhasesArrayPath
+   */
+  DataArrayPath getCellPhasesArrayPath() const;
 
-    Q_PROPERTY(DataArrayPath CellPhasesArrayPath READ getCellPhasesArrayPath WRITE setCellPhasesArrayPath)
+  Q_PROPERTY(DataArrayPath CellPhasesArrayPath READ getCellPhasesArrayPath WRITE setCellPhasesArrayPath)
 
-    /**
-     * @brief Setter property for QuatsArrayPath
-     */
-    void setQuatsArrayPath(const DataArrayPath& value);
-    /**
-     * @brief Getter property for QuatsArrayPath
-     * @return Value of QuatsArrayPath
-     */
-    DataArrayPath getQuatsArrayPath() const;
+  /**
+   * @brief Setter property for QuatsArrayPath
+   */
+  void setQuatsArrayPath(const DataArrayPath& value);
+  /**
+   * @brief Getter property for QuatsArrayPath
+   * @return Value of QuatsArrayPath
+   */
+  DataArrayPath getQuatsArrayPath() const;
 
-    Q_PROPERTY(DataArrayPath QuatsArrayPath READ getQuatsArrayPath WRITE setQuatsArrayPath)
+  Q_PROPERTY(DataArrayPath QuatsArrayPath READ getQuatsArrayPath WRITE setQuatsArrayPath)
 
-    /**
-     * @brief Setter property for CrystalStructuresArrayPath
-     */
-    void setCrystalStructuresArrayPath(const DataArrayPath& value);
-    /**
-     * @brief Getter property for CrystalStructuresArrayPath
-     * @return Value of CrystalStructuresArrayPath
-     */
-    DataArrayPath getCrystalStructuresArrayPath() const;
+  /**
+   * @brief Setter property for CrystalStructuresArrayPath
+   */
+  void setCrystalStructuresArrayPath(const DataArrayPath& value);
+  /**
+   * @brief Getter property for CrystalStructuresArrayPath
+   * @return Value of CrystalStructuresArrayPath
+   */
+  DataArrayPath getCrystalStructuresArrayPath() const;
 
-    Q_PROPERTY(DataArrayPath CrystalStructuresArrayPath READ getCrystalStructuresArrayPath WRITE setCrystalStructuresArrayPath)
+  Q_PROPERTY(DataArrayPath CrystalStructuresArrayPath READ getCrystalStructuresArrayPath WRITE setCrystalStructuresArrayPath)
 
-    /**
-     * @brief Setter property for GoodVoxelsArrayPath
-     */
-    void setGoodVoxelsArrayPath(const DataArrayPath& value);
-    /**
-     * @brief Getter property for GoodVoxelsArrayPath
-     * @return Value of GoodVoxelsArrayPath
-     */
-    DataArrayPath getGoodVoxelsArrayPath() const;
+  /**
+   * @brief Setter property for GoodVoxelsArrayPath
+   */
+  void setGoodVoxelsArrayPath(const DataArrayPath& value);
+  /**
+   * @brief Getter property for GoodVoxelsArrayPath
+   * @return Value of GoodVoxelsArrayPath
+   */
+  DataArrayPath getGoodVoxelsArrayPath() const;
 
-    Q_PROPERTY(DataArrayPath GoodVoxelsArrayPath READ getGoodVoxelsArrayPath WRITE setGoodVoxelsArrayPath)
+  Q_PROPERTY(DataArrayPath GoodVoxelsArrayPath READ getGoodVoxelsArrayPath WRITE setGoodVoxelsArrayPath)
 
-    /**
-     * @brief Setter property for MisorientationColorArrayName
-     */
-    void setMisorientationColorArrayName(const QString& value);
-    /**
-     * @brief Getter property for MisorientationColorArrayName
-     * @return Value of MisorientationColorArrayName
-     */
-    QString getMisorientationColorArrayName() const;
+  /**
+   * @brief Setter property for MisorientationColorArrayName
+   */
+  void setMisorientationColorArrayName(const QString& value);
+  /**
+   * @brief Getter property for MisorientationColorArrayName
+   * @return Value of MisorientationColorArrayName
+   */
+  QString getMisorientationColorArrayName() const;
 
-    Q_PROPERTY(QString MisorientationColorArrayName READ getMisorientationColorArrayName WRITE setMisorientationColorArrayName)
+  Q_PROPERTY(QString MisorientationColorArrayName READ getMisorientationColorArrayName WRITE setMisorientationColorArrayName)
 
-    /**
-     * @brief Setter property for UseGoodVoxels
-     */
-    void setUseGoodVoxels(bool value);
-    /**
-     * @brief Getter property for UseGoodVoxels
-     * @return Value of UseGoodVoxels
-     */
-    bool getUseGoodVoxels() const;
+  /**
+   * @brief Setter property for UseGoodVoxels
+   */
+  void setUseGoodVoxels(bool value);
+  /**
+   * @brief Getter property for UseGoodVoxels
+   * @return Value of UseGoodVoxels
+   */
+  bool getUseGoodVoxels() const;
 
-    Q_PROPERTY(bool UseGoodVoxels READ getUseGoodVoxels WRITE setUseGoodVoxels)
+  Q_PROPERTY(bool UseGoodVoxels READ getUseGoodVoxels WRITE setUseGoodVoxels)
 
-    /**
-     * @brief getCompiledLibraryName Reimplemented from @see AbstractFilter class
-     */
-    QString getCompiledLibraryName() const override;
+  /**
+   * @brief getCompiledLibraryName Reimplemented from @see AbstractFilter class
+   */
+  QString getCompiledLibraryName() const override;
 
-    /**
-     * @brief getBrandingString Returns the branding string for the filter, which is a tag
-     * used to denote the filter's association with specific plugins
-     * @return Branding string
-    */
-    QString getBrandingString() const override;
+  /**
+   * @brief getBrandingString Returns the branding string for the filter, which is a tag
+   * used to denote the filter's association with specific plugins
+   * @return Branding string
+   */
+  QString getBrandingString() const override;
 
-    /**
-     * @brief getFilterVersion Returns a version string for this filter. Default
-     * value is an empty string.
-     * @return
-     */
-    QString getFilterVersion() const override;
+  /**
+   * @brief getFilterVersion Returns a version string for this filter. Default
+   * value is an empty string.
+   * @return
+   */
+  QString getFilterVersion() const override;
 
-    /**
-     * @brief newFilterInstance Reimplemented from @see AbstractFilter class
-     */
-    AbstractFilter::Pointer newFilterInstance(bool copyFilterParameters) const override;
+  /**
+   * @brief newFilterInstance Reimplemented from @see AbstractFilter class
+   */
+  AbstractFilter::Pointer newFilterInstance(bool copyFilterParameters) const override;
 
-    /**
-     * @brief getGroupName Reimplemented from @see AbstractFilter class
-     */
-    QString getGroupName() const override;
+  /**
+   * @brief getGroupName Reimplemented from @see AbstractFilter class
+   */
+  QString getGroupName() const override;
 
-    /**
-     * @brief getSubGroupName Reimplemented from @see AbstractFilter class
-     */
-    QString getSubGroupName() const override;
+  /**
+   * @brief getSubGroupName Reimplemented from @see AbstractFilter class
+   */
+  QString getSubGroupName() const override;
 
-    /**
-     * @brief getUuid Return the unique identifier for this filter.
-     * @return A QUuid object.
-     */
-    QUuid getUuid() const override;
+  /**
+   * @brief getUuid Return the unique identifier for this filter.
+   * @return A QUuid object.
+   */
+  QUuid getUuid() const override;
 
-    /**
-     * @brief getHumanLabel Reimplemented from @see AbstractFilter class
-     */
-    QString getHumanLabel() const override;
+  /**
+   * @brief getHumanLabel Reimplemented from @see AbstractFilter class
+   */
+  QString getHumanLabel() const override;
 
-    /**
-     * @brief setupFilterParameters Reimplemented from @see AbstractFilter class
-     */
-    void setupFilterParameters() override;
+  /**
+   * @brief setupFilterParameters Reimplemented from @see AbstractFilter class
+   */
+  void setupFilterParameters() override;
 
-    /**
-     * @brief readFilterParameters Reimplemented from @see AbstractFilter class
-     */
-    void readFilterParameters(AbstractFilterParametersReader* reader, int index) override;
+  /**
+   * @brief readFilterParameters Reimplemented from @see AbstractFilter class
+   */
+  void readFilterParameters(AbstractFilterParametersReader* reader, int index) override;
 
-    /**
-     * @brief execute Reimplemented from @see AbstractFilter class
-     */
-    void execute() override;
+  /**
+   * @brief execute Reimplemented from @see AbstractFilter class
+   */
+  void execute() override;
 
-  protected:
-    GenerateMisorientationColors();
+protected:
+  GenerateMisorientationColors();
 
-    /**
-     * @brief dataCheck Checks for the appropriate parameter values and availability of arrays
-     */
-    void dataCheck() override;
+  /**
+   * @brief dataCheck Checks for the appropriate parameter values and availability of arrays
+   */
+  void dataCheck() override;
 
-    /**
-     * @brief Initializes all the private instance variables.
-     */
-    void initialize();
+  /**
+   * @brief Initializes all the private instance variables.
+   */
+  void initialize();
 
+private:
+  std::weak_ptr<DataArray<int32_t>> m_CellPhasesPtr;
+  int32_t* m_CellPhases = nullptr;
+  std::weak_ptr<DataArray<float>> m_QuatsPtr;
+  float* m_Quats = nullptr;
+  std::weak_ptr<DataArray<uint32_t>> m_CrystalStructuresPtr;
+  uint32_t* m_CrystalStructures = nullptr;
+  std::weak_ptr<DataArray<bool>> m_GoodVoxelsPtr;
+  bool* m_GoodVoxels = nullptr;
+  std::weak_ptr<DataArray<uint8_t>> m_MisorientationColorPtr;
+  uint8_t* m_MisorientationColor = nullptr;
 
-  private:
-    std::weak_ptr<DataArray<int32_t>> m_CellPhasesPtr;
-    int32_t* m_CellPhases = nullptr;
-    std::weak_ptr<DataArray<float>> m_QuatsPtr;
-    float* m_Quats = nullptr;
-    std::weak_ptr<DataArray<uint32_t>> m_CrystalStructuresPtr;
-    uint32_t* m_CrystalStructures = nullptr;
-    std::weak_ptr<DataArray<bool>> m_GoodVoxelsPtr;
-    bool* m_GoodVoxels = nullptr;
-    std::weak_ptr<DataArray<uint8_t>> m_MisorientationColorPtr;
-    uint8_t* m_MisorientationColor = nullptr;
+  FloatVec3Type m_ReferenceAxis = {};
+  float m_ReferenceAngle = {};
+  DataArrayPath m_CellPhasesArrayPath = {};
+  DataArrayPath m_QuatsArrayPath = {};
+  DataArrayPath m_CrystalStructuresArrayPath = {};
+  DataArrayPath m_GoodVoxelsArrayPath = {};
+  QString m_MisorientationColorArrayName = {};
+  bool m_UseGoodVoxels = {};
 
-    FloatVec3Type m_ReferenceAxis = {};
-    float m_ReferenceAngle = {};
-    DataArrayPath m_CellPhasesArrayPath = {};
-    DataArrayPath m_QuatsArrayPath = {};
-    DataArrayPath m_CrystalStructuresArrayPath = {};
-    DataArrayPath m_GoodVoxelsArrayPath = {};
-    QString m_MisorientationColorArrayName = {};
-    bool m_UseGoodVoxels = {};
-
-  public:
-    GenerateMisorientationColors(const GenerateMisorientationColors&) = delete; // Copy Constructor Not Implemented
-    GenerateMisorientationColors(GenerateMisorientationColors&&) = delete;      // Move Constructor Not Implemented
-    GenerateMisorientationColors& operator=(const GenerateMisorientationColors&) = delete; // Copy Assignment Not Implemented
-    GenerateMisorientationColors& operator=(GenerateMisorientationColors&&) = delete;      // Move Assignment Not Implemented
+public:
+  GenerateMisorientationColors(const GenerateMisorientationColors&) = delete;            // Copy Constructor Not Implemented
+  GenerateMisorientationColors(GenerateMisorientationColors&&) = delete;                 // Move Constructor Not Implemented
+  GenerateMisorientationColors& operator=(const GenerateMisorientationColors&) = delete; // Copy Assignment Not Implemented
+  GenerateMisorientationColors& operator=(GenerateMisorientationColors&&) = delete;      // Move Assignment Not Implemented
 };
-

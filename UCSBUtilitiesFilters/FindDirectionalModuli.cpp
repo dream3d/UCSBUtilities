@@ -15,7 +15,6 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-
 #include "FindDirectionalModuli.h"
 
 #include <QtCore/QTextStream>
@@ -96,7 +95,8 @@ void FindDirectionalModuli::setupFilterParameters()
     parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Single Crystal Compliances", CrystalCompliancesArrayPath, FilterParameter::RequiredArray, FindDirectionalModuli, req));
   }
 
-  parameters.push_back(SIMPL_NEW_DA_WITH_LINKED_AM_FP("DirectionalModuli", DirectionalModuliArrayName, FeaturePhasesArrayPath, FeaturePhasesArrayPath, FilterParameter::CreatedArray, FindDirectionalModuli));
+  parameters.push_back(
+      SIMPL_NEW_DA_WITH_LINKED_AM_FP("DirectionalModuli", DirectionalModuliArrayName, FeaturePhasesArrayPath, FeaturePhasesArrayPath, FilterParameter::CreatedArray, FindDirectionalModuli));
 
   setFilterParameters(parameters);
 }
@@ -107,12 +107,12 @@ void FindDirectionalModuli::setupFilterParameters()
 void FindDirectionalModuli::readFilterParameters(AbstractFilterParametersReader* reader, int index)
 {
   reader->openFilterGroup(this, index);
-  setLoadingDirection( reader->readFloatVec3("LoadingDirection", getLoadingDirection() ) );
-  setFeaturePhasesArrayPath(reader->readDataArrayPath("FeaturePhasesArrayPath", getFeaturePhasesArrayPath() ) );
-  setAvgQuatsArrayPath(reader->readDataArrayPath("AvgQuatsArrayPath", getAvgQuatsArrayPath() ) );
-  setCrystalStructuresArrayPath(reader->readDataArrayPath("CrystalStructuresArrayPath", getCrystalStructuresArrayPath() ) );
-  setCrystalCompliancesArrayPath(reader->readDataArrayPath("CrystalCompliancesArrayPath", getCrystalCompliancesArrayPath() ) );
-  setDirectionalModuliArrayName(reader->readString("DirectionalModuliArrayName", getDirectionalModuliArrayName() ) );
+  setLoadingDirection(reader->readFloatVec3("LoadingDirection", getLoadingDirection()));
+  setFeaturePhasesArrayPath(reader->readDataArrayPath("FeaturePhasesArrayPath", getFeaturePhasesArrayPath()));
+  setAvgQuatsArrayPath(reader->readDataArrayPath("AvgQuatsArrayPath", getAvgQuatsArrayPath()));
+  setCrystalStructuresArrayPath(reader->readDataArrayPath("CrystalStructuresArrayPath", getCrystalStructuresArrayPath()));
+  setCrystalCompliancesArrayPath(reader->readDataArrayPath("CrystalCompliancesArrayPath", getCrystalCompliancesArrayPath()));
+  setDirectionalModuliArrayName(reader->readString("DirectionalModuliArrayName", getDirectionalModuliArrayName()));
   reader->closeFilterGroup();
 }
 
@@ -132,61 +132,70 @@ void FindDirectionalModuli::dataCheck()
   clearErrorCode();
   clearWarningCode();
 
-  //create moduli
+  // create moduli
   std::vector<size_t> dims(1, 1);
-  tempPath.update(getFeaturePhasesArrayPath().getDataContainerName(), getFeaturePhasesArrayPath().getAttributeMatrixName(), getDirectionalModuliArrayName() );
+  tempPath.update(getFeaturePhasesArrayPath().getDataContainerName(), getFeaturePhasesArrayPath().getAttributeMatrixName(), getDirectionalModuliArrayName());
   m_DirectionalModuliPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>>(this, tempPath, 0, dims, "", DataArrayID31);
   if(nullptr != m_DirectionalModuliPtr.lock())
-  { m_DirectionalModuli = m_DirectionalModuliPtr.lock()->getPointer(0); }
+  {
+    m_DirectionalModuli = m_DirectionalModuliPtr.lock()->getPointer(0);
+  }
 
-  //check feature phases
+  // check feature phases
   m_FeaturePhasesPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<int32_t>>(this, getFeaturePhasesArrayPath(), dims);
   if(nullptr != m_FeaturePhasesPtr.lock())
-  { m_FeaturePhases = m_FeaturePhasesPtr.lock()->getPointer(0); }
+  {
+    m_FeaturePhases = m_FeaturePhasesPtr.lock()->getPointer(0);
+  }
 
-  //check crystal structures
+  // check crystal structures
   m_CrystalStructuresPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<unsigned int>>(this, getCrystalStructuresArrayPath(), dims);
   if(nullptr != m_CrystalStructuresPtr.lock())
-  { m_CrystalStructures = m_CrystalStructuresPtr.lock()->getPointer(0); }
+  {
+    m_CrystalStructures = m_CrystalStructuresPtr.lock()->getPointer(0);
+  }
   dims[0] = 3;
 
-  //check quats
+  // check quats
   dims[0] = 4;
   m_AvgQuatsPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<float>>(this, getAvgQuatsArrayPath(), dims);
   if(nullptr != m_AvgQuatsPtr.lock())
-  { m_AvgQuats = m_AvgQuatsPtr.lock()->getPointer(0); }
+  {
+    m_AvgQuats = m_AvgQuatsPtr.lock()->getPointer(0);
+  }
 
-  //check compliances
+  // check compliances
   std::vector<size_t> complianceDims(2, 6);
   m_CrystalCompliancesPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<float>>(this, getCrystalCompliancesArrayPath(), complianceDims);
   if(nullptr != m_CrystalCompliancesPtr.lock())
-  { m_CrystalCompliances = m_CrystalCompliancesPtr.lock()->getPointer(0); }
+  {
+    m_CrystalCompliances = m_CrystalCompliancesPtr.lock()->getPointer(0);
+  }
 
-  //make sure the direction isn't undefined
+  // make sure the direction isn't undefined
   if(0 == m_LoadingDirection[0] && 0 == m_LoadingDirection[1] && 0 == m_LoadingDirection[2])
   {
     setErrorCondition(-1, "A non-zero direction must be choosen");
   }
 
-  //make sure quats + phases are from same attribute matrix + data container
-  if( !getFeaturePhasesArrayPath().hasSameAttributeMatrixPath(getAvgQuatsArrayPath()) )
+  // make sure quats + phases are from same attribute matrix + data container
+  if(!getFeaturePhasesArrayPath().hasSameAttributeMatrixPath(getAvgQuatsArrayPath()))
   {
     setErrorCondition(-2, "Feature Phases and Average Quats must belong to the same DataContainer / AtributreMatrix");
   }
 
-  //make sure compliances + crystal structures are from the same attribute matrix + data container
-  if( !getCrystalStructuresArrayPath().hasSameAttributeMatrixPath(getCrystalCompliancesArrayPath()) )
+  // make sure compliances + crystal structures are from the same attribute matrix + data container
+  if(!getCrystalStructuresArrayPath().hasSameAttributeMatrixPath(getCrystalCompliancesArrayPath()))
   {
     setErrorCondition(-2, "Crystal Structures and Crystal Compliances must belong to the same DataContainer / AtributreMatrix");
   }
 
-  //make sure everything is in the same data container (may not be true for synthetic volumes using a stats gen container but the user can copy the ensemble attribute matrix over)
-  if( !getAvgQuatsArrayPath().hasSameDataContainer(getCrystalStructuresArrayPath()) )
+  // make sure everything is in the same data container (may not be true for synthetic volumes using a stats gen container but the user can copy the ensemble attribute matrix over)
+  if(!getAvgQuatsArrayPath().hasSameDataContainer(getCrystalStructuresArrayPath()))
   {
     setErrorCondition(-2, "Crystal Structures and Average Quaternions must belong to the same DataContainer");
   }
 }
-
 
 // -----------------------------------------------------------------------------
 //
@@ -201,23 +210,23 @@ void FindDirectionalModuli::execute()
     return;
   }
 
-  //get number of features
+  // get number of features
   size_t totalFeatures = m_DirectionalModuliPtr.lock()->getNumberOfTuples();
 
   QuatF q1, q2, qTotal;
   float sampleLoading[3];
-  //float crystalLoading[3];
+  // float crystalLoading[3];
 
-  //normalize loading direction
+  // normalize loading direction
   sampleLoading[0] = m_LoadingDirection[0];
   sampleLoading[1] = m_LoadingDirection[1];
   sampleLoading[2] = m_LoadingDirection[2];
   MatrixMath::Normalize3x1(sampleLoading);
 
-  //determine a rotation that aligns the loading with the sample 100 direction (as quaternion)
+  // determine a rotation that aligns the loading with the sample 100 direction (as quaternion)
   if(sampleLoading[0] >= 1.0f - std::numeric_limits<float>::epsilon())
   {
-    //already 100 aligned
+    // already 100 aligned
     q2.identity();
   }
   else if(sampleLoading[0] <= -1.0f + std::numeric_limits<float>::epsilon())
@@ -230,7 +239,7 @@ void FindDirectionalModuli::execute()
   }
   else
   {
-    //not a special case, get appropriate quaternion manually
+    // not a special case, get appropriate quaternion manually
     /* for two unit vectors u and v the quaternion defining the rotation (u -> v)
      *  n = u x v
      *  q[0] = n[0]
@@ -246,18 +255,18 @@ void FindDirectionalModuli::execute()
     q2 = q2.unitQuaternion();
   }
 
-  //loop over all grains
-  for (size_t i = 0; i < totalFeatures; i++)
+  // loop over all grains
+  for(size_t i = 0; i < totalFeatures; i++)
   {
-    //default to 0
+    // default to 0
     m_DirectionalModuli[i] = 0;
 
-    //get phase and crystal structure
+    // get phase and crystal structure
     size_t phase = m_FeaturePhases[i];
     size_t xtal = m_CrystalStructures[phase];
     if(xtal < EbsdLib::CrystalStructure::LaueGroupEnd)
     {
-      //concatenate rotation with crystal orientation (determine rotation from crystal frame to sample loading direction)
+      // concatenate rotation with crystal orientation (determine rotation from crystal frame to sample loading direction)
       q1 = QuatF(m_AvgQuats + i * 4);
       QuatF qTotal = q1 * q2;
 
@@ -322,80 +331,68 @@ void FindDirectionalModuli::execute()
       // float g21 = (2.0f * q1[1] * q1[2]) + (2.0f * q1[0] * q1.w);
       // float g22 = (1.0f - (2.0f * q1[0] * q1[0]) - (2.0f * q1[1] * q1[1]));
 
-      //everything simplifies to a function of 4 factors
+      // everything simplifies to a function of 4 factors
       // float a = g11 * g22 - g12 * g21;
       // float b = g12 * g20 - g10 * g22;
       // float c = g10 * g21 - g11 * g20;
       // float denom = powf(g02 * g11 * g20 - g01 * g12 * g20 - g02 * g10 * g21 + g00 * g12 * g21 + g01 * g10 * g22 - g00 * g11 * g22, 4);
 
-      //these can be expressed more compactly directly from quaternions (especially if a unit quaternion is assumed)
+      // these can be expressed more compactly directly from quaternions (especially if a unit quaternion is assumed)
       float a = 1.0f - 2.0f * (qTotal[1] * qTotal[1] + qTotal[2] * qTotal[2]);
       float b = 2.0f * (qTotal[0] * qTotal[1] - qTotal[2] * qTotal[3]);
       float c = 2.0f * (qTotal[0] * qTotal[2] + qTotal[1] * qTotal[3]);
-      //denom = 1.0
+      // denom = 1.0
 
-      //squares are used extensively, compute once
+      // squares are used extensively, compute once
       float a2 = a * a;
       float b2 = b * b;
       float c2 = c * c;
 
-      //compute rotated compliance weightings
-      float s11Coef = a2 * a2;//a^4
-      float s22Coef = b2 * b2;//b^4
-      float s33Coef = c2 * c2;//c^4
-      float s44Coef = b2 * c2;//b^2 c^2
-      float s55Coef = a2 * c2;//a^2 c^2
-      float s66Coef = a2 * b2;//a^2 b^2
+      // compute rotated compliance weightings
+      float s11Coef = a2 * a2; // a^4
+      float s22Coef = b2 * b2; // b^4
+      float s33Coef = c2 * c2; // c^4
+      float s44Coef = b2 * c2; // b^2 c^2
+      float s55Coef = a2 * c2; // a^2 c^2
+      float s66Coef = a2 * b2; // a^2 b^2
 
-      float s12Coef = 2.0f * a2 * b2;//2 a^2 b^2
-      float s23Coef = 2.0f * b2 * c2;//2 b^2 c^2
-      float s13Coef = 2.0f * a2 * c2;//2 a^2 c^2
+      float s12Coef = 2.0f * a2 * b2; // 2 a^2 b^2
+      float s23Coef = 2.0f * b2 * c2; // 2 b^2 c^2
+      float s13Coef = 2.0f * a2 * c2; // 2 a^2 c^2
 
-      float s14Coef = 2.0f * a2 * b * c;//2 a^2 b c
-      float s15Coef = 2.0f * a2 * a * c;//2 a^3 c
-      float s16Coef = 2.0f * a2 * a * b;//2 a^3 b
+      float s14Coef = 2.0f * a2 * b * c; // 2 a^2 b c
+      float s15Coef = 2.0f * a2 * a * c; // 2 a^3 c
+      float s16Coef = 2.0f * a2 * a * b; // 2 a^3 b
 
-      float s24Coef = 2.0f * b2 * b * c;//2 b^3 c
-      float s25Coef = 2.0f * b2 * a * c;//2 a b^2 c
-      float s26Coef = 2.0f * b2 * a * b;//2 a b^3
-      float s34Coef = 2.0f * c2 * b * c;//2 b c^3
-      float s35Coef = 2.0f * c2 * a * c;//2 a c^3
-      float s36Coef = 2.0f * c2 * a * b;//2 a b c^2
+      float s24Coef = 2.0f * b2 * b * c; // 2 b^3 c
+      float s25Coef = 2.0f * b2 * a * c; // 2 a b^2 c
+      float s26Coef = 2.0f * b2 * a * b; // 2 a b^3
+      float s34Coef = 2.0f * c2 * b * c; // 2 b c^3
+      float s35Coef = 2.0f * c2 * a * c; // 2 a c^3
+      float s36Coef = 2.0f * c2 * a * b; // 2 a b c^2
 
-      float s45Coef = 2.0f * a * b * c2;//2 a b c^2
-      float s46Coef = 2.0f * a * b2 * c;//2 a b^2 c
-      float s56Coef = 2.0f * a2 * b * c;//2 a^2 b c
+      float s45Coef = 2.0f * a * b * c2; // 2 a b c^2
+      float s46Coef = 2.0f * a * b2 * c; // 2 a b^2 c
+      float s56Coef = 2.0f * a2 * b * c; // 2 a^2 b c
 
-      //compute rotated compliance
+      // compute rotated compliance
       size_t index = 36 * phase;
-      float s11prime = s11Coef * m_CrystalCompliances[index + 0] +
-                       s12Coef * m_CrystalCompliances[index + 1] +
-                       s13Coef * m_CrystalCompliances[index + 2] +
-                       s14Coef * m_CrystalCompliances[index + 3] +
-                       s15Coef * m_CrystalCompliances[index + 4] +
-                       s16Coef * m_CrystalCompliances[index + 5] +
+      float s11prime = s11Coef * m_CrystalCompliances[index + 0] + s12Coef * m_CrystalCompliances[index + 1] + s13Coef * m_CrystalCompliances[index + 2] + s14Coef * m_CrystalCompliances[index + 3] +
+                       s15Coef * m_CrystalCompliances[index + 4] + s16Coef * m_CrystalCompliances[index + 5] +
 
-                       s22Coef * m_CrystalCompliances[index + 7] +
-                       s23Coef * m_CrystalCompliances[index + 8] +
-                       s24Coef * m_CrystalCompliances[index + 9] +
-                       s25Coef * m_CrystalCompliances[index + 10] +
+                       s22Coef * m_CrystalCompliances[index + 7] + s23Coef * m_CrystalCompliances[index + 8] + s24Coef * m_CrystalCompliances[index + 9] + s25Coef * m_CrystalCompliances[index + 10] +
                        s26Coef * m_CrystalCompliances[index + 11] +
 
-                       s33Coef * m_CrystalCompliances[index + 14] +
-                       s34Coef * m_CrystalCompliances[index + 15] +
-                       s35Coef * m_CrystalCompliances[index + 16] +
+                       s33Coef * m_CrystalCompliances[index + 14] + s34Coef * m_CrystalCompliances[index + 15] + s35Coef * m_CrystalCompliances[index + 16] +
                        s36Coef * m_CrystalCompliances[index + 17] +
 
-                       s44Coef * m_CrystalCompliances[index + 21] +
-                       s45Coef * m_CrystalCompliances[index + 22] +
-                       s46Coef * m_CrystalCompliances[index + 23] +
+                       s44Coef * m_CrystalCompliances[index + 21] + s45Coef * m_CrystalCompliances[index + 22] + s46Coef * m_CrystalCompliances[index + 23] +
 
-                       s55Coef * m_CrystalCompliances[index + 28] +
-                       s56Coef * m_CrystalCompliances[index + 29] +
+                       s55Coef * m_CrystalCompliances[index + 28] + s56Coef * m_CrystalCompliances[index + 29] +
 
                        s66Coef * m_CrystalCompliances[index + 35];
 
-      //compute modulus
+      // compute modulus
       m_DirectionalModuli[i] = 1.0f / s11prime;
     }
   }
@@ -439,15 +436,16 @@ QString FindDirectionalModuli::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
-  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  vStream << UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
   return version;
 }
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 QString FindDirectionalModuli::getGroupName() const
-{ return SIMPL::FilterGroups::StatisticsFilters; }
-
+{
+  return SIMPL::FilterGroups::StatisticsFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
@@ -461,14 +459,17 @@ QUuid FindDirectionalModuli::getUuid() const
 //
 // -----------------------------------------------------------------------------
 QString FindDirectionalModuli::getSubGroupName() const
-{ return SIMPL::FilterSubGroups::CrystallographyFilters; }
-
+{
+  return SIMPL::FilterSubGroups::CrystallographyFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 QString FindDirectionalModuli::getHumanLabel() const
-{ return "Find Directional Moduli"; }
+{
+  return "Find Directional Moduli";
+}
 
 // -----------------------------------------------------------------------------
 FindDirectionalModuli::Pointer FindDirectionalModuli::NullPointer()

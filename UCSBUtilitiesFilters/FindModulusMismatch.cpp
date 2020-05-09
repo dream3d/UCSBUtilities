@@ -15,7 +15,6 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-
 #include <QtCore/QTextStream>
 
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
@@ -47,44 +46,47 @@ enum createdPathID : RenameDataPath::DataID_t
 
 class FindModulusMismatchImpl
 {
-    int32_t* m_Labels;
-    float* m_Moduli;
-    float* m_DeltaModuli;
+  int32_t* m_Labels;
+  float* m_Moduli;
+  float* m_DeltaModuli;
 
-  public:
-    FindModulusMismatchImpl(int32_t* labels, float* mod, float* deltaMod) :
-      m_Labels(labels),
-      m_Moduli(mod),
-      m_DeltaModuli(deltaMod)
-    {}
+public:
+  FindModulusMismatchImpl(int32_t* labels, float* mod, float* deltaMod)
+  : m_Labels(labels)
+  , m_Moduli(mod)
+  , m_DeltaModuli(deltaMod)
+  {
+  }
 
-    virtual ~FindModulusMismatchImpl() = default;
+  virtual ~FindModulusMismatchImpl() = default;
 
-    void generate(size_t start, size_t end) const
+  void generate(size_t start, size_t end) const
+  {
+    int feature1, feature2;
+    float deltaE;
+
+    for(size_t i = start; i < end; i++)
     {
-      int feature1, feature2;
-      float deltaE;
-
-      for (size_t i = start; i < end; i++)
+      feature1 = m_Labels[2 * i];
+      feature2 = m_Labels[2 * i + 1];
+      deltaE = 0.0f;
+      if(feature1 > 0 && feature2 > 0)
       {
-        feature1 = m_Labels[2 * i];
-        feature2 = m_Labels[2 * i + 1];
-        deltaE = 0.0f;
-        if(feature1 > 0 && feature2 > 0)
+        deltaE = m_Moduli[feature1] - m_Moduli[feature2];
+        if(deltaE < 0)
         {
-          deltaE = m_Moduli[feature1] - m_Moduli[feature2];
-          if(deltaE < 0)
-          { deltaE = -deltaE; }
+          deltaE = -deltaE;
         }
-        m_DeltaModuli[i] = deltaE;
       }
+      m_DeltaModuli[i] = deltaE;
     }
+  }
 
 #ifdef SIMPL_USE_PARALLEL_ALGORITHMS
-    void operator()(const tbb::blocked_range<size_t>& r) const
-    {
-      generate(r.begin(), r.end());
-    }
+  void operator()(const tbb::blocked_range<size_t>& r) const
+  {
+    generate(r.begin(), r.end());
+  }
 #endif
 };
 
@@ -118,7 +120,8 @@ void FindModulusMismatch::setupFilterParameters()
     parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("SurfaceMeshFaceLabels", SurfaceMeshFaceLabelsArrayPath, FilterParameter::RequiredArray, FindModulusMismatch, req));
   }
 
-  parameters.push_back(SIMPL_NEW_DA_WITH_LINKED_AM_FP("SurfaceMeshDeltaModulus", SurfaceMeshDeltaModulusArrayName, SurfaceMeshFaceLabelsArrayPath, SurfaceMeshFaceLabelsArrayPath, FilterParameter::CreatedArray, FindModulusMismatch));
+  parameters.push_back(SIMPL_NEW_DA_WITH_LINKED_AM_FP("SurfaceMeshDeltaModulus", SurfaceMeshDeltaModulusArrayName, SurfaceMeshFaceLabelsArrayPath, SurfaceMeshFaceLabelsArrayPath,
+                                                      FilterParameter::CreatedArray, FindModulusMismatch));
 
   setFilterParameters(parameters);
 }
@@ -126,9 +129,9 @@ void FindModulusMismatch::setupFilterParameters()
 void FindModulusMismatch::readFilterParameters(AbstractFilterParametersReader* reader, int index)
 {
   reader->openFilterGroup(this, index);
-  setSurfaceMeshDeltaModulusArrayName(reader->readString("SurfaceMeshDeltaModulusArrayName", getSurfaceMeshDeltaModulusArrayName() ) );
-  setSurfaceMeshFaceLabelsArrayPath(reader->readDataArrayPath("SurfaceMeshFaceLabelsArrayPath", getSurfaceMeshFaceLabelsArrayPath() ) );
-  setModuliArrayPath(reader->readDataArrayPath("ModuliArrayPath", getModuliArrayPath() ) );
+  setSurfaceMeshDeltaModulusArrayName(reader->readString("SurfaceMeshDeltaModulusArrayName", getSurfaceMeshDeltaModulusArrayName()));
+  setSurfaceMeshFaceLabelsArrayPath(reader->readDataArrayPath("SurfaceMeshFaceLabelsArrayPath", getSurfaceMeshFaceLabelsArrayPath()));
+  setModuliArrayPath(reader->readDataArrayPath("ModuliArrayPath", getModuliArrayPath()));
   reader->closeFilterGroup();
 }
 
@@ -142,8 +145,10 @@ void FindModulusMismatch::dataCheckVoxel()
 
   std::vector<size_t> dims(1, 1);
   m_ModuliPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<float>>(this, getModuliArrayPath(), dims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
-  if(nullptr != m_ModuliPtr.lock())                 /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
-  { m_Moduli = m_ModuliPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
+  if(nullptr != m_ModuliPtr.lock()) /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  {
+    m_Moduli = m_ModuliPtr.lock()->getPointer(0);
+  } /* Now assign the raw pointer to data from the DataArray<T> object */
 }
 
 // -----------------------------------------------------------------------------
@@ -162,14 +167,19 @@ void FindModulusMismatch::dataCheckSurfaceMesh()
   }
 
   std::vector<size_t> dims(1, 2);
-  m_SurfaceMeshFaceLabelsPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<int32_t>>(this, getSurfaceMeshFaceLabelsArrayPath(), dims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
-  if(nullptr != m_SurfaceMeshFaceLabelsPtr.lock())                                /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
-  { m_SurfaceMeshFaceLabels = m_SurfaceMeshFaceLabelsPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
+  m_SurfaceMeshFaceLabelsPtr =
+      getDataContainerArray()->getPrereqArrayFromPath<DataArray<int32_t>>(this, getSurfaceMeshFaceLabelsArrayPath(), dims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
+  if(nullptr != m_SurfaceMeshFaceLabelsPtr.lock()) /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  {
+    m_SurfaceMeshFaceLabels = m_SurfaceMeshFaceLabelsPtr.lock()->getPointer(0);
+  } /* Now assign the raw pointer to data from the DataArray<T> object */
   dims[0] = 1;
-  tempPath.update(m_SurfaceMeshFaceLabelsArrayPath.getDataContainerName(), m_SurfaceMeshFaceLabelsArrayPath.getAttributeMatrixName(), getSurfaceMeshDeltaModulusArrayName() );
+  tempPath.update(m_SurfaceMeshFaceLabelsArrayPath.getDataContainerName(), m_SurfaceMeshFaceLabelsArrayPath.getAttributeMatrixName(), getSurfaceMeshDeltaModulusArrayName());
   m_SurfaceMeshDeltaModulusPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>>(this, tempPath, 180.0, dims, "", DataArrayID31);
-  if(nullptr != m_SurfaceMeshDeltaModulusPtr.lock())                                  /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
-  { m_SurfaceMeshDeltaModulus = m_SurfaceMeshDeltaModulusPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
+  if(nullptr != m_SurfaceMeshDeltaModulusPtr.lock()) /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  {
+    m_SurfaceMeshDeltaModulus = m_SurfaceMeshDeltaModulusPtr.lock()->getPointer(0);
+  } /* Now assign the raw pointer to data from the DataArray<T> object */
 }
 
 // -----------------------------------------------------------------------------
@@ -204,8 +214,7 @@ void FindModulusMismatch::execute()
 #ifdef SIMPL_USE_PARALLEL_ALGORITHMS
   if(true)
   {
-    tbb::parallel_for(tbb::blocked_range<size_t>(0, numTriangles),
-                      FindModulusMismatchImpl(m_SurfaceMeshFaceLabels, m_Moduli, m_SurfaceMeshDeltaModulus), tbb::auto_partitioner());
+    tbb::parallel_for(tbb::blocked_range<size_t>(0, numTriangles), FindModulusMismatchImpl(m_SurfaceMeshFaceLabels, m_Moduli, m_SurfaceMeshDeltaModulus), tbb::auto_partitioner());
   }
   else
 #endif
@@ -253,7 +262,7 @@ QString FindModulusMismatch::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
-  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  vStream << UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
   return version;
 }
 
@@ -261,8 +270,9 @@ QString FindModulusMismatch::getFilterVersion() const
 //
 // -----------------------------------------------------------------------------
 QString FindModulusMismatch::getGroupName() const
-{ return SIMPL::FilterGroups::StatisticsFilters; }
-
+{
+  return SIMPL::FilterGroups::StatisticsFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
@@ -276,14 +286,17 @@ QUuid FindModulusMismatch::getUuid() const
 //
 // -----------------------------------------------------------------------------
 QString FindModulusMismatch::getSubGroupName() const
-{ return SIMPL::FilterSubGroups::CrystallographyFilters; }
-
+{
+  return SIMPL::FilterSubGroups::CrystallographyFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 QString FindModulusMismatch::getHumanLabel() const
-{ return "Find Elastic Modulus Mismatch"; }
+{
+  return "Find Elastic Modulus Mismatch";
+}
 
 // -----------------------------------------------------------------------------
 FindModulusMismatch::Pointer FindModulusMismatch::NullPointer()

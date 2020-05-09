@@ -15,7 +15,6 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-
 #include "CopyAttributeArray.h"
 
 #include <QtCore/QTextStream>
@@ -66,8 +65,8 @@ void CopyAttributeArray::setupFilterParameters()
 void CopyAttributeArray::readFilterParameters(AbstractFilterParametersReader* reader, int index)
 {
   reader->openFilterGroup(this, index);
-  setSelectedArrayPath( reader->readDataArrayPath("SelectedArrayPath", getSelectedArrayPath()) );
-  setNewArrayName( reader->readString( "NewArrayName", getNewArrayName() ) );
+  setSelectedArrayPath(reader->readDataArrayPath("SelectedArrayPath", getSelectedArrayPath()));
+  setNewArrayName(reader->readString("NewArrayName", getNewArrayName()));
   reader->closeFilterGroup();
 }
 
@@ -108,13 +107,12 @@ void CopyAttributeArray::dataCheck()
   pNew->setName(m_NewArrayName); // Set the name of the array
   int32_t err = attrMat->insertOrAssign(pNew);
 
-  if (0 != err)
+  if(0 != err)
   {
     QString ss = QObject::tr("Attempt to copy Attribute Array '%1' to '%2' failed").arg(daName).arg(m_NewArrayName);
     setErrorCondition(err, ss);
   }
 }
-
 
 // -----------------------------------------------------------------------------
 //
@@ -165,7 +163,7 @@ QString CopyAttributeArray::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
-  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  vStream << UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
   return version;
 }
 
@@ -173,7 +171,9 @@ QString CopyAttributeArray::getFilterVersion() const
 //
 // -----------------------------------------------------------------------------
 QString CopyAttributeArray::getGroupName() const
-{ return SIMPL::FilterGroups::CoreFilters; }
+{
+  return SIMPL::FilterGroups::CoreFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
@@ -187,13 +187,17 @@ QUuid CopyAttributeArray::getUuid() const
 //
 // -----------------------------------------------------------------------------
 QString CopyAttributeArray::getSubGroupName() const
-{ return SIMPL::FilterSubGroups::MemoryManagementFilters; }
+{
+  return SIMPL::FilterSubGroups::MemoryManagementFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 QString CopyAttributeArray::getHumanLabel() const
-{ return "Copy Attribute Array"; }
+{
+  return "Copy Attribute Array";
+}
 
 // -----------------------------------------------------------------------------
 CopyAttributeArray::Pointer CopyAttributeArray::NullPointer()

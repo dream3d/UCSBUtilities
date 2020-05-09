@@ -23,10 +23,14 @@
 
 #include "SIMPLib/FilterParameters/FilterParameter.h"
 
-typedef struct {
-  float a; float b; float c; float d;
+typedef struct
+{
+  float a;
+  float b;
+  float c;
+  float d;
 
-  void writeJson(QJsonObject &json)
+  void writeJson(QJsonObject& json)
   {
     json["a"] = a;
     json["b"] = b;
@@ -34,9 +38,9 @@ typedef struct {
     json["d"] = d;
   }
 
-  bool readJson(QJsonObject &json)
+  bool readJson(QJsonObject& json)
   {
-    if (json["a"].isDouble() && json["b"].isDouble() && json["c"].isDouble() && json["d"].isDouble())
+    if(json["a"].isDouble() && json["b"].isDouble() && json["c"].isDouble() && json["d"].isDouble())
     {
       a = static_cast<float>(json["a"].toDouble());
       b = static_cast<float>(json["b"].toDouble());
@@ -80,13 +84,12 @@ public:
    * this FilterParameter subclass
    * @return
    */
-    QString getWidgetType() const override;
+  QString getWidgetType() const override;
 
-  protected:
-    FloatVec4FilterParameter();
+protected:
+  FloatVec4FilterParameter();
 
-  private:
-    FloatVec4FilterParameter(const FloatVec4FilterParameter&) = delete; // Copy Constructor Not Implemented
-    void operator=(const FloatVec4FilterParameter&) = delete;           // Move assignment Not Implemented
+private:
+  FloatVec4FilterParameter(const FloatVec4FilterParameter&) = delete; // Copy Constructor Not Implemented
+  void operator=(const FloatVec4FilterParameter&) = delete;           // Move assignment Not Implemented
 };
-

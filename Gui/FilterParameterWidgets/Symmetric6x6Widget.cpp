@@ -17,7 +17,6 @@
 
 #include "Symmetric6x6Widget.h"
 
-
 #include "SVWidgetsLib/Core/SVWidgetsLibConstants.h"
 
 #include "SVWidgetsLib/FilterParameterWidgets/FilterParameterWidgetsDialogs.h"

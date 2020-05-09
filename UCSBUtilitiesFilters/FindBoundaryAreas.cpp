@@ -15,7 +15,6 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-
 #include "FindBoundaryAreas.h"
 
 #include <QtCore/QTextStream>
@@ -83,8 +82,8 @@ void FindBoundaryAreas::readFilterParameters(AbstractFilterParametersReader* rea
 {
   reader->openFilterGroup(this, index);
   setSurfaceMeshBoundaryAreasArrayPath(reader->readDataArrayPath("SurfaceMeshBoundaryAreasArrayPath", getSurfaceMeshBoundaryAreasArrayPath()));
-  setSurfaceMeshFeatureFaceIdsArrayPath(reader->readDataArrayPath("SurfaceMeshFeatureFaceIdsArrayPath", getSurfaceMeshFeatureFaceIdsArrayPath() ) );
-  setSurfaceMeshTriangleAreasArrayPath(reader->readDataArrayPath("SurfaceMeshTriangleAreasArrayPath", getSurfaceMeshTriangleAreasArrayPath() ) );
+  setSurfaceMeshFeatureFaceIdsArrayPath(reader->readDataArrayPath("SurfaceMeshFeatureFaceIdsArrayPath", getSurfaceMeshFeatureFaceIdsArrayPath()));
+  setSurfaceMeshTriangleAreasArrayPath(reader->readDataArrayPath("SurfaceMeshTriangleAreasArrayPath", getSurfaceMeshTriangleAreasArrayPath()));
   reader->closeFilterGroup();
 }
 
@@ -104,20 +103,26 @@ void FindBoundaryAreas::dataCheck()
   clearWarningCode();
 
   std::vector<size_t> dims(1, 1);
-  m_SurfaceMeshFeatureFaceIdsPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<int32_t>>(this, getSurfaceMeshFeatureFaceIdsArrayPath(), dims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
-  if(nullptr != m_SurfaceMeshFeatureFaceIdsPtr.lock())                                    /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
-  { m_SurfaceMeshFeatureFaceIds = m_SurfaceMeshFeatureFaceIdsPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
+  m_SurfaceMeshFeatureFaceIdsPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<int32_t>>(this, getSurfaceMeshFeatureFaceIdsArrayPath(),
+                                                                                                       dims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
+  if(nullptr != m_SurfaceMeshFeatureFaceIdsPtr.lock())                                                        /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  {
+    m_SurfaceMeshFeatureFaceIds = m_SurfaceMeshFeatureFaceIdsPtr.lock()->getPointer(0);
+  } /* Now assign the raw pointer to data from the DataArray<T> object */
 
-  m_SurfaceMeshTriangleAreasPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<double>>(this, getSurfaceMeshTriangleAreasArrayPath(), dims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
-  if(nullptr != m_SurfaceMeshTriangleAreasPtr.lock())                                   /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
-  { m_SurfaceMeshTriangleAreas = m_SurfaceMeshTriangleAreasPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
+  m_SurfaceMeshTriangleAreasPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<double>>(this, getSurfaceMeshTriangleAreasArrayPath(),
+                                                                                                     dims); /* Assigns the shared_ptr<> to an instance variable that is a weak_ptr<> */
+  if(nullptr != m_SurfaceMeshTriangleAreasPtr.lock())                                                       /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  {
+    m_SurfaceMeshTriangleAreas = m_SurfaceMeshTriangleAreasPtr.lock()->getPointer(0);
+  } /* Now assign the raw pointer to data from the DataArray<T> object */
 
-  m_SurfaceMeshBoundaryAreasPtr =
-      getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<double>>(this, getSurfaceMeshBoundaryAreasArrayPath(), 0.0, dims, "", DataArrayID31);
-  if(nullptr != m_SurfaceMeshBoundaryAreasPtr.lock())                                   /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
-  { m_SurfaceMeshBoundaryAreas = m_SurfaceMeshBoundaryAreasPtr.lock()->getPointer(0); } /* Now assign the raw pointer to data from the DataArray<T> object */
+  m_SurfaceMeshBoundaryAreasPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<double>>(this, getSurfaceMeshBoundaryAreasArrayPath(), 0.0, dims, "", DataArrayID31);
+  if(nullptr != m_SurfaceMeshBoundaryAreasPtr.lock()) /* Validate the Weak Pointer wraps a non-nullptr pointer to a DataArray<T> object */
+  {
+    m_SurfaceMeshBoundaryAreas = m_SurfaceMeshBoundaryAreasPtr.lock()->getPointer(0);
+  } /* Now assign the raw pointer to data from the DataArray<T> object */
 }
-
 
 // -----------------------------------------------------------------------------
 //
@@ -137,17 +142,16 @@ void FindBoundaryAreas::execute()
   size_t numFeatures = m_SurfaceMeshBoundaryAreasPtr.lock()->getNumberOfTuples();
 
   // initialize all areas as 0
-  for (size_t i = 0; i < numFeatures; i++)
+  for(size_t i = 0; i < numFeatures; i++)
   {
     m_SurfaceMeshBoundaryAreas[i] = 0.0;
   }
 
   // loop over faces accumulating area
-  for (size_t i = 0; i < numFaces; i++)
+  for(size_t i = 0; i < numFaces; i++)
   {
     m_SurfaceMeshBoundaryAreas[m_SurfaceMeshFeatureFaceIds[i]] += m_SurfaceMeshTriangleAreas[i];
   }
-
 }
 
 // -----------------------------------------------------------------------------
@@ -186,14 +190,16 @@ QString FindBoundaryAreas::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
-  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  vStream << UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
   return version;
 }
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 QString FindBoundaryAreas::getGroupName() const
-{ return SIMPL::FilterGroups::SurfaceMeshingFilters; }
+{
+  return SIMPL::FilterGroups::SurfaceMeshingFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
@@ -207,13 +213,17 @@ QUuid FindBoundaryAreas::getUuid() const
 //
 // -----------------------------------------------------------------------------
 QString FindBoundaryAreas::getSubGroupName() const
-{ return SIMPL::FilterSubGroups::MiscFilters; }
+{
+  return SIMPL::FilterSubGroups::MiscFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 QString FindBoundaryAreas::getHumanLabel() const
-{ return "Find Face Feature Boundary Areas"; }
+{
+  return "Find Face Feature Boundary Areas";
+}
 
 // -----------------------------------------------------------------------------
 FindBoundaryAreas::Pointer FindBoundaryAreas::NullPointer()

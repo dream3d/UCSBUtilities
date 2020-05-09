@@ -15,7 +15,6 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-
 #include "CopyDataContainer.h"
 
 #include <QtCore/QTextStream>
@@ -68,8 +67,8 @@ void CopyDataContainer::setupFilterParameters()
 void CopyDataContainer::readFilterParameters(AbstractFilterParametersReader* reader, int index)
 {
   reader->openFilterGroup(this, index);
-  setSelectedDataContainerName( reader->readDataArrayPath("SelectedDataContainerName", getSelectedDataContainerName()) );
-  setNewDataContainerName( reader->readDataArrayPath( "NewDataContainerName", getNewDataContainerName()) );
+  setSelectedDataContainerName(reader->readDataArrayPath("SelectedDataContainerName", getSelectedDataContainerName()));
+  setNewDataContainerName(reader->readDataArrayPath("NewDataContainerName", getNewDataContainerName()));
   reader->closeFilterGroup();
 }
 
@@ -104,7 +103,6 @@ void CopyDataContainer::dataCheck()
   dcNew->setName(getNewDataContainerName().getDataContainerName());
   getDataContainerArray()->addOrReplaceDataContainer(dcNew);
 }
-
 
 // -----------------------------------------------------------------------------
 //
@@ -156,16 +154,17 @@ QString CopyDataContainer::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
-  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  vStream << UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
   return version;
 }
-
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 QString CopyDataContainer::getGroupName() const
-{ return SIMPL::FilterGroups::CoreFilters; }
+{
+  return SIMPL::FilterGroups::CoreFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
@@ -179,13 +178,17 @@ QUuid CopyDataContainer::getUuid() const
 //
 // -----------------------------------------------------------------------------
 QString CopyDataContainer::getSubGroupName() const
-{ return SIMPL::FilterSubGroups::MemoryManagementFilters; }
+{
+  return SIMPL::FilterSubGroups::MemoryManagementFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 QString CopyDataContainer::getHumanLabel() const
-{ return "Copy Data Container"; }
+{
+  return "Copy Data Container";
+}
 
 // -----------------------------------------------------------------------------
 CopyDataContainer::Pointer CopyDataContainer::NullPointer()

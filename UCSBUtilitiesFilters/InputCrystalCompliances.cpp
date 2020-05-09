@@ -15,7 +15,6 @@
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-
 #include "InputCrystalCompliances.h"
 
 #include <QtCore/QTextStream>
@@ -69,7 +68,6 @@ InputCrystalCompliances::InputCrystalCompliances()
   m_Compliances.v56 = 0;
 
   m_Compliances.v66 = 1;
-
 }
 
 // -----------------------------------------------------------------------------
@@ -83,7 +81,8 @@ InputCrystalCompliances::~InputCrystalCompliances() = default;
 void InputCrystalCompliances::setupFilterParameters()
 {
   FilterParameterVectorType parameters;
-  parameters.push_back(Symmetric6x6FilterParameter::New("Compliance Values (10^-11 Pa^-1)", "Compliances", getCompliances(), FilterParameter::Parameter, SIMPL_BIND_SETTER(InputCrystalCompliances, this, Compliances), SIMPL_BIND_GETTER(InputCrystalCompliances, this, Compliances)));
+  parameters.push_back(Symmetric6x6FilterParameter::New("Compliance Values (10^-11 Pa^-1)", "Compliances", getCompliances(), FilterParameter::Parameter,
+                                                        SIMPL_BIND_SETTER(InputCrystalCompliances, this, Compliances), SIMPL_BIND_GETTER(InputCrystalCompliances, this, Compliances)));
   parameters.push_back(SeparatorFilterParameter::New("Ensemble Data", FilterParameter::CreatedArray));
   {
     DataArrayCreationFilterParameter::RequirementType req = DataArrayCreationFilterParameter::CreateRequirement(AttributeMatrix::Category::Ensemble);
@@ -145,9 +144,10 @@ void InputCrystalCompliances::dataCheck()
   std::vector<size_t> cDims(2, 6); // 6 by 6 array
   m_CrystalCompliancesPtr = getDataContainerArray()->createNonPrereqArrayFromPath<DataArray<float>>(this, getCrystalCompliancesArrayPath(), 0, cDims, "", DataArrayID31);
   if(nullptr != m_CrystalCompliancesPtr.lock())
-  { m_CrystalCompliances = m_CrystalCompliancesPtr.lock()->getPointer(0); }
+  {
+    m_CrystalCompliances = m_CrystalCompliancesPtr.lock()->getPointer(0);
+  }
 }
-
 
 // -----------------------------------------------------------------------------
 //
@@ -193,10 +193,10 @@ void InputCrystalCompliances::execute()
 
   m_Compliances.v66 /= 100000000000;
 
-  //loop over each phase
-  for (size_t i = 0; i < numPhases; i++)
+  // loop over each phase
+  for(size_t i = 0; i < numPhases; i++)
   {
-    //for now just give every phase the same values
+    // for now just give every phase the same values
     size_t index = 36 * i;
     m_CrystalCompliances[index + 0] = m_Compliances.v11;
     m_CrystalCompliances[index + 1] = m_Compliances.v12;
@@ -240,7 +240,6 @@ void InputCrystalCompliances::execute()
     m_CrystalCompliances[index + 34] = m_Compliances.v56;
     m_CrystalCompliances[index + 35] = m_Compliances.v66;
   }
-
 }
 
 // -----------------------------------------------------------------------------
@@ -279,14 +278,16 @@ QString InputCrystalCompliances::getFilterVersion() const
 {
   QString version;
   QTextStream vStream(&version);
-  vStream <<  UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
+  vStream << UCSBUtilities::Version::Major() << "." << UCSBUtilities::Version::Minor() << "." << UCSBUtilities::Version::Patch();
   return version;
 }
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 QString InputCrystalCompliances::getGroupName() const
-{ return SIMPL::FilterGroups::Generic; }
+{
+  return SIMPL::FilterGroups::Generic;
+}
 
 // -----------------------------------------------------------------------------
 //
@@ -300,13 +301,17 @@ QUuid InputCrystalCompliances::getUuid() const
 //
 // -----------------------------------------------------------------------------
 QString InputCrystalCompliances::getSubGroupName() const
-{ return SIMPL::FilterSubGroups::CrystallographyFilters; }
+{
+  return SIMPL::FilterSubGroups::CrystallographyFilters;
+}
 
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
 QString InputCrystalCompliances::getHumanLabel() const
-{ return "Input Crystal Compliances"; }
+{
+  return "Input Crystal Compliances";
+}
 
 // -----------------------------------------------------------------------------
 InputCrystalCompliances::Pointer InputCrystalCompliances::NullPointer()

@@ -69,4 +69,3 @@ private:
   FloatVec4Widget(const FloatVec4Widget&) = delete; // Copy Constructor Not Implemented
   void operator=(const FloatVec4Widget&) = delete;  // Move assignment Not Implemented
 };
-

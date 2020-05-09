@@ -30,8 +30,7 @@ FloatVec4FilterParameter::~FloatVec4FilterParameter() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-FloatVec4FilterParameter::Pointer FloatVec4FilterParameter::New(const QString& humanLabel, const QString& propertyName,
-  const FloatVec4_t& defaultValue, Category category, int groupIndex)
+FloatVec4FilterParameter::Pointer FloatVec4FilterParameter::New(const QString& humanLabel, const QString& propertyName, const FloatVec4_t& defaultValue, Category category, int groupIndex)
 {
 
   FloatVec4FilterParameter::Pointer ptr = FloatVec4FilterParameter::New();
@@ -45,7 +44,6 @@ FloatVec4FilterParameter::Pointer FloatVec4FilterParameter::New(const QString& h
 
   return ptr;
 }
-
 
 // -----------------------------------------------------------------------------
 //

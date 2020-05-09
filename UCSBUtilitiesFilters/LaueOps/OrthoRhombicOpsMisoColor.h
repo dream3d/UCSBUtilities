@@ -28,43 +28,41 @@
 
 class OrthoRhombicOpsMisoColor : public OrthoRhombicOps
 {
-  public:
-    using Self = OrthoRhombicOpsMisoColor;
-    using Pointer = std::shared_ptr<Self>;
-    using ConstPointer = std::shared_ptr<const Self>;
-    using WeakPointer = std::weak_ptr<Self>;
-    using ConstWeakPointer = std::weak_ptr<const Self>;
-    static Pointer NullPointer();
+public:
+  using Self = OrthoRhombicOpsMisoColor;
+  using Pointer = std::shared_ptr<Self>;
+  using ConstPointer = std::shared_ptr<const Self>;
+  using WeakPointer = std::weak_ptr<Self>;
+  using ConstWeakPointer = std::weak_ptr<const Self>;
+  static Pointer NullPointer();
 
-    /**
-     * @brief Returns the name of the class for OrthoRhombicOpsMisoColor
-     */
-    QString getNameOfClass() const override;
-    /**
-     * @brief Returns the name of the class for OrthoRhombicOpsMisoColor
-     */
-    static QString ClassName();
+  /**
+   * @brief Returns the name of the class for OrthoRhombicOpsMisoColor
+   */
+  QString getNameOfClass() const override;
+  /**
+   * @brief Returns the name of the class for OrthoRhombicOpsMisoColor
+   */
+  static QString ClassName();
 
-    static Pointer New();
+  static Pointer New();
 
-    OrthoRhombicOpsMisoColor();
-    ~OrthoRhombicOpsMisoColor() override;
+  OrthoRhombicOpsMisoColor();
+  ~OrthoRhombicOpsMisoColor() override;
 
-    /**
-     * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
-     * @param q Quaternion representing the direction
-     * @param refDir The sample reference direction
-     * @return Returns the ARGB Quadruplet SIMPL::Rgb
-     */
-    SIMPL::Rgb generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const override;
+  /**
+   * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
+   * @param q Quaternion representing the direction
+   * @param refDir The sample reference direction
+   * @return Returns the ARGB Quadruplet SIMPL::Rgb
+   */
+  SIMPL::Rgb generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const override;
 
-  public:
-    OrthoRhombicOpsMisoColor(const OrthoRhombicOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    OrthoRhombicOpsMisoColor(OrthoRhombicOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
-    OrthoRhombicOpsMisoColor& operator=(const OrthoRhombicOpsMisoColor&) = delete; // Copy Assignment Not Implemented
-    OrthoRhombicOpsMisoColor& operator=(OrthoRhombicOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
+public:
+  OrthoRhombicOpsMisoColor(const OrthoRhombicOpsMisoColor&) = delete;            // Copy Constructor Not Implemented
+  OrthoRhombicOpsMisoColor(OrthoRhombicOpsMisoColor&&) = delete;                 // Move Constructor Not Implemented
+  OrthoRhombicOpsMisoColor& operator=(const OrthoRhombicOpsMisoColor&) = delete; // Copy Assignment Not Implemented
+  OrthoRhombicOpsMisoColor& operator=(OrthoRhombicOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
 
-  private:
+private:
 };
-
-

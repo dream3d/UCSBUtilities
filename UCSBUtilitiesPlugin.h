@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.                         *
  *                                                                                               *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
- 
+
 #pragma once
 
 #include <QtCore/QObject>
@@ -30,148 +30,146 @@
 class UCSBUtilities_EXPORT UCSBUtilitiesPlugin : public QObject, public ISIMPLibPlugin
 
 {
-    Q_OBJECT
-    Q_INTERFACES(ISIMPLibPlugin)
-    Q_PLUGIN_METADATA(IID "com.your.domain.UCSBUtilitiesPlugin")
+  Q_OBJECT
+  Q_INTERFACES(ISIMPLibPlugin)
+  Q_PLUGIN_METADATA(IID "com.your.domain.UCSBUtilitiesPlugin")
 
-  public:
-    UCSBUtilitiesPlugin();
-    virtual ~UCSBUtilitiesPlugin();
-    
-    /**
-     * @brief Returns the name of the plugin that appears on the file system. 
-     * 
-     * Note that if the build is a debug build there will be a _Plugin postfix
-     * to the filename.
-     */
-    virtual QString getPluginFileName();
-    
-    /**
-     * @brief getPluginDisplayName The name that should be used for human facing
-     * labels and display strings
-     * @return 
-     */
-    virtual QString getPluginDisplayName();
-    
-    /**
-     * @brief getPluginBaseName The Name of the plugin.
-     * 
-     * This typically will NOT have the Plugin suffix.
-     * @return 
-     */
-    virtual QString getPluginBaseName();
+public:
+  UCSBUtilitiesPlugin();
+  virtual ~UCSBUtilitiesPlugin();
 
-    /**
-     * @brief getVersion Returns the version
-     */
-    virtual QString getVersion();
+  /**
+   * @brief Returns the name of the plugin that appears on the file system.
+   *
+   * Note that if the build is a debug build there will be a _Plugin postfix
+   * to the filename.
+   */
+  virtual QString getPluginFileName();
 
-     /**
-     * @brief getCompatibilityVersion Returns the compatibility version
-     */
-    virtual QString getCompatibilityVersion();
+  /**
+   * @brief getPluginDisplayName The name that should be used for human facing
+   * labels and display strings
+   * @return
+   */
+  virtual QString getPluginDisplayName();
 
-     /**
-     * @brief getVendor Returns the name of the vendor
-     */
-    virtual QString getVendor();
+  /**
+   * @brief getPluginBaseName The Name of the plugin.
+   *
+   * This typically will NOT have the Plugin suffix.
+   * @return
+   */
+  virtual QString getPluginBaseName();
 
-    /**
-     * @brief getURL Returns the URL of the plugin
-     */
-    virtual QString getURL();
+  /**
+   * @brief getVersion Returns the version
+   */
+  virtual QString getVersion();
 
-    /**
-     * @brief getLocationReturns the location of the plugin
-     */
-    virtual QString getLocation();
+  /**
+   * @brief getCompatibilityVersion Returns the compatibility version
+   */
+  virtual QString getCompatibilityVersion();
 
-    /**
-     * @brief getDescription Returns the description of the plugin
-     * PLEASE UPDATE YOUR PLUGIN'S DESCRIPTION FILE.
-     * It is located at UCSBUtilities/Resources/UCSBUtilities/UCSBUtilitiesDescription.txt
-     */
-    virtual QString getDescription();
+  /**
+   * @brief getVendor Returns the name of the vendor
+   */
+  virtual QString getVendor();
 
-    /**
-     * @brief getCopyright Returns the copyright of the plugin
-     */
-    virtual QString getCopyright();
+  /**
+   * @brief getURL Returns the URL of the plugin
+   */
+  virtual QString getURL();
 
-    /**
-     * @brief getLicense Returns the license of the plugin
-     * PLEASE UPDATE YOUR PLUGIN'S LICENSE FILE.
-     * It is located at UCSBUtilities/Resources/UCSBUtilities/UCSBUtilitiesLicense.txt
-     */
-    virtual QString getLicense();
+  /**
+   * @brief getLocationReturns the location of the plugin
+   */
+  virtual QString getLocation();
 
-    /**
-     * @brief getFilters Returns the filters of the plugin
-     */
-    virtual QList<QString> getFilters();
+  /**
+   * @brief getDescription Returns the description of the plugin
+   * PLEASE UPDATE YOUR PLUGIN'S DESCRIPTION FILE.
+   * It is located at UCSBUtilities/Resources/UCSBUtilities/UCSBUtilitiesDescription.txt
+   */
+  virtual QString getDescription();
 
-    /**
-     * @brief getThirdPartyLicenses Returns the third party licenses of the plugin
-     */
-    virtual QMap<QString, QString> getThirdPartyLicenses();
+  /**
+   * @brief getCopyright Returns the copyright of the plugin
+   */
+  virtual QString getCopyright();
 
-    /**
-     * @brief getDidLoad Returns the load status of the plugin
-     */
-    virtual bool getDidLoad();
+  /**
+   * @brief getLicense Returns the license of the plugin
+   * PLEASE UPDATE YOUR PLUGIN'S LICENSE FILE.
+   * It is located at UCSBUtilities/Resources/UCSBUtilities/UCSBUtilitiesLicense.txt
+   */
+  virtual QString getLicense();
 
-    /**
-     * @brief setDidLoad Sets the load status of the plugin
-     * @param didLoad Boolean value to set status
-     */
-    virtual void setDidLoad(bool didLoad);
+  /**
+   * @brief getFilters Returns the filters of the plugin
+   */
+  virtual QList<QString> getFilters();
 
-    /**
-     * @brief setLocation Sets the location of the plugin on the file system.
-     * This is required so that we can cache the file path information
-     * as the plugin is loaded.
-     * @param filePath File path
-     */
-    virtual void setLocation(QString filePath);
+  /**
+   * @brief getThirdPartyLicenses Returns the third party licenses of the plugin
+   */
+  virtual QMap<QString, QString> getThirdPartyLicenses();
 
-    /**
-     * @brief registerFilterWidgets Register all the filters with the FilterWidgetFactory
-     * @param fwm FilterWidgetManager instance pointer
-     */
-    virtual void registerFilterWidgets(FilterWidgetManager* fwm);
+  /**
+   * @brief getDidLoad Returns the load status of the plugin
+   */
+  virtual bool getDidLoad();
 
-    /**
-    * @brief registerFilters Registers the filters that this plugin implements with the Filter Manager that is passed in
-    * @param fm FilterManager instance pointer
-    */
-    virtual void registerFilters(FilterManager* fm);
+  /**
+   * @brief setDidLoad Sets the load status of the plugin
+   * @param didLoad Boolean value to set status
+   */
+  virtual void setDidLoad(bool didLoad);
 
+  /**
+   * @brief setLocation Sets the location of the plugin on the file system.
+   * This is required so that we can cache the file path information
+   * as the plugin is loaded.
+   * @param filePath File path
+   */
+  virtual void setLocation(QString filePath);
 
-    /**
-     * @brief writeSettings Writes the settings in the input gui to the Application's preference file
-     * @param prefs QSettings reference variable
-     */
-    virtual void writeSettings(QSettings& prefs);
+  /**
+   * @brief registerFilterWidgets Register all the filters with the FilterWidgetFactory
+   * @param fwm FilterWidgetManager instance pointer
+   */
+  virtual void registerFilterWidgets(FilterWidgetManager* fwm);
 
-    /**
-     * @brief readSettings Reads the settings from the Application's preference file and sets
-     * the input GUI widgets accordingly.
-     * @param prefs QSettings reference variable
-     */
-    virtual void readSettings(QSettings& prefs);
+  /**
+   * @brief registerFilters Registers the filters that this plugin implements with the Filter Manager that is passed in
+   * @param fm FilterManager instance pointer
+   */
+  virtual void registerFilters(FilterManager* fm);
 
-  private:
-    QString             m_Version;
-    QString             m_CompatibilityVersion;
-    QString             m_Vendor;
-    QString             m_URL;
-    QString             m_Location;
-    QString             m_Description;
-    QString             m_Copyright;
-    QList<QString>      m_Filters;
-    bool                m_DidLoad;
+  /**
+   * @brief writeSettings Writes the settings in the input gui to the Application's preference file
+   * @param prefs QSettings reference variable
+   */
+  virtual void writeSettings(QSettings& prefs);
 
-    UCSBUtilitiesPlugin(const UCSBUtilitiesPlugin&) = delete; // Copy Constructor Not Implemented
-    void operator=(const UCSBUtilitiesPlugin&) = delete;      // Move assignment Not Implemented
+  /**
+   * @brief readSettings Reads the settings from the Application's preference file and sets
+   * the input GUI widgets accordingly.
+   * @param prefs QSettings reference variable
+   */
+  virtual void readSettings(QSettings& prefs);
+
+private:
+  QString m_Version;
+  QString m_CompatibilityVersion;
+  QString m_Vendor;
+  QString m_URL;
+  QString m_Location;
+  QString m_Description;
+  QString m_Copyright;
+  QList<QString> m_Filters;
+  bool m_DidLoad;
+
+  UCSBUtilitiesPlugin(const UCSBUtilitiesPlugin&) = delete; // Copy Constructor Not Implemented
+  void operator=(const UCSBUtilitiesPlugin&) = delete;      // Move assignment Not Implemented
 };
-

@@ -23,8 +23,6 @@
 #include "SIMPLib/Math/GeometryMath.h"
 #include "SIMPLib/Utilities/ColorUtilities.h"
 
-
-
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -44,13 +42,13 @@ CubicOpsMisoColor::~CubicOpsMisoColor() = default;
  * @param y Output
  * @param z Output
  */
-template<typename T>
+template <typename T>
 void _TripletSort(T a, T b, T c, T& x, T& y, T& z)
 {
-  if ( a > b && a > c)
+  if(a > b && a > c)
   {
     z = a;
-    if (b > c)
+    if(b > c)
     {
       y = b;
       x = c;
@@ -61,10 +59,10 @@ void _TripletSort(T a, T b, T c, T& x, T& y, T& z)
       x = b;
     }
   }
-  else if ( b > a && b > c)
+  else if(b > a && b > c)
   {
     z = b;
-    if (a > c)
+    if(a > c)
     {
       y = a;
       x = c;
@@ -75,13 +73,13 @@ void _TripletSort(T a, T b, T c, T& x, T& y, T& z)
       x = a;
     }
   }
-  else if ( a > b )
+  else if(a > b)
   {
     y = a;
     x = b;
     z = c;
   }
-  else if (a >= c && b >= c)
+  else if(a >= c && b >= c)
   {
     x = c;
     y = a;
@@ -94,7 +92,6 @@ void _TripletSort(T a, T b, T c, T& x, T& y, T& z)
     z = c;
   }
 }
-
 
 // -----------------------------------------------------------------------------
 //
@@ -110,7 +107,7 @@ SIMPL::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatType& q, con
   QuatType q1 = q;
   QuatType q2 = refFrame;
 
-  //get disorientation
+  // get disorientation
   OrientationD axisAngle = CubicOps::calculateMisorientation(q1, q2);
   axisAngle[0] = fabs(axisAngle[0]);
   axisAngle[1] = fabs(axisAngle[1]);
@@ -118,65 +115,74 @@ SIMPL::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatType& q, con
 
   _TripletSort(axisAngle[0], axisAngle[1], axisAngle[2], z, y, x);
 
-  //eq c9.1
+  // eq c9.1
   k = tan(axisAngle[3] / 2.0f);
   x = x * k;
   y = y * k;
   z = z * k;
 
-  //eq c9.2
+  // eq c9.2
   x1 = x;
-  if(x >= SIMPLib::Constants::k_1Over3 && atan2(z, y) >= ((1.0f - 2.0f * x) / x)) {
+  if(x >= SIMPLib::Constants::k_1Over3 && atan2(z, y) >= ((1.0f - 2.0f * x) / x))
+  {
     y1 = (x * (y + z)) / (1.0f - x);
     z1 = (x * z * (y + z)) / (y * (1.0f - x));
-  } else {
+  }
+  else
+  {
     y1 = y;
     z1 = z;
   }
 
-  //eq c9.3
+  // eq c9.3
   x2 = x1 - SIMPLib::Constants::k_Tan_OneEigthPi;
   y2 = y1 * SIMPLib::Constants::k_Cos_ThreeEightPi - z1 * SIMPLib::Constants::k_Sin_ThreeEightPi;
   z2 = y1 * SIMPLib::Constants::k_Sin_ThreeEightPi + z1 * SIMPLib::Constants::k_Cos_ThreeEightPi;
 
-  //eq c9.4
+  // eq c9.4
   x3 = x2;
   y3 = y2 * (1.0f + (y2 / z2) * SIMPLib::Constants::k_Tan_OneEigthPi);
   z3 = z2 + y2 * SIMPLib::Constants::k_Tan_OneEigthPi;
 
-  //eq c9.5
+  // eq c9.5
   x4 = x3;
   y4 = (y3 * SIMPLib::Constants::k_Cos_OneEigthPi) / SIMPLib::Constants::k_Tan_OneEigthPi;
   z4 = z3 - x3 / SIMPLib::Constants::k_Cos_OneEigthPi;
 
-  //eq c9.6
+  // eq c9.6
   k = atan2(-x4, y4);
   x5 = x4 * (sin(k) + fabs(cos(k)));
   y5 = y4 * (sin(k) + fabs(cos(k)));
   z5 = z4;
 
-  //eq c9.7
+  // eq c9.7
   k = atan2(-x5, y5);
   x6 = -sqrt(x5 * x5 + y5 * y5) * sin(2.0f * k);
   y6 = sqrt(x5 * x5 + y5 * y5) * cos(2.0f * k);
   z6 = z5;
 
-  //eq c9.8 these hsv are from 0 to 1 in cartesian coordinates
+  // eq c9.8 these hsv are from 0 to 1 in cartesian coordinates
   x7 = (x6 * SIMPLib::Constants::k_Sqrt3 - y6) / (2.0f * SIMPLib::Constants::k_Tan_OneEigthPi);
   y7 = (x6 + y6 * SIMPLib::Constants::k_Sqrt3) / (2.0f * SIMPLib::Constants::k_Tan_OneEigthPi);
   z7 = z6 * (SIMPLib::Constants::k_Cos_OneEigthPi / SIMPLib::Constants::k_Tan_OneEigthPi);
 
-  //convert to traditional hsv (0-1)
+  // convert to traditional hsv (0-1)
   h = atan2(y7, x7);
-  if(h < 0.0f) {h += SIMPLib::Constants::k_2Pi;}
+  if(h < 0.0f)
+  {
+    h += SIMPLib::Constants::k_2Pi;
+  }
   h /= SIMPLib::Constants::k_2Pi;
   s = sqrt(x7 * x7 + y7 * y7);
   v = z7;
-  if(v > 0.0f) {s = s / v;}
+  if(v > 0.0f)
+  {
+    s = s / v;
+  }
 
   SIMPL::Rgb rgb = ColorUtilities::ConvertHSVtoRgb(h, s, v);
 
-  //now standard 0-255 rgb, needs rotation
+  // now standard 0-255 rgb, needs rotation
   return RgbColor::dRgb(255 - RgbColor::dGreen(rgb), RgbColor::dBlue(rgb), RgbColor::dRed(rgb), 0);
 }
 

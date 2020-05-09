@@ -10,13 +10,12 @@ class UCSBUtilitiesGuiPlugin : public UCSBUtilitiesPlugin
 
 public:
   UCSBUtilitiesGuiPlugin();
-   ~UCSBUtilitiesGuiPlugin() override;
-  
+  ~UCSBUtilitiesGuiPlugin() override;
+
   /**
    * @brief Register all the filters with the FilterWidgetFactory
    */
   void registerFilterWidgets(FilterWidgetManager* fwm) override;
-  
 
 public:
   UCSBUtilitiesGuiPlugin(const UCSBUtilitiesGuiPlugin&) = delete;            // Copy Constructor Not Implemented

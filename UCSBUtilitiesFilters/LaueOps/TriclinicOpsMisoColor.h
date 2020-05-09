@@ -26,43 +26,41 @@
 
 class TriclinicOpsMisoColor : public TriclinicOps
 {
-  public:
-    using Self = TriclinicOpsMisoColor;
-    using Pointer = std::shared_ptr<Self>;
-    using ConstPointer = std::shared_ptr<const Self>;
-    using WeakPointer = std::weak_ptr<Self>;
-    using ConstWeakPointer = std::weak_ptr<const Self>;
-    static Pointer NullPointer();
+public:
+  using Self = TriclinicOpsMisoColor;
+  using Pointer = std::shared_ptr<Self>;
+  using ConstPointer = std::shared_ptr<const Self>;
+  using WeakPointer = std::weak_ptr<Self>;
+  using ConstWeakPointer = std::weak_ptr<const Self>;
+  static Pointer NullPointer();
 
-    /**
-     * @brief Returns the name of the class for TriclinicOpsMisoColor
-     */
-    QString getNameOfClass() const override;
-    /**
-     * @brief Returns the name of the class for TriclinicOpsMisoColor
-     */
-    static QString ClassName();
+  /**
+   * @brief Returns the name of the class for TriclinicOpsMisoColor
+   */
+  QString getNameOfClass() const override;
+  /**
+   * @brief Returns the name of the class for TriclinicOpsMisoColor
+   */
+  static QString ClassName();
 
-    static Pointer New();
+  static Pointer New();
 
-    TriclinicOpsMisoColor();
-    ~TriclinicOpsMisoColor() override;
+  TriclinicOpsMisoColor();
+  ~TriclinicOpsMisoColor() override;
 
-    /**
-     * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
-     * @param q Quaternion representing the direction
-     * @param refDir The sample reference direction
-     * @return Returns the ARGB Quadruplet SIMPL::Rgb
-     */
-    SIMPL::Rgb generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const override;
+  /**
+   * @brief generateMisorientationColor Generates a color based on the method developed by C. Schuh and S. Patala.
+   * @param q Quaternion representing the direction
+   * @param refDir The sample reference direction
+   * @return Returns the ARGB Quadruplet SIMPL::Rgb
+   */
+  SIMPL::Rgb generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const override;
 
-  public:
-    TriclinicOpsMisoColor(const TriclinicOpsMisoColor&) = delete; // Copy Constructor Not Implemented
-    TriclinicOpsMisoColor(TriclinicOpsMisoColor&&) = delete;      // Move Constructor Not Implemented
-    TriclinicOpsMisoColor& operator=(const TriclinicOpsMisoColor&) = delete; // Copy Assignment Not Implemented
-    TriclinicOpsMisoColor& operator=(TriclinicOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
+public:
+  TriclinicOpsMisoColor(const TriclinicOpsMisoColor&) = delete;            // Copy Constructor Not Implemented
+  TriclinicOpsMisoColor(TriclinicOpsMisoColor&&) = delete;                 // Move Constructor Not Implemented
+  TriclinicOpsMisoColor& operator=(const TriclinicOpsMisoColor&) = delete; // Copy Assignment Not Implemented
+  TriclinicOpsMisoColor& operator=(TriclinicOpsMisoColor&&) = delete;      // Move Assignment Not Implemented
 
-  private:
+private:
 };
-
-
