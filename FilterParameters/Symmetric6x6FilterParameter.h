@@ -24,31 +24,31 @@
 
 #include "SIMPLib/FilterParameters/FilterParameter.h"
 
-typedef struct
+struct FloatVec21_t
 {
-  float v11;
-  float v12;
-  float v13;
-  float v14;
-  float v15;
-  float v16;
-  float v22;
-  float v23;
-  float v24;
-  float v25;
-  float v26;
-  float v33;
-  float v34;
-  float v35;
-  float v36;
-  float v44;
-  float v45;
-  float v46;
-  float v55;
-  float v56;
-  float v66;
+  float v11 = 0.0f;
+  float v12 = 0.0f;
+  float v13 = 0.0f;
+  float v14 = 0.0f;
+  float v15 = 0.0f;
+  float v16 = 0.0f;
+  float v22 = 0.0f;
+  float v23 = 0.0f;
+  float v24 = 0.0f;
+  float v25 = 0.0f;
+  float v26 = 0.0f;
+  float v33 = 0.0f;
+  float v34 = 0.0f;
+  float v35 = 0.0f;
+  float v36 = 0.0f;
+  float v44 = 0.0f;
+  float v45 = 0.0f;
+  float v46 = 0.0f;
+  float v55 = 0.0f;
+  float v56 = 0.0f;
+  float v66 = 0.0f;
 
-  void writeJson(QJsonArray& json)
+  void writeJson(QJsonArray& json) const
   {
     json.push_back(v11);
     json.push_back(v12);
@@ -73,7 +73,7 @@ typedef struct
     json.push_back(v66);
   }
 
-  bool readJson(QJsonArray& json)
+  bool readJson(const QJsonArray& json)
   {
     if(json.size() == 21)
     {
@@ -102,7 +102,7 @@ typedef struct
     }
     return false;
   }
-} FloatVec21_t;
+};
 
 Q_DECLARE_METATYPE(FloatVec21_t)
 

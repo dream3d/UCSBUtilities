@@ -23,14 +23,14 @@
 
 #include "SIMPLib/FilterParameters/FilterParameter.h"
 
-typedef struct
+struct FloatVec4_t
 {
-  float a;
-  float b;
-  float c;
-  float d;
+  float a = 0.0f;
+  float b = 0.0f;
+  float c = 0.0f;
+  float d = 0.0f;
 
-  void writeJson(QJsonObject& json)
+  void writeJson(QJsonObject& json) const
   {
     json["a"] = a;
     json["b"] = b;
@@ -38,7 +38,7 @@ typedef struct
     json["d"] = d;
   }
 
-  bool readJson(QJsonObject& json)
+  bool readJson(const QJsonObject& json)
   {
     if(json["a"].isDouble() && json["b"].isDouble() && json["c"].isDouble() && json["d"].isDouble())
     {
@@ -50,7 +50,7 @@ typedef struct
     }
     return false;
   }
-} FloatVec4_t;
+};
 
 Q_DECLARE_METATYPE(FloatVec4_t)
 
