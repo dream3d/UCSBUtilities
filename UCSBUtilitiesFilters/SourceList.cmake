@@ -53,7 +53,7 @@ set_property(GLOBAL PROPERTY PluginNumFilters ${PluginNumFilters})
 foreach(f ${_PublicFilters} )
   ADD_SIMPL_FILTER(  "UCSBUtilities" "UCSBUtilities"
                         ${_filterGroupName} ${f}
-                        ${UCSBUtilities_SOURCE_DIR}/Documentation/${_filterGroupName}/${f}.md TRUE ${UCSBUtilities_BINARY_DIR})
+                        ${UCSBUtilities_SOURCE_DIR}/Documentation/${_filterGroupName}/${f}.md TRUE)
 endforeach()
 
 
