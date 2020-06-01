@@ -31,7 +31,7 @@
 //
 // -----------------------------------------------------------------------------
 UCSBUtilitiesPlugin::UCSBUtilitiesPlugin()
-: m_Version(UCSBUtilities::Version::Package())
+: m_Version(UCSBUtilities::Version::Complete())
 , m_CompatibilityVersion(UCSBUtilities::Version::Package())
 , m_Vendor("University of California, Santa Barbara")
 , // Initialize UCSBUtilities's Vendor Name Here
