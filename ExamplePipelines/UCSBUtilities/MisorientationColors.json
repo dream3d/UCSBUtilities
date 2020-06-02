@@ -1,0 +1,218 @@
+{
+    "0": {
+        "CellAttributeMatrixName": "Scan Data",
+        "CellEnsembleAttributeMatrixName": "Phase Data",
+        "DataContainerName": {
+            "Attribute Matrix Name": "",
+            "Data Array Name": "",
+            "Data Container Name": "EBSD Scan"
+        },
+        "FilterVersion": "6.6.137",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Import EDAX EBSD Data (.ang)",
+        "Filter_Name": "ReadAngData",
+        "Filter_Uuid": "{b8e128a8-c2a3-5e6c-a7ad-e4fb864e5d40}",
+        "InputFile": "Data/SmallIN100/Slice_1.ang"
+    },
+    "1": {
+        "CellAttributeMatrixPath": {
+            "Attribute Matrix Name": "Scan Data",
+            "Data Array Name": "",
+            "Data Container Name": "EBSD Scan"
+        },
+        "FilterVersion": "2.0.245",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Rotate Sample Reference Frame",
+        "Filter_Name": "RotateSampleRefFrame",
+        "Filter_Uuid": "{e25d9b4c-2b37-578c-b1de-cf7032b5ef19}",
+        "RotationAngle": 180,
+        "RotationAxis": {
+            "x": 0,
+            "y": 1,
+            "z": 0
+        },
+        "RotationRepresentationChoice": 0,
+        "RotationTable": {
+            "Column Headers": [
+            ],
+            "DefaultColCount": 3,
+            "DefaultRowCount": 3,
+            "HasDynamicCols": false,
+            "HasDynamicRows": false,
+            "MinColCount": 3,
+            "MinRowCount": 3,
+            "Row Headers": [
+            ],
+            "Table Data": [
+                [
+                    1,
+                    0,
+                    0
+                ],
+                [
+                    0,
+                    1,
+                    0
+                ],
+                [
+                    0,
+                    0,
+                    1
+                ]
+            ]
+        }
+    },
+    "2": {
+        "CellEulerAnglesArrayPath": {
+            "Attribute Matrix Name": "Scan Data",
+            "Data Array Name": "EulerAngles",
+            "Data Container Name": "EBSD Scan"
+        },
+        "FilterVersion": "6.6.137",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Rotate Euler Reference Frame",
+        "Filter_Name": "RotateEulerRefFrame",
+        "Filter_Uuid": "{ef9420b2-8c46-55f3-8ae4-f53790639de4}",
+        "RotationAngle": 90,
+        "RotationAxis": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+        }
+    },
+    "3": {
+        "DestinationArrayName": "Mask",
+        "FilterVersion": "2.0.245",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Threshold Objects",
+        "Filter_Name": "MultiThresholdObjects",
+        "Filter_Uuid": "{014b7300-cf36-5ede-a751-5faf9b119dae}",
+        "SelectedThresholds": [
+            {
+                "Attribute Array Name": "Confidence Index",
+                "Attribute Matrix Name": "Scan Data",
+                "Comparison Operator": 1,
+                "Comparison Value": 0.10000000149011612,
+                "Data Container Name": "EBSD Scan"
+            }
+        ]
+    },
+    "4": {
+        "FilterVersion": "6.6.137",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Convert Orientation Representation",
+        "Filter_Name": "ConvertOrientations",
+        "Filter_Uuid": "{e5629880-98c4-5656-82b8-c9fe2b9744de}",
+        "InputOrientationArrayPath": {
+            "Attribute Matrix Name": "Scan Data",
+            "Data Array Name": "EulerAngles",
+            "Data Container Name": "EBSD Scan"
+        },
+        "InputType": 0,
+        "OutputOrientationArrayName": "Quats",
+        "OutputType": 2
+    },
+    "5": {
+        "CellPhasesArrayPath": {
+            "Attribute Matrix Name": "Scan Data",
+            "Data Array Name": "Phases",
+            "Data Container Name": "EBSD Scan"
+        },
+        "CrystalStructuresArrayPath": {
+            "Attribute Matrix Name": "Phase Data",
+            "Data Array Name": "CrystalStructures",
+            "Data Container Name": "EBSD Scan"
+        },
+        "FilterVersion": "1.0.174",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Generate Misorientation Colors",
+        "Filter_Name": "GenerateMisorientationColors",
+        "Filter_Uuid": "{7152790d-26a4-571a-8fef-493120eced6d}",
+        "GoodVoxelsArrayPath": {
+            "Attribute Matrix Name": "Scan Data",
+            "Data Array Name": "Mask",
+            "Data Container Name": "EBSD Scan"
+        },
+        "MisorientationColorArrayName": "MisorientationColor",
+        "QuatsArrayPath": {
+            "Attribute Matrix Name": "Scan Data",
+            "Data Array Name": "Quats",
+            "Data Container Name": "EBSD Scan"
+        },
+        "ReferenceAngle": 0,
+        "ReferenceAxis": {
+            "x": 0,
+            "y": 0,
+            "z": 1
+        },
+        "UseGoodVoxels": 1
+    },
+    "6": {
+        "CellAttributeMatrixName": "CellData",
+        "DataContainerName": {
+            "Attribute Matrix Name": "",
+            "Data Array Name": "",
+            "Data Container Name": "Exemplar Data"
+        },
+        "FileName": "",
+        "FilterVersion": "2.0.866",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "ITK::Image Reader",
+        "Filter_Name": "ITKImageReader",
+        "Filter_Uuid": "{653b7b5c-03cb-5b32-8c3e-3637745e5ff6}",
+        "ImageDataArrayName": "Exemplar Image"
+    },
+    "7": {
+        "ChangeOrigin": 1,
+        "ChangeResolution": 1,
+        "DataContainerName": {
+            "Attribute Matrix Name": "",
+            "Data Array Name": "",
+            "Data Container Name": "Exemplar Data"
+        },
+        "FilterVersion": "2.0.245",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Set Origin & Spacing (Image)",
+        "Filter_Name": "SetOriginResolutionImageGeom",
+        "Filter_Uuid": "{6d3a3852-6251-5d2e-b749-6257fd0d8951}",
+        "Origin": {
+            "x": -47,
+            "y": 0,
+            "z": 0
+        },
+        "Spacing": {
+            "x": 0.25,
+            "y": 0.25,
+            "z": 1
+        }
+    },
+    "8": {
+        "FilterVersion": "2.0.245",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "Write DREAM.3D Data File",
+        "Filter_Name": "DataContainerWriter",
+        "Filter_Uuid": "{3fcd4c43-9d75-5b86-aad4-4441bc914f37}",
+        "OutputFile": "Data/Output/UCSBUtilities/Small_IN100_MisorientationColors.dream3d",
+        "WriteTimeSeries": 0,
+        "WriteXdmfFile": 1
+    },
+    "9": {
+        "FileName": "Data/Output/UCSBUtilities/Small_IN100_MisorientationColors.png",
+        "FilterVersion": "2.0.866",
+        "Filter_Enabled": true,
+        "Filter_Human_Label": "ITK::Image Export",
+        "Filter_Name": "ITKImageWriter",
+        "Filter_Uuid": "{11473711-f94d-5d96-b749-ec36a81ad338}",
+        "ImageArrayPath": {
+            "Attribute Matrix Name": "Scan Data",
+            "Data Array Name": "MisorientationColor",
+            "Data Container Name": "EBSD Scan"
+        },
+        "Plane": 0
+    },
+    "PipelineBuilder": {
+        "Name": "MisorientationColors",
+        "Number_Filters": 10,
+        "Version": 6
+    }
+}
