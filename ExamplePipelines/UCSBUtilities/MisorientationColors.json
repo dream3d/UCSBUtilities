@@ -188,7 +188,7 @@
     },
     "8": {
         "FilterVersion": "2.0.245",
-        "Filter_Enabled": true,
+        "Filter_Enabled": false,
         "Filter_Human_Label": "Write DREAM.3D Data File",
         "Filter_Name": "DataContainerWriter",
         "Filter_Uuid": "{3fcd4c43-9d75-5b86-aad4-4441bc914f37}",
@@ -199,7 +199,7 @@
     "9": {
         "FileName": "Data/Output/UCSBUtilities/Small_IN100_MisorientationColors.png",
         "FilterVersion": "2.0.866",
-        "Filter_Enabled": true,
+        "Filter_Enabled": false,
         "Filter_Human_Label": "ITK::Image Export",
         "Filter_Name": "ITKImageWriter",
         "Filter_Uuid": "{11473711-f94d-5d96-b749-ec36a81ad338}",
