@@ -227,7 +227,7 @@ void FindDirectionalModuli::execute()
   if(sampleLoading[0] >= 1.0f - std::numeric_limits<float>::epsilon())
   {
     // already 100 aligned
-    q2.identity();
+    q2 = QuatF::identity();
   }
   else if(sampleLoading[0] <= -1.0f + std::numeric_limits<float>::epsilon())
   {
