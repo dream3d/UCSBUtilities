@@ -32,7 +32,7 @@ MonoclinicOpsMisoColor::~MonoclinicOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-SIMPL::Rgb MonoclinicOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
+SIMPL::Rgb MonoclinicOpsMisoColor::generateMisorientationColor(const QuatD& q, const QuatD& refFrame) const
 {
   throw std::runtime_error("CubicLowOpsMisoColor::generateMisorientationColor is not implemented");
   return RgbColor::dRgb(0, 0, 0, 0);

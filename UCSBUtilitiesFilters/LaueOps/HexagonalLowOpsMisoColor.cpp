@@ -32,7 +32,7 @@ HexagonalLowOpsMisoColor::~HexagonalLowOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-SIMPL::Rgb HexagonalLowOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
+SIMPL::Rgb HexagonalLowOpsMisoColor::generateMisorientationColor(const QuatD& q, const QuatD& refFrame) const
 {
   SIMPL::Rgb rgb = RgbColor::dRgb(0, 0, 0, 0);
 

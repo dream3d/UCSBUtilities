@@ -32,7 +32,7 @@ TriclinicOpsMisoColor::~TriclinicOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-SIMPL::Rgb TriclinicOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
+SIMPL::Rgb TriclinicOpsMisoColor::generateMisorientationColor(const QuatD& q, const QuatD& refFrame) const
 {
   SIMPL::Rgb rgb = RgbColor::dRgb(0, 0, 0, 0);
 

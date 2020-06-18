@@ -32,7 +32,7 @@ TetragonalLowOpsMisoColor::~TetragonalLowOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-SIMPL::Rgb TetragonalLowOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
+SIMPL::Rgb TetragonalLowOpsMisoColor::generateMisorientationColor(const QuatD& q, const QuatD& refFrame) const
 {
   throw std::runtime_error("TetragonalLowOpsMisoColor::generateMisorientationColor is not implemented");
 
