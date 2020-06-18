@@ -45,9 +45,9 @@ MonoclinicOpsMisoColor::Pointer MonoclinicOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString MonoclinicOpsMisoColor::getNameOfClass() const
+std::string MonoclinicOpsMisoColor::getNameOfClass() const
 {
-  return QString("MonoclinicOpsMisoColor");
+  return std::string("MonoclinicOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------

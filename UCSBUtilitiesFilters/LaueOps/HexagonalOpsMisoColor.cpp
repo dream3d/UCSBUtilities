@@ -251,9 +251,9 @@ HexagonalOpsMisoColor::Pointer HexagonalOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString HexagonalOpsMisoColor::getNameOfClass() const
+std::string HexagonalOpsMisoColor::getNameOfClass() const
 {
-  return QString("HexagonalOpsMisoColor");
+  return std::string("HexagonalOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------

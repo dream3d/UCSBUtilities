@@ -230,9 +230,9 @@ TetragonalOpsMisoColor::Pointer TetragonalOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString TetragonalOpsMisoColor::getNameOfClass() const
+std::string TetragonalOpsMisoColor::getNameOfClass() const
 {
-  return QString("TetragonalOpsMisoColor");
+  return std::string("TetragonalOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------

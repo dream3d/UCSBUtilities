@@ -104,9 +104,9 @@ CubicLowOpsMisoColor::Pointer CubicLowOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString CubicLowOpsMisoColor::getNameOfClass() const
+std::string CubicLowOpsMisoColor::getNameOfClass() const
 {
-  return QString("CubicLowOpsMisoColor");
+  return std::string("CubicLowOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------

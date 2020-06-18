@@ -48,9 +48,9 @@ TrigonalLowOpsMisoColor::Pointer TrigonalLowOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString TrigonalLowOpsMisoColor::getNameOfClass() const
+std::string TrigonalLowOpsMisoColor::getNameOfClass() const
 {
-  return QString("TrigonalLowOpsMisoColor");
+  return std::string("TrigonalLowOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------

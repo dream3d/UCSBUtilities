@@ -48,9 +48,9 @@ TriclinicOpsMisoColor::Pointer TriclinicOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString TriclinicOpsMisoColor::getNameOfClass() const
+std::string TriclinicOpsMisoColor::getNameOfClass() const
 {
-  return QString("TriclinicOpsMisoColor");
+  return std::string("TriclinicOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------

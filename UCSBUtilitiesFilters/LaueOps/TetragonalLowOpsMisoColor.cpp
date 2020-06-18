@@ -46,9 +46,9 @@ TetragonalLowOpsMisoColor::Pointer TetragonalLowOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString TetragonalLowOpsMisoColor::getNameOfClass() const
+std::string TetragonalLowOpsMisoColor::getNameOfClass() const
 {
-  return QString("TetragonalLowOpsMisoColor");
+  return std::string("TetragonalLowOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------

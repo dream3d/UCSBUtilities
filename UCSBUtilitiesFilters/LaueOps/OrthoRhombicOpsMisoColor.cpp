@@ -201,9 +201,9 @@ OrthoRhombicOpsMisoColor::Pointer OrthoRhombicOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString OrthoRhombicOpsMisoColor::getNameOfClass() const
+std::string OrthoRhombicOpsMisoColor::getNameOfClass() const
 {
-  return QString("OrthoRhombicOpsMisoColor");
+  return std::string("OrthoRhombicOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------
