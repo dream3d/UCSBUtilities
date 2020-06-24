@@ -33,7 +33,7 @@ HexagonalOpsMisoColor::~HexagonalOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
+SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatD& q, const QuatD& refFrame) const
 {
   double xo, xo1, xo2, xo3, x, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11;
   double yo, yo1, yo2, yo3, y, y1, y2, y3, y4, y5, y6, y7, y8, y9, y10, y11;
@@ -41,8 +41,8 @@ SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatType& q,
   double k, h, s, v;
 
   // get misorientation as rodriguez vector in FZ
-  QuatType q1 = q;
-  QuatType q2 = refFrame;
+  QuatD q1 = q;
+  QuatD q2 = refFrame;
   OrientationD axisAngle = calculateMisorientation(q1, q2);
   OrientationType rod = axisAngle;
   rod[3] = tan(rod[3] / 2.0f);

@@ -213,7 +213,7 @@ void FindDirectionalModuli::execute()
   // get number of features
   size_t totalFeatures = m_DirectionalModuliPtr.lock()->getNumberOfTuples();
 
-  QuatF q1, q2, qTotal;
+  QuatF q1, q2;
   float sampleLoading[3];
   // float crystalLoading[3];
 
@@ -227,7 +227,7 @@ void FindDirectionalModuli::execute()
   if(sampleLoading[0] >= 1.0f - std::numeric_limits<float>::epsilon())
   {
     // already 100 aligned
-    q2.identity();
+    q2 = QuatF::identity();
   }
   else if(sampleLoading[0] <= -1.0f + std::numeric_limits<float>::epsilon())
   {

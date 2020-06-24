@@ -32,7 +32,7 @@ TrigonalOpsMisoColor::~TrigonalOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-SIMPL::Rgb TrigonalOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
+SIMPL::Rgb TrigonalOpsMisoColor::generateMisorientationColor(const QuatD& q, const QuatD& refFrame) const
 {
   SIMPL::Rgb rgb = RgbColor::dRgb(0, 0, 0, 0);
 

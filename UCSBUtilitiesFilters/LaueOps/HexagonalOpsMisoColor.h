@@ -54,7 +54,7 @@ public:
    * @param refDir The sample reference direction
    * @return Returns the ARGB Quadruplet SIMPL::Rgb
    */
-  SIMPL::Rgb generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const override;
+  SIMPL::Rgb generateMisorientationColor(const QuatD& q, const QuatD& refFrame) const override;
 
 public:
   HexagonalOpsMisoColor(const HexagonalOpsMisoColor&) = delete;            // Copy Constructor Not Implemented

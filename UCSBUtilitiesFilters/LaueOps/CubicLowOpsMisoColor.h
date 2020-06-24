@@ -54,7 +54,7 @@ public:
    * @param refDir The sample reference direction
    * @return Returns the ARGB Quadruplet SIMPL::Rgb
    */
-  SIMPL::Rgb generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const override;
+  SIMPL::Rgb generateMisorientationColor(const QuatD& q, const QuatD& refFrame) const override;
 
 protected:
   float _calcMisoQuat(const QuatF quatsym[24], int numsym, QuatF& q1, QuatF& q2, float& n1, float& n2, float& n3) const;

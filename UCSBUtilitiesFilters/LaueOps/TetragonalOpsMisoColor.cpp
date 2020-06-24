@@ -32,7 +32,7 @@ TetragonalOpsMisoColor::~TetragonalOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-SIMPL::Rgb TetragonalOpsMisoColor::generateMisorientationColor(const QuatType& q, const QuatType& refFrame) const
+SIMPL::Rgb TetragonalOpsMisoColor::generateMisorientationColor(const QuatD& q, const QuatD& refFrame) const
 {
   throw std::runtime_error("TetragonalOpsMisoColor::generateMisorientationColor is not implemented");
 #if 0
@@ -43,8 +43,8 @@ SIMPL::Rgb TetragonalOpsMisoColor::generateMisorientationColor(const QuatType& q
   double k, h, s, v, c, r, g, b;
 
   //get misorientation as rodriguez vector in FZ (eq. c5.1)
-  QuatType q1 = q;
-  QuatType q2 = refFrame;
+  QuatD q1 = q;
+  QuatD q2 = refFrame;
   w = getMisoQuat(q1, q2, n1, n2, n3);
   OrientArrayType rod(n1, n2, n3, tan(w / 2.0f));
   rod = getMDFFZRod(rod);
