@@ -217,7 +217,7 @@ SIMPL::Rgb TetragonalOpsMisoColor::generateMisorientationColor(const QuatD& q, c
   }
 
   //convert to rgb and invert
-  SIMPL::Rgb rgb = ColorUtilities::convertHSVtoRgb(h, s, v);
+  SIMPL::Rgb rgb = EbsdLib::ColorUtilities::convertHSVtoRgb(h, s, v);
 #endif
   SIMPL::Rgb rgb = 0xFFFFFFFF;
   return RgbColor::dRgb(255 - RgbColor::dRed(rgb), 255 - RgbColor::dGreen(rgb), 255 - RgbColor::dBlue(rgb), 0);
