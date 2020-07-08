@@ -19,6 +19,7 @@
 
 #include <stdexcept>
 
+#include "EbsdLib/Core/EbsdMacros.h"
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -34,7 +35,7 @@ MonoclinicOpsMisoColor::~MonoclinicOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 SIMPL::Rgb MonoclinicOpsMisoColor::generateMisorientationColor(const QuatD& q, const QuatD& refFrame) const
 {
-  throw std::runtime_error("CubicLowOpsMisoColor::generateMisorientationColor is not implemented");
+  throw EbsdLib::method_not_implemented("CubicLowOpsMisoColor::generateMisorientationColor is not implemented");
   return RgbColor::dRgb(0, 0, 0, 0);
 }
 

@@ -19,6 +19,8 @@
 
 #include <stdexcept>
 
+#include "EbsdLib/Core/EbsdMacros.h"
+
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -34,7 +36,7 @@ OrthoRhombicOpsMisoColor::~OrthoRhombicOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 SIMPL::Rgb OrthoRhombicOpsMisoColor::generateMisorientationColor(const QuatD& q, const QuatD& refFrame) const
 {
-  throw std::runtime_error("OrthoRhombicOpsMisoColor::generateMisorientationColor is not implemented");
+  throw EbsdLib::method_not_implemented("OrthoRhombicOpsMisoColor::generateMisorientationColor is not implemented");
 #if 0
   double n1, n2, n3, w;
   double x, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11;
