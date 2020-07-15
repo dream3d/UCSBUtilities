@@ -19,6 +19,8 @@
 
 #include <stdexcept>
 
+#include "EbsdLib/Core/EbsdMacros.h"
+
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -34,7 +36,7 @@ OrthoRhombicOpsMisoColor::~OrthoRhombicOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 SIMPL::Rgb OrthoRhombicOpsMisoColor::generateMisorientationColor(const QuatD& q, const QuatD& refFrame) const
 {
-  throw std::runtime_error("OrthoRhombicOpsMisoColor::generateMisorientationColor is not implemented");
+  throw EbsdLib::method_not_implemented("OrthoRhombicOpsMisoColor::generateMisorientationColor is not implemented");
 #if 0
   double n1, n2, n3, w;
   double x, x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11;
@@ -188,7 +190,7 @@ SIMPL::Rgb OrthoRhombicOpsMisoColor::generateMisorientationColor(const QuatD& q,
   }
 
   //convert to rgb and invert
-  SIMPL::Rgb rgb = ColorUtilities::convertHSVtoRgb(h, s, v);
+  SIMPL::Rgb rgb = EbsdLib::ColorUtilities::convertHSVtoRgb(h, s, v);
 #endif
   SIMPL::Rgb rgb = 0xFFFFFFFF;
   return RgbColor::dRgb(255 - RgbColor::dRed(rgb), 255 - RgbColor::dGreen(rgb), 255 - RgbColor::dBlue(rgb), 0);
@@ -201,9 +203,9 @@ OrthoRhombicOpsMisoColor::Pointer OrthoRhombicOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString OrthoRhombicOpsMisoColor::getNameOfClass() const
+std::string OrthoRhombicOpsMisoColor::getNameOfClass() const
 {
-  return QString("OrthoRhombicOpsMisoColor");
+  return std::string("OrthoRhombicOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------

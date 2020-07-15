@@ -18,6 +18,7 @@
 #include "HexagonalLowOpsMisoColor.h"
 
 #include <stdexcept>
+#include "EbsdLib/Core/EbsdMacros.h"
 
 // -----------------------------------------------------------------------------
 //
@@ -36,7 +37,7 @@ SIMPL::Rgb HexagonalLowOpsMisoColor::generateMisorientationColor(const QuatD& q,
 {
   SIMPL::Rgb rgb = RgbColor::dRgb(0, 0, 0, 0);
 
-  throw std::runtime_error("HexagonalLowOpsMisoColor::generateMisorientationColor is not implemented");
+  throw EbsdLib::method_not_implemented("HexagonalLowOpsMisoColor::generateMisorientationColor is not implemented");
 
   return rgb;
 }
@@ -48,9 +49,9 @@ HexagonalLowOpsMisoColor::Pointer HexagonalLowOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString HexagonalLowOpsMisoColor::getNameOfClass() const
+std::string HexagonalLowOpsMisoColor::getNameOfClass() const
 {
-  return QString("HexagonalLowOpsMisoColor");
+  return std::string("HexagonalLowOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------

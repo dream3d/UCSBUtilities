@@ -343,7 +343,7 @@ void GenerateMisorientationColors::execute()
 
   MatrixMath::Normalize3x1(normRefDir[0], normRefDir[1], normRefDir[2]);
   // Create 1 of every type of Ops class. This condenses the code below
-  UInt8ArrayType::Pointer notSupported = UInt8ArrayType::CreateArray(13, "_INTERNAL_USE_ONLY_NotSupportedArray", true);
+  UInt8ArrayType::Pointer notSupported = UInt8ArrayType::CreateArray(13, std::string("_INTERNAL_USE_ONLY_NotSupportedArray"), true);
   notSupported->initializeWithZeros();
 
 #ifdef SIMPL_USE_PARALLEL_ALGORITHMS
@@ -368,7 +368,8 @@ void GenerateMisorientationColors::execute()
     if(notSupported->getValue(i) == 1)
     {
       QString msg("The symmetry of ");
-      msg.append(ops[i]->getSymmetryName()).append(" is not currently supported for misorientation coloring. Elements with this symmetry have been set to black");
+      QTextStream ss(&msg);
+      ss << QString::fromStdString(ops[i]->getSymmetryName()) << " is not currently supported for misorientation coloring. Elements with this symmetry have been set to black";
       setWarningCondition(-5000, msg);
     }
   }

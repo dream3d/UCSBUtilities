@@ -19,8 +19,8 @@
 
 // Include this FIRST because there is a needed define for some compiles
 // to expose some of the constants needed below
-#include "SIMPLib/Math/SIMPLibMath.h"
 #include "SIMPLib/Math/GeometryMath.h"
+#include "SIMPLib/Math/SIMPLibMath.h"
 #include "SIMPLib/Utilities/ColorUtilities.h"
 
 // -----------------------------------------------------------------------------
@@ -994,9 +994,9 @@ CubicOpsMisoColor::Pointer CubicOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString CubicOpsMisoColor::getNameOfClass() const
+std::string CubicOpsMisoColor::getNameOfClass() const
 {
-  return QString("CubicOpsMisoColor");
+  return std::string("CubicOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------

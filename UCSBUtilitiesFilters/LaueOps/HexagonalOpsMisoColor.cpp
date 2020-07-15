@@ -17,9 +17,8 @@
 
 #include "HexagonalOpsMisoColor.h"
 
-#include "SIMPLib/Utilities/ColorUtilities.h"
-
 #include "EbsdLib/Math/EbsdLibMath.h"
+#include "EbsdLib/Utilities/ColorUtilities.h"
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -240,7 +239,7 @@ SIMPL::Rgb HexagonalOpsMisoColor::generateMisorientationColor(const QuatD& q, co
   }
 
   // convert to rgb and invert
-  SIMPL::Rgb rgb = ColorUtilities::ConvertHSVtoRgb(h, s, v);
+  SIMPL::Rgb rgb = EbsdLib::ColorUtilities::ConvertHSVtoRgb(h, s, v);
   return RgbColor::dRgb(255 - RgbColor::dRed(rgb), 255 - RgbColor::dGreen(rgb), 255 - RgbColor::dBlue(rgb), 0);
 }
 
@@ -251,9 +250,9 @@ HexagonalOpsMisoColor::Pointer HexagonalOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString HexagonalOpsMisoColor::getNameOfClass() const
+std::string HexagonalOpsMisoColor::getNameOfClass() const
 {
-  return QString("HexagonalOpsMisoColor");
+  return std::string("HexagonalOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------

@@ -19,6 +19,8 @@
 
 #include <stdexcept>
 
+#include "EbsdLib/Core/EbsdMacros.h"
+
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -36,7 +38,7 @@ SIMPL::Rgb TrigonalOpsMisoColor::generateMisorientationColor(const QuatD& q, con
 {
   SIMPL::Rgb rgb = RgbColor::dRgb(0, 0, 0, 0);
 
-  throw std::runtime_error("TrigonalOpsMisoColor::generateMisorientationColor is not implemented");
+  throw EbsdLib::method_not_implemented("TrigonalOpsMisoColor::generateMisorientationColor is not implemented");
 
   return rgb;
 }
@@ -48,9 +50,9 @@ TrigonalOpsMisoColor::Pointer TrigonalOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString TrigonalOpsMisoColor::getNameOfClass() const
+std::string TrigonalOpsMisoColor::getNameOfClass() const
 {
-  return QString("TrigonalOpsMisoColor");
+  return std::string("TrigonalOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------

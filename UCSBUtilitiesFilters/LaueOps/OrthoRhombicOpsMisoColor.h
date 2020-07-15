@@ -39,7 +39,7 @@ public:
   /**
    * @brief Returns the name of the class for OrthoRhombicOpsMisoColor
    */
-  QString getNameOfClass() const override;
+  std::string getNameOfClass() const override;
   /**
    * @brief Returns the name of the class for OrthoRhombicOpsMisoColor
    */

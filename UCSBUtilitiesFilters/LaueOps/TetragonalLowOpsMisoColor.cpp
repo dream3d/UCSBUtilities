@@ -19,6 +19,7 @@
 
 #include <stdexcept>
 
+#include "EbsdLib/Core/EbsdMacros.h"
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -34,7 +35,7 @@ TetragonalLowOpsMisoColor::~TetragonalLowOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 SIMPL::Rgb TetragonalLowOpsMisoColor::generateMisorientationColor(const QuatD& q, const QuatD& refFrame) const
 {
-  throw std::runtime_error("TetragonalLowOpsMisoColor::generateMisorientationColor is not implemented");
+  throw EbsdLib::method_not_implemented("TetragonalLowOpsMisoColor::generateMisorientationColor is not implemented");
 
   return RgbColor::dRgb(0, 0, 0, 0);
 }
@@ -46,9 +47,9 @@ TetragonalLowOpsMisoColor::Pointer TetragonalLowOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString TetragonalLowOpsMisoColor::getNameOfClass() const
+std::string TetragonalLowOpsMisoColor::getNameOfClass() const
 {
-  return QString("TetragonalLowOpsMisoColor");
+  return std::string("TetragonalLowOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------

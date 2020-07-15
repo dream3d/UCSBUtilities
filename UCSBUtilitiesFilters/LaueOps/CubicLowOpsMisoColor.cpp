@@ -19,6 +19,8 @@
 
 #include <stdexcept>
 
+#include "EbsdLib/Core/EbsdMacros.h"
+
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
@@ -34,7 +36,7 @@ CubicLowOpsMisoColor::~CubicLowOpsMisoColor() = default;
 // -----------------------------------------------------------------------------
 SIMPL::Rgb CubicLowOpsMisoColor::generateMisorientationColor(const QuatD& q, const QuatD& refFrame) const
 {
-  throw std::runtime_error("CubicLowOpsMisoColor::generateMisorientationColor is not implemented");
+  throw EbsdLib::method_not_implemented("CubicLowOpsMisoColor::generateMisorientationColor is not implemented");
 
 #if 0
   double n1, n2, n3, w;
@@ -104,9 +106,9 @@ CubicLowOpsMisoColor::Pointer CubicLowOpsMisoColor::NullPointer()
 }
 
 // -----------------------------------------------------------------------------
-QString CubicLowOpsMisoColor::getNameOfClass() const
+std::string CubicLowOpsMisoColor::getNameOfClass() const
 {
-  return QString("CubicLowOpsMisoColor");
+  return std::string("CubicLowOpsMisoColor");
 }
 
 // -----------------------------------------------------------------------------

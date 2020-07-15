@@ -37,7 +37,7 @@ public:
   /**
    * @brief Returns the name of the class for HexagonalOpsMisoColor
    */
-  QString getNameOfClass() const override;
+  std::string getNameOfClass() const override;
   /**
    * @brief Returns the name of the class for HexagonalOpsMisoColor
    */
