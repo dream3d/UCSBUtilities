@@ -146,7 +146,7 @@ public:
    * @brief readJson
    * @return
    */
-  void readJson(const QJsonObject& json);
+  void readJson(const QJsonObject& json) override;
 
   /**
    * @brief writeJson
