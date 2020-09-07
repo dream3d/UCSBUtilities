@@ -266,8 +266,9 @@ void FindDirectionalModuli::execute()
     size_t xtal = m_CrystalStructures[phase];
     if(xtal < EbsdLib::CrystalStructure::LaueGroupEnd)
     {
+      float* avgQuatPtr = m_AvgQuats + i * 4;
       // concatenate rotation with crystal orientation (determine rotation from crystal frame to sample loading direction)
-      q1 = QuatF(m_AvgQuats + i * 4);
+      q1 = QuatF(avgQuatPtr[0], avgQuatPtr[1], avgQuatPtr[2], avgQuatPtr[3]);
       QuatF qTotal = q1 * q2;
 
       /*
