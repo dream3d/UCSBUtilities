@@ -123,7 +123,7 @@ SIMPL::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatD& q, const 
 
   // eq c9.2
   x1 = x;
-  if(x >= SIMPLib::Constants::k_1Over3 && atan2(z, y) >= ((1.0f - 2.0f * x) / x))
+  if(x >= SIMPLib::Constants::k_1Over3D && atan2(z, y) >= ((1.0f - 2.0f * x) / x))
   {
     y1 = (x * (y + z)) / (1.0f - x);
     z1 = (x * z * (y + z)) / (y * (1.0f - x));
@@ -135,19 +135,19 @@ SIMPL::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatD& q, const 
   }
 
   // eq c9.3
-  x2 = x1 - SIMPLib::Constants::k_Tan_OneEigthPi;
-  y2 = y1 * SIMPLib::Constants::k_Cos_ThreeEightPi - z1 * SIMPLib::Constants::k_Sin_ThreeEightPi;
-  z2 = y1 * SIMPLib::Constants::k_Sin_ThreeEightPi + z1 * SIMPLib::Constants::k_Cos_ThreeEightPi;
+  x2 = x1 - SIMPLib::Constants::k_Tan_OneEigthPiD;
+  y2 = y1 * SIMPLib::Constants::k_Cos_ThreeEightPiD - z1 * SIMPLib::Constants::k_Sin_ThreeEightPiD;
+  z2 = y1 * SIMPLib::Constants::k_Sin_ThreeEightPiD + z1 * SIMPLib::Constants::k_Cos_ThreeEightPiD;
 
   // eq c9.4
   x3 = x2;
-  y3 = y2 * (1.0f + (y2 / z2) * SIMPLib::Constants::k_Tan_OneEigthPi);
-  z3 = z2 + y2 * SIMPLib::Constants::k_Tan_OneEigthPi;
+  y3 = y2 * (1.0f + (y2 / z2) * SIMPLib::Constants::k_Tan_OneEigthPiD);
+  z3 = z2 + y2 * SIMPLib::Constants::k_Tan_OneEigthPiD;
 
   // eq c9.5
   x4 = x3;
-  y4 = (y3 * SIMPLib::Constants::k_Cos_OneEigthPi) / SIMPLib::Constants::k_Tan_OneEigthPi;
-  z4 = z3 - x3 / SIMPLib::Constants::k_Cos_OneEigthPi;
+  y4 = (y3 * SIMPLib::Constants::k_Cos_OneEigthPiD) / SIMPLib::Constants::k_Tan_OneEigthPiD;
+  z4 = z3 - x3 / SIMPLib::Constants::k_Cos_OneEigthPiD;
 
   // eq c9.6
   k = atan2(-x4, y4);
@@ -162,17 +162,17 @@ SIMPL::Rgb CubicOpsMisoColor::generateMisorientationColor(const QuatD& q, const 
   z6 = z5;
 
   // eq c9.8 these hsv are from 0 to 1 in cartesian coordinates
-  x7 = (x6 * SIMPLib::Constants::k_Sqrt3 - y6) / (2.0f * SIMPLib::Constants::k_Tan_OneEigthPi);
-  y7 = (x6 + y6 * SIMPLib::Constants::k_Sqrt3) / (2.0f * SIMPLib::Constants::k_Tan_OneEigthPi);
-  z7 = z6 * (SIMPLib::Constants::k_Cos_OneEigthPi / SIMPLib::Constants::k_Tan_OneEigthPi);
+  x7 = (x6 * SIMPLib::Constants::k_Sqrt3D - y6) / (2.0f * SIMPLib::Constants::k_Tan_OneEigthPiD);
+  y7 = (x6 + y6 * SIMPLib::Constants::k_Sqrt3D) / (2.0f * SIMPLib::Constants::k_Tan_OneEigthPiD);
+  z7 = z6 * (SIMPLib::Constants::k_Cos_OneEigthPiD / SIMPLib::Constants::k_Tan_OneEigthPiD);
 
   // convert to traditional hsv (0-1)
   h = atan2(y7, x7);
   if(h < 0.0f)
   {
-    h += SIMPLib::Constants::k_2Pi;
+    h += SIMPLib::Constants::k_2PiD;
   }
-  h /= SIMPLib::Constants::k_2Pi;
+  h /= SIMPLib::Constants::k_2PiD;
   s = sqrt(x7 * x7 + y7 * y7);
   v = z7;
   if(v > 0.0f)
