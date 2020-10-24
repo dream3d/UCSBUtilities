@@ -20,13 +20,13 @@
 #include <QtCore/QTextStream>
 
 #include "SIMPLib/Common/Constants.h"
+#include "SIMPLib/DataContainers/DataContainerArray.h"
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
 #include "SIMPLib/FilterParameters/DataArrayCreationFilterParameter.h"
 #include "SIMPLib/FilterParameters/SeparatorFilterParameter.h"
-#include "SIMPLib/DataContainers/DataContainerArray.h"
 
-#include "UCSBUtilities/UCSBUtilitiesConstants.h"
 #include "UCSBUtilities/FilterParameters/Symmetric6x6FilterParameter.h"
+#include "UCSBUtilities/UCSBUtilitiesConstants.h"
 #include "UCSBUtilities/UCSBUtilitiesVersion.h"
 
 /* Create Enumerations to allow the created Attribute Arrays to take part in renaming */

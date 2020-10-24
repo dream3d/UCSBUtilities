@@ -19,18 +19,18 @@
 
 #include <memory>
 
-#include <vector>
 #include <QtCore/QString>
+#include <vector>
 
+#include "SIMPLib/SIMPLib.h"
 #include "EbsdLib/LaueOps/CubicOps.h"
 #include "EbsdLib/LaueOps/HexagonalOps.h"
 #include "EbsdLib/LaueOps/LaueOps.h"
 #include "EbsdLib/LaueOps/OrthoRhombicOps.h"
-#include "SIMPLib/SIMPLib.h"
+#include "SIMPLib/DataArrays/DataArray.hpp"
 #include "SIMPLib/DataArrays/IDataArray.h"
 #include "SIMPLib/DataContainers/DataContainer.h"
 #include "SIMPLib/Filtering/AbstractFilter.h"
-#include "SIMPLib/DataArrays/DataArray.hpp"
 
 #include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
 

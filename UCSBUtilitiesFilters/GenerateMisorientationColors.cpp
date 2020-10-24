@@ -20,40 +20,40 @@
 #include <QtCore/QTextStream>
 
 #include "SIMPLib/Common/Constants.h"
+#include "SIMPLib/DataContainers/DataContainerArray.h"
 #include "SIMPLib/FilterParameters/AbstractFilterParametersReader.h"
-#include "SIMPLib/FilterParameters/FloatVec3FilterParameter.h"
-#include "SIMPLib/FilterParameters/FloatFilterParameter.h"
 #include "SIMPLib/FilterParameters/DataArraySelectionFilterParameter.h"
-#include "SIMPLib/FilterParameters/StringFilterParameter.h"
+#include "SIMPLib/FilterParameters/FloatFilterParameter.h"
+#include "SIMPLib/FilterParameters/FloatVec3FilterParameter.h"
 #include "SIMPLib/FilterParameters/LinkedBooleanFilterParameter.h"
 #include "SIMPLib/FilterParameters/LinkedPathCreationFilterParameter.h"
 #include "SIMPLib/FilterParameters/SeparatorFilterParameter.h"
-#include "SIMPLib/Utilities/ColorTable.h"
-#include "SIMPLib/DataContainers/DataContainerArray.h"
+#include "SIMPLib/FilterParameters/StringFilterParameter.h"
 #include "SIMPLib/Math/MatrixMath.h"
+#include "SIMPLib/Utilities/ColorTable.h"
 
-#include "UCSBUtilitiesFilters/LaueOps/CubicOpsMisoColor.h"
 #include "UCSBUtilitiesFilters/LaueOps/CubicLowOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/LaueOps/HexagonalOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/CubicOpsMisoColor.h"
 #include "UCSBUtilitiesFilters/LaueOps/HexagonalLowOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/LaueOps/OrthoRhombicOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/LaueOps/TrigonalOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/LaueOps/TetragonalOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/LaueOps/TrigonalLowOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/LaueOps/TetragonalLowOpsMisoColor.h"
-#include "UCSBUtilitiesFilters/LaueOps/TriclinicOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/HexagonalOpsMisoColor.h"
 #include "UCSBUtilitiesFilters/LaueOps/MonoclinicOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/OrthoRhombicOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/TetragonalLowOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/TetragonalOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/TriclinicOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/TrigonalLowOpsMisoColor.h"
+#include "UCSBUtilitiesFilters/LaueOps/TrigonalOpsMisoColor.h"
 
-#include "UCSBUtilities/UCSBUtilitiesVersion.h"
 #include "UCSBUtilities/UCSBUtilitiesConstants.h"
+#include "UCSBUtilities/UCSBUtilitiesVersion.h"
 
 #include "EbsdLib/Core/EbsdLibConstants.h"
 #include "EbsdLib/Core/Quaternion.hpp"
 #include "EbsdLib/LaueOps/LaueOps.h"
 
 #ifdef SIMPL_USE_PARALLEL_ALGORITHMS
-#include <tbb/parallel_for.h>
 #include <tbb/blocked_range.h>
+#include <tbb/parallel_for.h>
 #include <tbb/partitioner.h>
 #endif
 
