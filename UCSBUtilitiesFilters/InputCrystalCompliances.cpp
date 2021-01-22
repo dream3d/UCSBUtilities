@@ -166,32 +166,32 @@ void InputCrystalCompliances::execute()
   size_t numPhases = m_CrystalCompliancesPtr.lock()->getNumberOfTuples();
 
   // convert from 10^-2 GPa^-1 to Pa^-1
-  m_Compliances.v11 /= 100000000000;
-  m_Compliances.v12 /= 100000000000;
-  m_Compliances.v13 /= 100000000000;
-  m_Compliances.v14 /= 100000000000;
-  m_Compliances.v15 /= 100000000000;
-  m_Compliances.v16 /= 100000000000;
+  m_Compliances.v11 /= 1e11;
+  m_Compliances.v12 /= 1e11;
+  m_Compliances.v13 /= 1e11;
+  m_Compliances.v14 /= 1e11;
+  m_Compliances.v15 /= 1e11;
+  m_Compliances.v16 /= 1e11;
 
-  m_Compliances.v22 /= 100000000000;
-  m_Compliances.v23 /= 100000000000;
-  m_Compliances.v24 /= 100000000000;
-  m_Compliances.v25 /= 100000000000;
-  m_Compliances.v26 /= 100000000000;
+  m_Compliances.v22 /= 1e11;
+  m_Compliances.v23 /= 1e11;
+  m_Compliances.v24 /= 1e11;
+  m_Compliances.v25 /= 1e11;
+  m_Compliances.v26 /= 1e11;
 
-  m_Compliances.v33 /= 100000000000;
-  m_Compliances.v34 /= 100000000000;
-  m_Compliances.v35 /= 100000000000;
-  m_Compliances.v36 /= 100000000000;
+  m_Compliances.v33 /= 1e11;
+  m_Compliances.v34 /= 1e11;
+  m_Compliances.v35 /= 1e11;
+  m_Compliances.v36 /= 1e11;
 
-  m_Compliances.v44 /= 100000000000;
-  m_Compliances.v45 /= 100000000000;
-  m_Compliances.v46 /= 100000000000;
+  m_Compliances.v44 /= 1e11;
+  m_Compliances.v45 /= 1e11;
+  m_Compliances.v46 /= 1e11;
 
-  m_Compliances.v55 /= 100000000000;
-  m_Compliances.v56 /= 100000000000;
+  m_Compliances.v55 /= 1e11;
+  m_Compliances.v56 /= 1e11;
 
-  m_Compliances.v66 /= 100000000000;
+  m_Compliances.v66 /= 1e11;
 
   // loop over each phase
   for(size_t i = 0; i < numPhases; i++)
