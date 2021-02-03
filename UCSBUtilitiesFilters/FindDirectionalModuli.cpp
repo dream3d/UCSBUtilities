@@ -128,9 +128,9 @@ void FindDirectionalModuli::initialize()
 // -----------------------------------------------------------------------------
 void FindDirectionalModuli::dataCheck()
 {
-  DataArrayPath tempPath;
   clearErrorCode();
   clearWarningCode();
+  DataArrayPath tempPath;
 
   // create moduli
   std::vector<size_t> dims(1, 1);
@@ -202,8 +202,6 @@ void FindDirectionalModuli::dataCheck()
 // -----------------------------------------------------------------------------
 void FindDirectionalModuli::execute()
 {
-  clearErrorCode();
-  clearWarningCode();
   dataCheck();
   if(getErrorCode() < 0)
   {

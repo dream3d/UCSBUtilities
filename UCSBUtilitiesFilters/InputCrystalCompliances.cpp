@@ -154,8 +154,6 @@ void InputCrystalCompliances::dataCheck()
 // -----------------------------------------------------------------------------
 void InputCrystalCompliances::execute()
 {
-  clearErrorCode();
-  clearWarningCode();
   dataCheck();
   if(getErrorCode() < 0)
   {

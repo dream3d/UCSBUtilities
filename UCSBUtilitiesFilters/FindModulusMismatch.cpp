@@ -139,9 +139,6 @@ void FindModulusMismatch::readFilterParameters(AbstractFilterParametersReader* r
 // -----------------------------------------------------------------------------
 void FindModulusMismatch::dataCheckVoxel()
 {
-  clearErrorCode();
-  clearWarningCode();
-
   std::vector<size_t> dims(1, 1);
   m_ModuliPtr = getDataContainerArray()->getPrereqArrayFromPath<DataArray<float>>(this, getModuliArrayPath(), dims);
   if(nullptr != m_ModuliPtr.lock())
@@ -156,8 +153,6 @@ void FindModulusMismatch::dataCheckVoxel()
 void FindModulusMismatch::dataCheckSurfaceMesh()
 {
   DataArrayPath tempPath;
-  clearErrorCode();
-  clearWarningCode();
 
   DataContainer::Pointer sm = getDataContainerArray()->getPrereqDataContainer(this, getSurfaceMeshFaceLabelsArrayPath().getDataContainerName());
   if(getErrorCode() < 0 || nullptr == sm.get())
@@ -185,6 +180,9 @@ void FindModulusMismatch::dataCheckSurfaceMesh()
 // -----------------------------------------------------------------------------
 void FindModulusMismatch::dataCheck()
 {
+  clearErrorCode();
+  clearWarningCode();
+
   dataCheckVoxel();
   dataCheckSurfaceMesh();
 }

@@ -119,8 +119,6 @@ void CopyAttributeArray::dataCheck()
 // -----------------------------------------------------------------------------
 void CopyAttributeArray::execute()
 {
-  clearErrorCode();
-  clearWarningCode();
   dataCheck(); // calling the dataCheck will copy the array, so nothing is required here
   if(getErrorCode() < 0)
   {

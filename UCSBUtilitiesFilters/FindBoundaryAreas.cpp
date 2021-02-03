@@ -127,8 +127,6 @@ void FindBoundaryAreas::dataCheck()
 // -----------------------------------------------------------------------------
 void FindBoundaryAreas::execute()
 {
-  clearErrorCode();
-  clearWarningCode();
   dataCheck();
   if(getErrorCode() < 0)
   {

@@ -92,8 +92,6 @@ void ClearDataMask::dataCheck()
 // -----------------------------------------------------------------------------
 void ClearDataMask::execute()
 {
-  clearErrorCode();
-  clearWarningCode();
   dataCheck();
   if(getErrorCode() < 0)
   {

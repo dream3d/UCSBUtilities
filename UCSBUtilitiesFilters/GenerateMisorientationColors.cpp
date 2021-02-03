@@ -325,8 +325,6 @@ void GenerateMisorientationColors::dataCheck()
 // -----------------------------------------------------------------------------
 void GenerateMisorientationColors::execute()
 {
-  clearErrorCode();
-  clearWarningCode();
   dataCheck();
   if(getErrorCode() < 0)
   {
