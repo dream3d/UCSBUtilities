@@ -234,11 +234,11 @@ private:
   std::weak_ptr<DataArray<float>> m_CrystalCompliancesPtr;
   float* m_CrystalCompliances = nullptr;
 
-  DataArrayPath m_FeaturePhasesArrayPath = {};
-  DataArrayPath m_CrystalStructuresArrayPath = {};
-  DataArrayPath m_CrystalCompliancesArrayPath = {};
-  DataArrayPath m_AvgQuatsArrayPath = {};
-  QString m_DirectionalModuliArrayName = {};
+  DataArrayPath m_FeaturePhasesArrayPath = {"", "", ""};
+  DataArrayPath m_CrystalStructuresArrayPath = {"", "", ""};
+  DataArrayPath m_CrystalCompliancesArrayPath = {"", "", ""};
+  DataArrayPath m_AvgQuatsArrayPath = {"", "", ""};
+  QString m_DirectionalModuliArrayName = {"DirectionalModuli"};
   FloatVec3Type m_LoadingDirection = {};
 
 public:

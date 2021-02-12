@@ -151,7 +151,7 @@ private:
   std::weak_ptr<DataArray<bool>> m_MaskPtr;
   bool* m_Mask = nullptr;
 
-  DataArrayPath m_MaskArrayPath = {};
+  DataArrayPath m_MaskArrayPath = {"", "", ""};
 
 public:
   ClearDataMask(const ClearDataMask&) = delete;            // Copy Constructor Not Implemented

@@ -166,6 +166,6 @@ public:
   CopyDataContainer& operator=(CopyDataContainer&&) = delete;      // Move Assignment Not Implemented
 
 private:
-  DataArrayPath m_SelectedDataContainerName = {};
-  DataArrayPath m_NewDataContainerName = {};
+  DataArrayPath m_SelectedDataContainerName = {"", "", ""};
+  DataArrayPath m_NewDataContainerName = {"", "", ""};
 };

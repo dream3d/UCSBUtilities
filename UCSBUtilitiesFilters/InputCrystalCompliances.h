@@ -166,7 +166,7 @@ private:
   float* m_CrystalCompliances = nullptr;
 
   FloatVec21_t m_Compliances = {};
-  DataArrayPath m_CrystalCompliancesArrayPath = {};
+  DataArrayPath m_CrystalCompliancesArrayPath = {"", "", ""};
 
 public:
   InputCrystalCompliances(const InputCrystalCompliances&) = delete;            // Copy Constructor Not Implemented

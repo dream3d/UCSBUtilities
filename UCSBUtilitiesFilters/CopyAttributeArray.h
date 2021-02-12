@@ -166,6 +166,6 @@ public:
   CopyAttributeArray& operator=(CopyAttributeArray&&) = delete;      // Move Assignment Not Implemented
 
 private:
-  DataArrayPath m_SelectedArrayPath = {};
-  QString m_NewArrayName = {};
+  DataArrayPath m_SelectedArrayPath = {"", "", ""};
+  QString m_NewArrayName = {""};
 };

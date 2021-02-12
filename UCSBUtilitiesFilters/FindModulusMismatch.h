@@ -182,9 +182,9 @@ private:
   std::weak_ptr<DataArray<float>> m_SurfaceMeshDeltaModulusPtr;
   float* m_SurfaceMeshDeltaModulus = nullptr;
 
-  DataArrayPath m_ModuliArrayPath = {};
-  DataArrayPath m_SurfaceMeshFaceLabelsArrayPath = {};
-  QString m_SurfaceMeshDeltaModulusArrayName = {};
+  DataArrayPath m_ModuliArrayPath = {SIMPL::Defaults::ImageDataContainerName, SIMPL::Defaults::CellFeatureAttributeMatrixName, "ElasticModuli"};
+  DataArrayPath m_SurfaceMeshFaceLabelsArrayPath = {SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceAttributeMatrixName, SIMPL::FaceData::SurfaceMeshFaceLabels};
+  QString m_SurfaceMeshDeltaModulusArrayName = {"SurfaceMeshDeltaModulus"};
 
   CubicOps::Pointer m_CubicOps;
   HexagonalOps::Pointer m_HexOps;

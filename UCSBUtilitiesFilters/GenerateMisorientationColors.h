@@ -252,13 +252,13 @@ private:
   uint8_t* m_MisorientationColor = nullptr;
 
   FloatVec3Type m_ReferenceAxis = {};
-  float m_ReferenceAngle = {};
-  DataArrayPath m_CellPhasesArrayPath = {};
-  DataArrayPath m_QuatsArrayPath = {};
-  DataArrayPath m_CrystalStructuresArrayPath = {};
-  DataArrayPath m_GoodVoxelsArrayPath = {};
-  QString m_MisorientationColorArrayName = {};
-  bool m_UseGoodVoxels = {};
+  float m_ReferenceAngle = {0.0f};
+  DataArrayPath m_CellPhasesArrayPath = {"", "", ""};
+  DataArrayPath m_QuatsArrayPath = {"", "", ""};
+  DataArrayPath m_CrystalStructuresArrayPath = {"", "", ""};
+  DataArrayPath m_GoodVoxelsArrayPath = {"", "", ""};
+  QString m_MisorientationColorArrayName = {SIMPL::CellData::MisorientationColor};
+  bool m_UseGoodVoxels = {false};
 
 public:
   GenerateMisorientationColors(const GenerateMisorientationColors&) = delete;            // Copy Constructor Not Implemented

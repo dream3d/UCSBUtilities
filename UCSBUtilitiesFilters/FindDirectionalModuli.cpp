@@ -53,11 +53,6 @@ enum createdPathID : RenameDataPath::DataID_t
 //
 // -----------------------------------------------------------------------------
 FindDirectionalModuli::FindDirectionalModuli()
-: m_FeaturePhasesArrayPath("", "", "")
-, m_CrystalStructuresArrayPath("", "", "")
-, m_CrystalCompliancesArrayPath("", "", "")
-, m_AvgQuatsArrayPath("", "", "")
-, m_DirectionalModuliArrayName("DirectionalModuli")
 {
   m_LoadingDirection[0] = 0.0f;
   m_LoadingDirection[1] = 0.0f;

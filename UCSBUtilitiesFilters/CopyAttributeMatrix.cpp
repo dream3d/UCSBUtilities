@@ -33,11 +33,7 @@
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-CopyAttributeMatrix::CopyAttributeMatrix()
-: m_SelectedAttributeMatrixPath("", "", "")
-, m_NewAttributeMatrix("")
-{
-}
+CopyAttributeMatrix::CopyAttributeMatrix() = default;
 
 // -----------------------------------------------------------------------------
 //

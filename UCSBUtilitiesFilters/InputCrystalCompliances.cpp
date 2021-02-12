@@ -40,7 +40,6 @@ enum createdPathID : RenameDataPath::DataID_t
 //
 // -----------------------------------------------------------------------------
 InputCrystalCompliances::InputCrystalCompliances()
-: m_CrystalCompliancesArrayPath("", "", "")
 {
   m_Compliances.v11 = 1;
   m_Compliances.v12 = 1;

@@ -92,12 +92,7 @@ public:
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-FindModulusMismatch::FindModulusMismatch()
-: m_ModuliArrayPath(SIMPL::Defaults::ImageDataContainerName, SIMPL::Defaults::CellFeatureAttributeMatrixName, "ElasticModuli")
-, m_SurfaceMeshFaceLabelsArrayPath(SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceAttributeMatrixName, SIMPL::FaceData::SurfaceMeshFaceLabels)
-, m_SurfaceMeshDeltaModulusArrayName("SurfaceMeshDeltaModulus")
-{
-}
+FindModulusMismatch::FindModulusMismatch() = default;
 
 // -----------------------------------------------------------------------------
 //

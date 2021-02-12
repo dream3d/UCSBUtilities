@@ -170,13 +170,6 @@ private:
 //
 // -----------------------------------------------------------------------------
 GenerateMisorientationColors::GenerateMisorientationColors()
-: m_ReferenceAngle(0.0f)
-, m_CellPhasesArrayPath("", "", "")
-, m_QuatsArrayPath("", "", "")
-, m_CrystalStructuresArrayPath("", "", "")
-, m_GoodVoxelsArrayPath("", "", "")
-, m_MisorientationColorArrayName(SIMPL::CellData::MisorientationColor)
-, m_UseGoodVoxels(false)
 {
   m_ReferenceAxis[0] = 0.0f;
   m_ReferenceAxis[1] = 0.0f;

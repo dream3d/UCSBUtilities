@@ -166,6 +166,6 @@ public:
   CopyAttributeMatrix& operator=(CopyAttributeMatrix&&) = delete;      // Move Assignment Not Implemented
 
 private:
-  DataArrayPath m_SelectedAttributeMatrixPath = {};
-  QString m_NewAttributeMatrix = {};
+  DataArrayPath m_SelectedAttributeMatrixPath = {"", "", ""};
+  QString m_NewAttributeMatrix = {""};
 };

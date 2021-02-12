@@ -190,9 +190,9 @@ private:
   std::weak_ptr<DataArray<double>> m_SurfaceMeshBoundaryAreasPtr;
   double* m_SurfaceMeshBoundaryAreas = nullptr;
 
-  DataArrayPath m_SurfaceMeshTriangleAreasArrayPath = {};
-  DataArrayPath m_SurfaceMeshFeatureFaceIdsArrayPath = {};
-  DataArrayPath m_SurfaceMeshBoundaryAreasArrayPath = {};
+  DataArrayPath m_SurfaceMeshTriangleAreasArrayPath = {SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceAttributeMatrixName, SIMPL::FaceData::SurfaceMeshFaceAreas};
+  DataArrayPath m_SurfaceMeshFeatureFaceIdsArrayPath = {SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceAttributeMatrixName, SIMPL::CellData::FeatureIds};
+  DataArrayPath m_SurfaceMeshBoundaryAreasArrayPath = {SIMPL::Defaults::TriangleDataContainerName, SIMPL::Defaults::FaceFeatureAttributeMatrixName, "BoundaryAreas"};
 
 public:
   FindBoundaryAreas(const FindBoundaryAreas&) = delete;            // Copy Constructor Not Implemented
