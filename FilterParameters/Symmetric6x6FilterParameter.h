@@ -24,7 +24,9 @@
 
 #include "SIMPLib/FilterParameters/FilterParameter.h"
 
-struct FloatVec21_t
+#include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
+
+struct UCSBUtilities_EXPORT FloatVec21_t
 {
   float v11 = 0.0f;
   float v12 = 0.0f;
@@ -130,8 +132,19 @@ public:
   typedef std::function<void(FloatVec21_t)> SetterCallbackType;
   typedef std::function<FloatVec21_t(void)> GetterCallbackType;
 
-  static Pointer New(const QString& humanLabel, const QString& propertyName, const FloatVec21_t& defaultValue, Category category, const SetterCallbackType& setterCallback,
-                     const GetterCallbackType& getterCallback, int groupIndex = -1);
+  /**
+   * @brief Create
+   * @param humanLabel
+   * @param propertyName
+   * @param defaultValue
+   * @param category
+   * @param setterCallback
+   * @param getterCallback
+   * @param groupIndex
+   * @return
+   */
+  static Pointer Create(const QString& humanLabel, const QString& propertyName, const FloatVec21_t& defaultValue, Category category, const SetterCallbackType& setterCallback,
+                        const GetterCallbackType& getterCallback, int groupIndex = -1);
 
   virtual ~Symmetric6x6FilterParameter();
 

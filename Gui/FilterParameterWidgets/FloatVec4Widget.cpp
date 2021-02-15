@@ -20,7 +20,6 @@
 #include <QtGui/QDoubleValidator>
 
 #include "SVWidgetsLib/Core/SVWidgetsLibConstants.h"
-
 #include "SVWidgetsLib/FilterParameterWidgets/FilterParameterWidgetsDialogs.h"
 
 #include "UCSBUtilities/FilterParameters/FloatVec4FilterParameter.h"
@@ -49,13 +48,13 @@ FloatVec4Widget::~FloatVec4Widget() = default;
 void FloatVec4Widget::setupGui()
 {
   // Catch when the filter is about to execute the preflight
-  connect(getFilter(), &AbstractFilter::preflightAboutToExecute, this, &FloatVec4Widget::beforePreflight);
+  connect(getFilter(), SIGNAL(preflightAboutToExecute()), this, SLOT(beforePreflight()));
 
   // Catch when the filter is finished running the preflight
-  connect(getFilter(), &AbstractFilter::preflightExecuted, this, &FloatVec4Widget::afterPreflight);
+  connect(getFilter(), SIGNAL(preflightExecuted()), this, SLOT(afterPreflight()));
 
   // Catch when the filter wants its values updated
-  connect(getFilter(), &AbstractFilter::updateFilterParameters, this, &FloatVec4Widget::filterNeedsInputParameters);
+  connect(getFilter(), SIGNAL(updateFilterParameters(AbstractFilter*)), this, SLOT(filterNeedsInputParameters(AbstractFilter*)));
 
   connect(aData, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
   connect(bData, SIGNAL(textChanged(const QString&)), this, SLOT(widgetChanged(const QString&)));
@@ -74,11 +73,11 @@ void FloatVec4Widget::setupGui()
   {
     label->setText(getFilterParameter()->getHumanLabel());
 
-    FloatVec4_t data = getFilter()->property(PROPERTY_NAME_AS_CHAR).value<FloatVec4_t>();
-    aData->setText(QString::number(data.a));
-    bData->setText(QString::number(data.b));
-    cData->setText(QString::number(data.c));
-    dData->setText(QString::number(data.d));
+    FloatVec4Type data = m_FilterParameter->getGetterCallback()();
+    aData->setText(QString::number(data[0]));
+    bData->setText(QString::number(data[1]));
+    cData->setText(QString::number(data[2]));
+    dData->setText(QString::number(data[3]));
   }
 }
 
@@ -96,19 +95,13 @@ void FloatVec4Widget::widgetChanged(const QString& text)
 void FloatVec4Widget::filterNeedsInputParameters(AbstractFilter* filter)
 {
   bool ok = false;
-  FloatVec4_t data;
-  data.a = aData->text().toDouble(&ok);
-  data.b = bData->text().toDouble(&ok);
-  data.c = cData->text().toDouble(&ok);
-  data.d = dData->text().toDouble(&ok);
+  FloatVec4Type data;
+  data[0] = aData->text().toDouble(&ok);
+  data[1] = bData->text().toDouble(&ok);
+  data[2] = cData->text().toDouble(&ok);
+  data[3] = dData->text().toDouble(&ok);
 
-  QVariant v;
-  v.setValue(data);
-  ok = filter->setProperty(PROPERTY_NAME_AS_CHAR, v);
-  if(!ok)
-  {
-    getFilter()->notifyMissingProperty(getFilterParameter());
-  }
+  m_FilterParameter->getSetterCallback()(data);
 }
 
 // -----------------------------------------------------------------------------

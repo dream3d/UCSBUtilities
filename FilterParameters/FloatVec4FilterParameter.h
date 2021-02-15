@@ -21,40 +21,27 @@
 
 #include <QtCore/QJsonObject>
 
+#include "SIMPLib/Common/SIMPLArray.hpp"
 #include "SIMPLib/FilterParameters/FilterParameter.h"
 
-struct FloatVec4_t
-{
-  float a = 0.0f;
-  float b = 0.0f;
-  float c = 0.0f;
-  float d = 0.0f;
+#include "UCSBUtilities/UCSBUtilitiesDLLExport.h"
 
-  void writeJson(QJsonObject& json) const
-  {
-    json["a"] = a;
-    json["b"] = b;
-    json["c"] = c;
-    json["d"] = d;
-  }
+/**
+ * @brief SIMPL_NEW_FLOAT_FP This macro is a short-form way of instantiating an instance of
+ * FloatFilterParameter. There are 4 required parameters and 1 optional parameter
+ * that are always passed to this macro in the following order: HumanLabel, PropertyName, Category,
+ * FilterName (class name), GroupIndex (optional).
+ *
+ * Therefore, the macro should be written like this (this is a concrete example):
+ * SIMPL_NEW_FLOAT_FP("HumanLabel", PropertyName, Category, FilterName, GroupIndex)
+ *
+ * Example 1 (instantiated within a filter called [GenericExample](@ref genericexample), without optional GroupIndex parameter):
+ * SIMPL_NEW_FLOAT_FP("Float 2", Float2, FilterParameter::Category::Parameter, GenericExample);
+ */
+#define SIMPL_NEW_FLOAT_VEC4_FP(...)                                                                                                                                                                   \
+  SIMPL_EXPAND(_FP_GET_OVERRIDE(__VA_ARGS__, SIMPL_NEW_FP_9, SIMPL_NEW_FP_8, SIMPL_NEW_FP_7, SIMPL_NEW_FP_6, SIMPL_NEW_FP_5, SIMPL_NEW_FP_4)(FloatFilterParameter, __VA_ARGS__))
 
-  bool readJson(const QJsonObject& json)
-  {
-    if(json["a"].isDouble() && json["b"].isDouble() && json["c"].isDouble() && json["d"].isDouble())
-    {
-      a = static_cast<float>(json["a"].toDouble());
-      b = static_cast<float>(json["b"].toDouble());
-      c = static_cast<float>(json["c"].toDouble());
-      d = static_cast<float>(json["d"].toDouble());
-      return true;
-    }
-    return false;
-  }
-};
-
-Q_DECLARE_METATYPE(FloatVec4_t)
-
-class FloatVec4FilterParameter : public FilterParameter
+class UCSBUtilities_EXPORT FloatVec4FilterParameter : public FilterParameter
 {
 public:
   using Self = FloatVec4FilterParameter;
@@ -75,7 +62,22 @@ public:
    */
   static QString ClassName();
 
-  static Pointer New(const QString& humanLabel, const QString& propertyName, const FloatVec4_t& defaultValue, Category category, int groupIndex = -1);
+  using SetterCallbackType = std::function<void(FloatVec4Type)>;
+  using GetterCallbackType = std::function<FloatVec4Type(void)>;
+
+  /**
+   * @brief New
+   * @param humanLabel
+   * @param propertyName
+   * @param defaultValue
+   * @param category
+   * @param setterCallback
+   * @param getterCallback
+   * @param groupIndex
+   * @return
+   */
+  static Pointer Create(const QString& humanLabel, const QString& propertyName, const FloatVec4Type& defaultValue, Category category, const SetterCallbackType& setterCallback,
+                        const GetterCallbackType& getterCallback, int groupIndex = -1);
 
   virtual ~FloatVec4FilterParameter();
 
@@ -86,10 +88,58 @@ public:
    */
   QString getWidgetType() const override;
 
+  /**
+   * @brief readJson Reads this filter parameter's corresponding property out of a QJsonObject.
+   * @param json The QJsonObject that the filter parameter reads from.
+   */
+  void readJson(const QJsonObject& json) override;
+
+  /**
+   * @brief writeJson Writes this filter parameter's corresponding property to a QJsonObject.
+   * @param json The QJsonObject that the filter parameter writes to.
+   */
+  void writeJson(QJsonObject& json) override;
+
+  /**
+   * @param SetterCallback The method in the AbstractFilter subclass that <i>sets</i> the value of the property
+   * that this FilterParameter subclass represents.
+   * from the filter parameter.
+   */
+  /**
+   * @brief Setter property for SetterCallback
+   */
+  void setSetterCallback(const FloatVec4FilterParameter::SetterCallbackType& value);
+  /**
+   * @brief Getter property for SetterCallback
+   * @return Value of SetterCallback
+   */
+  FloatVec4FilterParameter::SetterCallbackType getSetterCallback() const;
+
+  /**
+   * @param GetterCallback The method in the AbstractFilter subclass that <i>gets</i> the value of the property
+   * that this FilterParameter subclass represents.
+   * @return The GetterCallback
+   */
+  /**
+   * @brief Setter property for GetterCallback
+   */
+  void setGetterCallback(const FloatVec4FilterParameter::GetterCallbackType& value);
+  /**
+   * @brief Getter property for GetterCallback
+   * @return Value of GetterCallback
+   */
+  FloatVec4FilterParameter::GetterCallbackType getGetterCallback() const;
+
 protected:
   FloatVec4FilterParameter();
 
+public:
+  FloatVec4FilterParameter(const FloatVec4FilterParameter&) = delete;            // Copy Constructor Not Implemented
+  FloatVec4FilterParameter(FloatVec4FilterParameter&&) = delete;                 // Move Constructor Not Implemented
+  FloatVec4FilterParameter& operator=(const FloatVec4FilterParameter&) = delete; // Copy Assignment Not Implemented
+  FloatVec4FilterParameter& operator=(FloatVec4FilterParameter&&) = delete;      // Move Assignment Not Implemented
+
 private:
-  FloatVec4FilterParameter(const FloatVec4FilterParameter&) = delete; // Copy Constructor Not Implemented
-  void operator=(const FloatVec4FilterParameter&) = delete;           // Move assignment Not Implemented
+  FloatVec4FilterParameter::SetterCallbackType m_SetterCallback = {};
+  FloatVec4FilterParameter::GetterCallbackType m_GetterCallback = {};
 };

@@ -81,12 +81,12 @@ InputCrystalCompliances::~InputCrystalCompliances() = default;
 void InputCrystalCompliances::setupFilterParameters()
 {
   FilterParameterVectorType parameters;
-  parameters.push_back(Symmetric6x6FilterParameter::New("Compliance Values (10^-11 Pa^-1)", "Compliances", getCompliances(), FilterParameter::Parameter,
-                                                        SIMPL_BIND_SETTER(InputCrystalCompliances, this, Compliances), SIMPL_BIND_GETTER(InputCrystalCompliances, this, Compliances)));
-  parameters.push_back(SeparatorFilterParameter::New("Ensemble Data", FilterParameter::CreatedArray));
+  parameters.push_back(Symmetric6x6FilterParameter::Create("Compliance Values (10^-11 Pa^-1)", "Compliances", getCompliances(), FilterParameter::Category::Parameter,
+                                                           SIMPL_BIND_SETTER(InputCrystalCompliances, this, Compliances), SIMPL_BIND_GETTER(InputCrystalCompliances, this, Compliances)));
+  parameters.push_back(SeparatorFilterParameter::Create("Ensemble Data", FilterParameter::Category::CreatedArray));
   {
     DataArrayCreationFilterParameter::RequirementType req = DataArrayCreationFilterParameter::CreateRequirement(AttributeMatrix::Category::Ensemble);
-    parameters.push_back(SIMPL_NEW_DA_CREATION_FP("Crystal Compliances", CrystalCompliancesArrayPath, FilterParameter::CreatedArray, InputCrystalCompliances, req));
+    parameters.push_back(SIMPL_NEW_DA_CREATION_FP("Crystal Compliances", CrystalCompliancesArrayPath, FilterParameter::Category::CreatedArray, InputCrystalCompliances, req));
   }
   setFilterParameters(parameters);
 }

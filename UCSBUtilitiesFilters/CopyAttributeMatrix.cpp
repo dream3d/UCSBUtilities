@@ -53,10 +53,10 @@ void CopyAttributeMatrix::setupFilterParameters()
 
   {
     AttributeMatrixSelectionFilterParameter::RequirementType req;
-    parameters.push_back(SIMPL_NEW_AM_SELECTION_FP("Attribute Matrix to Copy", SelectedAttributeMatrixPath, FilterParameter::RequiredArray, CopyAttributeMatrix, req));
+    parameters.push_back(SIMPL_NEW_AM_SELECTION_FP("Attribute Matrix to Copy", SelectedAttributeMatrixPath, FilterParameter::Category::RequiredArray, CopyAttributeMatrix, req));
   }
 
-  parameters.push_back(SIMPL_NEW_AM_WITH_LINKED_DC_FP("Copied Attribute Matrix", NewAttributeMatrix, SelectedAttributeMatrixPath, FilterParameter::CreatedArray, CopyAttributeMatrix));
+  parameters.push_back(SIMPL_NEW_AM_WITH_LINKED_DC_FP("Copied Attribute Matrix", NewAttributeMatrix, SelectedAttributeMatrixPath, FilterParameter::Category::CreatedArray, CopyAttributeMatrix));
 
   setFilterParameters(parameters);
 }

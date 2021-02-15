@@ -51,10 +51,10 @@ void CopyAttributeArray::setupFilterParameters()
 
   {
     DataArraySelectionFilterParameter::RequirementType req;
-    parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Attribute Array to Copy", SelectedArrayPath, FilterParameter::RequiredArray, CopyAttributeArray, req));
+    parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Attribute Array to Copy", SelectedArrayPath, FilterParameter::Category::RequiredArray, CopyAttributeArray, req));
   }
 
-  parameters.push_back(SIMPL_NEW_DA_WITH_LINKED_AM_FP("Copied Attribute Array", NewArrayName, SelectedArrayPath, SelectedArrayPath, FilterParameter::CreatedArray, CopyAttributeArray));
+  parameters.push_back(SIMPL_NEW_DA_WITH_LINKED_AM_FP("Copied Attribute Array", NewArrayName, SelectedArrayPath, SelectedArrayPath, FilterParameter::Category::CreatedArray, CopyAttributeArray));
 
   setFilterParameters(parameters);
 }

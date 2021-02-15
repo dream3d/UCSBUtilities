@@ -112,15 +112,15 @@ void FindModulusMismatch::setupFilterParameters()
 
   {
     DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(SIMPL::Defaults::AnyPrimitive, 1, AttributeMatrix::Category::Any);
-    parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Moduli", ModuliArrayPath, FilterParameter::RequiredArray, FindModulusMismatch, req));
+    parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("Moduli", ModuliArrayPath, FilterParameter::Category::RequiredArray, FindModulusMismatch, req));
   }
   {
     DataArraySelectionFilterParameter::RequirementType req = DataArraySelectionFilterParameter::CreateCategoryRequirement(SIMPL::Defaults::AnyPrimitive, 2, AttributeMatrix::Category::Any);
-    parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("SurfaceMeshFaceLabels", SurfaceMeshFaceLabelsArrayPath, FilterParameter::RequiredArray, FindModulusMismatch, req));
+    parameters.push_back(SIMPL_NEW_DA_SELECTION_FP("SurfaceMeshFaceLabels", SurfaceMeshFaceLabelsArrayPath, FilterParameter::Category::RequiredArray, FindModulusMismatch, req));
   }
 
   parameters.push_back(SIMPL_NEW_DA_WITH_LINKED_AM_FP("SurfaceMeshDeltaModulus", SurfaceMeshDeltaModulusArrayName, SurfaceMeshFaceLabelsArrayPath, SurfaceMeshFaceLabelsArrayPath,
-                                                      FilterParameter::CreatedArray, FindModulusMismatch));
+                                                      FilterParameter::Category::CreatedArray, FindModulusMismatch));
 
   setFilterParameters(parameters);
 }

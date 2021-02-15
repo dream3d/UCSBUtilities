@@ -19,18 +19,16 @@
 
 #include <QtWidgets/QWidget>
 
-#include "SVWidgetsLib/QtSupport/QtSFaderWidget.h"
 
 #include "SIMPLib/Filtering/AbstractFilter.h"
 
 #include "SVWidgetsLib/FilterParameterWidgets/FilterParameterWidget.h"
+#include "SVWidgetsLib/QtSupport/QtSFaderWidget.h"
 #include "SVWidgetsLib/SVWidgetsLib.h"
-
-#include "UCSBUtilities/FilterParameters/FloatVec4FilterParameter.h"
 
 #include "ui_FloatVec4Widget.h"
 
-#include "UCSBUtilities/FilterParameters/FloatVec4FilterParameter.h"
+class FloatVec4FilterParameter;
 
 /**
  * @brief
@@ -64,7 +62,7 @@ public slots:
   void afterPreflight();                                   // Called just after the dataCheck() is called.
 
 private:
-  FloatVec4FilterParameter* m_FilterParameter;
+  FloatVec4FilterParameter* m_FilterParameter = nullptr;
 
   FloatVec4Widget(const FloatVec4Widget&) = delete; // Copy Constructor Not Implemented
   void operator=(const FloatVec4Widget&) = delete;  // Move assignment Not Implemented

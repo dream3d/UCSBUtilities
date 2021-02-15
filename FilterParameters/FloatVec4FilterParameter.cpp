@@ -16,6 +16,7 @@
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 #include "FloatVec4FilterParameter.h"
+Q_DECLARE_METATYPE(FloatVec4Type)
 
 // -----------------------------------------------------------------------------
 //
@@ -30,9 +31,9 @@ FloatVec4FilterParameter::~FloatVec4FilterParameter() = default;
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-FloatVec4FilterParameter::Pointer FloatVec4FilterParameter::New(const QString& humanLabel, const QString& propertyName, const FloatVec4_t& defaultValue, Category category, int groupIndex)
+FloatVec4FilterParameter::Pointer FloatVec4FilterParameter::Create(const QString& humanLabel, const QString& propertyName, const FloatVec4Type& defaultValue, Category category,
+                                                                   const SetterCallbackType& setterCallback, const GetterCallbackType& getterCallback, int groupIndex)
 {
-
   FloatVec4FilterParameter::Pointer ptr = FloatVec4FilterParameter::New();
   ptr->setHumanLabel(humanLabel);
   ptr->setPropertyName(propertyName);
@@ -41,7 +42,8 @@ FloatVec4FilterParameter::Pointer FloatVec4FilterParameter::New(const QString& h
   ptr->setDefaultValue(v);
   ptr->setCategory(category);
   ptr->setGroupIndex(groupIndex);
-
+  ptr->setSetterCallback(setterCallback);
+  ptr->setGetterCallback(getterCallback);
   return ptr;
 }
 
@@ -51,6 +53,47 @@ FloatVec4FilterParameter::Pointer FloatVec4FilterParameter::New(const QString& h
 QString FloatVec4FilterParameter::getWidgetType() const
 {
   return QString("FloatVec4Widget");
+}
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void FloatVec4FilterParameter::readJson(const QJsonObject& json)
+{
+  QJsonValue jsonValue = json[getPropertyName()];
+  if(jsonValue.isUndefined())
+  {
+    jsonValue = json[getLegacyPropertyName()];
+  }
+  if(!jsonValue.isUndefined() && m_SetterCallback)
+  {
+    QJsonObject json = jsonValue.toObject();
+    FloatVec4Type floatVec4;
+    if(json["a"].isDouble() && json["b"].isDouble() && json["c"].isDouble() && json["d"].isDouble())
+    {
+      floatVec4[0] = static_cast<float>(json["a"].toDouble());
+      floatVec4[1] = static_cast<float>(json["b"].toDouble());
+      floatVec4[2] = static_cast<float>(json["c"].toDouble());
+      floatVec4[3] = static_cast<float>(json["d"].toDouble());
+    }
+    m_SetterCallback(floatVec4);
+  }
+}
+
+// -----------------------------------------------------------------------------
+//
+// -----------------------------------------------------------------------------
+void FloatVec4FilterParameter::writeJson(QJsonObject& obj)
+{
+  if(m_GetterCallback)
+  {
+    FloatVec4Type floatVec4 = m_GetterCallback();
+    QJsonObject json;
+    json["a"] = static_cast<double>(floatVec4[0]);
+    json["b"] = static_cast<double>(floatVec4[1]);
+    json["c"] = static_cast<double>(floatVec4[2]);
+    json["d"] = static_cast<double>(floatVec4[3]);
+    obj[getPropertyName()] = json;
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -76,4 +119,28 @@ QString FloatVec4FilterParameter::getNameOfClass() const
 QString FloatVec4FilterParameter::ClassName()
 {
   return QString("FloatVec4FilterParameter");
+}
+
+// -----------------------------------------------------------------------------
+void FloatVec4FilterParameter::setSetterCallback(const FloatVec4FilterParameter::SetterCallbackType& value)
+{
+  m_SetterCallback = value;
+}
+
+// -----------------------------------------------------------------------------
+FloatVec4FilterParameter::SetterCallbackType FloatVec4FilterParameter::getSetterCallback() const
+{
+  return m_SetterCallback;
+}
+
+// -----------------------------------------------------------------------------
+void FloatVec4FilterParameter::setGetterCallback(const FloatVec4FilterParameter::GetterCallbackType& value)
+{
+  m_GetterCallback = value;
+}
+
+// -----------------------------------------------------------------------------
+FloatVec4FilterParameter::GetterCallbackType FloatVec4FilterParameter::getGetterCallback() const
+{
+  return m_GetterCallback;
 }
