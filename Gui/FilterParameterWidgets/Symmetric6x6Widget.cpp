@@ -725,7 +725,7 @@ void Symmetric6x6Widget::setupGui()
 // -----------------------------------------------------------------------------
 void Symmetric6x6Widget::widgetChanged(const QString& text)
 {
-  emit parametersChanged();
+  Q_EMIT parametersChanged();
 }
 
 // -----------------------------------------------------------------------------

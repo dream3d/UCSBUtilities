@@ -87,7 +87,7 @@ void FloatVec4Widget::setupGui()
 // -----------------------------------------------------------------------------
 void FloatVec4Widget::widgetChanged(const QString& text)
 {
-  emit parametersChanged();
+  Q_EMIT parametersChanged();
 }
 
 // -----------------------------------------------------------------------------
