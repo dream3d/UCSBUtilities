@@ -70,7 +70,7 @@ void Symmetric6x6FilterParameter::readJson(const QJsonObject& json)
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-void Symmetric6x6FilterParameter::writeJson(QJsonObject& json)
+void Symmetric6x6FilterParameter::writeJson(QJsonObject& json) const
 {
   FloatVec21_t compliances = m_GetterCallback();
   QJsonArray compliancesArray;

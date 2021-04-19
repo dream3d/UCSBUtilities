@@ -82,7 +82,7 @@ void FloatVec4FilterParameter::readJson(const QJsonObject& json)
 // -----------------------------------------------------------------------------
 //
 // -----------------------------------------------------------------------------
-void FloatVec4FilterParameter::writeJson(QJsonObject& obj)
+void FloatVec4FilterParameter::writeJson(QJsonObject& obj) const
 {
   if(m_GetterCallback)
   {
