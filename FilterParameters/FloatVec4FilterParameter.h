@@ -79,7 +79,7 @@ public:
   static Pointer Create(const QString& humanLabel, const QString& propertyName, const FloatVec4Type& defaultValue, Category category, const SetterCallbackType& setterCallback,
                         const GetterCallbackType& getterCallback, int groupIndex = -1);
 
-  virtual ~FloatVec4FilterParameter();
+  ~FloatVec4FilterParameter() override;
 
   /**
    * @brief getWidgetType Returns the type of widget that displays and controls

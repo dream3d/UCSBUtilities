@@ -48,12 +48,12 @@ public:
    */
   FloatVec4Widget(FilterParameter* parameter, AbstractFilter* filter = nullptr, QWidget* parent = nullptr);
 
-  virtual ~FloatVec4Widget();
+  ~FloatVec4Widget() override;
 
   /**
    * @brief This method does additional GUI widget connections
    */
-  void setupGui();
+  void setupGui() override;
 
 public Q_SLOTS:
   void widgetChanged(const QString& msg);

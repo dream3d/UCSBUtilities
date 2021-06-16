@@ -103,11 +103,11 @@ public:
     // Adjust the first pipeline to read from the Small IN100 data set contained in the DREAM3D_Data repository
     var = UnitTest::DataDir + "/Data/SmallIN100/Slice_1.ang";
     bool didSet = filters[0]->setProperty("InputFile", var);
-    DREAM3D_REQUIRE(didSet == true)
+    DREAM3D_REQUIRE(didSet)
 
     var = UnitTest::PluginTestDir + "/TestFiles/Small_IN100_Slice_1_Miso.png";
     didSet = filters[6]->setProperty("FileName", var);
-    DREAM3D_REQUIRE(didSet == true)
+    DREAM3D_REQUIRE(didSet)
 
     Observer obs; // Create an Observer to report errors/progress from the executing pipeline
     pipeline->addMessageReceiver(&obs);

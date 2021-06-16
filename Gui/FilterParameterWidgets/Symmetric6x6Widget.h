@@ -48,12 +48,12 @@ public:
    */
   Symmetric6x6Widget(FilterParameter* parameter, AbstractFilter* filter = nullptr, QWidget* parent = nullptr);
 
-  virtual ~Symmetric6x6Widget();
+  ~Symmetric6x6Widget() override;
 
   /**
    * @brief This method does additional GUI widget connections
    */
-  void setupGui();
+  void setupGui() override;
 
 public Q_SLOTS:
   void widgetChanged(const QString& msg);

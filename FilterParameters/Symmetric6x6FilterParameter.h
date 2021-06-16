@@ -146,7 +146,7 @@ public:
   static Pointer Create(const QString& humanLabel, const QString& propertyName, const FloatVec21_t& defaultValue, Category category, const SetterCallbackType& setterCallback,
                         const GetterCallbackType& getterCallback, int groupIndex = -1);
 
-  virtual ~Symmetric6x6FilterParameter();
+  ~Symmetric6x6FilterParameter() override;
 
   /**
    * @brief getWidgetType Returns the type of widget that displays and controls

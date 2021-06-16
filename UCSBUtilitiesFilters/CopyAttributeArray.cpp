@@ -101,7 +101,7 @@ void CopyAttributeArray::dataCheck()
 
   IDataArray::Pointer pNew = dataArray->deepCopy();
   pNew->setName(m_NewArrayName); // Set the name of the array
-  int32_t err = attrMat->insertOrAssign(pNew);
+  int32_t err = static_cast<int32_t>(attrMat->insertOrAssign(pNew));
 
   if(0 != err)
   {

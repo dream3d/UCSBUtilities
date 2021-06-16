@@ -143,6 +143,6 @@ public:
   }
 
 private:
-  UCSBUtilitiesFilterTest(const UCSBUtilitiesFilterTest&); // Copy Constructor Not Implemented
-  void operator=(const UCSBUtilitiesFilterTest&);          // Move assignment Not Implemented
+  UCSBUtilitiesFilterTest(const UCSBUtilitiesFilterTest&) = delete; // Copy Constructor Not Implemented
+  void operator=(const UCSBUtilitiesFilterTest&) = delete;          // Move assignment Not Implemented
 };
