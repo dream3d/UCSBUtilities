@@ -19,7 +19,6 @@
 
 #include <QtWidgets/QWidget>
 
-
 #include "SIMPLib/Filtering/AbstractFilter.h"
 
 #include "SVWidgetsLib/FilterParameterWidgets/FilterParameterWidget.h"
