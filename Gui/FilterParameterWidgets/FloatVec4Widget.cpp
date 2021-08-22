@@ -74,7 +74,7 @@ void FloatVec4Widget::setupGui()
   {
     label->setText(getFilterParameter()->getHumanLabel());
 
-    FloatVec4Type data = m_FilterParameter->getGetterCallback()();
+    FloatVec4Type data = SafeFilterParameterGetter(m_FilterParameter, getFilter());
     aData->setText(QString::number(data[0]));
     bData->setText(QString::number(data[1]));
     cData->setText(QString::number(data[2]));
@@ -102,7 +102,7 @@ void FloatVec4Widget::filterNeedsInputParameters(AbstractFilter* filter)
   data[2] = cData->text().toDouble(&ok);
   data[3] = dData->text().toDouble(&ok);
 
-  m_FilterParameter->getSetterCallback()(data);
+  SafeFilterParameterSetter(m_FilterParameter, data, getFilter());
 }
 
 // -----------------------------------------------------------------------------

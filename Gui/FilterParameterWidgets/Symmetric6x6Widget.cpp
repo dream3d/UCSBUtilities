@@ -685,7 +685,7 @@ void Symmetric6x6Widget::setupGui()
   {
     label->setText(getFilterParameter()->getHumanLabel());
 
-    FloatVec21_t data = getFilter()->property(PROPERTY_NAME_AS_CHAR).value<FloatVec21_t>();
+    FloatVec21_t data = SafeFilterParameterGetter(m_FilterParameter, getFilter());
     v11->setText(QString::number(data.v11));
     v12->setText(QString::number(data.v12));
     v13->setText(QString::number(data.v13));
@@ -762,13 +762,7 @@ void Symmetric6x6Widget::filterNeedsInputParameters(AbstractFilter* filter)
 
   data.v66 = v66->text().toDouble(&ok);
 
-  QVariant v;
-  v.setValue(data);
-  ok = filter->setProperty(PROPERTY_NAME_AS_CHAR, v);
-  if(!ok)
-  {
-    getFilter()->notifyMissingProperty(getFilterParameter());
-  }
+  SafeFilterParameterSetter(m_FilterParameter, data, getFilter());
 }
 
 // -----------------------------------------------------------------------------

@@ -108,7 +108,7 @@ struct UCSBUtilities_EXPORT FloatVec21_t
 
 Q_DECLARE_METATYPE(FloatVec21_t)
 
-class Symmetric6x6FilterParameter : public FilterParameter
+class UCSBUtilities_EXPORT Symmetric6x6FilterParameter : public FilterParameter
 {
 public:
   using Self = Symmetric6x6FilterParameter;
