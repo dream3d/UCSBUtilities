@@ -21,7 +21,8 @@
 
 #include "SIMPLib/FilterParameters/FilterParameter.h"
 
-typedef struct {
+ struct FloatVec4_t
+ {
   float a; float b; float c; float d;
 
   void writeJson(QJsonObject &json)
@@ -44,7 +45,7 @@ typedef struct {
     }
     return false;
   }
-} FloatVec4_t;
+} ;
 
 Q_DECLARE_METATYPE(FloatVec4_t)
 

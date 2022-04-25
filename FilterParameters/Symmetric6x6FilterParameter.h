@@ -22,7 +22,7 @@
 
 #include "SIMPLib/FilterParameters/FilterParameter.h"
 
-typedef struct
+ struct FloatVec21_t
 {
   float v11;
   float v12;
@@ -100,7 +100,7 @@ typedef struct
     }
     return false;
   }
-} FloatVec21_t;
+} ;
 
 Q_DECLARE_METATYPE(FloatVec21_t)
 
