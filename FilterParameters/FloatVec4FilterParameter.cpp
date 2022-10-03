@@ -32,7 +32,7 @@ FloatVec4FilterParameter::~FloatVec4FilterParameter() = default;
 //
 // -----------------------------------------------------------------------------
 FloatVec4FilterParameter::Pointer FloatVec4FilterParameter::Create(const QString& humanLabel, const QString& propertyName, const FloatVec4Type& defaultValue, Category category,
-                                                                   const SetterCallbackType& setterCallback, const GetterCallbackType& getterCallback, int groupIndex)
+                                                                   const SetterCallbackType& setterCallback, const GetterCallbackType& getterCallback, const std::vector<int>& groupIndices)
 {
   FloatVec4FilterParameter::Pointer ptr = FloatVec4FilterParameter::New();
   ptr->setHumanLabel(humanLabel);
@@ -41,7 +41,7 @@ FloatVec4FilterParameter::Pointer FloatVec4FilterParameter::Create(const QString
   v.setValue(defaultValue);
   ptr->setDefaultValue(v);
   ptr->setCategory(category);
-  ptr->setGroupIndex(groupIndex);
+  ptr->setGroupIndices(groupIndices);
   ptr->setSetterCallback(setterCallback);
   ptr->setGetterCallback(getterCallback);
   return ptr;
