@@ -126,7 +126,7 @@ public:
       m_MisorientationColor[index + 2] = 0;
       cellQuat = Quaternion<double>(m_Quats[i * 4], m_Quats[i * 4 + 1], m_Quats[i * 4 + 2], m_Quats[i * 4 + 3]);
 
-      if(m_CrystalStructures[phase] != EbsdLib::CrystalStructure::Cubic_High && m_CrystalStructures[phase] != EbsdLib::CrystalStructure::Hexagonal_High)
+      if(m_CrystalStructures[phase] == EbsdLib::CrystalStructure::Cubic_Low || m_CrystalStructures[phase] == EbsdLib::CrystalStructure::Hexagonal_Low)
       {
         uint32_t idx = m_CrystalStructures[phase];
         if(idx == EbsdLib::CrystalStructure::UnknownCrystalStructure)
