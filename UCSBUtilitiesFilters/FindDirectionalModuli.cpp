@@ -245,7 +245,7 @@ void FindDirectionalModuli::execute()
     q2[1] = sampleLoading[2];
     q2[2] = -sampleLoading[1];
     q2[3] = 1.0f + sampleLoading[0];
-    q2 = q2.unitQuaternion();
+    q2 = q2.normalize();
   }
 
   // loop over all grains
